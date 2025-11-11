@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ebike-psi.com
+
+# Sitemaps
+Sitemap: https://ebike-psi.com/sitemap.xml
