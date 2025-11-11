@@ -25,6 +25,12 @@ Phase 0 (Current):
 - GitHub Actions CI (build, lint, typecheck)
 - next-sitemap and next-seo scaffolding
 - Plausible analytics placeholder
+- **PWA (Progressive Web App) support**
+  - Installable on iOS and Android
+  - Offline-aware with service worker caching
+  - Web app manifest with theme colors
+  - Install prompt component
+  - Offline message banner
 
 Phase 1 (Next):
 - Calculator engine with deterministic PSI algorithm
@@ -147,6 +153,7 @@ This project follows a phased development approach:
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with custom theme
+- **PWA**: next-pwa (installable, offline-aware)
 - **Testing**: (Jest/Vitest to be added in Phase 1)
 - **Linting**: ESLint + Prettier
 - **Git Hooks**: Husky
@@ -167,6 +174,66 @@ This project follows a phased development approach:
 - Text: `#0F172A` (primary)
 
 **Typography**: Inter font family, mobile-first responsive design
+
+## Progressive Web App (PWA)
+
+This app is a fully-featured PWA that can be installed on iOS and Android devices.
+
+### Features
+
+- **Installable**: Add to home screen from Safari (iOS) or Chrome (Android)
+- **Offline-aware**: Service worker caches static assets for instant loading
+- **Native feel**: Standalone display mode hides browser UI
+- **Install prompt**: Smart prompt appears after first use (dismissible)
+- **Offline banner**: Shows when network is unavailable
+
+### PWA Icons
+
+PWA icons are located in `/public/icons/`. You'll need to create:
+
+- `icon-192.png` - 192x192px standard icon
+- `icon-512.png` - 512x512px standard icon
+- `maskable-512.png` - 512x512px maskable icon (80% safe zone)
+
+See `/public/icons/README.md` for design guidelines.
+
+### Testing PWA Locally
+
+```bash
+# Build for production (PWA only works in production mode)
+pnpm build
+
+# Start production server
+pnpm start
+
+# Open http://localhost:3000
+# You should see "Install" option in browser menu
+```
+
+### Mobile App Wrapping (Optional)
+
+For native app store distribution, use Capacitor:
+
+```bash
+# Install Capacitor
+pnpm add -D @capacitor/cli
+pnpm add @capacitor/core @capacitor/ios @capacitor/android
+
+# Initialize
+npx cap init "E-Bike PSI" "app.ebikepsi" --web-dir=out
+
+# For static export, enable in next.config.ts:
+# output: 'export'
+
+# Add platforms
+npx cap add ios
+npx cap add android
+
+# Build and sync
+pnpm build
+npx cap copy
+npx cap open ios    # or android
+```
 
 ## License
 

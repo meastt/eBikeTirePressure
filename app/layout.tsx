@@ -1,11 +1,28 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import OfflineMessage from "@/components/OfflineMessage";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "E-Bike PSI - Tire Pressure Calculator",
   description:
     "Professional e-bike tire pressure calculator. Get precise PSI recommendations based on your bike model, rider weight, cargo, and terrain.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "E-Bike PSI",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#1E88E5",
 };
 
 export default function RootLayout({
@@ -26,6 +43,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="font-sans">
+        <OfflineMessage />
         <header className="border-b border-line bg-white">
           <div className="container mx-auto px-4 py-4 max-w-7xl">
             <nav className="flex items-center justify-between">
