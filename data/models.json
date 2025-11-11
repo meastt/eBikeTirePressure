@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "rad-power-radrunner-plus",
+    "brand": "Rad Power Bikes",
+    "model": "RadRunner Plus",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "20x3.3",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "rad-power-radwagon-4",
+    "brand": "Rad Power Bikes",
+    "model": "RadWagon 4",
+    "bikeWeightLbs": 77,
+    "stockTire": {
+      "size": "22x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "lectric-xp-3",
+    "brand": "Lectric",
+    "model": "XP 3.0",
+    "bikeWeightLbs": 64,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "aventon-aventure-2",
+    "brand": "Aventon",
+    "model": "Aventure.2",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 25,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "super73-s2",
+    "brand": "Super73",
+    "model": "S2",
+    "bikeWeightLbs": 71,
+    "stockTire": {
+      "size": "20x4.0",
+      "minPSI": 15,
+      "maxPSI": 25,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "trek-allant-plus-7",
+    "brand": "Trek",
+    "model": "Allant+ 7",
+    "bikeWeightLbs": 52,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "specialized-turbo-como-4",
+    "brand": "Specialized",
+    "model": "Turbo Como 4.0",
+    "bikeWeightLbs": 51,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "tern-gsd-s10",
+    "brand": "Tern",
+    "model": "GSD S10",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x2.4",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "riese-muller-load-75",
+    "brand": "Riese & Müller",
+    "model": "Load 75",
+    "bikeWeightLbs": 83,
+    "stockTire": {
+      "size": "20x2.4",
+      "minPSI": 35,
+      "maxPSI": 55,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.38,
+      "rear": 0.62
+    }
+  },
+  {
+    "slug": "yuba-spicy-curry",
+    "brand": "Yuba",
+    "model": "Spicy Curry",
+    "bikeWeightLbs": 76,
+    "stockTire": {
+      "size": "24x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "addmotor-motan-m-66-r7",
+    "brand": "Addmotor",
+    "model": "Motan M-66 R7",
+    "bikeWeightLbs": 79,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 25,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "himiway-cobra",
+    "brand": "Himiway",
+    "model": "Cobra",
+    "bikeWeightLbs": 78,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "biktrix-juggernaut-ultra-duo",
+    "brand": "Biktrix",
+    "model": "Juggernaut Ultra Duo",
+    "bikeWeightLbs": 88,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "ariel-rider-grizzly",
+    "brand": "Ariel Rider",
+    "model": "Grizzly",
+    "bikeWeightLbs": 92,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "vanmoof-s5",
+    "brand": "VanMoof",
+    "model": "S5",
+    "bikeWeightLbs": 46,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "brompton-electric-c-line",
+    "brand": "Brompton",
+    "model": "Electric C Line",
+    "bikeWeightLbs": 37,
+    "stockTire": {
+      "size": "16x1.5",
+      "minPSI": 60,
+      "maxPSI": 100,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.50,
+      "rear": 0.50
+    }
+  },
+  {
+    "slug": "gazelle-ultimate-c380-plus",
+    "brand": "Gazelle",
+    "model": "Ultimate C380+",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "28x1.75",
+      "minPSI": 45,
+      "maxPSI": 75,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "surron-light-bee",
+    "brand": "Sur-Ron",
+    "model": "Light Bee X",
+    "bikeWeightLbs": 110,
+    "stockTire": {
+      "size": "19x2.5",
+      "minPSI": 12,
+      "maxPSI": 18,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "talaria-sting",
+    "brand": "Talaria",
+    "model": "Sting MX4",
+    "bikeWeightLbs": 110,
+    "stockTire": {
+      "size": "19x2.5",
+      "minPSI": 12,
+      "maxPSI": 18,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "ubco-2x2",
+    "brand": "UBCO",
+    "model": "2x2 Work Bike",
+    "bikeWeightLbs": 132,
+    "stockTire": {
+      "size": "14x7.0",
+      "minPSI": 8,
+      "maxPSI": 12,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.50,
+      "rear": 0.50
+    }
+  }
+]
