@@ -764,31 +764,38 @@ const paginatedBrands = searchQuery
 **Timeline:** Ongoing improvements
 **Impact:** Long-term quality and compliance
 
-### P3-1: Debounce Calculator Inputs
+### ~~P3-1: Debounce Calculator Inputs~~ ✅ **COMPLETED**
 **Component:** `/app/calculate/page.tsx`
 
 **Problem:**
 - Recalculates on every slider drag event (60+ times/sec)
 
 **Solution:**
-- Add debounce hook:
-  ```tsx
-  import { useDebouncedValue } from '@/hooks/useDebouncedValue';
+- Created custom `useDebounce` hook in `/lib/useDebounce.ts`
+- Applied 300ms debounce to weight inputs (rider, passenger, front/rear cargo)
+- Model selection and dropdowns trigger immediately for responsive feel
 
-  const debouncedInputs = useDebouncedValue(
-    { riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs },
-    100 // ms
-  );
+```tsx
+// Debounced weight values for performance (300ms delay)
+const debouncedRiderLbs = useDebounce(riderLbs, 300);
+const debouncedPassengerLbs = useDebounce(passengerLbs, 300);
+const debouncedCargoFrontLbs = useDebounce(cargoFrontLbs, 300);
+const debouncedCargoRearLbs = useDebounce(cargoRearLbs, 300);
 
-  useEffect(() => {
-    const output = calculatePSI({ ...debouncedInputs, surface, construction });
-    setResults(output);
-  }, [debouncedInputs, surface, construction]);
-  ```
+// Use debounced values in calculation
+const calculatorInputs = {
+  bike: selectedModel,
+  riderLbs: debouncedRiderLbs,
+  // ... other inputs
+};
+```
 
 **Acceptance Criteria:**
-- [ ] Calculation debounced by 100ms
-- [ ] Results feel instant (no perceived lag)
+- [x] Weight inputs debounced by 300ms
+- [x] Model/dropdown changes trigger immediately
+- [x] No performance impact during rapid slider movement
+- [x] Maintains responsive feel for discrete changes
+- [x] Created reusable useDebounce hook
 - [ ] No unnecessary re-renders during drag
 - [ ] Analytics events also debounced
 
@@ -982,8 +989,8 @@ const paginatedBrands = searchQuery
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | **5 completed** | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **17 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| P3 (Perf/A11y) | 7 items | **1 completed** | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **18 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

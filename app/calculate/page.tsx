@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import type { ModelPreset, Surface, Construction, CalculatorOutput } from "@/lib/types";
 import { calculatePSI } from "@/calc/engine";
 import { trackCalculatorRun, trackDeepLink } from "@/lib/analytics";
+import { useDebounce } from "@/lib/useDebounce";
 import PresetPicker from "@/components/PresetPicker";
 import WeightSliders from "@/components/WeightSliders";
 import SurfaceSelector from "@/components/SurfaceSelector";
@@ -38,6 +39,12 @@ function CalculatorContent() {
 
   // State for floating results bar
   const [showFloatingBar, setShowFloatingBar] = useState(false);
+
+  // Debounced weight values for performance (300ms delay)
+  const debouncedRiderLbs = useDebounce(riderLbs, 300);
+  const debouncedPassengerLbs = useDebounce(passengerLbs, 300);
+  const debouncedCargoFrontLbs = useDebounce(cargoFrontLbs, 300);
+  const debouncedCargoRearLbs = useDebounce(cargoRearLbs, 300);
 
   // Handle deep-link on mount
   useEffect(() => {
@@ -110,10 +117,10 @@ function CalculatorContent() {
 
     const calculatorInputs = {
       bike: selectedModel,
-      riderLbs,
-      passengerLbs,
-      cargoFrontLbs,
-      cargoRearLbs,
+      riderLbs: debouncedRiderLbs,
+      passengerLbs: debouncedPassengerLbs,
+      cargoFrontLbs: debouncedCargoFrontLbs,
+      cargoRearLbs: debouncedCargoRearLbs,
       surface,
       construction,
       trikeMode,
@@ -135,7 +142,7 @@ function CalculatorContent() {
     }, 600); // 600ms delay for smooth loading experience
 
     return () => clearTimeout(calculationTimeout);
-  }, [selectedModel, riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs, surface, construction, trikeMode]);
+  }, [selectedModel, debouncedRiderLbs, debouncedPassengerLbs, debouncedCargoFrontLbs, debouncedCargoRearLbs, surface, construction, trikeMode]);
 
   return (
     <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
