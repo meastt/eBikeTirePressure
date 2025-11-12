@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { Prose } from '@/components/Prose';
 import { TagPill } from '@/components/TagPill';
@@ -147,7 +148,14 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
           {/* Content */}
           <Prose>
-            <MDXRemote source={post.content} />
+            <MDXRemote 
+              source={post.content}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
           </Prose>
 
           {/* Back to Blog */}
