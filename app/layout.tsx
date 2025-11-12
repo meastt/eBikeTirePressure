@@ -88,7 +88,7 @@ export default function RootLayout({
               <div className="flex gap-3 sm:gap-4">
                 <Link
                   href="/calculate"
-                  className="px-4 sm:px-5 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-sm sm:text-base"
+                  className="px-4 sm:px-5 py-2.5 bg-purple text-white font-semibold rounded-lg hover:bg-purple-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-sm sm:text-base"
                 >
                   Calculate
                 </Link>

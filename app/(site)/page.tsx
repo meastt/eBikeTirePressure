@@ -33,7 +33,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4">
             <Link
               href="/calculate"
-              className="px-8 py-3.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-lg"
+              className="px-8 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-lg"
             >
               Find My PSI
             </Link>

@@ -147,7 +147,7 @@ export default function ModelsPage() {
         </p>
         <Link
           href="/calculate"
-          className="inline-block px-6 py-2.5 bg-white text-brand font-semibold rounded-lg hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150"
+          className="inline-block px-6 py-2.5 bg-purple text-white font-semibold rounded-lg hover:bg-purple-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150"
         >
           Open Calculator
         </Link>
@@ -214,7 +214,7 @@ export default function ModelsPage() {
               setSearchQuery("");
               setSelectedType("All");
             }}
-            className="px-6 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover transition-all duration-150"
+            className="px-6 py-2.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover hover:shadow-hover transition-all duration-150"
           >
             Clear Filters
           </button>

@@ -164,7 +164,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
       )}
 
       {/* Safety reminder - Concise */}
-      <div className="p-3 bg-brand-100 border border-brand/20 rounded-lg">
+      <div className="p-3 bg-accent/10 border border-accent/30 rounded-lg">
         <div className="text-xs text-text leading-relaxed">
           <strong className="text-brand">Check when cold.</strong> Never exceed sidewall max. Adjust ±2 PSI for comfort within safe range.
         </div>
