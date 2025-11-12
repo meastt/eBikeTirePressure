@@ -58,6 +58,22 @@ function CalculatorContent() {
     }
   }, [searchParams]);
 
+  // Focus rider weight input when model is first selected
+  useEffect(() => {
+    if (selectedModel) {
+      // Small delay to ensure DOM is updated after model selection
+      const timer = setTimeout(() => {
+        const riderInput = document.getElementById('rider-weight-input') as HTMLInputElement;
+        if (riderInput) {
+          riderInput.focus();
+          // Position cursor at the end of the input
+          riderInput.setSelectionRange(riderInput.value.length, riderInput.value.length);
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedModel]);
+
   // Scroll detection for floating bar
   useEffect(() => {
     const handleScroll = () => {

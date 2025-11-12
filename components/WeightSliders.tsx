@@ -13,6 +13,17 @@ interface WeightSlidersProps {
   onCargoRearChange: (lbs: number) => void;
 }
 
+export default function WeightSliders({
+  riderLbs,
+  passengerLbs,
+  cargoFrontLbs,
+  cargoRearLbs,
+  onRiderChange,
+  onPassengerChange,
+  onCargoFrontChange,
+  onCargoRearChange,
+}: WeightSlidersProps) {
+
 function Slider({
   label,
   value,
@@ -21,6 +32,7 @@ function Slider({
   step = 5,
   onChange,
   unit = "lbs",
+  inputId,
 }: {
   label: string | React.ReactNode;
   value: number;
@@ -29,6 +41,7 @@ function Slider({
   step?: number;
   onChange: (value: number) => void;
   unit?: string;
+  inputId?: string;
 }) {
   return (
     <div className="space-y-2">
@@ -52,6 +65,7 @@ function Slider({
           }}
         />
         <input
+          id={inputId}
           type="number"
           min={min}
           max={max}
@@ -69,16 +83,6 @@ function Slider({
   );
 }
 
-export default function WeightSliders({
-  riderLbs,
-  passengerLbs,
-  cargoFrontLbs,
-  cargoRearLbs,
-  onRiderChange,
-  onPassengerChange,
-  onCargoFrontChange,
-  onCargoRearChange,
-}: WeightSlidersProps) {
   // Calculate approximate axle loads (typical distribution: 40% front, 60% rear for rider)
   const riderFront = Math.round(riderLbs * 0.4);
   const riderRear = Math.round(riderLbs * 0.6);
@@ -91,7 +95,7 @@ export default function WeightSliders({
     <div className="space-y-5">
       <h3 className="text-sm font-semibold text-text">Load Inputs</h3>
 
-      <Slider label="Rider Weight" value={riderLbs} min={80} max={300} onChange={onRiderChange} />
+      <Slider label="Rider Weight" value={riderLbs} min={80} max={300} onChange={onRiderChange} inputId="rider-weight-input" />
 
       <Slider
         label={

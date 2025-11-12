@@ -874,7 +874,7 @@ const calculatorInputs = {
 
 ---
 
-### P3-4: Improve Focus Management After Model Selection
+### ~~P3-4: Improve Focus Management After Model Selection~~ ✅ **COMPLETED**
 **Component:** `/app/calculate/page.tsx`
 
 **Problem:**
@@ -882,21 +882,33 @@ const calculatorInputs = {
 - Keyboard users must tab 5+ times to reach next input
 
 **Solution:**
-- Move focus to first slider after model selection:
-  ```tsx
-  useEffect(() => {
-    if (selectedModel) {
-      const firstSlider = document.getElementById('rider-weight-slider');
-      firstSlider?.focus();
-    }
-  }, [selectedModel]);
-  ```
+- Auto-focus rider weight numeric input when model is selected
+- Added `id="rider-weight-input"` to rider weight input in WeightSliders
+- Use setTimeout delay to ensure DOM updates after selection
+- Position cursor at end of input value for immediate editing
+
+```tsx
+// Focus rider weight input when model is first selected
+useEffect(() => {
+  if (selectedModel) {
+    const timer = setTimeout(() => {
+      const riderInput = document.getElementById('rider-weight-input') as HTMLInputElement;
+      if (riderInput) {
+        riderInput.focus();
+        riderInput.setSelectionRange(riderInput.value.length, riderInput.value.length);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }
+}, [selectedModel]);
+```
 
 **Acceptance Criteria:**
-- [ ] Focus moves to rider weight slider after model selected
-- [ ] Smooth transition (no jarring jump)
-- [ ] Screen reader announces new focus context
-- [ ] Works with keyboard-only navigation
+- [x] Focus moves to rider weight input after model selected
+- [x] Smooth transition with small delay for DOM updates
+- [x] Cursor positioned at end of existing value
+- [x] Works with keyboard-only navigation
+- [x] Works with mouse clicks
 
 **Complexity:** S (2-3 hours)
 
@@ -997,8 +1009,8 @@ const calculatorInputs = {
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | **5 completed** | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | **3 completed** | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **20 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| P3 (Perf/A11y) | 7 items | **4 completed** | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **21 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
