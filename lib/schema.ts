@@ -63,6 +63,6 @@ export function generateWebsiteSchema() {
     "@type": "WebSite",
     name: "E-Bike PSI",
     description: "Professional e-bike tire pressure calculator",
-    url: "https://ebike-psi.com",
+    url: "https://ebikepsi.com",
   };
 }

@@ -29,19 +29,20 @@ This file tracks all visual assets, images, and icons that need to be provided.
 
 ## Domain & Configuration
 
-### Production Domain Setup
-- **Purchase custom domain** (currently using placeholder `ebike-psi.com`)
-  - Suggested: ebike-psi.com, ebiketire.app, or similar
-  - Configure DNS to point to Vercel deployment
+### Production Domain Setup ✅
+- **Domain purchased**: `ebikepsi.com` ✅
+- **DNS configured**: Points to Vercel deployment ✅
+- **SSL Certificate**: Auto-configured by Vercel ✅
 
-- **Update domain references in codebase:**
-  - `/next-sitemap.config.js` - Update `siteUrl` (line 3)
-  - `/public/manifest.webmanifest` - Update in structured data if needed
-  - `/lib/seo.ts` - Update any hardcoded URLs
-  - Vercel: Add domain in project settings
-  - Vercel: Set `SITE_URL` environment variable to production domain
+### Code Updates Completed ✅
+- `/next-sitemap.config.js` - Updated to `ebikepsi.com` ✅
+- `/lib/schema.ts` - Updated WebSite schema URL ✅
+- `/app/layout.tsx` - Added Google Analytics 4 tracking ✅
+- `/public/manifest.webmanifest` - No changes needed (uses relative URLs) ✅
 
-- **SSL Certificate** - Auto-configured by Vercel once domain is added
+### Vercel Environment Variables (Manual Setup Required)
+- Set `SITE_URL` environment variable to `https://ebikepsi.com` in Vercel dashboard
+- Trigger redeploy after setting environment variable
 
 ---
 

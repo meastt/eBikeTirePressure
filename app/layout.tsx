@@ -33,14 +33,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Plausible Analytics - Placeholder */}
-        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
-          <script
-            defer
-            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
-            src="https://plausible.io/js/script.js"
-          />
-        )}
+        {/* Google Analytics 4 */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KDL4X3S24L"
+        />
+        <script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-KDL4X3S24L');
+            `,
+          }}
+        />
       </head>
       <body className="font-sans">
         <OfflineMessage />
