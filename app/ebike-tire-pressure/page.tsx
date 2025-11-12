@@ -1,35 +1,57 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { getBrands, filterBrandsByType, searchBrands, type ModelType } from "@/lib/brands";
 import BrandCard from "@/components/BrandCard";
 
 const MODEL_TYPES: ModelType[] = ["Fat Tire", "Cargo", "Folding", "Standard", "Moto-Style"];
 
+const BRANDS_PER_PAGE = 24;
+
 export default function ModelsPage() {
   const allBrands = getBrands();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState<ModelType | "All">("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filter and search brands
   const filteredBrands = useMemo(() => {
     let brands = allBrands;
-    
+
     // Apply type filter
     if (selectedType !== "All") {
       brands = filterBrandsByType(brands, selectedType);
     }
-    
+
     // Apply search
     if (searchQuery) {
       brands = searchBrands(brands, searchQuery);
     }
-    
+
     return brands;
   }, [allBrands, selectedType, searchQuery]);
 
+  // Paginated brands (only when not searching)
+  const paginatedBrands = useMemo(() => {
+    if (searchQuery) {
+      return filteredBrands; // Show all results when searching
+    }
+
+    const startIndex = (currentPage - 1) * BRANDS_PER_PAGE;
+    const endIndex = startIndex + BRANDS_PER_PAGE;
+    return filteredBrands.slice(startIndex, endIndex);
+  }, [filteredBrands, currentPage, searchQuery]);
+
+  // Pagination info
+  const totalPages = searchQuery ? 1 : Math.ceil(filteredBrands.length / BRANDS_PER_PAGE);
+
   const totalModels = allBrands.reduce((sum, brand) => sum + brand.modelCount, 0);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedType, searchQuery]);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -139,6 +161,14 @@ export default function ModelsPage() {
         </div>
       )}
 
+      {/* Pagination Info */}
+      {!searchQuery && filteredBrands.length > BRANDS_PER_PAGE && (
+        <div className="mb-4 text-sm text-muted">
+          Showing {paginatedBrands.length} of {filteredBrands.length} brands
+          (page {currentPage} of {totalPages})
+        </div>
+      )}
+
       {/* Popular Searches */}
       {!searchQuery && selectedType === "All" && (
         <div className="mb-4 p-4 bg-surface-light rounded-xl border border-slate-200">
@@ -164,9 +194,9 @@ export default function ModelsPage() {
       )}
 
       {/* Brands Grid */}
-      {filteredBrands.length > 0 ? (
+      {paginatedBrands.length > 0 ? (
         <div className="grid md:grid-cols-2 gap-6">
-          {filteredBrands.map((brand) => (
+          {paginatedBrands.map((brand) => (
             <BrandCard key={brand.slug} brand={brand} />
           ))}
         </div>
@@ -188,6 +218,64 @@ export default function ModelsPage() {
           >
             Clear Filters
           </button>
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      {!searchQuery && totalPages > 1 && (
+        <div className="mt-8 flex justify-center">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+              className="px-3 py-2 text-sm font-medium text-text bg-white border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
+            >
+              ← Previous
+            </button>
+
+            {/* Page numbers */}
+            <div className="flex items-center gap-1">
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                const pageNum = i + 1;
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 ${
+                      currentPage === pageNum
+                        ? 'bg-brand text-white'
+                        : 'text-text bg-white border border-slate-200 hover:bg-slate-50'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+              {totalPages > 5 && (
+                <>
+                  <span className="px-2 text-muted">...</span>
+                  <button
+                    onClick={() => setCurrentPage(totalPages)}
+                    className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150 ${
+                      currentPage === totalPages
+                        ? 'bg-brand text-white'
+                        : 'text-text bg-white border border-slate-200 hover:bg-slate-50'
+                    }`}
+                  >
+                    {totalPages}
+                  </button>
+                </>
+              )}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+              className="px-3 py-2 text-sm font-medium text-text bg-white border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
+            >
+              Next →
+            </button>
+          </div>
         </div>
       )}
 
