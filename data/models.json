@@ -51,7 +51,7 @@
     "slug": "aventon-aventure-2",
     "brand": "Aventon",
     "model": "Aventure.2",
-    "bikeWeightLbs": 73,
+    "bikeWeightLbs": 77,
     "stockTire": {
       "size": "26x4.0",
       "minPSI": 15,
@@ -317,6 +317,1312 @@
     "axleBias": {
       "front": 0.50,
       "rear": 0.50
+    }
+  },
+  {
+    "slug": "lectric-xp4-500",
+    "brand": "Lectric",
+    "model": "XP4 500W",
+    "bikeWeightLbs": 69,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "lectric-xp4-750",
+    "brand": "Lectric",
+    "model": "XP4 750W",
+    "bikeWeightLbs": 71,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "lectric-xpedition-2",
+    "brand": "Lectric",
+    "model": "XPedition 2.0",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "lectric-xpeak-2",
+    "brand": "Lectric",
+    "model": "XPeak 2.0",
+    "bikeWeightLbs": 75,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "lectric-one",
+    "brand": "Lectric",
+    "model": "ONE",
+    "bikeWeightLbs": 53,
+    "stockTire": {
+      "size": "20x2.3",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "lectric-xpress-500",
+    "brand": "Lectric",
+    "model": "XPress 500",
+    "bikeWeightLbs": 52,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "lectric-xpress-750",
+    "brand": "Lectric",
+    "model": "XPress 750",
+    "bikeWeightLbs": 54,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "aventon-level-3",
+    "brand": "Aventon",
+    "model": "Level 3",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "aventon-level-2",
+    "brand": "Aventon",
+    "model": "Level 2",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "aventon-aventure-3",
+    "brand": "Aventon",
+    "model": "Aventure 3",
+    "bikeWeightLbs": 77,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "aventon-sinch-2",
+    "brand": "Aventon",
+    "model": "Sinch 2",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "aventon-abound-lr",
+    "brand": "Aventon",
+    "model": "Abound LR",
+    "bikeWeightLbs": 79,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "aventon-abound-sr",
+    "brand": "Aventon",
+    "model": "Abound SR",
+    "bikeWeightLbs": 70,
+    "stockTire": {
+      "size": "20x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "aventon-pace-500-3",
+    "brand": "Aventon",
+    "model": "Pace 500.3",
+    "bikeWeightLbs": 54,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "aventon-soltera-2",
+    "brand": "Aventon",
+    "model": "Soltera.2",
+    "bikeWeightLbs": 46,
+    "stockTire": {
+      "size": "27.5x1.95",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "rad-power-radcity-5-plus",
+    "brand": "Rad Power Bikes",
+    "model": "RadCity 5 Plus",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "rad-power-radrover-6-plus",
+    "brand": "Rad Power Bikes",
+    "model": "RadRover 6 Plus",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "rad-power-radwagon-5",
+    "brand": "Rad Power Bikes",
+    "model": "RadWagon 5",
+    "bikeWeightLbs": 78,
+    "stockTire": {
+      "size": "22x3.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "rad-power-radrunner-3-plus",
+    "brand": "Rad Power Bikes",
+    "model": "RadRunner 3 Plus",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x3.3",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "specialized-turbo-vado-5",
+    "brand": "Specialized",
+    "model": "Turbo Vado 5.0",
+    "bikeWeightLbs": 52,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "specialized-turbo-vado-sl",
+    "brand": "Specialized",
+    "model": "Turbo Vado SL 5.0",
+    "bikeWeightLbs": 37,
+    "stockTire": {
+      "size": "27.5x1.95",
+      "minPSI": 40,
+      "maxPSI": 65,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.49,
+      "rear": 0.51
+    }
+  },
+  {
+    "slug": "specialized-globe-haul-lt",
+    "brand": "Specialized",
+    "model": "Globe Haul LT",
+    "bikeWeightLbs": 88,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.38,
+      "rear": 0.62
+    }
+  },
+  {
+    "slug": "specialized-globe-haul-st",
+    "brand": "Specialized",
+    "model": "Globe Haul ST",
+    "bikeWeightLbs": 74,
+    "stockTire": {
+      "size": "24x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "specialized-turbo-tero-x",
+    "brand": "Specialized",
+    "model": "Turbo Tero X 4.0",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "27.5x2.6",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "trek-verve-plus-2",
+    "brand": "Trek",
+    "model": "Verve+ 2",
+    "bikeWeightLbs": 51,
+    "stockTire": {
+      "size": "27.5x2.0",
+      "minPSI": 40,
+      "maxPSI": 65,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "trek-fx-plus-2",
+    "brand": "Trek",
+    "model": "FX+ 2",
+    "bikeWeightLbs": 48,
+    "stockTire": {
+      "size": "700x40c",
+      "minPSI": 50,
+      "maxPSI": 80,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "trek-allant-plus-8s",
+    "brand": "Trek",
+    "model": "Allant+ 8S",
+    "bikeWeightLbs": 54,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "trek-domane-plus-slr",
+    "brand": "Trek",
+    "model": "Domane+ SLR 6",
+    "bikeWeightLbs": 28,
+    "stockTire": {
+      "size": "700x32c",
+      "minPSI": 60,
+      "maxPSI": 90,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.49,
+      "rear": 0.51
+    }
+  },
+  {
+    "slug": "segway-xafari",
+    "brand": "Segway",
+    "model": "Xafari",
+    "bikeWeightLbs": 95,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "ride1up-portola",
+    "brand": "Ride1Up",
+    "model": "Portola",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "ride1up-700-series",
+    "brand": "Ride1Up",
+    "model": "700 Series",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "velotric-discover-1",
+    "brand": "Velotric",
+    "model": "Discover 1",
+    "bikeWeightLbs": 54,
+    "stockTire": {
+      "size": "27.5x1.95",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "velotric-fold-1",
+    "brand": "Velotric",
+    "model": "Fold 1",
+    "bikeWeightLbs": 57,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "velotric-nomad-1",
+    "brand": "Velotric",
+    "model": "Nomad 1",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "heybike-mars-2",
+    "brand": "HeyBike",
+    "model": "Mars 2.0",
+    "bikeWeightLbs": 77,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "heybike-ranger",
+    "brand": "HeyBike",
+    "model": "Ranger S",
+    "bikeWeightLbs": 76,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "gotrax-f3",
+    "brand": "GOTRAX",
+    "model": "F3",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "tern-quick-haul",
+    "brand": "Tern",
+    "model": "Quick Haul P9",
+    "bikeWeightLbs": 60,
+    "stockTire": {
+      "size": "20x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "tern-hsd-p5i",
+    "brand": "Tern",
+    "model": "HSD P5i",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "20x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.41,
+      "rear": 0.59
+    }
+  },
+  {
+    "slug": "tern-vektron-s10",
+    "brand": "Tern",
+    "model": "Vektron S10",
+    "bikeWeightLbs": 63,
+    "stockTire": {
+      "size": "20x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "gocycle-g4",
+    "brand": "GoCycle",
+    "model": "G4",
+    "bikeWeightLbs": 37,
+    "stockTire": {
+      "size": "20x2.5",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "priority-current",
+    "brand": "Priority",
+    "model": "Current",
+    "bikeWeightLbs": 49,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "electric-bike-company-model-r",
+    "brand": "Electric Bike Company",
+    "model": "Model R",
+    "bikeWeightLbs": 70,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "juiced-ripracer",
+    "brand": "Juiced Bikes",
+    "model": "RipRacer",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "juiced-ripcurrent-s",
+    "brand": "Juiced Bikes",
+    "model": "RipCurrent S",
+    "bikeWeightLbs": 74,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "rad-power-radexpand-5",
+    "brand": "Rad Power Bikes",
+    "model": "RadExpand 5",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "20x3.3",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "aventon-ramblas",
+    "brand": "Aventon",
+    "model": "Ramblas",
+    "bikeWeightLbs": 61,
+    "stockTire": {
+      "size": "27.5x2.6",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "canyon-pathlite-on",
+    "brand": "Canyon",
+    "model": "Pathlite:ON 9",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "canyon-spectral-on",
+    "brand": "Canyon",
+    "model": "Spectral:ON CF 8",
+    "bikeWeightLbs": 54,
+    "stockTire": {
+      "size": "29x2.5",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "cube-nuride-hybrid",
+    "brand": "Cube",
+    "model": "Nuride Hybrid Pro 625",
+    "bikeWeightLbs": 56,
+    "stockTire": {
+      "size": "28x2.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "momentum-pakyak",
+    "brand": "Momentum",
+    "model": "PakYak E+",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.41,
+      "rear": 0.59
+    }
+  },
+  {
+    "slug": "benno-boost",
+    "brand": "Benno",
+    "model": "Boost E 10D",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "24x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "sondors-madmods-cafe",
+    "brand": "Sondors",
+    "model": "MadMods Cafe",
+    "bikeWeightLbs": 75,
+    "stockTire": {
+      "size": "24x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.42,
+      "rear": 0.58
+    }
+  },
+  {
+    "slug": "sondors-fold-x",
+    "brand": "Sondors",
+    "model": "Fold X",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "sondors-cruiser",
+    "brand": "Sondors",
+    "model": "Cruiser",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "27.5x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "sondors-xs",
+    "brand": "Sondors",
+    "model": "XS",
+    "bikeWeightLbs": 72,
+    "stockTire": {
+      "size": "26x4.9",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "sondors-culvert",
+    "brand": "Sondors",
+    "model": "Culvert",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "27.5x2.8",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "pedego-interceptor",
+    "brand": "Pedego",
+    "model": "Interceptor",
+    "bikeWeightLbs": 60,
+    "stockTire": {
+      "size": "26x2.4",
+      "minPSI": 30,
+      "maxPSI": 55,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "pedego-element",
+    "brand": "Pedego",
+    "model": "Element",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "20x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "pedego-boomerang",
+    "brand": "Pedego",
+    "model": "Boomerang",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "26x2.4",
+      "minPSI": 30,
+      "maxPSI": 55,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "pedego-stretch",
+    "brand": "Pedego",
+    "model": "Stretch",
+    "bikeWeightLbs": 80,
+    "stockTire": {
+      "size": "24x2.4",
+      "minPSI": 35,
+      "maxPSI": 55,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "pedego-avenue",
+    "brand": "Pedego",
+    "model": "Avenue",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "28x2.0",
+      "minPSI": 40,
+      "maxPSI": 65,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "propella-9s-pro",
+    "brand": "Propella",
+    "model": "9S Pro",
+    "bikeWeightLbs": 41,
+    "stockTire": {
+      "size": "700x35c",
+      "minPSI": 50,
+      "maxPSI": 80,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "propella-7s",
+    "brand": "Propella",
+    "model": "7S",
+    "bikeWeightLbs": 39,
+    "stockTire": {
+      "size": "700x32c",
+      "minPSI": 50,
+      "maxPSI": 85,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "propella-mini",
+    "brand": "Propella",
+    "model": "Mini",
+    "bikeWeightLbs": 33,
+    "stockTire": {
+      "size": "20x1.75",
+      "minPSI": 40,
+      "maxPSI": 65,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "blix-packa-genie",
+    "brand": "Blix",
+    "model": "Packa Genie",
+    "bikeWeightLbs": 75,
+    "stockTire": {
+      "size": "24x2.4",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.41,
+      "rear": 0.59
+    }
+  },
+  {
+    "slug": "blix-aveny-skyline",
+    "brand": "Blix",
+    "model": "Aveny Skyline",
+    "bikeWeightLbs": 56,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "blix-sol-eclipse",
+    "brand": "Blix",
+    "model": "Sol Eclipse",
+    "bikeWeightLbs": 53,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "blix-ultra",
+    "brand": "Blix",
+    "model": "Ultra",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "espin-nesta",
+    "brand": "Espin",
+    "model": "Nesta",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "espin-flow",
+    "brand": "Espin",
+    "model": "Flow",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "espin-sport",
+    "brand": "Espin",
+    "model": "Sport",
+    "bikeWeightLbs": 50,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "espin-largo",
+    "brand": "Espin",
+    "model": "Largo",
+    "bikeWeightLbs": 75,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "magnum-scout",
+    "brand": "Magnum",
+    "model": "Scout",
+    "bikeWeightLbs": 74,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "magnum-cosmo",
+    "brand": "Magnum",
+    "model": "Cosmo",
+    "bikeWeightLbs": 50,
+    "stockTire": {
+      "size": "26x1.75",
+      "minPSI": 40,
+      "maxPSI": 65,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "magnum-navigator",
+    "brand": "Magnum",
+    "model": "Navigator",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "magnum-peak-t5",
+    "brand": "Magnum",
+    "model": "Peak T5",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "magnum-ranger",
+    "brand": "Magnum",
+    "model": "Ranger",
+    "bikeWeightLbs": 76,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "evelo-galaxy-500",
+    "brand": "Evelo",
+    "model": "Galaxy 500",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "24x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "evelo-aurora",
+    "brand": "Evelo",
+    "model": "Aurora",
+    "bikeWeightLbs": 60,
+    "stockTire": {
+      "size": "26x2.8",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "evelo-compass",
+    "brand": "Evelo",
+    "model": "Compass",
+    "bikeWeightLbs": 65,
+    "stockTire": {
+      "size": "24x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "evelo-omega",
+    "brand": "Evelo",
+    "model": "Omega",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "26x2.8",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "kbo-breeze",
+    "brand": "KBO",
+    "model": "Breeze",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "kbo-ranger",
+    "brand": "KBO",
+    "model": "Ranger",
+    "bikeWeightLbs": 77,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.41,
+      "rear": 0.59
+    }
+  },
+  {
+    "slug": "kbo-flip",
+    "brand": "KBO",
+    "model": "Flip",
+    "bikeWeightLbs": 68,
+    "stockTire": {
+      "size": "20x3.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "serial-1-rush-cty-speed",
+    "brand": "Serial 1",
+    "model": "RUSH/CTY Speed",
+    "bikeWeightLbs": 59,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "serial-1-mosh-cty",
+    "brand": "Serial 1",
+    "model": "MOSH/CTY",
+    "bikeWeightLbs": 48,
+    "stockTire": {
+      "size": "27.5x2.8",
+      "minPSI": 20,
+      "maxPSI": 35,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "magicycle-cruiser-pro",
+    "brand": "Magicycle",
+    "model": "Cruiser Pro",
+    "bikeWeightLbs": 76,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "magicycle-jaguarundi",
+    "brand": "Magicycle",
+    "model": "Jaguarundi",
+    "bikeWeightLbs": 70,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "magicycle-ogo",
+    "brand": "Magicycle",
+    "model": "Ocelot Pro (Ogo)",
+    "bikeWeightLbs": 73,
+    "stockTire": {
+      "size": "20x4.0",
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "magicycle-deer",
+    "brand": "Magicycle",
+    "model": "Deer",
+    "bikeWeightLbs": 92,
+    "stockTire": {
+      "size": "26x4.0",
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
     }
   }
 ]
