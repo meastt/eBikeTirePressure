@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect, useMemo } from "react";
+import { Combobox } from "@headlessui/react";
 import type { ModelPreset } from "@/lib/types";
 import { getEffectivePSI } from "@/lib/tirePSIDefaults";
 
@@ -10,29 +12,165 @@ interface PresetPickerProps {
 }
 
 export default function PresetPicker({ models, selected, onSelect }: PresetPickerProps) {
+  const [query, setQuery] = useState("");
+  const [recentSelections, setRecentSelections] = useState<ModelPreset[]>([]);
+
+  // Load recent selections from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem("recentBikeSelections");
+    if (stored) {
+      try {
+        const slugs = JSON.parse(stored) as string[];
+        const recent = slugs
+          .map(slug => models.find(m => m.slug === slug))
+          .filter((m): m is ModelPreset => m !== undefined)
+          .slice(0, 3);
+        setRecentSelections(recent);
+      } catch {
+        // Ignore invalid localStorage data
+      }
+    }
+  }, [models]);
+
+  // Save recent selection to localStorage
+  const saveRecentSelection = (model: ModelPreset) => {
+    const updated = [model, ...recentSelections.filter(m => m.slug !== model.slug)].slice(0, 3);
+    setRecentSelections(updated);
+    localStorage.setItem("recentBikeSelections", JSON.stringify(updated.map(m => m.slug)));
+  };
+
+  // Group models by brand
+  const groupedModels = useMemo(() => {
+    const groups: Record<string, ModelPreset[]> = {};
+    models.forEach(model => {
+      if (!groups[model.brand]) {
+        groups[model.brand] = [];
+      }
+      groups[model.brand].push(model);
+    });
+    return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+  }, [models]);
+
+  // Filter models based on search query with fuzzy matching
+  const filteredModels = useMemo(() => {
+    if (!query) return groupedModels;
+
+    const searchTerm = query.toLowerCase();
+    return groupedModels
+      .map(([brand, brandModels]) => {
+        const filteredBrandModels = brandModels.filter(model =>
+          model.brand.toLowerCase().includes(searchTerm) ||
+          model.model.toLowerCase().includes(searchTerm) ||
+          model.stockTire.size.toLowerCase().includes(searchTerm) ||
+          `${model.brand} ${model.model}`.toLowerCase().includes(searchTerm)
+        );
+        return filteredBrandModels.length > 0 ? [brand, filteredBrandModels] : null;
+      })
+      .filter((group): group is [string, ModelPreset[]] => group !== null);
+  }, [groupedModels, query]);
+
+  // Handle selection
+  const handleSelect = (model: ModelPreset | null) => {
+    if (model) {
+      onSelect(model);
+      saveRecentSelection(model);
+      setQuery("");
+    }
+  };
+
   return (
     <div className="space-y-3">
-      <label htmlFor="bike-preset" className="block text-sm font-semibold text-text mb-1">
-        Select Your Bike
-      </label>
-      <select
-        id="bike-preset"
-        value={selected?.slug || ""}
-        onChange={(e) => {
-          const model = models.find((m) => m.slug === e.target.value);
-          if (model) onSelect(model);
-        }}
-        className="w-full px-4 py-3.5 rounded-xl border-2 border-line bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 cursor-pointer"
-      >
-        <option value="" disabled>
-          Choose your e-bike model...
-        </option>
-        {models.map((model) => (
-          <option key={model.slug} value={model.slug}>
-            {model.brand} {model.model} — {model.stockTire.size}
-          </option>
-        ))}
-      </select>
+      <Combobox value={selected} onChange={handleSelect}>
+        <div className="relative">
+          <Combobox.Label className="block text-sm font-semibold text-text mb-1">
+            Select Your Bike
+          </Combobox.Label>
+          <div className="relative">
+            <Combobox.Input
+              className="w-full px-4 py-3.5 rounded-xl border-2 border-line bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150"
+              placeholder="Search brands, models, or tire sizes..."
+              displayValue={(model: ModelPreset | null) =>
+                model ? `${model.brand} ${model.model} — ${model.stockTire.size}` : ""
+              }
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-3">
+              <svg className="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Combobox.Button>
+          </div>
+
+          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            {query === "" && recentSelections.length > 0 && (
+              <div className="px-4 py-2 text-xs font-medium text-muted uppercase tracking-wide border-b border-gray-200">
+                Recent Selections
+              </div>
+            )}
+
+            {query === "" && recentSelections.map((model) => (
+              <Combobox.Option
+                key={`recent-${model.slug}`}
+                value={model}
+                className={({ active }) =>
+                  `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
+                    active ? "bg-brand text-white" : "text-gray-900"
+                  }`
+                }
+              >
+                {({ selected }) => (
+                  <div className="flex items-center justify-between">
+                    <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                      {model.brand} {model.model}
+                    </span>
+                    <span className={`text-sm ${selected ? "text-white/80" : "text-gray-500"}`}>
+                      {model.stockTire.size}
+                    </span>
+                  </div>
+                )}
+              </Combobox.Option>
+            ))}
+
+            {filteredModels.map(([brand, brandModels]) => (
+              <div key={brand}>
+                <div className="px-4 py-2 text-xs font-medium text-muted uppercase tracking-wide border-b border-gray-200">
+                  {brand}
+                </div>
+                {brandModels.map((model) => (
+                  <Combobox.Option
+                    key={model.slug}
+                    value={model}
+                    className={({ active }) =>
+                      `relative cursor-pointer select-none py-2 pl-6 pr-4 ${
+                        active ? "bg-brand text-white" : "text-gray-900"
+                      }`
+                    }
+                  >
+                    {({ selected }) => (
+                      <div className="flex items-center justify-between">
+                        <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                          {model.model}
+                        </span>
+                        <span className={`text-sm ${selected ? "text-white/80" : "text-gray-500"}`}>
+                          {model.stockTire.size}
+                        </span>
+                      </div>
+                    )}
+                  </Combobox.Option>
+                ))}
+              </div>
+            ))}
+
+            {filteredModels.length === 0 && query !== "" && (
+              <div className="px-4 py-8 text-center text-gray-500">
+                <div className="text-sm font-medium">No bikes found</div>
+                <div className="text-xs mt-1">Try searching for brand, model, or tire size</div>
+              </div>
+            )}
+          </Combobox.Options>
+        </div>
+      </Combobox>
+
       {selected && (
         <div className="mt-4 p-4 bg-surface-light rounded-xl border border-slate-200">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-sm">

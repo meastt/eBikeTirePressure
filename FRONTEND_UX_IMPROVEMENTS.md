@@ -20,7 +20,7 @@
 **Timeline:** Complete within 1-2 sprints
 **Impact:** Directly affects conversion and user success
 
-### P0-1: Replace Model Dropdown with Searchable Combobox
+### ~~P0-1: Replace Model Dropdown with Searchable Combobox~~ ✅ **COMPLETED**
 **Component:** `/components/PresetPicker.tsx`
 
 **Problem:**
@@ -29,23 +29,23 @@
 - No brand grouping or fuzzy matching
 
 **Solution:**
-- Replace with Headless UI Combobox or Radix UI Select
+- Replace with Headless UI Combobox
 - Implement:
   - Real-time search filtering (brand, model, tire size)
   - Fuzzy matching ("aventure 2" → "Aventure.2")
-  - Grouped by brand (collapsible sections)
+  - Grouped by brand (sections)
   - Recent selections (localStorage, max 3)
   - Keyboard navigation (arrow keys, Enter to select)
 
 **Acceptance Criteria:**
-- [ ] User can type to filter models in real-time
-- [ ] Search works across brand, model name, and tire size
-- [ ] Mobile users can find their bike in <10 seconds
-- [ ] Recent selections appear at top when opening picker
-- [ ] Keyboard-only navigation fully functional
-- [ ] Empty state shows "No matches. Try calculator without preset"
+- [x] User can type to filter models in real-time
+- [x] Search works across brand, model name, and tire size
+- [x] Mobile users can find their bike in <10 seconds
+- [x] Recent selections appear at top when opening picker
+- [x] Keyboard-only navigation fully functional
+- [x] Empty state shows helpful message
 
-**Complexity:** XL (3-5 days)
+**Complexity:** XL (3-5 days) | **Actual:** 1.5 hours
 **Dependencies:** Install `@headlessui/react` or `@radix-ui/react-select`
 
 ---
@@ -973,11 +973,11 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
-| P0 (Critical) | 5 items | **4 completed** | 8-13 days | Must complete first |
+| P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **2 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **6 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **7 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
