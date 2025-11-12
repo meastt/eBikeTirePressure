@@ -23,14 +23,14 @@ export default function SurfaceSelector({ selected, onSelect }: SurfaceSelectorP
           <button
             key={surface.value}
             onClick={() => onSelect(surface.value)}
-            className={`p-3 rounded-xl border-2 transition-all text-left ${
+            className={`p-3 rounded-xl border-2 transition-all duration-150 ease-out text-left ${
               selected === surface.value
-                ? "border-brand bg-brand-50 shadow-sm"
-                : "border-line bg-white hover:border-brand-200"
+                ? "border-brand bg-brand-100 shadow-sm"
+                : "border-line bg-white hover:border-slate-300"
             }`}
           >
             <div
-              className={`text-sm font-semibold ${selected === surface.value ? "text-brand" : "text-text"}`}
+              className={`text-sm font-semibold transition-colors duration-150 ${selected === surface.value ? "text-brand" : "text-text"}`}
             >
               {surface.label}
             </div>

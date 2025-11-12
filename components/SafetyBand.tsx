@@ -21,15 +21,16 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
       <div className="flex items-baseline justify-between">
         <span className="text-sm font-semibold text-text">{label}</span>
         <div className="text-right">
-          <div className="text-3xl font-heading font-bold text-brand">{target} PSI</div>
-          <div className="text-xs text-text-muted">
-            Range: {min}–{max} PSI
+          <div className="text-3xl font-heading font-bold text-brand animate-smooth">{target} PSI</div>
+          <div className="text-xs text-muted">
+            {min}–{max} PSI
           </div>
         </div>
       </div>
 
       {/* Visual safety band with border and depth */}
-      <div className="relative h-14 bg-gradient-to-b from-surface-light to-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
+      <div className="relative h-14 bg-gradient-to-b from-surface-light to-white rounded-lg border border-slate-200 overflow-hidden shadow-sm"
+           aria-label={`Pressure range ${min} to ${max} PSI, target ${target} PSI`}>
         {/* Low zone (below min) - Danger */}
         <div
           className="absolute top-0 bottom-0 bg-danger opacity-20"
@@ -41,7 +42,7 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
 
         {/* Safe zone (min to max) - Success */}
         <div
-          className="absolute top-0 bottom-0 bg-success opacity-30"
+          className="absolute top-0 bottom-0 bg-ok opacity-30 transition-all duration-150"
           style={{
             left: `${minPercent}%`,
             width: `${maxPercent - minPercent}%`,
@@ -73,10 +74,10 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
 
         {/* Target marker (prominent with pill) */}
         <div
-          className="absolute top-0 bottom-0 w-1.5 bg-brand shadow-md"
+          className="absolute top-0 bottom-0 w-1.5 bg-brand shadow-md transition-all duration-150"
           style={{ left: `${targetPercent}%` }}
         >
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 animate-smooth">
             <div className="px-3 py-1 bg-brand text-white text-sm font-bold rounded-lg shadow-md whitespace-nowrap">
               ▲ {target}
             </div>

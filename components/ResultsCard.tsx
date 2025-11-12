@@ -46,8 +46,9 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
   };
   if (!results) {
     return (
-      <div className="p-8 bg-gradient-to-br from-white to-surface-light border border-slate-200 rounded-2xl shadow-card text-center">
-        <p className="text-text-muted">Select a bike model to see PSI recommendations</p>
+      <div className="card p-8 text-center">
+        <div className="text-4xl mb-3">🔧</div>
+        <p className="text-muted">Select a bike model to calculate PSI</p>
       </div>
     );
   }
@@ -59,66 +60,66 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
   const rearMaxDistance = sidewallMax - rear.max;
   
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Results header with gradient */}
-      <div className="p-6 bg-gradient-to-br from-white to-surface-light border border-slate-200 rounded-2xl shadow-card space-y-8">
+      <div className="card p-6 space-y-8">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-heading font-bold text-text">Recommended PSI</h2>
+          <h2 className="text-xl font-heading font-bold text-text">Your PSI</h2>
           {modelSlug && (
             <button
               onClick={handleShare}
-              className="px-3 py-1.5 text-sm font-medium text-brand hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-sm font-medium text-brand hover:text-brand-hover hover:bg-brand-100 rounded-lg transition-all duration-150"
               title="Share calculator settings"
             >
-              {copySuccess ? '✓ Copied!' : '🔗 Share'}
+              {copySuccess ? '✓ Copied' : 'Share'}
             </button>
           )}
         </div>
 
         {/* Front tire */}
-        <SafetyBand result={front} sidewallMax={sidewallMax} label="Front Tire" />
+        <SafetyBand result={front} sidewallMax={sidewallMax} label="Front" />
 
         {/* Rear tire */}
-        <SafetyBand result={rear} sidewallMax={sidewallMax} label="Rear Tire" />
+        <SafetyBand result={rear} sidewallMax={sidewallMax} label="Rear" />
       </div>
 
       {/* Warnings - Color chip style */}
       {hasWarnings && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {warnings.lowPinchRisk && (
-            <div className="flex items-center gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
-              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
+            <div className="flex items-start gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
+              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
                 !
               </div>
               <div className="flex-1">
-                <div className="text-sm font-semibold text-danger">Below tire minimum</div>
-                <div className="text-xs text-text-muted">Risk of pinch flats and rim damage</div>
+                <div className="text-sm font-semibold text-danger">Pinch-flat risk</div>
+                <div className="text-xs text-muted mt-0.5">Pressure below tire minimum. Add air to avoid rim damage.</div>
               </div>
             </div>
           )}
           {warnings.squirmRisk && (
-            <div className="flex items-center gap-3 p-3 bg-warn/10 border-l-4 border-warn rounded-lg">
-              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-warn text-white rounded-full text-sm font-bold">
+            <div className="flex items-start gap-3 p-3 bg-warn/10 border-l-4 border-warn rounded-lg">
+              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-warn text-white rounded-full text-sm font-bold">
                 ⚠
               </div>
               <div className="flex-1">
-                <div className="text-sm font-semibold text-warn">Low pressure</div>
-                <div className="text-xs text-text-muted">May cause instability during cornering</div>
+                <div className="text-sm font-semibold text-warn">Possible squirm on pavement</div>
+                <div className="text-xs text-muted mt-0.5">&lt;15 PSI may feel unstable. OK for sand/snow only.</div>
               </div>
             </div>
           )}
           {warnings.exceedsSidewallMax && (
-            <div className="flex items-center gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
-              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
+            <div className="flex items-start gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
+              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
                 ✕
               </div>
               <div className="flex-1">
                 <div className="text-sm font-semibold text-danger">
-                  {rearMaxDistance <= 1 && rearMaxDistance >= 0 
-                    ? `${rearMaxDistance} PSI from sidewall max`
-                    : 'Exceeds sidewall max'}
+                  {rearMaxDistance <= 2 && rearMaxDistance >= 0
+                    ? `Approaching sidewall max (${rearMaxDistance} PSI away)`
+                    : 'Exceeds sidewall maximum'}
                 </div>
-                <div className="text-xs text-text-muted">Never exceed tire rating</div>
+                <div className="text-xs text-muted mt-0.5">Never exceed rating printed on tire sidewall.</div>
               </div>
             </div>
           )}
@@ -127,9 +128,8 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
 
       {/* Notes */}
       {notes.length > 0 && (
-        <div className="p-4 bg-surface-light/50 rounded-lg border border-slate-200">
-          <div className="text-sm font-semibold text-text mb-2">Notes</div>
-          <ul className="text-sm text-text-muted space-y-1">
+        <div className="p-3 bg-surface-light rounded-lg border border-slate-200">
+          <ul className="text-sm text-muted space-y-1">
             {notes.map((note, i) => (
               <li key={i}>• {note}</li>
             ))}
@@ -138,9 +138,9 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
       )}
 
       {/* Safety reminder - Concise */}
-      <div className="p-4 bg-gradient-to-r from-brand/10 to-brand/5 border border-brand/20 rounded-lg">
-        <div className="text-sm text-text">
-          <strong className="text-brand">Safety:</strong> Never exceed sidewall max. Use calibrated gauge. Check when cold. Adjust for comfort within limits.
+      <div className="p-3 bg-brand-100 border border-brand/20 rounded-lg">
+        <div className="text-xs text-text leading-relaxed">
+          <strong className="text-brand">Check when cold.</strong> Never exceed sidewall max. Adjust ±2 PSI for comfort within safe range.
         </div>
       </div>
     </div>

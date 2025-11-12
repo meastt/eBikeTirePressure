@@ -8,9 +8,9 @@ interface ConstructionSelectorProps {
 }
 
 const CONSTRUCTIONS: { value: Construction; label: string; description: string }[] = [
-  { value: "tubed", label: "Tubed", description: "Standard inner tube" },
-  { value: "tubeless", label: "Tubeless", description: "Runs ~5% lower PSI" },
-  { value: "reinforced", label: "Reinforced", description: "Heavy-duty casing" },
+  { value: "tubed", label: "Tubed", description: "Standard tube" },
+  { value: "tubeless", label: "Tubeless", description: "−1 PSI" },
+  { value: "reinforced", label: "Reinforced", description: "+2 PSI" },
 ];
 
 export default function ConstructionSelector({ selected, onSelect }: ConstructionSelectorProps) {
@@ -22,14 +22,14 @@ export default function ConstructionSelector({ selected, onSelect }: Constructio
           <button
             key={construction.value}
             onClick={() => onSelect(construction.value)}
-            className={`p-3 rounded-xl border-2 transition-all text-center ${
+            className={`p-3 rounded-xl border-2 transition-all duration-150 ease-out text-center ${
               selected === construction.value
-                ? "border-brand bg-brand-50 shadow-sm"
-                : "border-line bg-white hover:border-brand-200"
+                ? "border-brand bg-brand-100 shadow-sm"
+                : "border-line bg-white hover:border-slate-300"
             }`}
           >
             <div
-              className={`text-sm font-semibold ${selected === construction.value ? "text-brand" : "text-text"}`}
+              className={`text-sm font-semibold transition-colors duration-150 ${selected === construction.value ? "text-brand" : "text-text"}`}
             >
               {construction.label}
             </div>

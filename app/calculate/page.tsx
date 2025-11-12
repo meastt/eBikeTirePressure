@@ -74,22 +74,27 @@ function CalculatorContent() {
   }, [selectedModel, riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs, surface, construction, trikeMode]);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-3xl font-heading font-bold text-text mb-6 tracking-tight">
-        PSI Calculator
-      </h1>
+    <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
+      <div className="mb-6">
+        <h1 className="text-3xl font-heading font-bold text-text mb-2 tracking-tight">
+          Calculate PSI
+        </h1>
+        <p className="text-muted text-sm">
+          Set your bike, load, and terrain for precise pressure ranges.
+        </p>
+      </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left column: Inputs */}
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {/* Model selector */}
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
+          <div className="card p-6">
             <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} />
           </div>
 
           {/* Weight sliders */}
           {selectedModel && (
-            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
+            <div className="card p-6">
               <WeightSliders
                 riderLbs={riderLbs}
                 passengerLbs={passengerLbs}
@@ -105,14 +110,14 @@ function CalculatorContent() {
 
           {/* Surface selector */}
           {selectedModel && (
-            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
+            <div className="card p-6">
               <SurfaceSelector selected={surface} onSelect={setSurface} />
             </div>
           )}
 
           {/* Construction selector */}
           {selectedModel && (
-            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
+            <div className="card p-6">
               <ConstructionSelector selected={construction} onSelect={setConstruction} />
             </div>
           )}
@@ -122,7 +127,7 @@ function CalculatorContent() {
         </div>
 
         {/* Right column: Results */}
-        <div className="lg:sticky lg:top-6 lg:self-start" role="region" aria-live="polite" aria-atomic="true">
+        <div className="lg:sticky lg:top-20 lg:self-start" role="region" aria-live="polite" aria-atomic="true">
           <ResultsCard
             results={results}
             sidewallMax={selectedModel?.stockTire.maxPSI || 50}
@@ -137,12 +142,17 @@ function CalculatorContent() {
 export default function CalculatePage() {
   return (
     <Suspense fallback={
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <h1 className="text-3xl font-bold text-text mb-6 tracking-tight">
-          E-Bike Tire Pressure Calculator
-        </h1>
-        <div className="p-8 bg-surface rounded-2xl shadow-card text-center">
-          <p className="text-muted">Loading calculator...</p>
+      <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
+        <div className="mb-6">
+          <h1 className="text-3xl font-heading font-bold text-text mb-2 tracking-tight">
+            Calculate PSI
+          </h1>
+          <p className="text-muted text-sm">
+            Loading calculator...
+          </p>
+        </div>
+        <div className="card p-8 text-center">
+          <p className="text-muted">Preparing tools...</p>
         </div>
       </div>
     }>
