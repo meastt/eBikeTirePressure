@@ -60,6 +60,15 @@
   .animate-smooth {
     transition: transform 150ms cubic-bezier(0.33, 1, 0.68, 1);
   }
+
+  /* iOS Safe Area Padding */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
 }
 
 /* MDX Prose Styles */

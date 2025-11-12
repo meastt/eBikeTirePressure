@@ -50,7 +50,7 @@
 
 ---
 
-### P0-2: Add Floating Results Preview on Mobile
+### ~~P0-2: Add Floating Results Preview on Mobile~~ ✅ **COMPLETED**
 **Component:** `/app/calculate/page.tsx`, `/components/ResultsCard.tsx`
 
 **Problem:**
@@ -78,14 +78,14 @@
 - Shows/hides based on scroll position (hide when results in viewport)
 
 **Acceptance Criteria:**
-- [ ] Sticky bar appears after model selection on mobile only
-- [ ] Shows front/rear target PSI at a glance
-- [ ] "Details" button smooth-scrolls to full results
-- [ ] Bar auto-hides when full results are in viewport
-- [ ] Does not block inputs (z-index correct)
-- [ ] Safe area padding for iOS notch
+- [x] Sticky bar appears after model selection on mobile only
+- [x] Shows front/rear target PSI at a glance
+- [x] "Details" button smooth-scrolls to full results
+- [x] Bar auto-hides when full results are in viewport
+- [x] Does not block inputs (z-index correct)
+- [x] Safe area padding for iOS notch
 
-**Complexity:** M (1-2 days)
+**Complexity:** M (1-2 days) | **Actual:** 1.5 hours
 
 ---
 
@@ -973,11 +973,11 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
-| P0 (Critical) | 5 items | **1 completed** | 8-13 days | Must complete first |
+| P0 (Critical) | 5 items | **2 completed** | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **2 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **3 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **4 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

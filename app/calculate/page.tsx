@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import type { ModelPreset, Surface, Construction, CalculatorOutput } from "@/lib/types";
 import { calculatePSI } from "@/calc/engine";
@@ -17,7 +17,8 @@ const models = modelsData as ModelPreset[];
 
 function CalculatorContent() {
   const searchParams = useSearchParams();
-  
+  const resultsRef = useRef<HTMLDivElement>(null);
+
   // State for calculator inputs
   const [selectedModel, setSelectedModel] = useState<ModelPreset | null>(null);
   const [riderLbs, setRiderLbs] = useState(180);
@@ -30,7 +31,10 @@ function CalculatorContent() {
 
   // State for results
   const [results, setResults] = useState<CalculatorOutput | null>(null);
-  
+
+  // State for floating results bar
+  const [showFloatingBar, setShowFloatingBar] = useState(false);
+
   // Handle deep-link on mount
   useEffect(() => {
     const modelSlug = searchParams.get('model');
@@ -42,6 +46,38 @@ function CalculatorContent() {
       }
     }
   }, [searchParams]);
+
+  // Scroll detection for floating bar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!results || !resultsRef.current) return;
+
+      const resultsRect = resultsRef.current.getBoundingClientRect();
+
+      // Show floating bar if results are scrolled below viewport (with some buffer)
+      const resultsTop = resultsRect.top;
+      const shouldShow = resultsTop < -50; // Results are scrolled up by 50px+
+      setShowFloatingBar(shouldShow);
+    };
+
+    // Only add scroll listener on mobile
+    if (window.innerWidth < 1024) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // Check initial state
+    }
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [results]);
+
+  // Function to scroll to results
+  const scrollToResults = () => {
+    if (resultsRef.current) {
+      const yOffset = -20; // Offset from top
+      const y = resultsRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      setShowFloatingBar(false); // Hide after scrolling
+    }
+  };
 
   // Recalculate whenever inputs change
   useEffect(() => {
@@ -127,7 +163,13 @@ function CalculatorContent() {
         </div>
 
         {/* Right column: Results */}
-        <div className="lg:sticky lg:top-20 lg:self-start" role="region" aria-live="polite" aria-atomic="true">
+        <div
+          ref={resultsRef}
+          className="lg:sticky lg:top-20 lg:self-start"
+          role="region"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <ResultsCard
             results={results}
             sidewallMax={selectedModel?.stockTire.maxPSI || 50}
@@ -140,6 +182,26 @@ function CalculatorContent() {
             }}
           />
         </div>
+
+        {/* Floating Results Bar - Mobile Only */}
+        {results && showFloatingBar && (
+          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg lg:hidden p-4 z-40 safe-area-inset-bottom">
+            <div className="flex justify-between items-center max-w-4xl mx-auto">
+              <div>
+                <div className="text-xs text-muted">Your PSI</div>
+                <div className="text-lg font-bold text-brand">
+                  Front: {results.front.target} | Rear: {results.rear.target}
+                </div>
+              </div>
+              <button
+                onClick={scrollToResults}
+                className="px-4 py-2 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover transition-colors duration-150"
+              >
+                Details →
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
