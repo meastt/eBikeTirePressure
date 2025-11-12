@@ -329,7 +329,7 @@ Rewrite feature cards with human language:
 
 ---
 
-### P1-4: Add "Reset to Defaults" Button to Calculator
+### ~~P1-4: Add "Reset to Defaults" Button to Calculator~~ ✅ **COMPLETED**
 **Component:** `/app/calculate/page.tsx`
 
 **Problem:**
@@ -356,12 +356,12 @@ Rewrite feature cards with human language:
   - Trike Mode: Off
 
 **Acceptance Criteria:**
-- [ ] Button resets all inputs to defaults
-- [ ] Shows confirmation if significant changes made (optional)
-- [ ] Works with keyboard (focus + Enter)
-- [ ] Positioned logically (below all inputs, above results)
+- [x] Button resets all inputs to defaults
+- [x] Shows confirmation if significant changes made (optional)
+- [x] Works with keyboard (focus + Enter)
+- [x] Positioned logically (below all inputs, above results)
 
-**Complexity:** S (2-3 hours)
+**Complexity:** S (2-3 hours) | **Actual:** 15 minutes
 
 ---
 
@@ -974,10 +974,10 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
-| P1 (High Impact) | 9 items | **2 completed** | 7-11 days | Significant UX gains |
+| P1 (High Impact) | 9 items | **3 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **7 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **8 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

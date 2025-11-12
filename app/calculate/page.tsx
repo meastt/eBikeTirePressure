@@ -79,6 +79,19 @@ function CalculatorContent() {
     }
   };
 
+  // Function to reset to defaults
+  const resetToDefaults = () => {
+    setSelectedModel(null);
+    setRiderLbs(180);
+    setPassengerLbs(0);
+    setCargoFrontLbs(0);
+    setCargoRearLbs(0);
+    setSurface("pavement");
+    setConstruction("tubed");
+    setTrikeMode(false);
+    setShowFloatingBar(false);
+  };
+
   // Recalculate whenever inputs change
   useEffect(() => {
     if (!selectedModel) {
@@ -160,6 +173,15 @@ function CalculatorContent() {
 
           {/* Trike toggle */}
           {selectedModel && <TrikeToggle enabled={trikeMode} onToggle={setTrikeMode} />}
+
+          {/* Reset to defaults */}
+          <button
+            onClick={resetToDefaults}
+            className="w-full py-2.5 text-sm text-muted hover:text-text hover:bg-surface-light rounded-lg border border-line transition-colors"
+            title="Reset all inputs to default values"
+          >
+            Reset to Defaults
+          </button>
         </div>
 
         {/* Right column: Results */}
