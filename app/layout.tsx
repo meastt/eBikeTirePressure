@@ -82,11 +82,8 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 border-b border-line bg-white shadow-sm">
           <div className="container mx-auto px-4 py-3 max-w-7xl">
             <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
-              <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+              <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
                 <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority />
-                <span className="pill bg-brand-100 text-brand text-xs font-semibold uppercase tracking-wide">
-                  Beta
-                </span>
               </Link>
               <div className="flex gap-3 sm:gap-4">
                 <Link

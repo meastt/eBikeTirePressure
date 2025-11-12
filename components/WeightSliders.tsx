@@ -16,7 +16,7 @@ function Slider({
   value,
   min,
   max,
-  step = 1,
+  step = 5,
   onChange,
   unit = "lbs",
 }: {
@@ -36,18 +36,29 @@ function Slider({
           {value} {unit}
         </span>
       </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(parseInt(e.target.value, 10))}
-        className="w-full h-2 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
-        style={{
-          background: `linear-gradient(to right, #2B59C3 0%, #2B59C3 ${((value - min) / (max - min)) * 100}%, #E5E9F0 ${((value - min) / (max - min)) * 100}%, #E5E9F0 100%)`,
-        }}
-      />
+      <div className="flex items-center gap-3">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => onChange(parseInt(e.target.value, 10))}
+          className="flex-1 h-2 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
+          style={{
+            background: `linear-gradient(to right, #2B59C3 0%, #2B59C3 ${((value - min) / (max - min)) * 100}%, #E5E9F0 ${((value - min) / (max - min)) * 100}%, #E5E9F0 100%)`,
+          }}
+        />
+        <input
+          type="number"
+          min={min}
+          max={max}
+          step={1}
+          value={value}
+          onChange={(e) => onChange(parseInt(e.target.value, 10) || min)}
+          className="w-20 px-2 py-1 border border-slate-200 rounded text-sm text-center"
+        />
+      </div>
       <div className="flex justify-between text-xs text-muted">
         <span>{min}</span>
         <span>{max}</span>
@@ -100,7 +111,7 @@ export default function WeightSliders({
           label="Rear Cargo"
           value={cargoRearLbs}
           min={0}
-          max={120}
+          max={200}
           onChange={onCargoRearChange}
         />
       </div>

@@ -24,23 +24,25 @@ export default function Home() {
       <section className="bg-gradient-subtle py-16 sm:py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text mb-4 tracking-tight">
-            E-Bike Tire Pressure Calculator
+            Stop Guessing Your Tire Pressure
           </h1>
           <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-            Load-aware PSI calculations for fat-tire, cargo, and trike e-bikes.
+            Get the perfect PSI for your e-bike based on your exact weight, cargo, and terrain.
+            Avoid pinch flats, blowouts, and poor handling.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex flex-col items-center gap-4">
             <Link
               href="/calculate"
               className="px-8 py-3.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-lg"
             >
-              Calculate PSI
+              Find My PSI
             </Link>
+            <small className="text-muted text-sm mb-2">Free for all e-bike models</small>
             <Link
-              href="/ebike-tire-pressure"
-              className="px-8 py-3.5 bg-white text-text font-semibold rounded-lg border-2 border-slate-200 hover:border-brand hover:shadow-card transition-all duration-150 ease-out text-lg"
+              href="#popular-bikes"
+              className="text-brand hover:text-brand-hover font-medium text-sm transition-colors duration-150"
             >
-              Browse Models
+              Popular Bikes ↓
             </Link>
           </div>
         </div>
@@ -98,100 +100,107 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured E-Bike Models Section - Internal Links for SEO */}
-      <section className="mb-16">
+      {/* Popular Bikes Section */}
+      <section id="popular-bikes" className="mb-16">
         <h2 className="text-3xl font-heading font-bold text-text mb-3 text-center">
-          Common Models
+          Popular Bikes
         </h2>
-        <p className="text-muted text-center mb-8">Quick-start for popular e-bikes</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <p className="text-muted text-center mb-8">Quick-start for the most popular e-bikes</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+          {/* RadRunner Plus */}
           <Link
             href="/models/rad-power-radrunner-plus"
-            className="group card card-hover p-6"
+            className="group card card-hover p-4 text-center"
           >
-            <h3 className="text-lg font-heading font-semibold text-text group-hover:text-brand mb-2 transition-colors duration-150">
+            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              R
+            </div>
+            <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               RadRunner Plus
             </h3>
-            <p className="text-sm text-muted mb-3">
-              20×3.3″ • 20–30 PSI
+            <p className="text-xs text-muted">
+              20×3.3″
             </p>
-            <span className="text-sm text-brand font-semibold group-hover:underline">
-              Open Calculator →
-            </span>
           </Link>
 
-          <Link
-            href="/models/aventon-aventure-2"
-            className="group card card-hover p-6"
-          >
-            <h3 className="text-lg font-heading font-semibold text-text group-hover:text-brand mb-2 transition-colors duration-150">
-              Aventon Aventure.2
-            </h3>
-            <p className="text-sm text-muted mb-3">
-              26×4.0″ fat • 15–25 PSI
-            </p>
-            <span className="text-sm text-brand font-semibold group-hover:underline">
-              Open Calculator →
-            </span>
-          </Link>
-
-          <Link
-            href="/models/tern-gsd-s10"
-            className="group card card-hover p-6"
-          >
-            <h3 className="text-lg font-heading font-semibold text-text group-hover:text-brand mb-2 transition-colors duration-150">
-              Tern GSD S10
-            </h3>
-            <p className="text-sm text-muted mb-3">
-              20×2.4″ reinforced • 35–50 PSI
-            </p>
-            <span className="text-sm text-brand font-semibold group-hover:underline">
-              Open Calculator →
-            </span>
-          </Link>
-
+          {/* Lectric XP 3 */}
           <Link
             href="/models/lectric-xp-3"
-            className="group card card-hover p-6"
+            className="group card card-hover p-4 text-center"
           >
-            <h3 className="text-lg font-heading font-semibold text-text group-hover:text-brand mb-2 transition-colors duration-150">
-              Lectric XP 3.0
+            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              L
+            </div>
+            <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
+              Lectric XP 3
             </h3>
-            <p className="text-sm text-muted mb-3">
-              20×3.0″ • 20–30 PSI
+            <p className="text-xs text-muted">
+              20×3.0″
             </p>
-            <span className="text-sm text-brand font-semibold group-hover:underline">
-              Open Calculator →
-            </span>
           </Link>
 
+          {/* Aventon Aventure 2 */}
           <Link
-            href="/models/trek-allant-plus-7"
-            className="group card card-hover p-6"
+            href="/models/aventon-aventure-2"
+            className="group card card-hover p-4 text-center"
           >
-            <h3 className="text-lg font-heading font-semibold text-text group-hover:text-brand mb-2 transition-colors duration-150">
-              Trek Allant+ 7
+            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              A
+            </div>
+            <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
+              Aventon Aventure
             </h3>
-            <p className="text-sm text-muted mb-3">
-              27.5×2.4″ • 30–50 PSI
+            <p className="text-xs text-muted">
+              26×4.0″
             </p>
-            <span className="text-sm text-brand font-semibold group-hover:underline">
-              Open Calculator →
-            </span>
           </Link>
 
+          {/* Tern GSD */}
+          <Link
+            href="/models/tern-gsd-s10"
+            className="group card card-hover p-4 text-center"
+          >
+            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              T
+            </div>
+            <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
+              Tern GSD
+            </h3>
+            <p className="text-xs text-muted">
+              20×2.4″
+            </p>
+          </Link>
+
+          {/* RadWagon 4 */}
+          <Link
+            href="/models/rad-power-radwagon-4"
+            className="group card card-hover p-4 text-center"
+          >
+            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              W
+            </div>
+            <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
+              RadWagon 4
+            </h3>
+            <p className="text-xs text-muted">
+              22×3.0″
+            </p>
+          </Link>
+
+          {/* All Models Card */}
           <Link
             href="/ebike-tire-pressure"
-            className="group card card-hover p-6 bg-gradient-to-br from-brand to-brand-600 flex items-center justify-center"
+            className="group card card-hover p-4 bg-gradient-to-br from-brand to-brand-600 flex flex-col items-center justify-center text-center"
           >
-            <div className="text-center text-white">
-              <h3 className="text-lg font-heading font-bold mb-2">
-                All {models.length} Models
-              </h3>
-              <span className="text-sm font-semibold opacity-90 group-hover:opacity-100 transition-opacity duration-150">
-                Browse Database →
-              </span>
+            <div className="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+              +
             </div>
+            <h3 className="text-sm font-heading font-bold text-white mb-1">
+              All {models.length} Models
+            </h3>
+            <p className="text-xs text-white/80">
+              Browse Database
+            </p>
           </Link>
         </div>
       </section>

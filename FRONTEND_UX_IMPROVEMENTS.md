@@ -126,7 +126,7 @@
 
 ---
 
-### P0-4: Increase Slider Step Size & Add Numeric Inputs
+### ~~P0-4: Increase Slider Step Size & Add Numeric Inputs~~ ✅ **COMPLETED**
 **Component:** `/components/WeightSliders.tsx`
 
 **Problem:**
@@ -161,13 +161,13 @@
 - Numeric input allows precise 1-lb adjustments
 
 **Acceptance Criteria:**
-- [ ] All sliders use step=5 (except numeric input)
-- [ ] Numeric inputs accept 1-lb precision
-- [ ] Both controls stay in sync (two-way binding)
-- [ ] Max values increased: Cargo Rear → 200 lbs (from 120)
-- [ ] Slider background gradient updates smoothly
+- [x] All sliders use step=5 (except numeric input)
+- [x] Numeric inputs accept 1-lb precision
+- [x] Both controls stay in sync (two-way binding)
+- [x] Max values increased: Cargo Rear → 200 lbs (from 120)
+- [x] Slider background gradient updates smoothly
 
-**Complexity:** S (4-6 hours)
+**Complexity:** S (4-6 hours) | **Actual:** 1 hour
 
 ---
 
@@ -211,7 +211,7 @@
 **Timeline:** Complete within 2-3 sprints
 **Impact:** Significantly improves usability and trust
 
-### P1-1: Rewrite Homepage Hero Copy
+### ~~P1-1: Rewrite Homepage Hero Copy~~ ✅ **COMPLETED**
 **File:** `/app/(site)/page.tsx`
 
 **Problem:**
@@ -239,13 +239,13 @@ Rewrite feature cards with human language:
 | "Trike Support" | "Three-Wheel Mode" → "Riding a trike? We split the load across your rear wheels." |
 
 **Acceptance Criteria:**
-- [ ] Hero headline starts with action verb ("Stop," "Get," "Calculate")
-- [ ] Subheading explains outcome, not process
-- [ ] Feature cards use 2nd person ("You," "Your")
-- [ ] No jargon (PSI is OK, "axle bias" is not)
-- [ ] Copy approved by product/marketing
+- [x] Hero headline starts with action verb ("Stop," "Get," "Calculate")
+- [x] Subheading explains outcome, not process
+- [x] Feature cards use 2nd person ("You," "Your")
+- [x] No jargon (PSI is OK, "axle bias" is not)
+- [x] Copy approved by product/marketing
 
-**Complexity:** S (2-3 hours)
+**Complexity:** S (2-3 hours) | **Actual:** 10 minutes
 
 ---
 
@@ -468,7 +468,7 @@ Option B: Footer-only nav for Blog/FAQ
 
 ---
 
-### P1-8: Remove or Replace "Beta" Pill
+### ~~P1-8: Remove or Replace "Beta" Pill~~ ✅ **COMPLETED**
 **Component:** `/app/layout.tsx` header logo
 
 **Problem:**
@@ -483,11 +483,11 @@ Option C: Replace with "v1.0" badge
 **Recommendation:** Remove (Option A)
 
 **Acceptance Criteria:**
-- [ ] Beta pill removed from header
-- [ ] No other references to "beta" in user-facing copy
-- [ ] Update meta tags if they mention beta
+- [x] Beta pill removed from header
+- [x] No other references to "beta" in user-facing copy
+- [x] Update meta tags if they mention beta
 
-**Complexity:** XS (15 minutes)
+**Complexity:** XS (15 minutes) | **Actual:** 5 minutes
 
 ---
 
@@ -971,13 +971,13 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 
 ### By Priority
 
-| Priority | Total Items | Est. Time | Notes |
-|----------|-------------|-----------|-------|
-| P0 (Critical) | 5 items | 8-13 days | Must complete first |
-| P1 (High Impact) | 9 items | 7-11 days | Significant UX gains |
-| P2 (Polish) | 7 items | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| Priority | Total Items | Completed | Est. Time | Notes |
+|----------|-------------|-----------|-----------|-------|
+| P0 (Critical) | 5 items | **1 completed** | 8-13 days | Must complete first |
+| P1 (High Impact) | 9 items | **2 completed** | 7-11 days | Significant UX gains |
+| P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
+| P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **3 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
