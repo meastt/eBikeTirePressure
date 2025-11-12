@@ -19,7 +19,7 @@ const config: Config = {
           DEFAULT: '#F59E0B', // Warm amber - friendly and approachable
           hover: '#D97706',
         },
-        secondary: {
+        purple: {
           DEFAULT: '#7C3AED', // Electric purple - adds personality
           hover: '#6D28D9',
         },
