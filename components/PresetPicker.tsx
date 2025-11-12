@@ -88,8 +88,8 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
           </Combobox.Label>
           <div className="relative">
             <Combobox.Input
-              className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 ${
-                error ? 'border-danger focus:ring-danger focus:border-danger' : 'border-line'
+              className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-all duration-200 shadow-sm ${
+                error ? 'border-danger focus:ring-danger focus:border-danger' : 'border-slate-200 hover:border-brand/30'
               }`}
               placeholder="Search brands, models, or tire sizes..."
               displayValue={(model: ModelPreset | null) =>
@@ -112,7 +112,7 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
             </p>
           )}
 
-          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Combobox.Options className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white py-2 text-base shadow-xl ring-1 ring-slate-200 focus:outline-none border border-slate-100">
             {query === "" && recentSelections.length > 0 && (
               <div className="px-4 py-2 text-xs font-medium text-muted uppercase tracking-wide border-b border-gray-200">
                 Recent Selections
@@ -124,9 +124,9 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
                 key={`recent-${model.slug}`}
                 value={model}
                 className={({ active }) =>
-                  `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
-                    active ? "bg-brand text-white" : "text-gray-900"
-                  }`
+                  `relative cursor-pointer select-none py-2.5 pl-4 pr-4 rounded-lg mx-1 ${
+                    active ? "bg-gradient-brand text-white shadow-md" : "text-gray-900 hover:bg-brand-50"
+                  } transition-all duration-150`
                 }
               >
                 {({ selected }) => (
@@ -152,9 +152,9 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
                     key={model.slug}
                     value={model}
                     className={({ active }) =>
-                      `relative cursor-pointer select-none py-2 pl-6 pr-4 ${
-                        active ? "bg-brand text-white" : "text-gray-900"
-                      }`
+                      `relative cursor-pointer select-none py-2.5 pl-6 pr-4 rounded-lg mx-1 ${
+                        active ? "bg-gradient-brand text-white shadow-md" : "text-gray-900 hover:bg-brand-50"
+                      } transition-all duration-150`
                     }
                   >
                     {({ selected }) => (
@@ -183,7 +183,7 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
       </Combobox>
 
       {selected && (
-        <div className="mt-4 p-4 bg-surface-light rounded-xl border border-slate-200">
+        <div className="mt-4 p-5 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-sm">
             <div>
               <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Tire Size</div>

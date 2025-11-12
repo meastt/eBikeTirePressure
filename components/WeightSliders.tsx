@@ -71,9 +71,9 @@ function Slider({
           step={step}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value, 10))}
-          className="flex-1 h-2 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
+          className="flex-1 h-2.5 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
           style={{
-            background: `linear-gradient(to right, #2B59C3 0%, #2B59C3 ${((value - min) / (max - min)) * 100}%, #E5E9F0 ${((value - min) / (max - min)) * 100}%, #E5E9F0 100%)`,
+            background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${((value - min) / (max - min)) * 100}%, #E2E8F0 ${((value - min) / (max - min)) * 100}%, #E2E8F0 100%)`,
           }}
         />
         <input
@@ -84,8 +84,8 @@ function Slider({
           step={1}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value, 10) || min)}
-          className={`w-20 px-2 py-1 border rounded text-sm text-center ${
-            error ? 'border-danger' : 'border-slate-200'
+          className={`w-20 px-3 py-1.5 border-2 rounded-xl text-sm text-center font-semibold transition-all duration-200 ${
+            error ? 'border-danger focus:ring-danger' : 'border-slate-200 focus:border-brand focus:ring-2 focus:ring-brand/20'
           }`}
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
@@ -173,7 +173,7 @@ function Slider({
         />
       </div>
 
-      <div className="p-3 bg-surface-light rounded-xl border border-slate-200">
+      <div className="p-4 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
         <div className="grid grid-cols-3 gap-3 text-sm">
           <div>
             <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Front Axle</div>

@@ -26,18 +26,18 @@ export default function ConstructionSelector({ selected, onSelect }: Constructio
           <button
             key={construction.value}
             onClick={() => onSelect(construction.value)}
-            className={`p-3 rounded-xl border-2 transition-all duration-150 ease-out text-center ${
+            className={`p-4 rounded-xl border-2 transition-all duration-300 ease-out text-center shadow-sm ${
               selected === construction.value
-                ? "border-brand bg-brand-100 shadow-sm"
-                : "border-line bg-white hover:border-slate-300"
+                ? "border-brand bg-gradient-to-br from-brand-50 to-white shadow-md ring-2 ring-brand/20"
+                : "border-slate-200 bg-white hover:border-brand/30 hover:shadow-md"
             }`}
           >
             <div
-              className={`text-sm font-semibold transition-colors duration-150 ${selected === construction.value ? "text-brand" : "text-text"}`}
+              className={`text-sm font-bold transition-colors duration-200 ${selected === construction.value ? "text-brand" : "text-text"}`}
             >
               {construction.label}
             </div>
-            <div className="text-xs text-muted mt-0.5">{construction.description}</div>
+            <div className="text-xs text-muted mt-1">{construction.description}</div>
           </button>
         ))}
       </div>
