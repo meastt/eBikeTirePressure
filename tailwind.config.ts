@@ -10,14 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#1A365D', // Darker navy - mechanic-grade
-          hover: '#2C5282',
-          600: '#2C5282',
-          100: '#EBF4FF',
+          DEFAULT: '#2563EB', // Vibrant blue - energetic and modern
+          hover: '#1D4ED8',
+          600: '#1D4ED8',
+          100: '#EFF6FF',
         },
         accent: {
-          DEFAULT: '#FF6B35', // Safety orange - industrial
-          hover: '#E85A2A',
+          DEFAULT: '#F59E0B', // Warm amber - friendly and approachable
+          hover: '#D97706',
+        },
+        secondary: {
+          DEFAULT: '#7C3AED', // Electric purple - adds personality
+          hover: '#6D28D9',
         },
         surface: {
           DEFAULT: '#FFFFFF',

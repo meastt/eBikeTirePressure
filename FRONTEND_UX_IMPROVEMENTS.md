@@ -670,24 +670,28 @@ Option C: Replace with "v1.0" badge
 - Color system lacks personality for "mechanic-grade" aesthetic
 
 **Solution:**
-Implemented industrial "mechanic-grade" color palette:
+Implemented vibrant, personality-filled color palette:
 ```ts
 colors: {
   brand: {
-    DEFAULT: '#1A365D', // Darker navy - professional/industrial
-    hover: '#2C5282',
-    600: '#2C5282',
-    100: '#EBF4FF',
+    DEFAULT: '#2563EB', // Vibrant blue - energetic and modern
+    hover: '#1D4ED8',
+    600: '#1D4ED8',
+    100: '#EFF6FF',
   },
   accent: {
-    DEFAULT: '#FF6B35', // Safety orange - industrial safety color
-    hover: '#E85A2A',
+    DEFAULT: '#F59E0B', // Warm amber - friendly and approachable
+    hover: '#D97706',
+  },
+  secondary: {
+    DEFAULT: '#7C3AED', // Electric purple - adds personality
+    hover: '#6D28D9',
   },
   // Keep semantic colors (ok, warn, danger)
 }
 ```
 
-**Result:** More appropriate visual identity for tire pressure calculator - industrial, professional, tool-like appearance
+**Result:** Energetic, modern visual identity with personality - no more boring institutional blues!
 
 **Acceptance Criteria:**
 - [ ] If changing: contrast ratios meet WCAG AA (4.5:1)
