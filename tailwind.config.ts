@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#2B59C3',
-          hover: '#2348A0',
-          600: '#2348A0',
-          100: '#E8F0FF',
+          DEFAULT: '#1A365D', // Darker navy - mechanic-grade
+          hover: '#2C5282',
+          600: '#2C5282',
+          100: '#EBF4FF',
         },
         accent: {
-          DEFAULT: '#FDC500',
+          DEFAULT: '#FF6B35', // Safety orange - industrial
+          hover: '#E85A2A',
         },
         surface: {
           DEFAULT: '#FFFFFF',
