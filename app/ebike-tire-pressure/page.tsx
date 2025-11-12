@@ -131,6 +131,38 @@ export default function ModelsPage() {
         </Link>
       </div>
 
+      {/* Search Results Header */}
+      {searchQuery && (
+        <div className="mb-4 text-sm text-muted">
+          Showing {filteredBrands.length} of {allBrands.length} brands
+          {selectedType !== "All" && ` (${selectedType} only)`}
+        </div>
+      )}
+
+      {/* Popular Searches */}
+      {!searchQuery && selectedType === "All" && (
+        <div className="mb-4 p-4 bg-surface-light rounded-xl border border-slate-200">
+          <div className="text-xs text-muted uppercase tracking-wide mb-2">Popular Searches</div>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { query: "rad power", label: "Rad Power" },
+              { query: "aventon", label: "Aventon" },
+              { query: "fat tire", label: "Fat Tire" },
+              { query: "cargo", label: "Cargo Bikes" },
+              { query: "26x4", label: "26×4″ Tires" },
+            ].map(({ query, label }) => (
+              <button
+                key={query}
+                onClick={() => setSearchQuery(query)}
+                className="px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg hover:border-brand hover:text-brand transition-colors duration-150"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Brands Grid */}
       {filteredBrands.length > 0 ? (
         <div className="grid md:grid-cols-2 gap-6">
