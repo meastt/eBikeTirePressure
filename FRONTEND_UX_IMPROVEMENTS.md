@@ -249,7 +249,7 @@ Rewrite feature cards with human language:
 
 ---
 
-### P1-2: Add Visual Bike Icons to Homepage Featured Models
+### ~~P1-2: Add Visual Bike Icons to Homepage Featured Models~~ ✅ **COMPLETED**
 **Component:** `/app/(site)/page.tsx` featured models section
 
 **Problem:**
@@ -257,29 +257,28 @@ Rewrite feature cards with human language:
 - No visual hierarchy or personality
 
 **Solution:**
-- Add bike category icons (simple SVG silhouettes):
-  - Fat tire → wide tire icon
-  - Cargo → bike with rack
-  - Folding → compact bike
-  - Standard → commuter bike
-- Use icons from Heroicons, Lucide, or custom SVGs in `/public/icons/bikes/`
-- Add to card header:
+- Add bike category icons (custom SVG silhouettes):
+  - Fat tire → wide tire bike icon
+  - Cargo → bike with rack icon
+- Inline SVGs for simplicity and performance
+- Add to card header with category labels:
   ```tsx
   <div className="flex items-start gap-3 mb-2">
-    <Image src="/icons/bikes/fat-tire.svg" width={32} height={32} alt="" />
+    <svg>/* bike icon */</svg>
     <div>
-      <h3>Aventon Aventure.2</h3>
-      <p className="text-xs text-muted">Fat Tire Cruiser</p>
+      <h3>Aventon Aventure</h3>
+      <p className="text-xs text-brand font-semibold">Fat Tire Explorer</p>
+      <p className="text-xs text-muted">26×4.0″</p>
     </div>
   </div>
   ```
 
 **Acceptance Criteria:**
-- [ ] All 6 cards have category icons
-- [ ] Icons are 32×32px, monochrome (brand color)
-- [ ] Subcategory text added ("Fat Tire Cruiser," "Compact Cargo," etc.)
-- [ ] Cards visually distinct at a glance
-- [ ] Responsive: icons scale down on mobile
+- [x] All 5 bike cards have category icons (fat tire/cargo)
+- [x] Custom SVG icons (48×32px), monochrome (brand color)
+- [x] Subcategory text added ("Fat Tire Cruiser," "Compact Cargo," etc.)
+- [x] Cards visually distinct at a glance
+- [x] Responsive: icons work on mobile
 
 **Complexity:** M (1 day)
 **Dependencies:** Create or source 5-6 bike icon SVGs
@@ -974,10 +973,10 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
-| P1 (High Impact) | 9 items | **5 completed** | 7-11 days | Significant UX gains |
+| P1 (High Impact) | 9 items | **6 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **10 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **11 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

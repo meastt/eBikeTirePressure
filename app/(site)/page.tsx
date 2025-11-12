@@ -112,12 +112,21 @@ export default function Home() {
             href="/models/rad-power-radrunner-plus"
             className="group card card-hover p-4 text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
-              R
+            <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-brand group-hover:text-brand-600 transition-colors duration-150">
+              <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <circle cx="36" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <rect x="8" y="18" width="32" height="2" rx="1" fill="currentColor"/>
+                <rect x="6" y="12" width="36" height="2" rx="1" fill="currentColor"/>
+                {/* Fat tires - wider */}
+                <circle cx="12" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+                <circle cx="36" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+              </svg>
             </div>
             <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               RadRunner Plus
             </h3>
+            <p className="text-xs text-brand font-semibold mb-1">Fat Tire Cruiser</p>
             <p className="text-xs text-muted">
               20×3.3″
             </p>
@@ -128,12 +137,21 @@ export default function Home() {
             href="/models/lectric-xp-3"
             className="group card card-hover p-4 text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
-              L
+            <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-brand group-hover:text-brand-600 transition-colors duration-150">
+              <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <circle cx="36" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <rect x="8" y="18" width="32" height="2" rx="1" fill="currentColor"/>
+                <rect x="6" y="12" width="36" height="2" rx="1" fill="currentColor"/>
+                {/* Fat tires - wider */}
+                <circle cx="12" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+                <circle cx="36" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+              </svg>
             </div>
             <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               Lectric XP 3
             </h3>
+            <p className="text-xs text-brand font-semibold mb-1">Fat Tire Cruiser</p>
             <p className="text-xs text-muted">
               20×3.0″
             </p>
@@ -144,12 +162,21 @@ export default function Home() {
             href="/models/aventon-aventure-2"
             className="group card card-hover p-4 text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
-              A
+            <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-brand group-hover:text-brand-600 transition-colors duration-150">
+              <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <circle cx="36" cy="24" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <rect x="8" y="18" width="32" height="2" rx="1" fill="currentColor"/>
+                <rect x="6" y="12" width="36" height="2" rx="1" fill="currentColor"/>
+                {/* Fat tires - wider */}
+                <circle cx="12" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+                <circle cx="36" cy="24" r="3" stroke="currentColor" strokeWidth="3" fill="none"/>
+              </svg>
             </div>
             <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               Aventon Aventure
             </h3>
+            <p className="text-xs text-brand font-semibold mb-1">Fat Tire Explorer</p>
             <p className="text-xs text-muted">
               26×4.0″
             </p>
@@ -160,12 +187,22 @@ export default function Home() {
             href="/models/tern-gsd-s10"
             className="group card card-hover p-4 text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
-              T
+            <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-brand group-hover:text-brand-600 transition-colors duration-150">
+              <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="24" r="5" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <circle cx="36" cy="24" r="5" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <rect x="8" y="18" width="32" height="2" rx="1" fill="currentColor"/>
+                <rect x="6" y="12" width="36" height="2" rx="1" fill="currentColor"/>
+                {/* Cargo rack */}
+                <rect x="18" y="8" width="12" height="2" rx="1" fill="currentColor"/>
+                <rect x="20" y="6" width="8" height="2" rx="1" fill="currentColor"/>
+                <rect x="22" y="4" width="4" height="2" rx="1" fill="currentColor"/>
+              </svg>
             </div>
             <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               Tern GSD
             </h3>
+            <p className="text-xs text-brand font-semibold mb-1">Compact Cargo</p>
             <p className="text-xs text-muted">
               20×2.4″
             </p>
@@ -176,12 +213,22 @@ export default function Home() {
             href="/models/rad-power-radwagon-4"
             className="group card card-hover p-4 text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
-              W
+            <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-brand group-hover:text-brand-600 transition-colors duration-150">
+              <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="24" r="5" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <circle cx="36" cy="24" r="5" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <rect x="8" y="18" width="32" height="2" rx="1" fill="currentColor"/>
+                <rect x="6" y="12" width="36" height="2" rx="1" fill="currentColor"/>
+                {/* Cargo rack */}
+                <rect x="18" y="8" width="12" height="2" rx="1" fill="currentColor"/>
+                <rect x="20" y="6" width="8" height="2" rx="1" fill="currentColor"/>
+                <rect x="22" y="4" width="4" height="2" rx="1" fill="currentColor"/>
+              </svg>
             </div>
             <h3 className="text-sm font-heading font-semibold text-text group-hover:text-brand mb-1 transition-colors duration-150">
               RadWagon 4
             </h3>
+            <p className="text-xs text-brand font-semibold mb-1">Electric Cargo</p>
             <p className="text-xs text-muted">
               22×3.0″
             </p>
