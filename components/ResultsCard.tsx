@@ -5,6 +5,7 @@ import type { CalculatorOutput, Surface } from "@/lib/types";
 import { trackShare } from "@/lib/analytics";
 import PSIBand from "./PSIBand";
 import Button from "./Button";
+import { ExclamationTriangleIcon, ExclamationCircleIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
 
 interface ResultsCardContext {
   riderLbs: number;
@@ -110,9 +111,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
         <div className="space-y-2">
           {warnings.lowPinchRisk && (
             <div className="flex items-start gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
-              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
-                !
-              </div>
+              <ExclamationTriangleIcon className="w-6 h-6 text-danger flex-shrink-0" />
               <div className="flex-1">
                 <div className="text-sm font-semibold text-danger">Pinch-flat risk</div>
                 <div className="text-xs text-muted mt-0.5">Pressure below tire minimum. Add air to avoid rim damage.</div>
@@ -121,9 +120,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
           )}
           {warnings.squirmRisk && (
             <div className="flex items-start gap-3 p-3 bg-warn/10 border-l-4 border-warn rounded-lg">
-              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-warn text-white rounded-full text-sm font-bold">
-                ⚠
-              </div>
+              <ExclamationCircleIcon className="w-6 h-6 text-warn flex-shrink-0" />
               <div className="flex-1">
                 <div className="text-sm font-semibold text-warn">Possible squirm on pavement</div>
                 <div className="text-xs text-muted mt-0.5">&lt;15 PSI may feel unstable. OK for sand/snow only.</div>
@@ -132,9 +129,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
           )}
           {warnings.exceedsSidewallMax && (
             <div className="flex items-start gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
-              <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
-                ✕
-              </div>
+              <ShieldExclamationIcon className="w-6 h-6 text-danger flex-shrink-0" />
               <div className="flex-1">
                 <div className="text-sm font-semibold text-danger">
                   {rearMaxDistance <= 2 && rearMaxDistance >= 0

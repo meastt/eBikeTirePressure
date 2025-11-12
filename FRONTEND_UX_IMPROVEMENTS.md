@@ -491,7 +491,7 @@ Option C: Replace with "v1.0" badge
 
 ---
 
-### P1-9: Add Icons to Warning Chips (Not Just Colors)
+### ~~P1-9: Add Icons to Warning Chips (Not Just Colors)~~ ✅ **COMPLETED**
 **Component:** `/components/ResultsCard.tsx`
 
 **Problem:**
@@ -516,13 +516,13 @@ Option C: Replace with "v1.0" badge
 - Use distinct shapes for each warning type
 
 **Acceptance Criteria:**
-- [ ] All warnings use Heroicons or Lucide icons
-- [ ] Icons are distinct shapes (triangle, circle, shield)
-- [ ] Icon color matches text color (danger/warn)
-- [ ] Size is 24px (w-6 h-6)
-- [ ] Works without color (shape alone is meaningful)
+- [x] All warnings use Heroicons (ExclamationTriangle, ExclamationCircle, ShieldExclamation)
+- [x] Icons are distinct shapes (triangle, circle, shield)
+- [x] Icon color matches text color (danger/warn)
+- [x] Size is 24px (w-6 h-6)
+- [x] Works without color (shape alone is meaningful)
 
-**Complexity:** S (2-3 hours)
+**Complexity:** S (2-3 hours) | **Actual:** 30 minutes
 **Dependencies:** Already have Heroicons installed (check)
 
 ---
@@ -974,10 +974,10 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
-| P1 (High Impact) | 9 items | **3 completed** | 7-11 days | Significant UX gains |
+| P1 (High Impact) | 9 items | **4 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **8 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **9 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
