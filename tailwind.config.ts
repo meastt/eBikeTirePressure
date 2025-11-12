@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         brand: {
           DEFAULT: '#2B59C3',
+          hover: '#2348A0',
           600: '#2348A0',
           100: '#E8F0FF',
         },
@@ -18,6 +19,7 @@ const config: Config = {
           DEFAULT: '#FDC500',
         },
         surface: {
+          DEFAULT: '#FFFFFF',
           light: '#F8FAFC',
           dark: '#E5E9F0',
         },
@@ -41,6 +43,15 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
         body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      transitionDuration: {
+        '150': '150ms',
+      },
+      transitionTimingFunction: {
+        'out': 'cubic-bezier(0.33, 1, 0.68, 1)',
+      },
+      backgroundImage: {
+        'gradient-subtle': 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)',
       },
     },
   },

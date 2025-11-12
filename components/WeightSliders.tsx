@@ -45,7 +45,7 @@ function Slider({
         onChange={(e) => onChange(parseInt(e.target.value, 10))}
         className="w-full h-2 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
         style={{
-          background: `linear-gradient(to right, #1E88E5 0%, #1E88E5 ${((value - min) / (max - min)) * 100}%, #F7F8FA ${((value - min) / (max - min)) * 100}%, #F7F8FA 100%)`,
+          background: `linear-gradient(to right, #2B59C3 0%, #2B59C3 ${((value - min) / (max - min)) * 100}%, #E5E9F0 ${((value - min) / (max - min)) * 100}%, #E5E9F0 100%)`,
         }}
       />
       <div className="flex justify-between text-xs text-muted">
@@ -66,14 +66,22 @@ export default function WeightSliders({
   onCargoFrontChange,
   onCargoRearChange,
 }: WeightSlidersProps) {
+  // Calculate approximate axle loads (typical distribution: 40% front, 60% rear for rider)
+  const riderFront = Math.round(riderLbs * 0.4);
+  const riderRear = Math.round(riderLbs * 0.6);
+  const passengerRear = passengerLbs; // All passenger weight goes to rear
+  const frontAxleLoad = riderFront + cargoFrontLbs;
+  const rearAxleLoad = riderRear + passengerRear + cargoRearLbs;
+  const totalLoad = riderLbs + passengerLbs + cargoFrontLbs + cargoRearLbs;
+
   return (
-    <div className="space-y-6">
-      <h3 className="text-sm font-semibold text-text">Weight Distribution</h3>
+    <div className="space-y-5">
+      <h3 className="text-sm font-semibold text-text">Load Inputs</h3>
 
       <Slider label="Rider Weight" value={riderLbs} min={80} max={300} onChange={onRiderChange} />
 
       <Slider
-        label="Passenger Weight (optional)"
+        label="Passenger Weight"
         value={passengerLbs}
         min={0}
         max={250}
@@ -97,12 +105,20 @@ export default function WeightSliders({
         />
       </div>
 
-      <div className="p-3 bg-surface rounded-lg">
-        <div className="text-sm">
-          <span className="font-medium text-text">Total Load:</span>{" "}
-          <span className="text-brand font-semibold">
-            {riderLbs + passengerLbs + cargoFrontLbs + cargoRearLbs} lbs
-          </span>
+      <div className="p-3 bg-surface-light rounded-xl border border-slate-200">
+        <div className="grid grid-cols-3 gap-3 text-sm">
+          <div>
+            <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Front Axle</div>
+            <div className="font-semibold text-text">{frontAxleLoad} lbs</div>
+          </div>
+          <div>
+            <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Rear Axle</div>
+            <div className="font-semibold text-text">{rearAxleLoad} lbs</div>
+          </div>
+          <div>
+            <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Total</div>
+            <div className="font-semibold text-brand">{totalLoad} lbs</div>
+          </div>
         </div>
       </div>
     </div>
