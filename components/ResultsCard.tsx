@@ -71,6 +71,15 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
   
   return (
     <div className="space-y-4">
+      {/* Screen reader summary - visually hidden but announced by screen readers */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Tire pressure calculated for {context?.tireSize || 'selected bike'}.
+        Front tire: {front.target} PSI target, safe range {front.min} to {front.max} PSI.
+        Rear tire: {rear.target} PSI target, safe range {rear.min} to {rear.max} PSI.
+        {warnings.lowPinchRisk && ' Warning: pinch-flat risk - pressure below tire minimum.'}
+        {warnings.squirmRisk && ' Warning: squirm risk - tires may feel unstable.'}
+        {warnings.exceedsSidewallMax && ' Warning: exceeds sidewall maximum - risk of tire failure.'}
+      </div>
       {/* Results header with gradient */}
       <div className="card space-y-8">
         <div className="flex items-center justify-between">

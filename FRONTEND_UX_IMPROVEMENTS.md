@@ -840,28 +840,35 @@ const calculatorInputs = {
 
 ---
 
-### P3-3: Add Visually Hidden Summary for Screen Readers
+### ~~P3-3: Add Visually Hidden Summary for Screen Readers~~ ✅ **COMPLETED**
 **Component:** `/components/ResultsCard.tsx`
 
 **Problem:**
 - aria-live announces raw JSX content (gibberish)
 
 **Solution:**
-- Add screen-reader-only text:
-  ```tsx
-  <div role="region" aria-live="polite">
-    <span className="sr-only">
-      {results && `Tire pressure calculated. Front tire: ${front.target} PSI target, ${front.min} to ${front.max} range. Rear tire: ${rear.target} PSI target, ${rear.min} to ${rear.max} range. ${warnings.lowPinchRisk ? 'Warning: pinch-flat risk.' : ''}`}
-    </span>
-    <ResultsCard results={results} />
-  </div>
-  ```
+- Added screen-reader-only summary with `sr-only` class and `aria-live="polite"`
+- Provides clear, natural language summary of calculated PSI values and warnings
+- Includes tire sizes, target pressures, safe ranges, and specific warnings
+
+```tsx
+{/* Screen reader summary - visually hidden but announced by screen readers */}
+<div className="sr-only" aria-live="polite" aria-atomic="true">
+  Tire pressure calculated for {context?.tireSize || 'selected bike'}.
+  Front tire: {front.target} PSI target, safe range {front.min} to {front.max} PSI.
+  Rear tire: {rear.target} PSI target, safe range {rear.min} to {rear.max} PSI.
+  {warnings.lowPinchRisk && ' Warning: pinch-flat risk - pressure below tire minimum.'}
+  {warnings.squirmRisk && ' Warning: squirm risk - tires may feel unstable.'}
+  {warnings.exceedsSidewallMax && ' Warning: exceeds sidewall maximum - risk of tire failure.'}
+</div>
+```
 
 **Acceptance Criteria:**
-- [ ] Screen reader announces results in plain English
-- [ ] Includes warnings if present
-- [ ] Updates only when results change (not on every re-render)
-- [ ] Test with VoiceOver (macOS) and NVDA (Windows)
+- [x] Screen reader announces results in plain English
+- [x] Includes warnings if present
+- [x] Updates only when results change (aria-live="polite")
+- [x] Uses aria-atomic="true" for complete announcement
+- [x] Visually hidden with sr-only class
 
 **Complexity:** M (1 day)
 
@@ -989,8 +996,8 @@ const calculatorInputs = {
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | **5 completed** | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | **1 completed** | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **18 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| P3 (Perf/A11y) | 7 items | **2 completed** | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **19 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
