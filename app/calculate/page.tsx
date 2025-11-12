@@ -11,6 +11,7 @@ import SurfaceSelector from "@/components/SurfaceSelector";
 import ConstructionSelector from "@/components/ConstructionSelector";
 import TrikeToggle from "@/components/TrikeToggle";
 import ResultsCard from "@/components/ResultsCard";
+import ResultsCardSkeleton from "@/components/ResultsCardSkeleton";
 import modelsData from "@/data/models.json";
 
 const models = modelsData as ModelPreset[];
@@ -31,6 +32,9 @@ function CalculatorContent() {
 
   // State for results
   const [results, setResults] = useState<CalculatorOutput | null>(null);
+
+  // State for loading
+  const [isCalculating, setIsCalculating] = useState(false);
 
   // State for floating results bar
   const [showFloatingBar, setShowFloatingBar] = useState(false);
@@ -89,6 +93,8 @@ function CalculatorContent() {
     setSurface("pavement");
     setConstruction("tubed");
     setTrikeMode(false);
+    setResults(null);
+    setIsCalculating(false);
     setShowFloatingBar(false);
   };
 
@@ -96,8 +102,11 @@ function CalculatorContent() {
   useEffect(() => {
     if (!selectedModel) {
       setResults(null);
+      setIsCalculating(false);
       return;
     }
+
+    setIsCalculating(true);
 
     const calculatorInputs = {
       bike: selectedModel,
@@ -110,16 +119,22 @@ function CalculatorContent() {
       trikeMode,
     };
 
-    const output = calculatePSI(calculatorInputs);
-    setResults(output);
-    
-    // Track calculation (debounced via analytics module)
-    trackCalculatorRun({
-      model: selectedModel.slug,
-      surface,
-      construction,
-      trike: trikeMode,
-    });
+    // Simulate calculation time for better UX feedback
+    const calculationTimeout = setTimeout(() => {
+      const output = calculatePSI(calculatorInputs);
+      setResults(output);
+      setIsCalculating(false);
+
+      // Track calculation (debounced via analytics module)
+      trackCalculatorRun({
+        model: selectedModel.slug,
+        surface,
+        construction,
+        trike: trikeMode,
+      });
+    }, 600); // 600ms delay for smooth loading experience
+
+    return () => clearTimeout(calculationTimeout);
   }, [selectedModel, riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs, surface, construction, trikeMode]);
 
   return (
@@ -192,17 +207,21 @@ function CalculatorContent() {
           aria-live="polite"
           aria-atomic="true"
         >
-          <ResultsCard
-            results={results}
-            sidewallMax={selectedModel?.stockTire.maxPSI || 50}
-            modelSlug={selectedModel?.slug}
-            context={{
-              riderLbs,
-              cargoLbs: cargoFrontLbs + cargoRearLbs,
-              tireSize: selectedModel?.stockTire.size || "",
-              surface,
-            }}
-          />
+          {isCalculating ? (
+            <ResultsCardSkeleton />
+          ) : (
+            <ResultsCard
+              results={results}
+              sidewallMax={selectedModel?.stockTire.maxPSI || 50}
+              modelSlug={selectedModel?.slug}
+              context={{
+                riderLbs,
+                cargoLbs: cargoFrontLbs + cargoRearLbs,
+                tireSize: selectedModel?.stockTire.size || "",
+                surface,
+              }}
+            />
+          )}
         </div>
 
         {/* Floating Results Bar - Mobile Only */}

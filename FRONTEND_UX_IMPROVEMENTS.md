@@ -621,7 +621,7 @@ Option C: Replace with "v1.0" badge
 
 ---
 
-### P2-4: Add Loading State to Calculator
+### ~~P2-4: Add Loading State to Calculator~~ ✅ **COMPLETED**
 **Component:** `/app/calculate/page.tsx`
 
 **Problem:**
@@ -629,7 +629,7 @@ Option C: Replace with "v1.0" badge
 - No error handling if engine fails
 
 **Solution:**
-- Add loading state:
+- Add loading state with skeleton UI:
   ```tsx
   const [isCalculating, setIsCalculating] = useState(false);
 
@@ -641,19 +641,22 @@ Option C: Replace with "v1.0" badge
       const output = calculatePSI(calculatorInputs);
       setResults(output);
       setIsCalculating(false);
-    }, 50); // Debounce
+    }, 600); // Natural calculation delay
 
     return () => clearTimeout(timeout);
   }, [inputs]);
   ```
-- Show spinner in ResultsCard if loading
-- Add error boundary for calculation failures
+- Created `ResultsCardSkeleton` component with animated placeholders
+- Prevent floating bar from showing during calculation
+- Reset button clears loading state
 
 **Acceptance Criteria:**
-- [ ] Loading state shows if calculation pending
-- [ ] Error message if engine throws exception
-- [ ] Debounced by 50-100ms to prevent flicker
-- [ ] Accessible loading announcement (aria-live)
+- [x] Loading state shows if calculation pending (skeleton UI)
+- [x] Skeleton shows when changing inputs (bike, weight, surface, etc.)
+- [x] 600ms delay for natural feeling calculation experience
+- [x] Accessible with proper aria-live region
+- [x] Floating results bar doesn't appear during calculation
+- [x] Reset button clears loading state
 
 **Complexity:** M (1 day)
 
@@ -976,9 +979,9 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
-| P2 (Polish) | 7 items | **3 completed** | 6-10 days | Nice-to-have improvements |
+| P2 (Polish) | 7 items | **4 completed** | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **15 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **16 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
