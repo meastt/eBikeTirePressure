@@ -28,8 +28,14 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
         </div>
       </div>
 
+      {/* Axis labels */}
+      <div className="flex justify-between text-xs text-muted mb-1">
+        <span>0 PSI</span>
+        <span>{sidewallMax} PSI (max)</span>
+      </div>
+
       {/* Visual safety band with border and depth */}
-      <div className="relative h-14 bg-gradient-to-b from-surface-light to-white rounded-lg border border-slate-200 overflow-hidden shadow-sm"
+      <div className="relative h-14 mb-8 bg-gradient-to-b from-surface-light to-white rounded-lg border border-slate-200 overflow-hidden shadow-sm"
            aria-label={`Pressure range ${min} to ${max} PSI, target ${target} PSI`}>
         {/* Low zone (below min) - Danger */}
         <div
@@ -58,46 +64,38 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
           }}
         />
 
-        {/* Min marker with tick */}
-        <div
-          className="absolute top-0 bottom-0 w-1 bg-ok"
-          style={{ left: `${minPercent}%` }}
-        >
-          <div className="absolute top-1 left-1/2 -translate-x-1/2">
-            <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
-              {min}
-            </div>
-          </div>
-          {/* Tick mark */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok" />
+        {/* Zone labels */}
+        <div className="absolute inset-0 flex items-center justify-around text-xs text-white/70 font-medium pointer-events-none">
+          <span>Too Low</span>
+          <span>Safe Zone</span>
+          <span>Too Firm</span>
         </div>
 
-        {/* Target marker (prominent with pill) */}
-        <div
-          className="absolute top-0 bottom-0 w-1.5 bg-brand shadow-md transition-all duration-150"
-          style={{ left: `${targetPercent}%` }}
-        >
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 animate-smooth">
-            <div className="px-3 py-1 bg-brand text-white text-sm font-bold rounded-lg shadow-md whitespace-nowrap">
-              ▲ {target}
-            </div>
+        {/* Min marker - below bar */}
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2" style={{ left: `${minPercent}%` }}>
+          <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
+            {min}
           </div>
           {/* Tick mark */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-brand" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok -translate-y-full" />
         </div>
 
-        {/* Max marker with tick */}
-        <div
-          className="absolute top-0 bottom-0 w-1 bg-ok"
-          style={{ left: `${maxPercent}%` }}
-        >
-          <div className="absolute top-1 left-1/2 -translate-x-1/2">
-            <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
-              {max}
-            </div>
+        {/* Target marker - below bar (prominent) */}
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2" style={{ left: `${targetPercent}%` }}>
+          <div className="px-3 py-1 bg-brand text-white text-sm font-bold rounded-lg shadow-md whitespace-nowrap animate-smooth">
+            ▲ {target}
           </div>
           {/* Tick mark */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-brand -translate-y-full" />
+        </div>
+
+        {/* Max marker - below bar */}
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2" style={{ left: `${maxPercent}%` }}>
+          <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
+            {max}
+          </div>
+          {/* Tick mark */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok -translate-y-full" />
         </div>
 
         {/* Sidewall max label */}
