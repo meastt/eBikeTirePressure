@@ -1,17 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import type { CalculatorOutput } from "@/lib/types";
+import type { CalculatorOutput, Surface } from "@/lib/types";
 import { trackShare } from "@/lib/analytics";
-import SafetyBand from "./SafetyBand";
+import PSIBand from "./PSIBand";
+import Button from "./Button";
+
+interface ResultsCardContext {
+  riderLbs: number;
+  cargoLbs: number;
+  tireSize: string;
+  surface: Surface;
+}
 
 interface ResultsCardProps {
   results: CalculatorOutput | null;
   sidewallMax: number;
   modelSlug?: string;
+  context?: ResultsCardContext;
 }
 
-export default function ResultsCard({ results, sidewallMax, modelSlug }: ResultsCardProps) {
+export default function ResultsCard({ results, sidewallMax, modelSlug, context }: ResultsCardProps) {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const handleShare = async () => {
@@ -65,23 +74,36 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
       <div className="card p-6 space-y-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-heading font-bold text-text">Your PSI</h2>
-          {modelSlug && (
-            <button
-              onClick={handleShare}
-              className="px-3 py-1.5 text-sm font-medium text-brand hover:text-brand-hover hover:bg-brand-100 rounded-lg transition-all duration-150"
-              title="Share calculator settings"
-            >
-              {copySuccess ? '✓ Copied' : 'Share'}
-            </button>
-          )}
         </div>
 
+        {/* Context line */}
+        {context && (
+          <div className="text-sm text-muted leading-relaxed pb-2">
+            Based on: {context.riderLbs} lb rider • {context.cargoLbs} lb cargo • {context.tireSize} • {context.surface.replace('_', '/')}
+          </div>
+        )}
+
         {/* Front tire */}
-        <SafetyBand result={front} sidewallMax={sidewallMax} label="Front" />
+        <PSIBand result={front} sidewallMax={sidewallMax} label="Front" />
 
         {/* Rear tire */}
-        <SafetyBand result={rear} sidewallMax={sidewallMax} label="Rear" />
+        <PSIBand result={rear} sidewallMax={sidewallMax} label="Rear" />
       </div>
+
+      {/* Sticky Share button - Mobile only */}
+      {modelSlug && (
+        <div className="lg:hidden sticky bottom-4 mt-4">
+          <Button
+            onClick={handleShare}
+            variant="primary"
+            size="md"
+            className="w-full shadow-lg"
+            title="Share calculator settings"
+          >
+            {copySuccess ? '✓ Copied' : 'Share Results'}
+          </Button>
+        </div>
+      )}
 
       {/* Warnings - Color chip style */}
       {hasWarnings && (

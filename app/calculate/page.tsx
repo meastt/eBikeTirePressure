@@ -132,6 +132,12 @@ function CalculatorContent() {
             results={results}
             sidewallMax={selectedModel?.stockTire.maxPSI || 50}
             modelSlug={selectedModel?.slug}
+            context={{
+              riderLbs,
+              cargoLbs: cargoFrontLbs + cargoRearLbs,
+              tireSize: selectedModel?.stockTire.size || "",
+              surface,
+            }}
           />
         </div>
       </div>

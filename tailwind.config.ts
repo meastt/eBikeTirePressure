@@ -33,6 +33,7 @@ const config: Config = {
         line: '#E2E8F0',
       },
       boxShadow: {
+        inner: 'inset 0 1px 2px rgba(15,23,42,.06)',
         card: '0 8px 24px rgba(15,23,42,0.06)',
         hover: '0 10px 30px rgba(15,23,42,0.10)',
       },
