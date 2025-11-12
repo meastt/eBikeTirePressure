@@ -21,24 +21,23 @@ import type {
 import { getTireInfo } from "./volume";
 
 /**
- * Surface adjustment factors
+ * Surface adjustment factors (as percentages)
  * Softer surfaces need lower pressure for traction and comfort
  */
 const SURFACE_FACTORS: Record<Surface, number> = {
-  pavement: 1.0, // baseline
-  mixed: 0.92, // -8% for mixed surfaces
-  dirt: 0.85, // -15% for dirt trails
-  sand_snow: 0.7, // -30% for sand/snow (need max contact patch)
+  pavement: 1.0, // baseline (0%)
+  mixed: 0.90, // -10% for mixed surfaces
+  dirt: 0.88, // -12% for dirt trails
+  sand_snow: 0.75, // -25% for sand/snow (need max contact patch)
 };
 
 /**
- * Construction adjustment factors
- * Reinforced tires can handle more pressure, tubeless slightly less
+ * Construction adjustment (in PSI, not percentage)
  */
-const CONSTRUCTION_FACTORS: Record<Construction, number> = {
-  tubed: 1.0, // baseline
-  tubeless: 0.95, // -5% (runs slightly lower)
-  reinforced: 1.08, // +8% (stronger casing)
+const CONSTRUCTION_ADJUSTMENTS: Record<Construction, number> = {
+  tubed: 0, // baseline
+  tubeless: -1, // -1 PSI (runs slightly lower)
+  reinforced: 2, // +2 PSI (stronger casing)
 };
 
 /**
@@ -96,11 +95,11 @@ function applyAdjustments(
 ): number {
   let adjusted = basePSI;
 
-  // Apply surface factor
+  // Apply surface factor (percentage)
   adjusted *= SURFACE_FACTORS[surface];
 
-  // Apply construction factor
-  adjusted *= CONSTRUCTION_FACTORS[construction];
+  // Apply construction adjustment (fixed PSI)
+  adjusted += CONSTRUCTION_ADJUSTMENTS[construction];
 
   return adjusted;
 }
@@ -109,13 +108,33 @@ function applyAdjustments(
  * Calculate min/target/max range for a given target PSI
  * Min: 85% of target (pinch-flat risk below this)
  * Max: 115% of target (harsh ride above this)
+ * Guardrails: min >= max(0.7×minPSI, 8), max <= sidewallMax - 2
  */
-function calculateRange(targetPSI: number, sidewallMax: number): AxleResult {
-  const min = Math.round(targetPSI * 0.85);
+function calculateRange(
+  targetPSI: number, 
+  sidewallMin: number, 
+  sidewallMax: number
+): AxleResult {
+  // Calculate initial range
+  let min = Math.round(targetPSI * 0.85);
   const target = Math.round(targetPSI);
-  const max = Math.min(Math.round(targetPSI * 1.15), sidewallMax);
+  let max = Math.round(targetPSI * 1.15);
 
-  return { min, target, max };
+  // Apply guardrails
+  const absoluteMin = Math.max(sidewallMin * 0.7, 8);
+  const absoluteMax = sidewallMax - 2;
+
+  min = Math.max(min, absoluteMin);
+  max = Math.min(max, absoluteMax);
+
+  // Ensure target is within range
+  const clampedTarget = Math.max(min, Math.min(target, max));
+
+  return { 
+    min: Math.round(min), 
+    target: Math.round(clampedTarget), 
+    max: Math.round(max) 
+  };
 }
 
 /**
@@ -202,8 +221,16 @@ export function calculatePSI(inputs: CalculatorInputs): CalculatorOutput {
   const rearTargetPSI = applyAdjustments(rearBasePSI, inputs.surface, inputs.construction);
 
   // Calculate min/target/max ranges
-  const front = calculateRange(frontTargetPSI, inputs.bike.stockTire.maxPSI);
-  const rear = calculateRange(rearTargetPSI, inputs.bike.stockTire.maxPSI);
+  const front = calculateRange(
+    frontTargetPSI, 
+    inputs.bike.stockTire.minPSI, 
+    inputs.bike.stockTire.maxPSI
+  );
+  const rear = calculateRange(
+    rearTargetPSI, 
+    inputs.bike.stockTire.minPSI, 
+    inputs.bike.stockTire.maxPSI
+  );
 
   // Detect warnings
   const warnings = detectWarnings(front, rear, inputs);

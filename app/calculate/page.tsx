@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import type { ModelPreset, Surface, Construction, CalculatorOutput } from "@/lib/types";
 import { calculatePSI } from "@/calc/engine";
+import { trackCalculatorRun, trackDeepLink } from "@/lib/analytics";
 import PresetPicker from "@/components/PresetPicker";
 import WeightSliders from "@/components/WeightSliders";
 import SurfaceSelector from "@/components/SurfaceSelector";
@@ -13,7 +15,9 @@ import modelsData from "@/data/models.json";
 
 const models = modelsData as ModelPreset[];
 
-export default function CalculatePage() {
+function CalculatorContent() {
+  const searchParams = useSearchParams();
+  
   // State for calculator inputs
   const [selectedModel, setSelectedModel] = useState<ModelPreset | null>(null);
   const [riderLbs, setRiderLbs] = useState(180);
@@ -26,6 +30,18 @@ export default function CalculatePage() {
 
   // State for results
   const [results, setResults] = useState<CalculatorOutput | null>(null);
+  
+  // Handle deep-link on mount
+  useEffect(() => {
+    const modelSlug = searchParams.get('model');
+    if (modelSlug) {
+      const model = models.find(m => m.slug === modelSlug);
+      if (model) {
+        setSelectedModel(model);
+        trackDeepLink(modelSlug);
+      }
+    }
+  }, [searchParams]);
 
   // Recalculate whenever inputs change
   useEffect(() => {
@@ -47,6 +63,14 @@ export default function CalculatePage() {
 
     const output = calculatePSI(calculatorInputs);
     setResults(output);
+    
+    // Track calculation (debounced via analytics module)
+    trackCalculatorRun({
+      model: selectedModel.slug,
+      surface,
+      construction,
+      trike: trikeMode,
+    });
   }, [selectedModel, riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs, surface, construction, trikeMode]);
 
   return (
@@ -98,13 +122,31 @@ export default function CalculatePage() {
         </div>
 
         {/* Right column: Results */}
-        <div className="lg:sticky lg:top-6 lg:self-start">
+        <div className="lg:sticky lg:top-6 lg:self-start" role="region" aria-live="polite" aria-atomic="true">
           <ResultsCard
             results={results}
             sidewallMax={selectedModel?.stockTire.maxPSI || 50}
+            modelSlug={selectedModel?.slug}
           />
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CalculatePage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 className="text-3xl font-bold text-text mb-6 tracking-tight">
+          E-Bike Tire Pressure Calculator
+        </h1>
+        <div className="p-8 bg-surface rounded-2xl shadow-card text-center">
+          <p className="text-muted">Loading calculator...</p>
+        </div>
+      </div>
+    }>
+      <CalculatorContent />
+    </Suspense>
   );
 }

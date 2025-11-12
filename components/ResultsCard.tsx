@@ -1,14 +1,49 @@
 "use client";
 
+import { useState } from "react";
 import type { CalculatorOutput } from "@/lib/types";
+import { trackShare } from "@/lib/analytics";
 import SafetyBand from "./SafetyBand";
 
 interface ResultsCardProps {
   results: CalculatorOutput | null;
   sidewallMax: number;
+  modelSlug?: string;
 }
 
-export default function ResultsCard({ results, sidewallMax }: ResultsCardProps) {
+export default function ResultsCard({ results, sidewallMax, modelSlug }: ResultsCardProps) {
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const handleShare = async () => {
+    if (!modelSlug) return;
+
+    const url = `${window.location.origin}/calculate?model=${modelSlug}`;
+
+    // Try native share first (mobile)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'E-Bike PSI Calculator',
+          text: 'Check out this tire pressure calculator',
+          url,
+        });
+        trackShare('native');
+        return;
+      } catch {
+        // User cancelled or share not available
+      }
+    }
+
+    // Fallback to clipboard
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopySuccess(true);
+      trackShare('copy');
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy URL', err);
+    }
+  };
   if (!results) {
     return (
       <div className="p-8 bg-surface rounded-2xl shadow-card text-center">
@@ -24,7 +59,18 @@ export default function ResultsCard({ results, sidewallMax }: ResultsCardProps) 
     <div className="space-y-6">
       {/* Results header */}
       <div className="p-6 bg-white rounded-2xl shadow-card space-y-6">
-        <h2 className="text-xl font-bold text-text">Recommended Tire Pressure</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-bold text-text">Recommended Tire Pressure</h2>
+          {modelSlug && (
+            <button
+              onClick={handleShare}
+              className="px-3 py-1.5 text-sm font-medium text-brand hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors"
+              title="Share calculator settings"
+            >
+              {copySuccess ? '✓ Copied!' : '🔗 Share'}
+            </button>
+          )}
+        </div>
 
         {/* Front tire */}
         <SafetyBand result={front} sidewallMax={sidewallMax} label="Front Tire" />
