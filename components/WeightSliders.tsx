@@ -11,6 +11,10 @@ interface WeightSlidersProps {
   onPassengerChange: (lbs: number) => void;
   onCargoFrontChange: (lbs: number) => void;
   onCargoRearChange: (lbs: number) => void;
+  riderError?: string;
+  passengerError?: string;
+  cargoFrontError?: string;
+  cargoRearError?: string;
 }
 
 export default function WeightSliders({
@@ -22,6 +26,10 @@ export default function WeightSliders({
   onPassengerChange,
   onCargoFrontChange,
   onCargoRearChange,
+  riderError,
+  passengerError,
+  cargoFrontError,
+  cargoRearError,
 }: WeightSlidersProps) {
 
 function Slider({
@@ -33,6 +41,8 @@ function Slider({
   onChange,
   unit = "lbs",
   inputId,
+  error,
+  errorId,
 }: {
   label: string | React.ReactNode;
   value: number;
@@ -42,6 +52,8 @@ function Slider({
   onChange: (value: number) => void;
   unit?: string;
   inputId?: string;
+  error?: string;
+  errorId?: string;
 }) {
   return (
     <div className="space-y-2">
@@ -72,13 +84,22 @@ function Slider({
           step={1}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value, 10) || min)}
-          className="w-20 px-2 py-1 border border-slate-200 rounded text-sm text-center"
+          className={`w-20 px-2 py-1 border rounded text-sm text-center ${
+            error ? 'border-danger' : 'border-slate-200'
+          }`}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
         />
       </div>
       <div className="flex justify-between text-xs text-muted">
         <span>{min}</span>
         <span>{max}</span>
       </div>
+      {error && (
+        <p id={errorId} className="text-xs text-danger mt-1" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -95,7 +116,16 @@ function Slider({
     <div className="space-y-5">
       <h3 className="text-sm font-semibold text-text">Load Inputs</h3>
 
-      <Slider label="Rider Weight" value={riderLbs} min={80} max={300} onChange={onRiderChange} inputId="rider-weight-input" />
+      <Slider
+        label="Rider Weight"
+        value={riderLbs}
+        min={80}
+        max={300}
+        onChange={onRiderChange}
+        inputId="rider-weight-input"
+        error={riderError}
+        errorId="rider-weight-error"
+      />
 
       <Slider
         label={
@@ -108,6 +138,8 @@ function Slider({
         min={0}
         max={250}
         onChange={onPassengerChange}
+        error={passengerError}
+        errorId="passenger-weight-error"
       />
 
       <div className="grid grid-cols-2 gap-4">
@@ -122,6 +154,8 @@ function Slider({
           min={0}
           max={80}
           onChange={onCargoFrontChange}
+          error={cargoFrontError}
+          errorId="front-cargo-error"
         />
         <Slider
           label={
@@ -134,6 +168,8 @@ function Slider({
           min={0}
           max={200}
           onChange={onCargoRearChange}
+          error={cargoRearError}
+          errorId="rear-cargo-error"
         />
       </div>
 

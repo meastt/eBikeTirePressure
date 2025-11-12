@@ -40,6 +40,9 @@ function CalculatorContent() {
   // State for floating results bar
   const [showFloatingBar, setShowFloatingBar] = useState(false);
 
+  // State for validation errors
+  const [modelError, setModelError] = useState<string | undefined>();
+
   // Debounced weight values for performance (300ms delay)
   const debouncedRiderLbs = useDebounce(riderLbs, 300);
   const debouncedPassengerLbs = useDebounce(passengerLbs, 300);
@@ -61,6 +64,7 @@ function CalculatorContent() {
   // Focus rider weight input when model is first selected
   useEffect(() => {
     if (selectedModel) {
+      setModelError(undefined); // Clear error when model is selected
       // Small delay to ensure DOM is updated after model selection
       const timer = setTimeout(() => {
         const riderInput = document.getElementById('rider-weight-input') as HTMLInputElement;
@@ -73,6 +77,16 @@ function CalculatorContent() {
       return () => clearTimeout(timer);
     }
   }, [selectedModel]);
+
+  // Show model error if weights entered but no model selected
+  useEffect(() => {
+    const hasWeights = riderLbs > 180 || passengerLbs > 0 || cargoFrontLbs > 0 || cargoRearLbs > 0;
+    if (hasWeights && !selectedModel) {
+      setModelError("Please select a bike model to calculate PSI recommendations.");
+    } else if (selectedModel) {
+      setModelError(undefined);
+    }
+  }, [riderLbs, passengerLbs, cargoFrontLbs, cargoRearLbs, selectedModel]);
 
   // Scroll detection for floating bar
   useEffect(() => {
@@ -176,7 +190,7 @@ function CalculatorContent() {
         <div className="space-y-4 md:space-y-6">
           {/* Model selector */}
         <div className="card">
-          <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} />
+          <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} error={modelError} />
         </div>
 
         {/* Weight sliders */}

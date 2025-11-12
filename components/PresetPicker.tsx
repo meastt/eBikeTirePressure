@@ -9,9 +9,10 @@ interface PresetPickerProps {
   models: ModelPreset[];
   selected: ModelPreset | null;
   onSelect: (model: ModelPreset) => void;
+  error?: string;
 }
 
-export default function PresetPicker({ models, selected, onSelect }: PresetPickerProps) {
+export default function PresetPicker({ models, selected, onSelect, error }: PresetPickerProps) {
   const [query, setQuery] = useState("");
   const [recentSelections, setRecentSelections] = useState<ModelPreset[]>([]);
 
@@ -87,12 +88,16 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
           </Combobox.Label>
           <div className="relative">
             <Combobox.Input
-              className="w-full px-4 py-3.5 rounded-xl border-2 border-line bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150"
+              className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-text text-base focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 ${
+                error ? 'border-danger focus:ring-danger focus:border-danger' : 'border-line'
+              }`}
               placeholder="Search brands, models, or tire sizes..."
               displayValue={(model: ModelPreset | null) =>
                 model ? `${model.brand} ${model.model} — ${model.stockTire.size}` : ""
               }
               onChange={(event) => setQuery(event.target.value)}
+              aria-invalid={!!error}
+              aria-describedby={error ? "model-error" : undefined}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-3">
               <svg className="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -100,6 +105,12 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
               </svg>
             </Combobox.Button>
           </div>
+
+          {error && (
+            <p id="model-error" className="mt-2 text-sm text-danger" role="alert">
+              {error}
+            </p>
+          )}
 
           <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             {query === "" && recentSelections.length > 0 && (

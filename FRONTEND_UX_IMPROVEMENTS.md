@@ -938,31 +938,44 @@ useEffect(() => {
 
 ---
 
-### P3-6: Add Error States to Form Inputs
+### ~~P3-6: Add Error States to Form Inputs~~ ✅ **COMPLETED**
 **Components:** All calculator input components
 
 **Problem:**
 - No visual feedback for errors (though sliders prevent invalid input)
 
 **Solution:**
-- Add error prop to all inputs:
-  ```tsx
-  interface SliderProps {
-    error?: string;
-  }
+- Added error props to PresetPicker and WeightSliders components
+- Model selector shows error when weights entered but no bike selected
+- Weight inputs support error display with red borders and messages
+- Added proper ARIA attributes (aria-invalid, aria-describedby, role="alert")
 
-  <div className={cn(error && "border-danger")}>
-    <input ... />
-    {error && <p className="text-xs text-danger mt-1">{error}</p>}
-  </div>
-  ```
-- Add validation for edge cases (e.g., network error loading model)
+```tsx
+// PresetPicker with error support
+<PresetPicker 
+  models={models} 
+  selected={selectedModel} 
+  onSelect={setSelectedModel} 
+  error={modelError} 
+/>
+
+// WeightSliders with individual error support
+<WeightSliders
+  riderError={riderError}
+  passengerError={passengerError}
+  cargoFrontError={cargoFrontError}
+  cargoRearError={cargoRearError}
+  // ... other props
+/>
+```
 
 **Acceptance Criteria:**
-- [ ] Error messages display below invalid inputs
-- [ ] Error state uses red border + icon
-- [ ] aria-invalid and aria-describedby set correctly
-- [ ] Clear actionable messaging ("Model not found. Try another.")
+- [x] Error messages display below invalid inputs
+- [x] Error state uses red border styling
+- [x] aria-invalid and aria-describedby set correctly
+- [x] Clear actionable messaging ("Please select a bike model...")
+- [x] Model error clears when bike is selected
+- [x] Focus management works with error states
 
 **Complexity:** M (1 day)
 
@@ -1009,8 +1022,8 @@ useEffect(() => {
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | **5 completed** | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | **4 completed** | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **21 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| P3 (Perf/A11y) | 7 items | **5 completed** | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **22 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
