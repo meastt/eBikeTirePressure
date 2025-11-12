@@ -20,29 +20,35 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div>
-      {/* Hero Section with Gradient */}
-      <section className="bg-gradient-subtle py-16 sm:py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-text mb-4">
+      {/* Hero Section with Premium Gradient */}
+      <section className="relative bg-gradient-to-br from-brand-50 via-white to-purple-50 py-20 sm:py-28 px-4 overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+        </div>
+        <div className="container mx-auto max-w-5xl text-center relative z-10">
+          <h1 className="mb-6 bg-gradient-to-r from-text via-brand-700 to-text bg-clip-text text-transparent">
             Stop Guessing Your Tire Pressure
           </h1>
-          <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             Get the perfect PSI for your e-bike based on your exact weight, cargo, and terrain.
             Avoid pinch flats, blowouts, and poor handling.
           </p>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-5">
             <Link
               href="/calculate"
-              className="px-8 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-lg"
+              className="px-10 py-4 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow-lg hover:-translate-y-1 transition-all duration-300 ease-out text-lg shadow-lg"
             >
-              Find My PSI
+              Find My PSI →
             </Link>
-            <small className="text-muted text-sm mb-2">Free for all e-bike models</small>
+            <small className="text-muted text-sm mb-2 font-medium">Free for all e-bike models</small>
             <Link
               href="#popular-bikes"
-              className="text-brand hover:text-brand-hover font-medium text-sm transition-colors duration-150"
+              className="text-brand hover:text-brand-700 font-semibold text-sm transition-all duration-200 flex items-center gap-2 group"
             >
-              Popular Bikes ↓
+              Popular Bikes
+              <span className="group-hover:translate-y-1 transition-transform duration-200">↓</span>
             </Link>
           </div>
         </div>
@@ -50,62 +56,64 @@ export default function Home() {
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
 
-      <section className="grid md:grid-cols-2 gap-6 mb-12">
-        <div className="group card card-hover p-6">
-          <div className="flex items-start gap-4 mb-3">
-            <div className="w-10 h-10 flex items-center justify-center bg-brand-100 rounded-lg text-brand group-hover:text-brand-600 transition-colors duration-150">
-              <Image src="/icons/precision.svg" alt="" width={20} height={20} />
+      <section className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="group card card-hover p-8 bg-white/60 backdrop-blur-sm">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 flex items-center justify-center bg-gradient-brand rounded-xl text-white shadow-md group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
+              <Image src="/icons/precision.svg" alt="" width={24} height={24} className="brightness-0 invert" />
             </div>
-            <h2 className="text-xl font-heading font-semibold text-text flex-1">Load-Aware Math</h2>
+            <h2 className="text-xl font-heading font-bold text-text flex-1">Load-Aware Math</h2>
           </div>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="text-muted leading-relaxed">
             Accounts for rider, cargo, and terrain. No guesswork.
           </p>
         </div>
 
-        <div className="group card card-hover p-6">
-          <div className="flex items-start gap-4 mb-3">
-            <div className="w-10 h-10 flex items-center justify-center bg-brand-100 rounded-lg text-brand group-hover:text-brand-600 transition-colors duration-150">
-              <Image src="/icons/presets.svg" alt="" width={20} height={20} />
+        <div className="group card card-hover p-8 bg-white/60 backdrop-blur-sm">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-white shadow-md group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
+              <Image src="/icons/presets.svg" alt="" width={24} height={24} className="brightness-0 invert" />
             </div>
-            <h2 className="text-xl font-heading font-semibold text-text flex-1">Model Database</h2>
+            <h2 className="text-xl font-heading font-bold text-text flex-1">Model Database</h2>
           </div>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="text-muted leading-relaxed">
             20+ presets with verified specs and tire data.
           </p>
         </div>
 
-        <div className="group card card-hover p-6">
-          <div className="flex items-start gap-4 mb-3">
-            <div className="w-10 h-10 flex items-center justify-center bg-brand-100 rounded-lg text-brand group-hover:text-brand-600 transition-colors duration-150">
-              <Image src="/icons/safety.svg" alt="" width={20} height={20} />
+        <div className="group card card-hover p-8 bg-white/60 backdrop-blur-sm">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-ok to-ok-dark rounded-xl text-white shadow-md group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
+              <Image src="/icons/safety.svg" alt="" width={24} height={24} className="brightness-0 invert" />
             </div>
-            <h2 className="text-xl font-heading font-semibold text-text flex-1">Safety Checks</h2>
+            <h2 className="text-xl font-heading font-bold text-text flex-1">Safety Checks</h2>
           </div>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="text-muted leading-relaxed">
             Live alerts for pinch-flat, sidewall max, and terrain risks.
           </p>
         </div>
 
-        <div className="group card card-hover p-6">
-          <div className="flex items-start gap-4 mb-3">
-            <div className="w-10 h-10 flex items-center justify-center bg-brand-100 rounded-lg text-brand group-hover:text-brand-600 transition-colors duration-150">
-              <Image src="/icons/trike.svg" alt="" width={20} height={20} />
+        <div className="group card card-hover p-8 bg-white/60 backdrop-blur-sm">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 flex items-center justify-center bg-gradient-accent rounded-xl text-white shadow-md group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
+              <Image src="/icons/trike.svg" alt="" width={24} height={24} className="brightness-0 invert" />
             </div>
-            <h2 className="text-xl font-heading font-semibold text-text flex-1">Trike Support</h2>
+            <h2 className="text-xl font-heading font-bold text-text flex-1">Trike Support</h2>
           </div>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="text-muted leading-relaxed">
             Three-wheel load split with independent rear calculations.
           </p>
         </div>
       </section>
 
       {/* Popular Bikes Section */}
-      <section id="popular-bikes" className="mb-16">
-        <h2 className="text-text mb-3 text-center">
-          Popular Bikes
-        </h2>
-        <p className="text-muted text-center mb-8">Quick-start for the most popular e-bikes</p>
+      <section id="popular-bikes" className="mb-20">
+        <div className="text-center mb-10">
+          <h2 className="text-text mb-3">
+            Popular Bikes
+          </h2>
+          <p className="text-muted text-lg">Quick-start for the most popular e-bikes</p>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
           {/* RadRunner Plus */}
           <Link
@@ -237,15 +245,15 @@ export default function Home() {
           {/* All Models Card */}
           <Link
             href="/ebike-tire-pressure"
-            className="group card card-hover p-4 bg-gradient-to-br from-brand to-brand-600 flex flex-col items-center justify-center text-center"
+            className="group card card-hover p-6 bg-gradient-brand flex flex-col items-center justify-center text-center shadow-lg hover:shadow-glow-lg"
           >
-            <div className="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-shadow duration-150">
+            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
               +
             </div>
-            <h3 className="text-sm font-heading font-bold text-white mb-1">
+            <h3 className="text-base font-heading font-bold text-white mb-1">
               All {models.length} Models
             </h3>
-            <p className="text-xs text-white/80">
+            <p className="text-sm text-white/90">
               Browse Database
             </p>
           </Link>
@@ -254,39 +262,39 @@ export default function Home() {
 
       </div>
 
-      <section className="bg-white py-12 px-4">
+      <section className="bg-gradient-to-br from-slate-50 to-white py-16 px-4">
         <div className="container mx-auto max-w-4xl">
-        <h2 className="text-2xl font-heading font-bold text-text mb-6">How It Works</h2>
-        <ol className="space-y-4 text-muted">
-          <li className="flex gap-4">
-            <span className="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-semibold text-sm">
+        <h2 className="text-3xl font-heading font-bold text-text mb-10 text-center">How It Works</h2>
+        <ol className="space-y-6 text-muted">
+          <li className="flex gap-5 items-start">
+            <span className="flex-shrink-0 w-12 h-12 bg-gradient-brand text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md">
               1
             </span>
-            <span className="leading-relaxed">
+            <span className="leading-relaxed text-base pt-2">
               Pick your bike or enter tire size
             </span>
           </li>
-          <li className="flex gap-4">
-            <span className="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-semibold text-sm">
+          <li className="flex gap-5 items-start">
+            <span className="flex-shrink-0 w-12 h-12 bg-gradient-brand text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md">
               2
             </span>
-            <span className="leading-relaxed">
+            <span className="leading-relaxed text-base pt-2">
               Set rider, passenger, and cargo weights
             </span>
           </li>
-          <li className="flex gap-4">
-            <span className="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-semibold text-sm">
+          <li className="flex gap-5 items-start">
+            <span className="flex-shrink-0 w-12 h-12 bg-gradient-brand text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md">
               3
             </span>
-            <span className="leading-relaxed">
+            <span className="leading-relaxed text-base pt-2">
               Select surface type and tire construction
             </span>
           </li>
-          <li className="flex gap-4">
-            <span className="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-semibold text-sm">
+          <li className="flex gap-5 items-start">
+            <span className="flex-shrink-0 w-12 h-12 bg-gradient-brand text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md">
               4
             </span>
-            <span className="leading-relaxed">
+            <span className="leading-relaxed text-base pt-2">
               Get min / target / max PSI with safety checks
             </span>
           </li>

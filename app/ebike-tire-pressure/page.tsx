@@ -79,7 +79,7 @@ export default function ModelsPage() {
               placeholder="Type brand, model, or tire size..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2.5 border-2 border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 bg-white"
+              className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-all duration-200 bg-white shadow-sm hover:border-brand/30"
             />
           </div>
 
@@ -92,7 +92,7 @@ export default function ModelsPage() {
               id="type-filter"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value as ModelType | "All")}
-              className="w-full px-4 py-2.5 border-2 border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 cursor-pointer bg-white"
+              className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-all duration-200 cursor-pointer bg-white shadow-sm hover:border-brand/30"
             >
               <option value="All">All Types</option>
               {MODEL_TYPES.map((type) => (
@@ -140,16 +140,16 @@ export default function ModelsPage() {
       </div>
 
       {/* Quick Calculator CTA */}
-      <div className="card bg-gradient-to-br from-brand to-brand-hover mb-6 text-center text-white">
-        <h2 className="text-lg font-heading font-bold mb-1">Model not listed?</h2>
-        <p className="text-sm mb-4 opacity-90">
+      <div className="card bg-gradient-brand mb-6 text-center text-white shadow-lg">
+        <h2 className="text-xl font-heading font-bold mb-2">Model not listed?</h2>
+        <p className="text-sm mb-5 opacity-90">
           Universal calculator works for any e-bike
         </p>
         <Link
           href="/calculate"
-          className="inline-block px-6 py-2.5 bg-purple text-white font-semibold rounded-lg hover:bg-purple-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150"
+          className="inline-block px-8 py-3 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-xl hover:bg-white/30 hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300 shadow-md"
         >
-          Open Calculator
+          Open Calculator →
         </Link>
       </div>
 
@@ -171,8 +171,8 @@ export default function ModelsPage() {
 
       {/* Popular Searches */}
       {!searchQuery && selectedType === "All" && (
-        <div className="mb-4 p-4 bg-surface-light rounded-xl border border-slate-200">
-          <div className="text-xs text-muted uppercase tracking-wide mb-2">Popular Searches</div>
+        <div className="mb-6 p-5 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
+          <div className="text-xs text-muted uppercase tracking-wide mb-3 font-semibold">Popular Searches</div>
           <div className="flex flex-wrap gap-2">
             {[
               { query: "rad power", label: "Rad Power" },
@@ -184,7 +184,7 @@ export default function ModelsPage() {
               <button
                 key={query}
                 onClick={() => setSearchQuery(query)}
-                className="px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg hover:border-brand hover:text-brand transition-colors duration-150"
+                className="px-4 py-2 text-xs font-medium bg-white border border-slate-200 rounded-xl hover:border-brand hover:text-brand hover:shadow-md transition-all duration-200"
               >
                 {label}
               </button>

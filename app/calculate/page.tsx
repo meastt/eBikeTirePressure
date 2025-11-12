@@ -229,7 +229,7 @@ function CalculatorContent() {
           {/* Reset to defaults */}
           <button
             onClick={resetToDefaults}
-            className="w-full py-2.5 text-sm text-muted hover:text-text hover:bg-surface-light rounded-lg border border-line transition-colors"
+            className="w-full py-3 text-sm font-medium text-muted hover:text-text hover:bg-surface-light rounded-xl border border-slate-200 hover:border-brand/30 transition-all duration-200 shadow-sm hover:shadow-md"
             title="Reset all inputs to default values"
           >
             Reset to Defaults
@@ -263,17 +263,17 @@ function CalculatorContent() {
 
         {/* Floating Results Bar - Mobile Only */}
         {results && showFloatingBar && (
-          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg lg:hidden p-4 z-40 safe-area-inset-bottom">
+          <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-2xl lg:hidden p-4 z-40 safe-area-inset-bottom">
             <div className="flex justify-between items-center max-w-4xl mx-auto">
               <div>
-                <div className="text-xs text-muted">Your PSI</div>
-                <div className="text-lg font-bold text-brand">
+                <div className="text-xs text-muted font-medium">Your PSI</div>
+                <div className="text-lg font-bold bg-gradient-to-r from-brand to-brand-700 bg-clip-text text-transparent">
                   Front: {results.front.target} | Rear: {results.rear.target}
                 </div>
               </div>
               <button
                 onClick={scrollToResults}
-                className="px-4 py-2 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover transition-colors duration-150"
+                className="px-5 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow transition-all duration-300 shadow-md"
               >
                 Details →
               </button>

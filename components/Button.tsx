@@ -13,12 +13,12 @@ export default function Button({
   children,
   ...props
 }: ButtonProps) {
-  const baseClasses = 'font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2';
+  const baseClasses = 'font-semibold rounded-xl transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2';
 
   const variantClasses = {
-    primary: 'bg-brand text-white hover:bg-brand-hover shadow-sm',
-    secondary: 'bg-surface border border-slate-200 text-text hover:bg-surface-light shadow-sm',
-    ghost: 'text-brand hover:bg-brand-100',
+    primary: 'bg-gradient-brand text-white hover:shadow-glow hover:-translate-y-0.5 shadow-md',
+    secondary: 'bg-white border border-slate-200 text-text hover:bg-surface-light hover:border-brand/30 shadow-sm',
+    ghost: 'text-brand hover:bg-brand-50 hover:text-brand-700',
   };
 
   const sizeClasses = {
