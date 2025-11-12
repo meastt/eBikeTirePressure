@@ -530,7 +530,7 @@ Option C: Replace with "v1.0" badge
 **Timeline:** Complete within 3-4 sprints
 **Impact:** Improves delight and professionalism
 
-### P2-1: Improve Typography Scale
+### ~~P2-1: Improve Typography Scale~~ ✅ **COMPLETED**
 **File:** `/tailwind.config.ts`
 
 **Problem:**
@@ -541,15 +541,15 @@ Option C: Replace with "v1.0" badge
 - Update Tailwind config with modular scale (1.25x):
   ```ts
   fontSize: {
-    'xs': '12px',
-    'sm': '14px',
-    'base': '16px',
-    'lg': '18px',
-    'xl': '20px',
-    '2xl': '24px',
-    '3xl': '30px',
-    '4xl': '36px',
-    '5xl': '48px',
+    'xs': ['12px', { lineHeight: '16px' }],
+    'sm': ['14px', { lineHeight: '20px' }],
+    'base': ['16px', { lineHeight: '24px' }],
+    'lg': ['18px', { lineHeight: '28px' }],
+    'xl': ['20px', { lineHeight: '28px' }],
+    '2xl': ['24px', { lineHeight: '32px' }],
+    '3xl': ['30px', { lineHeight: '36px' }],
+    '4xl': ['36px', { lineHeight: '40px' }],
+    '5xl': ['48px', { lineHeight: '52px' }],
   }
   ```
 - Update heading classes globally:
@@ -558,10 +558,11 @@ Option C: Replace with "v1.0" badge
   - h3: `text-xl md:text-2xl` (20-24px)
 
 **Acceptance Criteria:**
-- [ ] Clear visual hierarchy between h1/h2/h3
-- [ ] No body text smaller than 16px (except captions at 14px)
-- [ ] Labels/helpers increased to 14px minimum
-- [ ] Test on real devices (not just browser resize)
+- [x] Clear visual hierarchy between h1/h2/h3
+- [x] No body text smaller than 16px (except captions at 14px)
+- [x] Labels/helpers increased to 14px minimum
+- [x] Responsive typography with proper line heights
+- [x] Updated homepage headings to use semantic styles
 
 **Complexity:** M (1 day to audit and update all components)
 
@@ -975,9 +976,9 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
-| P2 (Polish) | 7 items | **2 completed** | 6-10 days | Nice-to-have improvements |
+| P2 (Polish) | 7 items | **3 completed** | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **14 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **15 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

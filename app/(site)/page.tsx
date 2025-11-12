@@ -23,7 +23,7 @@ export default function Home() {
       {/* Hero Section with Gradient */}
       <section className="bg-gradient-subtle py-16 sm:py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text mb-4 tracking-tight">
+          <h1 className="text-text mb-4">
             Stop Guessing Your Tire Pressure
           </h1>
           <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -102,7 +102,7 @@ export default function Home() {
 
       {/* Popular Bikes Section */}
       <section id="popular-bikes" className="mb-16">
-        <h2 className="text-3xl font-heading font-bold text-text mb-3 text-center">
+        <h2 className="text-text mb-3 text-center">
           Popular Bikes
         </h2>
         <p className="text-muted text-center mb-8">Quick-start for the most popular e-bikes</p>
