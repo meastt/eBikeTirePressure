@@ -102,7 +102,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
 
       {/* Sticky Share button - Mobile only */}
       {modelSlug && (
-        <div className="lg:hidden sticky bottom-4 mt-4">
+        <div className="lg:hidden sticky bottom-4 mt-4 safe-area-inset-bottom">
           <Button
             onClick={handleShare}
             variant="primary"

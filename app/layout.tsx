@@ -79,7 +79,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-surface-light flex flex-col min-h-screen">
         <OfflineMessage />
-        <header className="sticky top-0 z-50 border-b border-line bg-white shadow-sm">
+        <header className="sticky top-0 z-50 border-b border-line bg-white shadow-sm safe-area-inset-top">
           <div className="container mx-auto px-4 py-3 max-w-7xl">
             <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">

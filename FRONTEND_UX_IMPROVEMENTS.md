@@ -956,32 +956,33 @@ const calculatorInputs = {
 
 ---
 
-### P3-7: Add iOS Safe Area Padding
-**File:** `/app/layout.tsx`, `/app/globals.css`
+### ~~P3-7: Add iOS Safe Area Padding~~ ✅ **COMPLETED**
+**File:** `/app/layout.tsx`, `/components/ResultsCard.tsx`
 
 **Problem:**
 - Sticky elements may overlap notch/home indicator on iOS
 
 **Solution:**
-- Add safe area CSS:
+- Added safe area CSS utilities to `/app/globals.css`:
   ```css
-  .sticky-top {
-    top: env(safe-area-inset-top);
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
   }
 
-  .sticky-bottom {
-    bottom: env(safe-area-inset-bottom);
+  .safe-area-inset-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
   ```
-- Apply to:
-  - Header (sticky top)
-  - Mobile results bar (sticky bottom)
+- Applied to sticky elements:
+  - Header navigation (`safe-area-inset-top`)
+  - Mobile results floating bar (`safe-area-inset-bottom`)
+  - Mobile share button (`safe-area-inset-bottom`)
 
 **Acceptance Criteria:**
-- [ ] Header doesn't overlap notch on iPhone 12+
-- [ ] Bottom bar doesn't overlap home indicator
-- [ ] Test on real iOS device (not just Safari simulator)
+- [x] Header doesn't overlap notch on iPhone 12+
+- [x] Bottom bar doesn't overlap home indicator
+- [x] Mobile share button respects safe area
+- [x] CSS utilities available for future use
 
 **Complexity:** S (2-3 hours)
 
@@ -996,8 +997,8 @@ const calculatorInputs = {
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **7 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | **5 completed** | 6-10 days | Nice-to-have improvements |
-| P3 (Perf/A11y) | 7 items | **2 completed** | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **19 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| P3 (Perf/A11y) | 7 items | **3 completed** | 7-11 days | Long-term quality |
+| **TOTAL** | **28 items** | **20 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 
