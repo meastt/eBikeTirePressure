@@ -89,7 +89,7 @@
 
 ---
 
-### P0-3: Add Contextual Help Tooltips to All Inputs
+### ~~P0-3: Add Contextual Help Tooltips to All Inputs~~ ✅ **COMPLETED**
 **Components:** All calculator input components
 
 **Problem:**
@@ -106,7 +106,7 @@
     />
   </div>
   ```
-- Use Radix UI Tooltip or Floating UI
+- Custom TooltipIcon component with hover/focus states
 - Tooltips for:
   - **Tire Construction** (tubed/tubeless/reinforced)
   - **Surface Type** (with examples: "Mixed = gravel + pavement")
@@ -115,13 +115,13 @@
   - **Cargo Front/Rear** ("Panniers, baskets, trailers")
 
 **Acceptance Criteria:**
-- [ ] All 5 input sections have tooltips
-- [ ] Tooltips open on hover (desktop) and tap (mobile)
-- [ ] Content is <50 words, uses plain language
-- [ ] Accessible via keyboard (focus + Enter)
-- [ ] `aria-describedby` links label to tooltip
+- [x] All 5 input sections have tooltips
+- [x] Tooltips open on hover (desktop) and tap (mobile)
+- [x] Content is <50 words, uses plain language
+- [x] Accessible via keyboard (focus + Enter)
+- [x] `aria-describedby` links label to tooltip
 
-**Complexity:** M (2-3 days)
+**Complexity:** M (2-3 days) | **Actual:** 1.5 hours
 **Dependencies:** Install `@radix-ui/react-tooltip` or `@floating-ui/react`
 
 ---
@@ -973,11 +973,11 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
-| P0 (Critical) | 5 items | **2 completed** | 8-13 days | Must complete first |
+| P0 (Critical) | 5 items | **3 completed** | 8-13 days | Must complete first |
 | P1 (High Impact) | 9 items | **2 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **4 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **5 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

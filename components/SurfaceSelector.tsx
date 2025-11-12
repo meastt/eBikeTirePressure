@@ -1,6 +1,7 @@
 "use client";
 
 import type { Surface } from "@/lib/types";
+import TooltipIcon from "./TooltipIcon";
 
 interface SurfaceSelectorProps {
   selected: Surface;
@@ -17,7 +18,10 @@ const SURFACES: { value: Surface; label: string; description: string }[] = [
 export default function SurfaceSelector({ selected, onSelect }: SurfaceSelectorProps) {
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-text">Riding Surface</h3>
+      <div className="flex items-center">
+        <h3 className="text-sm font-semibold text-text">Riding Surface</h3>
+        <TooltipIcon content="Select your typical riding surface. Mixed = gravel + pavement. Reduce PSI by 10-30% for dirt, sand, or snow vs pavement." />
+      </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {SURFACES.map((surface) => (
           <button

@@ -1,5 +1,7 @@
 "use client";
 
+import TooltipIcon from "./TooltipIcon";
+
 interface TrikeToggleProps {
   enabled: boolean;
   onToggle: (enabled: boolean) => void;
@@ -10,7 +12,10 @@ export default function TrikeToggle({ enabled, onToggle }: TrikeToggleProps) {
     <div className="card p-4">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <div className="text-sm font-semibold text-text mb-1">Trike Mode</div>
+          <div className="flex items-center mb-1">
+            <div className="text-sm font-semibold text-text">Trike Mode</div>
+            <TooltipIcon content="Riding a three-wheeled bike? Enable this to split the rear axle load across two wheels instead of one." />
+          </div>
           <div className="text-xs text-muted mb-3">
             3-wheel load split • Rear divides between 2 wheels
           </div>

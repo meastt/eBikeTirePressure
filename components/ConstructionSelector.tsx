@@ -1,6 +1,7 @@
 "use client";
 
 import type { Construction } from "@/lib/types";
+import TooltipIcon from "./TooltipIcon";
 
 interface ConstructionSelectorProps {
   selected: Construction;
@@ -16,7 +17,10 @@ const CONSTRUCTIONS: { value: Construction; label: string; description: string }
 export default function ConstructionSelector({ selected, onSelect }: ConstructionSelectorProps) {
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-text">Tire Construction</h3>
+      <div className="flex items-center">
+        <h3 className="text-sm font-semibold text-text">Tire Construction</h3>
+        <TooltipIcon content="Tubed: Inner tube inside tire (most common). Tubeless: Sealant instead of tube (can run lower PSI). Reinforced: Extra-thick casing for cargo bikes." />
+      </div>
       <div className="grid grid-cols-3 gap-3">
         {CONSTRUCTIONS.map((construction) => (
           <button
