@@ -85,16 +85,16 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
           <div className="flex items-start gap-3">
             <div className="text-warn text-xl">⚠️</div>
             <div className="space-y-1">
-              <div className="text-sm font-semibold text-warn-dark">Warnings</div>
+              <div className="text-sm font-semibold text-warn-dark">Safety Warnings</div>
               <ul className="text-sm text-warn-dark space-y-1">
                 {warnings.lowPinchRisk && (
-                  <li>• Pressure below tire minimum - pinch-flat risk</li>
+                  <li>• Pressure below tire minimum — increased risk of pinch flats and rim damage</li>
                 )}
                 {warnings.squirmRisk && (
-                  <li>• Very low pressure may cause tire squirm on turns</li>
+                  <li>• Low pressure may cause tire instability during cornering and braking</li>
                 )}
                 {warnings.exceedsSidewallMax && (
-                  <li>• Recommended max exceeds tire sidewall limit - use sidewall max instead</li>
+                  <li>• Calculated pressure exceeds tire rating — never exceed sidewall maximum PSI</li>
                 )}
               </ul>
             </div>
@@ -117,8 +117,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
       {/* Safety reminder */}
       <div className="p-4 bg-brand-50 border border-brand-200 rounded-lg">
         <div className="text-sm text-brand-dark">
-          <strong>Safety reminder:</strong> Always check tire sidewall for max PSI. Use a calibrated
-          gauge. Check pressure when tires are cold.
+          <strong>Critical Safety:</strong> Never exceed your tire&apos;s sidewall maximum PSI rating. Always use a calibrated pressure gauge and check when tires are cold (before riding). These recommendations are guidelines—adjust based on your comfort and handling preferences while staying within tire limits.
         </div>
       </div>
     </div>

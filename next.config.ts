@@ -15,6 +15,12 @@ const withPWA = require("next-pwa")({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Performance optimizations
+  compress: true,
+  // Generate optimized static pages for better Core Web Vitals
+  experimental: {
+    optimizePackageImports: ['@/components', '@/lib'],
+  },
   // OPTIONAL: uncomment if you want static export for Capacitor later
   // output: 'export',
 };

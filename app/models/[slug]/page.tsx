@@ -193,13 +193,45 @@ export default async function ModelPage({
           </div>
         </div>
 
+        {/* Related Models - Internal linking for SEO */}
+        <div className="mt-8 p-6 bg-surface rounded-2xl">
+          <h2 className="text-xl font-bold text-text mb-4">Related E-Bike Models</h2>
+          <div className="grid sm:grid-cols-2 gap-4 mb-4">
+            {models
+              .filter((m) => m.slug !== model.slug)
+              .slice(0, 4)
+              .map((relatedModel) => (
+                <Link
+                  key={relatedModel.slug}
+                  href={`/models/${relatedModel.slug}`}
+                  className="group p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-line hover:border-brand-200"
+                >
+                  <div className="text-sm font-semibold text-text group-hover:text-brand mb-1">
+                    {relatedModel.brand} {relatedModel.model}
+                  </div>
+                  <div className="text-xs text-muted">
+                    {relatedModel.stockTire.size} • {relatedModel.stockTire.minPSI}-{relatedModel.stockTire.maxPSI} PSI
+                  </div>
+                </Link>
+              ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/ebike-tire-pressure"
+              className="text-brand hover:text-brand-600 font-medium transition-colors text-sm"
+            >
+              View All {models.length} E-Bike Models →
+            </Link>
+          </div>
+        </div>
+
         {/* Back to directory */}
         <div className="mt-8 text-center">
           <Link
-            href="/ebike-tire-pressure"
+            href="/"
             className="text-brand hover:text-brand-600 font-medium transition-colors"
           >
-            ← View All E-Bike Models
+            ← Back to Home
           </Link>
         </div>
       </div>

@@ -33,6 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to analytics domains for performance */}
+        <link rel="preconnect" href="https://plausible.io" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
+        {/* Plausible Analytics */}
+        <script
+          defer
+          data-domain="ebikepsi.com"
+          src="https://plausible.io/js/script.js"
+        />
+        
         {/* Google Analytics 4 */}
         <script
           async
@@ -83,11 +94,11 @@ export default function RootLayout({
         <main>{children}</main>
         <footer className="border-t border-line bg-surface mt-12">
           <div className="container mx-auto px-4 py-8 max-w-7xl">
-            <p className="text-sm text-muted text-center">
-              Never exceed tire sidewall max. Check with a calibrated gauge.
+            <p className="text-sm text-muted text-center max-w-3xl mx-auto">
+              <strong>Safety Disclaimer:</strong> All pressure recommendations are guidelines only. Never exceed your tire&apos;s maximum PSI rating printed on the sidewall. Always verify pressure with a calibrated gauge when tires are cold. Adjust based on your riding conditions and comfort while staying within manufacturer specifications.
             </p>
-            <p className="text-xs text-muted text-center mt-2">
-              © {new Date().getFullYear()} E-Bike PSI. All rights reserved.
+            <p className="text-xs text-muted text-center mt-4">
+              © {new Date().getFullYear()} E-Bike PSI Calculator. All rights reserved.
             </p>
           </div>
         </footer>

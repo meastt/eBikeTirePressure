@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ModelPreset } from "@/lib/types";
+import modelsData from "@/data/models.json";
+
+const models = modelsData as ModelPreset[];
 
 export const metadata: Metadata = {
   title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations",
@@ -59,13 +63,110 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="text-center">
+      <section className="text-center mb-16">
         <Link
           href="/calculate"
           className="inline-block px-8 py-4 bg-brand text-white text-lg font-semibold rounded-xl hover:bg-brand-600 transition-colors shadow-card"
         >
           Start Calculating
         </Link>
+      </section>
+
+      {/* Featured E-Bike Models Section - Internal Links for SEO */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-text mb-6 text-center">
+          Popular E-Bike Tire Pressure Guides
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <Link
+            href="/models/rad-power-radrunner-plus"
+            className="group p-6 bg-white rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-transparent hover:border-brand-200"
+          >
+            <h3 className="text-lg font-bold text-text group-hover:text-brand mb-2">
+              Rad Power RadRunner Plus
+            </h3>
+            <p className="text-sm text-muted mb-3">
+              20x3.3&quot; tires • 20-30 PSI range • Complete pressure guide for this popular utility e-bike
+            </p>
+            <span className="text-sm text-brand font-medium group-hover:underline">
+              View PSI Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/models/aventon-aventure-2"
+            className="group p-6 bg-white rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-transparent hover:border-brand-200"
+          >
+            <h3 className="text-lg font-bold text-text group-hover:text-brand mb-2">
+              Aventon Aventure.2
+            </h3>
+            <p className="text-sm text-muted mb-3">
+              26x4.0&quot; fat tires • 15-25 PSI range • Tire pressure recommendations for fat tire adventures
+            </p>
+            <span className="text-sm text-brand font-medium group-hover:underline">
+              View PSI Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/models/tern-gsd-s10"
+            className="group p-6 bg-white rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-transparent hover:border-brand-200"
+          >
+            <h3 className="text-lg font-bold text-text group-hover:text-brand mb-2">
+              Tern GSD S10 Cargo
+            </h3>
+            <p className="text-sm text-muted mb-3">
+              20x2.4&quot; reinforced • 35-50 PSI range • Cargo-specific pressure calculations with load distribution
+            </p>
+            <span className="text-sm text-brand font-medium group-hover:underline">
+              View PSI Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/models/lectric-xp-3"
+            className="group p-6 bg-white rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-transparent hover:border-brand-200"
+          >
+            <h3 className="text-lg font-bold text-text group-hover:text-brand mb-2">
+              Lectric XP 3.0
+            </h3>
+            <p className="text-sm text-muted mb-3">
+              20x3.0&quot; tires • 20-30 PSI range • Folding e-bike tire pressure optimization guide
+            </p>
+            <span className="text-sm text-brand font-medium group-hover:underline">
+              View PSI Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/models/trek-allant-plus-7"
+            className="group p-6 bg-white rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-transparent hover:border-brand-200"
+          >
+            <h3 className="text-lg font-bold text-text group-hover:text-brand mb-2">
+              Trek Allant+ 7
+            </h3>
+            <p className="text-sm text-muted mb-3">
+              27.5x2.4&quot; tires • 30-50 PSI range • Commuter e-bike tire pressure recommendations
+            </p>
+            <span className="text-sm text-brand font-medium group-hover:underline">
+              View PSI Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/ebike-tire-pressure"
+            className="group p-6 bg-brand-50 rounded-2xl shadow-card hover:shadow-lg transition-shadow border-2 border-brand-200 hover:border-brand flex items-center justify-center"
+          >
+            <div className="text-center">
+              <h3 className="text-lg font-bold text-brand mb-2">
+                View All {models.length} Models
+              </h3>
+              <span className="text-sm text-brand-dark font-medium group-hover:underline">
+                Browse Complete Guide →
+              </span>
+            </div>
+          </Link>
+        </div>
       </section>
 
       <section className="mt-16 border-t border-line pt-8">
