@@ -10,42 +10,38 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#1E88E5',
-          50: '#E3F2FD',
-          100: '#BBDEFB',
-          200: '#90CAF9',
-          600: '#1565C0',
-          dark: '#0D47A1',
+          DEFAULT: '#2B59C3',
+          600: '#2348A0',
+          100: '#E8F0FF',
         },
-        surface: '#F7F8FA',
+        accent: {
+          DEFAULT: '#FDC500',
+        },
+        surface: {
+          light: '#F8FAFC',
+          dark: '#E5E9F0',
+        },
+        text: {
+          DEFAULT: '#1E293B',
+          muted: '#64748B',
+        },
+        ok: '#16A34A',
+        warn: '#F59E0B',
+        danger: '#DC2626',
         line: '#E2E8F0',
-        success: {
-          DEFAULT: '#16A34A',
-          50: '#F0FDF4',
-          dark: '#15803D',
-        },
-        warn: {
-          DEFAULT: '#F59E0B',
-          50: '#FFFBEB',
-          dark: '#B45309',
-        },
-        danger: {
-          DEFAULT: '#DC2626',
-          50: '#FEF2F2',
-          dark: '#991B1B',
-        },
-        info: '#0284C7',
-        text: '#0F172A',
-        muted: '#475569',
-        bg: '#0B0D0F',
       },
       boxShadow: {
-        card: '0 4px 20px rgba(15,23,42,0.06)'
+        card: '0 8px 24px rgba(15,23,42,0.06)',
+        hover: '0 10px 30px rgba(15,23,42,0.10)',
       },
       borderRadius: {
         xl: '14px',
-        '2xl': '18px'
-      }
+        '2xl': '18px',
+      },
+      fontFamily: {
+        heading: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],

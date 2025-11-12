@@ -3,6 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Enhanced focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2;
+  }
+  
+  /* Ensure buttons and links have proper focus */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2;
+  }
+  
+  /* Minimum touch target size for mobile accessibility */
+  button,
+  a[role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@layer base {
   body {
     @apply text-text bg-white antialiased;
   }

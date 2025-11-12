@@ -75,21 +75,21 @@ function CalculatorContent() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-3xl font-bold text-text mb-6 tracking-tight">
-        E-Bike Tire Pressure Calculator
+      <h1 className="text-3xl font-heading font-bold text-text mb-6 tracking-tight">
+        PSI Calculator
       </h1>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left column: Inputs */}
         <div className="space-y-6">
           {/* Model selector */}
-          <div className="p-6 bg-white rounded-2xl shadow-card">
+          <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
             <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} />
           </div>
 
           {/* Weight sliders */}
           {selectedModel && (
-            <div className="p-6 bg-white rounded-2xl shadow-card">
+            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
               <WeightSliders
                 riderLbs={riderLbs}
                 passengerLbs={passengerLbs}
@@ -105,14 +105,14 @@ function CalculatorContent() {
 
           {/* Surface selector */}
           {selectedModel && (
-            <div className="p-6 bg-white rounded-2xl shadow-card">
+            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
               <SurfaceSelector selected={surface} onSelect={setSurface} />
             </div>
           )}
 
           {/* Construction selector */}
           {selectedModel && (
-            <div className="p-6 bg-white rounded-2xl shadow-card">
+            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-card">
               <ConstructionSelector selected={construction} onSelect={setConstruction} />
             </div>
           )}

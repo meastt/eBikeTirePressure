@@ -12,7 +12,7 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
   return (
     <div className="space-y-2">
       <label htmlFor="bike-preset" className="block text-sm font-semibold text-text">
-        Select Your E-Bike
+        Bike Model
       </label>
       <select
         id="bike-preset"
@@ -33,22 +33,22 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
         ))}
       </select>
       {selected && (
-        <div className="mt-3 p-3 bg-surface rounded-lg text-sm text-muted">
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <span className="font-medium text-text">Tire:</span> {selected.stockTire.size}
-            </div>
-            <div>
-              <span className="font-medium text-text">Bike Weight:</span> {selected.bikeWeightLbs} lbs
-            </div>
-            <div>
-              <span className="font-medium text-text">PSI Range:</span> {selected.stockTire.minPSI}-
+        <div className="mt-3 p-3 bg-surface-light rounded-lg text-xs text-text-muted">
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            <span>
+              <strong className="text-text">Tire:</strong> {selected.stockTire.size}
+            </span>
+            <span>
+              <strong className="text-text">Weight:</strong> {selected.bikeWeightLbs} lbs
+            </span>
+            <span>
+              <strong className="text-text">PSI:</strong> {selected.stockTire.minPSI}–
               {selected.stockTire.maxPSI}
-            </div>
-            <div>
-              <span className="font-medium text-text">Casing:</span>{" "}
+            </span>
+            <span>
+              <strong className="text-text">Casing:</strong>{" "}
               {selected.stockTire.casing === "reinforced" ? "Reinforced" : "Standard"}
-            </div>
+            </span>
           </div>
         </div>
       )}

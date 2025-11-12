@@ -46,8 +46,8 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
   };
   if (!results) {
     return (
-      <div className="p-8 bg-surface rounded-2xl shadow-card text-center">
-        <p className="text-muted">Select a bike model to see PSI recommendations</p>
+      <div className="p-8 bg-gradient-to-br from-white to-surface-light border border-slate-200 rounded-2xl shadow-card text-center">
+        <p className="text-text-muted">Select a bike model to see PSI recommendations</p>
       </div>
     );
   }
@@ -55,12 +55,15 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
   const { front, rear, warnings, notes } = results;
   const hasWarnings = Object.values(warnings).some((w) => w);
 
+  // Calculate distance from sidewall max for warnings
+  const rearMaxDistance = sidewallMax - rear.max;
+  
   return (
     <div className="space-y-6">
-      {/* Results header */}
-      <div className="p-6 bg-white rounded-2xl shadow-card space-y-6">
+      {/* Results header with gradient */}
+      <div className="p-6 bg-gradient-to-br from-white to-surface-light border border-slate-200 rounded-2xl shadow-card space-y-8">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-text">Recommended Tire Pressure</h2>
+          <h2 className="text-xl font-heading font-bold text-text">Recommended PSI</h2>
           {modelSlug && (
             <button
               onClick={handleShare}
@@ -79,34 +82,54 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
         <SafetyBand result={rear} sidewallMax={sidewallMax} label="Rear Tire" />
       </div>
 
-      {/* Warnings */}
+      {/* Warnings - Color chip style */}
       {hasWarnings && (
-        <div className="p-4 bg-warn-50 border-l-4 border-warn rounded-lg">
-          <div className="flex items-start gap-3">
-            <div className="text-warn text-xl">⚠️</div>
-            <div className="space-y-1">
-              <div className="text-sm font-semibold text-warn-dark">Safety Warnings</div>
-              <ul className="text-sm text-warn-dark space-y-1">
-                {warnings.lowPinchRisk && (
-                  <li>• Pressure below tire minimum — increased risk of pinch flats and rim damage</li>
-                )}
-                {warnings.squirmRisk && (
-                  <li>• Low pressure may cause tire instability during cornering and braking</li>
-                )}
-                {warnings.exceedsSidewallMax && (
-                  <li>• Calculated pressure exceeds tire rating — never exceed sidewall maximum PSI</li>
-                )}
-              </ul>
+        <div className="space-y-3">
+          {warnings.lowPinchRisk && (
+            <div className="flex items-center gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
+              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
+                !
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-danger">Below tire minimum</div>
+                <div className="text-xs text-text-muted">Risk of pinch flats and rim damage</div>
+              </div>
             </div>
-          </div>
+          )}
+          {warnings.squirmRisk && (
+            <div className="flex items-center gap-3 p-3 bg-warn/10 border-l-4 border-warn rounded-lg">
+              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-warn text-white rounded-full text-sm font-bold">
+                ⚠
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-warn">Low pressure</div>
+                <div className="text-xs text-text-muted">May cause instability during cornering</div>
+              </div>
+            </div>
+          )}
+          {warnings.exceedsSidewallMax && (
+            <div className="flex items-center gap-3 p-3 bg-danger/10 border-l-4 border-danger rounded-lg">
+              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-danger text-white rounded-full text-sm font-bold">
+                ✕
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-danger">
+                  {rearMaxDistance <= 1 && rearMaxDistance >= 0 
+                    ? `${rearMaxDistance} PSI from sidewall max`
+                    : 'Exceeds sidewall max'}
+                </div>
+                <div className="text-xs text-text-muted">Never exceed tire rating</div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* Notes */}
       {notes.length > 0 && (
-        <div className="p-4 bg-surface rounded-lg">
-          <div className="text-sm font-semibold text-text mb-2">Calculation Notes</div>
-          <ul className="text-sm text-muted space-y-1">
+        <div className="p-4 bg-surface-light/50 rounded-lg border border-slate-200">
+          <div className="text-sm font-semibold text-text mb-2">Notes</div>
+          <ul className="text-sm text-text-muted space-y-1">
             {notes.map((note, i) => (
               <li key={i}>• {note}</li>
             ))}
@@ -114,10 +137,10 @@ export default function ResultsCard({ results, sidewallMax, modelSlug }: Results
         </div>
       )}
 
-      {/* Safety reminder */}
-      <div className="p-4 bg-brand-50 border border-brand-200 rounded-lg">
-        <div className="text-sm text-brand-dark">
-          <strong>Critical Safety:</strong> Never exceed your tire&apos;s sidewall maximum PSI rating. Always use a calibrated pressure gauge and check when tires are cold (before riding). These recommendations are guidelines—adjust based on your comfort and handling preferences while staying within tire limits.
+      {/* Safety reminder - Concise */}
+      <div className="p-4 bg-gradient-to-r from-brand/10 to-brand/5 border border-brand/20 rounded-lg">
+        <div className="text-sm text-text">
+          <strong className="text-brand">Safety:</strong> Never exceed sidewall max. Use calibrated gauge. Check when cold. Adjust for comfort within limits.
         </div>
       </div>
     </div>

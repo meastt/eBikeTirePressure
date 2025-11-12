@@ -17,19 +17,19 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
   const maxPercent = (max / sidewallMax) * 100;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       <div className="flex items-baseline justify-between">
         <span className="text-sm font-semibold text-text">{label}</span>
         <div className="text-right">
-          <div className="text-2xl font-bold text-brand">{target} PSI</div>
-          <div className="text-xs text-muted">
+          <div className="text-3xl font-heading font-bold text-brand">{target} PSI</div>
+          <div className="text-xs text-text-muted">
             Range: {min}–{max} PSI
           </div>
         </div>
       </div>
 
-      {/* Visual safety band */}
-      <div className="relative h-12 bg-surface rounded-lg overflow-hidden">
+      {/* Visual safety band with border and depth */}
+      <div className="relative h-14 bg-gradient-to-b from-surface-light to-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
         {/* Low zone (below min) - Danger */}
         <div
           className="absolute top-0 bottom-0 bg-danger opacity-20"
@@ -57,34 +57,50 @@ export default function SafetyBand({ result, sidewallMax, label }: SafetyBandPro
           }}
         />
 
-        {/* Min marker */}
+        {/* Min marker with tick */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-success"
+          className="absolute top-0 bottom-0 w-1 bg-ok"
           style={{ left: `${minPercent}%` }}
         >
-          <div className="absolute -top-1 -left-2 text-xs font-medium text-success">{min}</div>
+          <div className="absolute top-1 left-1/2 -translate-x-1/2">
+            <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
+              {min}
+            </div>
+          </div>
+          {/* Tick mark */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok" />
         </div>
 
-        {/* Target marker (prominent) */}
+        {/* Target marker (prominent with pill) */}
         <div
-          className="absolute top-0 bottom-0 w-1 bg-brand shadow-sm"
+          className="absolute top-0 bottom-0 w-1.5 bg-brand shadow-md"
           style={{ left: `${targetPercent}%` }}
         >
-          <div className="absolute -bottom-5 -left-3 text-xs font-bold text-brand whitespace-nowrap">
-            ▲ {target}
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+            <div className="px-3 py-1 bg-brand text-white text-sm font-bold rounded-lg shadow-md whitespace-nowrap">
+              ▲ {target}
+            </div>
           </div>
+          {/* Tick mark */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-brand" />
         </div>
 
-        {/* Max marker */}
+        {/* Max marker with tick */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-success"
+          className="absolute top-0 bottom-0 w-1 bg-ok"
           style={{ left: `${maxPercent}%` }}
         >
-          <div className="absolute -top-1 -right-2 text-xs font-medium text-success">{max}</div>
+          <div className="absolute top-1 left-1/2 -translate-x-1/2">
+            <div className="px-2 py-0.5 bg-ok text-white text-xs font-semibold rounded shadow-sm whitespace-nowrap">
+              {max}
+            </div>
+          </div>
+          {/* Tick mark */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-ok" />
         </div>
 
-        {/* Sidewall max marker */}
-        <div className="absolute -top-1 right-0 text-xs font-medium text-muted">
+        {/* Sidewall max label */}
+        <div className="absolute bottom-1 right-2 px-2 py-0.5 bg-slate-100 text-text-muted text-xs font-medium rounded shadow-sm">
           {sidewallMax} max
         </div>
       </div>
