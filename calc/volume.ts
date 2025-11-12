@@ -12,8 +12,8 @@
 export function parseTireSize(size: string): { diameterInches: number; widthInches: number } {
   const normalized = size.toLowerCase().replace(/\s/g, "");
 
-  // Handle format: "20x4.0" or "26x3.0"
-  const standardMatch = normalized.match(/^(\d+)x([\d.]+)$/);
+  // Handle format: "20x4.0", "26x3.0", or "27.5x2.4" (with decimal diameter)
+  const standardMatch = normalized.match(/^([\d.]+)x([\d.]+)$/);
   if (standardMatch) {
     return {
       diameterInches: parseFloat(standardMatch[1]),
