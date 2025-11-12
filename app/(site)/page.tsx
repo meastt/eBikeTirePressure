@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations",
+  description:
+    "Calculate optimal tire pressure for your e-bike based on rider weight, cargo, and terrain. Supports 20+ popular models with real-time PSI calculations and safety warnings.",
+  openGraph: {
+    title: "E-Bike Tire Pressure Calculator",
+    description: "Professional PSI recommendations for fat tire, cargo, and standard e-bikes.",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
