@@ -297,7 +297,7 @@ describe("PSI Calculator Engine", () => {
       const result = calculatePSI(heavyLoad);
 
       // Should clamp to sidewall max
-      expect(result.rear.max).toBeLessThanOrEqual(aventure.stockTire.maxPSI);
+      expect(result.rear.max).toBeLessThanOrEqual(aventure.stockTire.maxPSI!);
     });
 
     it("should detect low pinch risk", () => {
@@ -311,7 +311,7 @@ describe("PSI Calculator Engine", () => {
       const result = calculatePSI(lightPressure);
 
       // With extreme low pressure adjustments, might trigger warning
-      if (result.front.target < ternGSD.stockTire.minPSI || result.rear.target < ternGSD.stockTire.minPSI) {
+      if (result.front.target < ternGSD.stockTire.minPSI! || result.rear.target < ternGSD.stockTire.minPSI!) {
         expect(result.warnings.lowPinchRisk).toBe(true);
       }
     });
@@ -365,7 +365,7 @@ describe("PSI Calculator Engine", () => {
 
       expect(result.front.target).toBeGreaterThan(0);
       expect(result.rear.target).toBeGreaterThan(0);
-      expect(result.rear.max).toBeLessThanOrEqual(ternGSD.stockTire.maxPSI);
+      expect(result.rear.max).toBeLessThanOrEqual(ternGSD.stockTire.maxPSI!);
     });
 
     it("should handle zero cargo/passenger", () => {

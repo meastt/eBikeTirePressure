@@ -7,8 +7,8 @@ export interface ModelPreset {
   bikeWeightLbs: number;
   stockTire: {
     size: string;
-    minPSI: number;
-    maxPSI: number;
+    minPSI?: number; // Optional - will use defaults based on tire size if not specified
+    maxPSI?: number; // Optional - will use defaults based on tire size if not specified
     casing: "standard" | "reinforced";
   };
   axleBias: {

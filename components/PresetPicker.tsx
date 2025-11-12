@@ -1,6 +1,7 @@
 "use client";
 
 import type { ModelPreset } from "@/lib/types";
+import { getEffectivePSI } from "@/lib/tirePSIDefaults";
 
 interface PresetPickerProps {
   models: ModelPreset[];
@@ -44,8 +45,29 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
               <div className="font-semibold text-text">{selected.bikeWeightLbs} lbs</div>
             </div>
             <div>
-              <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Sidewall PSI</div>
-              <div className="font-semibold text-text">{selected.stockTire.minPSI}–{selected.stockTire.maxPSI}</div>
+              <div className="text-xs text-muted uppercase tracking-wide mb-0.5">
+                Sidewall PSI
+                {(() => {
+                  const psi = getEffectivePSI(
+                    selected.stockTire.size,
+                    selected.stockTire.minPSI,
+                    selected.stockTire.maxPSI
+                  );
+                  return psi.isDefault ? (
+                    <span className="text-[10px] text-warn ml-1" title="Using standard range">*</span>
+                  ) : null;
+                })()}
+              </div>
+              <div className="font-semibold text-text">
+                {(() => {
+                  const psi = getEffectivePSI(
+                    selected.stockTire.size,
+                    selected.stockTire.minPSI,
+                    selected.stockTire.maxPSI
+                  );
+                  return `${psi.min}–${psi.max}`;
+                })()}
+              </div>
             </div>
             <div>
               <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Casing</div>
@@ -54,6 +76,18 @@ export default function PresetPicker({ models, selected, onSelect }: PresetPicke
               </div>
             </div>
           </div>
+          {(() => {
+            const psi = getEffectivePSI(
+              selected.stockTire.size,
+              selected.stockTire.minPSI,
+              selected.stockTire.maxPSI
+            );
+            return psi.isDefault ? (
+              <div className="mt-3 pt-3 border-t border-slate-200 text-xs text-muted">
+                * Manufacturer PSI specs not available—using standard range for {selected.stockTire.size} tires
+              </div>
+            ) : null;
+          })()}
         </div>
       )}
     </div>

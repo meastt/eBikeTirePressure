@@ -19,6 +19,7 @@ import type {
   Construction,
 } from "@/lib/types";
 import { getTireInfo } from "./volume";
+import { getEffectivePSI } from "@/lib/tirePSIDefaults";
 
 /**
  * Surface adjustment factors (as percentages)
@@ -143,12 +144,13 @@ function calculateRange(
 function detectWarnings(
   front: AxleResult,
   rear: AxleResult,
-  inputs: CalculatorInputs
+  inputs: CalculatorInputs,
+  psiLimits: { min: number; max: number; isDefault: boolean }
 ): CalculatorWarnings {
   const warnings: CalculatorWarnings = {};
 
   // Pinch-flat risk: target PSI below tire's min
-  if (front.target < inputs.bike.stockTire.minPSI || rear.target < inputs.bike.stockTire.minPSI) {
+  if (front.target < psiLimits.min || rear.target < psiLimits.min) {
     warnings.lowPinchRisk = true;
   }
 
@@ -158,7 +160,7 @@ function detectWarnings(
   }
 
   // Exceeds sidewall max
-  if (front.max > inputs.bike.stockTire.maxPSI || rear.max > inputs.bike.stockTire.maxPSI) {
+  if (front.max > psiLimits.max || rear.max > psiLimits.max) {
     warnings.exceedsSidewallMax = true;
   }
 
@@ -209,6 +211,13 @@ function generateNotes(inputs: CalculatorInputs, front: AxleResult, rear: AxleRe
  * Pure function: same inputs always produce same outputs
  */
 export function calculatePSI(inputs: CalculatorInputs): CalculatorOutput {
+  // Get effective PSI limits (use defaults if manufacturer didn't specify)
+  const psiLimits = getEffectivePSI(
+    inputs.bike.stockTire.size,
+    inputs.bike.stockTire.minPSI,
+    inputs.bike.stockTire.maxPSI
+  );
+
   // Calculate load on each axle
   const loads = calculateAxleLoads(inputs);
 
@@ -220,23 +229,28 @@ export function calculatePSI(inputs: CalculatorInputs): CalculatorOutput {
   const frontTargetPSI = applyAdjustments(frontBasePSI, inputs.surface, inputs.construction);
   const rearTargetPSI = applyAdjustments(rearBasePSI, inputs.surface, inputs.construction);
 
-  // Calculate min/target/max ranges
+  // Calculate min/target/max ranges using effective PSI limits
   const front = calculateRange(
     frontTargetPSI, 
-    inputs.bike.stockTire.minPSI, 
-    inputs.bike.stockTire.maxPSI
+    psiLimits.min, 
+    psiLimits.max
   );
   const rear = calculateRange(
     rearTargetPSI, 
-    inputs.bike.stockTire.minPSI, 
-    inputs.bike.stockTire.maxPSI
+    psiLimits.min, 
+    psiLimits.max
   );
 
-  // Detect warnings
-  const warnings = detectWarnings(front, rear, inputs);
+  // Detect warnings (use effective PSI limits)
+  const warnings = detectWarnings(front, rear, inputs, psiLimits);
 
   // Generate notes
   const notes = generateNotes(inputs, front, rear);
+
+  // Add note if using default PSI values
+  if (psiLimits.isDefault) {
+    notes.unshift("Using standard PSI range (manufacturer specs not available)");
+  }
 
   return {
     front,
