@@ -191,6 +191,14 @@ export default async function ModelPage({
               </div>
             ))}
           </div>
+          <div className="mt-6 pt-4 border-t border-line text-center">
+            <Link
+              href="/faq"
+              className="text-brand hover:text-brand-600 font-medium transition-colors text-sm"
+            >
+              View All FAQs →
+            </Link>
+          </div>
         </div>
 
         {/* Related Models - Internal linking for SEO */}

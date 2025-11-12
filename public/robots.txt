@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://ebike-psi.com
+Host: https://ebikepsi.com
 
 # Sitemaps
-Sitemap: https://ebike-psi.com/sitemap.xml
+Sitemap: https://ebikepsi.com/sitemap.xml

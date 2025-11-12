@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Inter, Poppins } from "next/font/google";
 import OfflineMessage from "@/components/OfflineMessage";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -76,42 +77,45 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-body bg-surface-light">
+      <body className="font-body bg-surface-light flex flex-col min-h-screen">
         <OfflineMessage />
         <header className="border-b border-line bg-white shadow-sm">
           <div className="container mx-auto px-4 py-3 max-w-7xl">
-            <nav className="flex items-center justify-between">
+            <nav className="flex items-center justify-between" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
                 <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority />
               </Link>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <Link
                   href="/calculate"
-                  className="px-5 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-600 hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-3 sm:px-5 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-600 hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base"
                 >
                   Calculate
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="px-5 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-200"
+                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-200 text-sm sm:text-base"
                 >
                   Models
+                </Link>
+                <Link
+                  href="/blog"
+                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-200 text-sm sm:text-base"
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="/faq"
+                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-200 text-sm sm:text-base"
+                >
+                  FAQ
                 </Link>
               </div>
             </nav>
           </div>
         </header>
-        <main>{children}</main>
-        <footer className="border-t border-line bg-white mt-12">
-          <div className="container mx-auto px-4 py-8 max-w-7xl">
-            <p className="text-sm text-muted text-center max-w-3xl mx-auto">
-              <strong>Safety Disclaimer:</strong> All pressure recommendations are guidelines only. Never exceed your tire&apos;s maximum PSI rating printed on the sidewall. Always verify pressure with a calibrated gauge when tires are cold. Adjust based on your riding conditions and comfort while staying within manufacturer specifications.
-            </p>
-            <p className="text-xs text-muted text-center mt-4">
-              © {new Date().getFullYear()} E-Bike PSI Calculator. All rights reserved.
-            </p>
-          </div>
-        </footer>
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
