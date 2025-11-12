@@ -44,7 +44,7 @@
 @layer utilities {
   /* Utility for mechanic-grade cards */
   .card {
-    @apply bg-white border border-slate-200 rounded-2xl shadow-card;
+    @apply bg-white border border-slate-200 rounded-2xl shadow-card p-6 md:p-8;
   }
 
   .card-hover {

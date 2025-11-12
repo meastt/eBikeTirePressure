@@ -72,7 +72,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
   return (
     <div className="space-y-4">
       {/* Results header with gradient */}
-      <div className="card p-6 space-y-8">
+      <div className="card space-y-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-heading font-bold text-text">Your PSI</h2>
         </div>

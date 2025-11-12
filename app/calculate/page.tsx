@@ -137,39 +137,39 @@ function CalculatorContent() {
         {/* Left column: Inputs */}
         <div className="space-y-4 md:space-y-6">
           {/* Model selector */}
-          <div className="card p-6">
-            <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} />
+        <div className="card">
+          <PresetPicker models={models} selected={selectedModel} onSelect={setSelectedModel} />
+        </div>
+
+        {/* Weight sliders */}
+        {selectedModel && (
+          <div className="card">
+            <WeightSliders
+              riderLbs={riderLbs}
+              passengerLbs={passengerLbs}
+              cargoFrontLbs={cargoFrontLbs}
+              cargoRearLbs={cargoRearLbs}
+              onRiderChange={setRiderLbs}
+              onPassengerChange={setPassengerLbs}
+              onCargoFrontChange={setCargoFrontLbs}
+              onCargoRearChange={setCargoRearLbs}
+            />
           </div>
+        )}
 
-          {/* Weight sliders */}
-          {selectedModel && (
-            <div className="card p-6">
-              <WeightSliders
-                riderLbs={riderLbs}
-                passengerLbs={passengerLbs}
-                cargoFrontLbs={cargoFrontLbs}
-                cargoRearLbs={cargoRearLbs}
-                onRiderChange={setRiderLbs}
-                onPassengerChange={setPassengerLbs}
-                onCargoFrontChange={setCargoFrontLbs}
-                onCargoRearChange={setCargoRearLbs}
-              />
-            </div>
-          )}
+        {/* Surface selector */}
+        {selectedModel && (
+          <div className="card">
+            <SurfaceSelector selected={surface} onSelect={setSurface} />
+          </div>
+        )}
 
-          {/* Surface selector */}
-          {selectedModel && (
-            <div className="card p-6">
-              <SurfaceSelector selected={surface} onSelect={setSurface} />
-            </div>
-          )}
-
-          {/* Construction selector */}
-          {selectedModel && (
-            <div className="card p-6">
-              <ConstructionSelector selected={construction} onSelect={setConstruction} />
-            </div>
-          )}
+        {/* Construction selector */}
+        {selectedModel && (
+          <div className="card">
+            <ConstructionSelector selected={construction} onSelect={setConstruction} />
+          </div>
+        )}
 
           {/* Trike toggle */}
           {selectedModel && <TrikeToggle enabled={trikeMode} onToggle={setTrikeMode} />}

@@ -44,7 +44,7 @@ export default function ModelsPage() {
       </div>
 
       {/* Search and Filter Bar */}
-      <div className="card p-6 mb-6">
+      <div className="card mb-6">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
@@ -118,7 +118,7 @@ export default function ModelsPage() {
       </div>
 
       {/* Quick Calculator CTA */}
-      <div className="card p-6 bg-gradient-to-br from-brand to-brand-hover mb-6 text-center text-white">
+      <div className="card bg-gradient-to-br from-brand to-brand-hover mb-6 text-center text-white">
         <h2 className="text-lg font-heading font-bold mb-1">Model not listed?</h2>
         <p className="text-sm mb-4 opacity-90">
           Universal calculator works for any e-bike
