@@ -34,43 +34,43 @@ export default function ModelsPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-heading font-bold text-text mb-3 tracking-tight">
-          E-Bike Models
+      <div className="mb-6">
+        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text mb-2 tracking-tight">
+          Model Database
         </h1>
-        <p className="text-xl text-text-muted">
-          Pressure guides for {totalModels} models across {allBrands.length} brands
+        <p className="text-muted">
+          {totalModels} bikes • {allBrands.length} brands
         </p>
       </div>
 
       {/* Search and Filter Bar */}
-      <div className="bg-white border border-slate-200 rounded-2xl shadow-card p-6 mb-8">
+      <div className="card p-6 mb-6">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <label htmlFor="search" className="block text-sm font-semibold text-text mb-2">
-              Search
+              Search Models
             </label>
             <input
               id="search"
-              type="text"
-              placeholder="Brand, model, or tire size..."
+              type="search"
+              placeholder="Type brand, model, or tire size..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+              className="w-full px-4 py-2.5 border-2 border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 bg-white"
             />
           </div>
 
           {/* Type Filter */}
-          <div className="lg:w-64">
+          <div className="lg:w-56">
             <label htmlFor="type-filter" className="block text-sm font-semibold text-text mb-2">
-              Type
+              Filter by Type
             </label>
             <select
               id="type-filter"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value as ModelType | "All")}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all cursor-pointer bg-white"
+              className="w-full px-4 py-2.5 border-2 border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors duration-150 cursor-pointer bg-white"
             >
               <option value="All">All Types</option>
               {MODEL_TYPES.map((type) => (
@@ -85,11 +85,11 @@ export default function ModelsPage() {
         {/* Active filters display */}
         {(searchQuery || selectedType !== "All") && (
           <div className="mt-4 flex items-center gap-2 flex-wrap">
-            <span className="text-sm text-text-muted">Active filters:</span>
+            <span className="text-sm text-muted">Active:</span>
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="px-3 py-1 bg-brand-100 text-brand text-sm rounded-lg hover:bg-brand-600 hover:text-white transition-colors flex items-center gap-1"
+                className="pill bg-brand-100 text-brand hover:bg-brand hover:text-white transition-all duration-150 gap-1.5"
               >
                 &quot;{searchQuery}&quot;
                 <span>×</span>
@@ -98,7 +98,7 @@ export default function ModelsPage() {
             {selectedType !== "All" && (
               <button
                 onClick={() => setSelectedType("All")}
-                className="px-3 py-1 bg-brand-100 text-brand text-sm rounded-lg hover:bg-brand-600 hover:text-white transition-colors flex items-center gap-1"
+                className="pill bg-brand-100 text-brand hover:bg-brand hover:text-white transition-all duration-150 gap-1.5"
               >
                 {selectedType}
                 <span>×</span>
@@ -109,7 +109,7 @@ export default function ModelsPage() {
                 setSearchQuery("");
                 setSelectedType("All");
               }}
-              className="text-sm text-text-muted hover:text-text underline"
+              className="text-sm text-muted hover:text-text underline ml-2"
             >
               Clear all
             </button>
@@ -118,14 +118,14 @@ export default function ModelsPage() {
       </div>
 
       {/* Quick Calculator CTA */}
-      <div className="p-6 bg-gradient-to-br from-brand to-brand-600 rounded-2xl shadow-card mb-8 text-center text-white">
-        <h2 className="text-lg font-heading font-bold mb-2">Don&apos;t see your model?</h2>
+      <div className="card p-6 bg-gradient-to-br from-brand to-brand-hover mb-6 text-center text-white">
+        <h2 className="text-lg font-heading font-bold mb-1">Model not listed?</h2>
         <p className="text-sm mb-4 opacity-90">
-          Use the universal calculator for any e-bike
+          Universal calculator works for any e-bike
         </p>
         <Link
           href="/calculate"
-          className="inline-block px-6 py-3 bg-white text-brand font-semibold rounded-lg hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200"
+          className="inline-block px-6 py-2.5 bg-white text-brand font-semibold rounded-lg hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150"
         >
           Open Calculator
         </Link>
@@ -139,20 +139,20 @@ export default function ModelsPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-white border border-slate-200 rounded-2xl">
-          <div className="text-4xl mb-4">🔍</div>
+        <div className="card text-center py-16">
+          <div className="text-4xl mb-3">🔍</div>
           <h3 className="text-xl font-heading font-semibold text-text mb-2">
-            No results found
+            No matches
           </h3>
-          <p className="text-text-muted mb-6">
-            Try a different search term or filter
+          <p className="text-muted mb-6">
+            Try a different search or clear filters
           </p>
           <button
             onClick={() => {
               setSearchQuery("");
               setSelectedType("All");
             }}
-            className="px-6 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand-600 hover:shadow-hover transition-all duration-200"
+            className="px-6 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover transition-all duration-150"
           >
             Clear Filters
           </button>
@@ -160,10 +160,9 @@ export default function ModelsPage() {
       )}
 
       {/* Footer info */}
-      <div className="mt-12 p-6 bg-white border border-slate-200 rounded-xl">
-        <h2 className="text-lg font-heading font-bold text-text mb-3">About This Tool</h2>
-        <p className="text-sm text-text-muted leading-relaxed">
-          Click any brand to expand and view models. Each model includes tire specs and a direct link to our calculator with pre-filled settings. Pressure recommendations account for bike weight, tire construction, rider weight, cargo, and terrain.
+      <div className="mt-8 p-4 bg-surface-light rounded-xl border border-slate-200">
+        <p className="text-sm text-muted leading-relaxed">
+          Click any brand to expand. Each model links to the calculator with pre-filled specs. Calculations factor bike weight, tire construction, rider load, cargo, and terrain.
         </p>
       </div>
     </div>

@@ -37,7 +37,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#1E88E5",
+  themeColor: "#2B59C3",
 };
 
 export default function RootLayout({
@@ -78,22 +78,25 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-surface-light">
         <OfflineMessage />
-        <header className="border-b border-line bg-white shadow-sm">
+        <header className="sticky top-0 z-50 border-b border-line bg-white shadow-sm">
           <div className="container mx-auto px-4 py-3 max-w-7xl">
-            <nav className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+            <nav className="flex items-center justify-between h-14">
+              <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
                 <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority />
+                <span className="pill bg-brand-100 text-brand text-xs font-semibold uppercase tracking-wide">
+                  Beta
+                </span>
               </Link>
-              <div className="flex gap-3">
+              <div className="flex gap-3 sm:gap-4">
                 <Link
                   href="/calculate"
-                  className="px-5 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-600 hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-4 sm:px-5 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-brand-hover hover:shadow-hover hover:-translate-y-0.5 transition-all duration-150 ease-out text-sm sm:text-base"
                 >
                   Calculate
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="px-5 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-200"
+                  className="px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-surface-light rounded-lg transition-colors duration-150 text-sm sm:text-base"
                 >
                   Models
                 </Link>
