@@ -365,7 +365,7 @@ Rewrite feature cards with human language:
 
 ---
 
-### P1-5: Improve Model Page PSI Table Context
+### ~~P1-5: Improve Model Page PSI Table Context~~ ✅ **COMPLETED**
 **Component:** `/app/models/[slug]/page.tsx`
 
 **Problem:**
@@ -375,7 +375,7 @@ Rewrite feature cards with human language:
 **Solution:**
 - Add explanatory note above table:
   ```tsx
-  <div className="p-3 bg-brand-100 border border-brand-200 rounded-lg mb-4">
+  <div className="p-3 bg-brand-50 border border-brand-200 rounded-lg mb-4">
     <p className="text-sm text-text">
       <strong>Quick estimates</strong> for pavement with tubed tires.
       For your exact weight and riding conditions,
@@ -394,12 +394,12 @@ Rewrite feature cards with human language:
   ```
 
 **Acceptance Criteria:**
-- [ ] Note clarifies these are estimates, not prescriptions
-- [ ] CTA link directs to calculator with model preselected
-- [ ] Legend explains assumptions (pavement, tubed)
-- [ ] Copy reviewed for clarity
+- [x] Note clarifies these are estimates, not prescriptions
+- [x] CTA link directs to calculator with model preselected
+- [x] Legend explains assumptions (pavement, tubed)
+- [x] Copy reviewed for clarity
 
-**Complexity:** S (1-2 hours)
+**Complexity:** S (1-2 hours) | **Actual:** 15 minutes
 
 ---
 
@@ -974,10 +974,10 @@ const visibleBrands = filteredBrands.slice(0, visibleCount);
 | Priority | Total Items | Completed | Est. Time | Notes |
 |----------|-------------|-----------|-----------|-------|
 | P0 (Critical) | 5 items | **5 completed** ✅ | 8-13 days | Must complete first |
-| P1 (High Impact) | 9 items | **4 completed** | 7-11 days | Significant UX gains |
+| P1 (High Impact) | 9 items | **5 completed** | 7-11 days | Significant UX gains |
 | P2 (Polish) | 7 items | 0 completed | 6-10 days | Nice-to-have improvements |
 | P3 (Perf/A11y) | 7 items | 0 completed | 7-11 days | Long-term quality |
-| **TOTAL** | **28 items** | **9 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
+| **TOTAL** | **28 items** | **10 completed** | **28-45 days** | ~1.5-2 months (1-2 devs) |
 
 ### By Complexity
 

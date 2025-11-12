@@ -134,10 +134,17 @@ export default async function ModelPage({
         {/* PSI Table */}
         <div className="p-6 bg-white rounded-2xl shadow-card mb-6">
           <h2 className="text-xl font-bold text-text mb-4">Quick Reference PSI Table</h2>
-          <p className="text-sm text-muted mb-4">
-            Common scenarios for {model.brand} {model.model}. For personalized recommendations,
-            use the calculator below.
-          </p>
+
+          {/* Context note */}
+          <div className="p-3 bg-brand-50 border border-brand-200 rounded-lg mb-4">
+            <p className="text-sm text-text">
+              <strong>Quick estimates</strong> for pavement with tubed tires.
+              For your exact weight and riding conditions,
+              <Link href={`/calculate?model=${model.slug}`} className="text-brand font-semibold underline">
+                use the calculator
+              </Link>.
+            </p>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -161,6 +168,12 @@ export default async function ModelPage({
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-4 text-xs text-muted space-y-1">
+            <p><strong>Surface:</strong> Pavement (reduce 10-30% for mixed/dirt/snow)</p>
+            <p><strong>Construction:</strong> Tubed (tubeless: -1 PSI, reinforced: +2 PSI)</p>
           </div>
         </div>
 
