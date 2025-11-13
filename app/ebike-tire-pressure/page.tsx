@@ -140,7 +140,7 @@ export default function ModelsPage() {
       </div>
 
       {/* Quick Calculator CTA */}
-      <div className="card bg-gradient-brand mb-6 text-center text-white shadow-lg">
+      <div className="bg-gradient-brand mb-6 text-center text-white shadow-lg rounded-2xl p-6 md:p-8">
         <h2 className="text-xl font-heading font-bold mb-2">Model not listed?</h2>
         <p className="text-sm mb-5 opacity-90">
           Universal calculator works for any e-bike
