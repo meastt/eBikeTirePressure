@@ -187,7 +187,7 @@ export default async function BrandPage({
         </div>
 
         {/* CTA to calculator */}
-        <div className="card bg-gradient-brand text-white p-8 text-center mb-12">
+        <div className="bg-gradient-brand text-white p-8 rounded-2xl text-center shadow-elevated mb-12">
           <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-4">
             Get Precise PSI for Your {brandMetadata.displayName}
           </h2>
