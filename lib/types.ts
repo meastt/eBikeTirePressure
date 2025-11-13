@@ -15,6 +15,10 @@ export interface ModelPreset {
     front: number;
     rear: number;
   };
+  // SEO-friendly URL fields (computed)
+  brandSlug?: string;
+  modelSlug?: string;
+  canonicalUrl?: string;
 }
 
 export type Surface = "pavement" | "mixed" | "dirt" | "sand_snow";
