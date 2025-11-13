@@ -1726,6 +1726,7 @@
     "brand": "Velotric",
     "model": "Trike-r",
     "bikeWeightLbs": 83,
+    "isTrike": true,
     "stockTire": {
       "size": "20x3.0",
       "minPSI": 20,
@@ -1774,6 +1775,7 @@
     "brand": "Lectric",
     "model": "XP Trike",
     "bikeWeightLbs": 70,
+    "isTrike": true,
     "stockTire": {
       "size": "20x2.5",
       "minPSI": 30,
@@ -1870,6 +1872,7 @@
     "brand": "Mokwheel",
     "model": "Granite Trike",
     "bikeWeightLbs": 100,
+    "isTrike": true,
     "stockTire": {
       "size": "20x3.0",
       "minPSI": 20,

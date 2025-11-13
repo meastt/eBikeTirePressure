@@ -43,10 +43,10 @@ const CONSTRUCTION_ADJUSTMENTS: Record<Construction, number> = {
 
 /**
  * Calculate total weight on each axle
- * Accounts for bike weight, rider, passenger, cargo, and trike mode
+ * Accounts for bike weight, rider, passenger, cargo, and trike configuration
  */
 function calculateAxleLoads(inputs: CalculatorInputs): { front: number; rear: number } {
-  const { bike, riderLbs, passengerLbs = 0, cargoFrontLbs = 0, cargoRearLbs = 0, trikeMode } = inputs;
+  const { bike, riderLbs, passengerLbs = 0, cargoFrontLbs = 0, cargoRearLbs = 0 } = inputs;
 
   // Start with bike weight distributed by axle bias
   let frontLoad = bike.bikeWeightLbs * bike.axleBias.front;
@@ -63,8 +63,8 @@ function calculateAxleLoads(inputs: CalculatorInputs): { front: number; rear: nu
   frontLoad += cargoFrontLbs;
   rearLoad += cargoRearLbs;
 
-  // Trike mode: rear load splits between two wheels
-  if (trikeMode) {
+  // Trike: rear load splits between two wheels
+  if (bike.isTrike) {
     rearLoad = rearLoad / 2;
   }
 
@@ -191,9 +191,9 @@ function generateNotes(inputs: CalculatorInputs, front: AxleResult, rear: AxleRe
     notes.push("Reduced pressure improves traction on loose surfaces");
   }
 
-  // Trike mode
-  if (inputs.trikeMode) {
-    notes.push("Rear PSI calculated per wheel (trike mode)");
+  // Trike configuration
+  if (inputs.bike.isTrike) {
+    notes.push("Rear PSI calculated per wheel (trike configuration)");
   }
 
   // Construction notes

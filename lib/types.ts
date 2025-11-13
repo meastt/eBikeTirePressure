@@ -15,6 +15,7 @@ export interface ModelPreset {
     front: number;
     rear: number;
   };
+  isTrike?: boolean; // Whether this model is a tricycle
   // SEO-friendly URL fields (computed)
   brandSlug?: string;
   modelSlug?: string;

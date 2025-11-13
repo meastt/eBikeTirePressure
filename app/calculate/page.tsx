@@ -10,7 +10,6 @@ import PresetPicker from "@/components/PresetPicker";
 import WeightSliders from "@/components/WeightSliders";
 import SurfaceSelector from "@/components/SurfaceSelector";
 import ConstructionSelector from "@/components/ConstructionSelector";
-import TrikeToggle from "@/components/TrikeToggle";
 import ResultsCard from "@/components/ResultsCard";
 import ResultsCardSkeleton from "@/components/ResultsCardSkeleton";
 import modelsData from "@/data/models.json";
@@ -29,7 +28,6 @@ function CalculatorContent() {
   const [cargoRearLbs, setCargoRearLbs] = useState(0);
   const [surface, setSurface] = useState<Surface>("pavement");
   const [construction, setConstruction] = useState<Construction>("tubed");
-  const [trikeMode, setTrikeMode] = useState(false);
 
   // State for results
   const [results, setResults] = useState<CalculatorOutput | null>(null);
@@ -153,7 +151,6 @@ function CalculatorContent() {
       cargoRearLbs: debouncedCargoRearLbs,
       surface,
       construction,
-      trikeMode,
     };
 
     // Simulate calculation time for better UX feedback
@@ -167,12 +164,12 @@ function CalculatorContent() {
         model: selectedModel.slug,
         surface,
         construction,
-        trike: trikeMode,
+        trike: selectedModel.isTrike || false,
       });
     }, 600); // 600ms delay for smooth loading experience
 
     return () => clearTimeout(calculationTimeout);
-  }, [selectedModel, debouncedRiderLbs, debouncedPassengerLbs, debouncedCargoFrontLbs, debouncedCargoRearLbs, surface, construction, trikeMode]);
+  }, [selectedModel, debouncedRiderLbs, debouncedPassengerLbs, debouncedCargoFrontLbs, debouncedCargoRearLbs, surface, construction]);
 
   return (
     <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
@@ -222,9 +219,6 @@ function CalculatorContent() {
             <ConstructionSelector selected={construction} onSelect={setConstruction} />
           </div>
         )}
-
-          {/* Trike toggle */}
-          {selectedModel && <TrikeToggle enabled={trikeMode} onToggle={setTrikeMode} />}
 
           {/* Reset to defaults */}
           <button
