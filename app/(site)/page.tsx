@@ -32,10 +32,22 @@ export default function Home() {
           <h1 className="mb-8 bg-gradient-to-r from-text via-brand-600 to-text bg-clip-text text-transparent">
             Stop Guessing Your Tire Pressure
           </h1>
-          <p className="text-xl sm:text-2xl text-muted max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-            Get the perfect PSI for your e-bike based on your exact weight, cargo, and terrain.
-            Avoid pinch flats, blowouts, and poor handling.
-          </p>
+          <div className="max-w-3xl mx-auto mb-12">
+            <ul className="text-left text-lg sm:text-xl text-muted space-y-3 font-medium">
+              <li className="flex items-start gap-3">
+                <span className="text-brand text-2xl flex-shrink-0 leading-none mt-0.5">✓</span>
+                <span>Get the perfect PSI based on your exact weight, cargo, and terrain</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand text-2xl flex-shrink-0 leading-none mt-0.5">✓</span>
+                <span>Avoid pinch flats and blowouts</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand text-2xl flex-shrink-0 leading-none mt-0.5">✓</span>
+                <span>Eliminate poor handling and optimize ride quality</span>
+              </li>
+            </ul>
+          </div>
           <div className="flex flex-col items-center gap-6">
             <Link
               href="/calculate"
