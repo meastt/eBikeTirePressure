@@ -120,7 +120,7 @@
   }
 
   .card-hover {
-    @apply hover:shadow-card-hover hover:-translate-y-1.5 hover:border-brand/30 transition-all duration-350 ease-out;
+    @apply hover:shadow-card-hover hover:-translate-y-1.5 hover:border-brand/30 transition-all duration-300 ease-out;
   }
 
   /* Utility for status pills */
