@@ -32,8 +32,8 @@
     transition: transform 0.1s ease-out;
   }
 
-  /* Link visited states for internal links */
-  a[href^="/"]:visited {
+  /* Link visited states for internal links - exclude button-styled links */
+  a[href^="/"]:visited:not([class*="bg-gradient"]):not([class*="bg-brand"]):not([class*="btn"]):not([class*="button"]) {
     color: rgba(43, 89, 195, 0.8);
   }
 
