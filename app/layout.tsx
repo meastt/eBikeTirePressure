@@ -79,8 +79,8 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-gradient-mesh flex flex-col min-h-screen">
         <OfflineMessage />
-        <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-sm safe-area-inset-top">
-          <div className="container mx-auto px-4 py-3 max-w-7xl">
+        <header className="sticky top-0 z-50 border-b border-slate-200/40 bg-white/90 backdrop-blur-2xl shadow-sm safe-area-inset-top">
+          <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
             <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group">
                 <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105" />
@@ -88,25 +88,25 @@ export default function RootLayout({
               <div className="flex gap-2 sm:gap-3">
                 <Link
                   href="/calculate"
-                  className="px-4 sm:px-6 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300 ease-out text-sm sm:text-base shadow-md"
+                  className="px-5 sm:px-6 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-out text-sm sm:text-base shadow-md"
                 >
                   Calculate
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Models
                 </Link>
                 <Link
                   href="/blog"
-                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/faq"
-                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   FAQ
                 </Link>

@@ -26,10 +26,11 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
       <div className="flex items-baseline justify-between">
         <span className="text-sm font-semibold text-text">{label}</span>
         <div className="text-right">
-          <div className="text-3xl md:text-3xl text-2xl font-heading font-bold text-brand animate-smooth">
-            {target} PSI
+          <div className="text-4xl md:text-5xl font-heading font-bold bg-gradient-to-r from-brand-600 to-brand-700 bg-clip-text text-transparent animate-smooth">
+            {target}
           </div>
-          <div className="text-xs text-muted">
+          <div className="text-sm font-semibold text-brand-600 mt-0.5">PSI</div>
+          <div className="text-xs text-muted mt-1 font-medium">
             {min}–{max} PSI
           </div>
         </div>
@@ -37,7 +38,7 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
 
       {/* PSI Band with improved height and padding */}
       <div
-        className="relative h-10 md:h-12 bg-gradient-to-b from-slate-50 to-white rounded-xl border border-slate-200 overflow-hidden shadow-inner px-4"
+        className="relative h-12 md:h-14 bg-gradient-to-b from-slate-50 to-white rounded-xl border-2 border-slate-200/60 overflow-hidden shadow-inner px-4"
         tabIndex={0}
         aria-label={`${label.toLowerCase()} tire band: min ${min} PSI, target ${target} PSI, max ${max} PSI`}
         role="img"

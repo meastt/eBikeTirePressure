@@ -56,11 +56,11 @@ export default function ModelsPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-text mb-2 tracking-tight">
+      <div className="mb-8">
+        <h1 className="text-4xl md:text-5xl font-heading font-bold text-text mb-3 tracking-tight bg-gradient-to-r from-text via-brand-600 to-text bg-clip-text text-transparent">
           Model Database
         </h1>
-        <p className="text-muted">
+        <p className="text-muted text-base font-medium">
           {totalModels} bikes • {allBrands.length} brands
         </p>
       </div>

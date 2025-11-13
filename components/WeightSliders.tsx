@@ -173,8 +173,8 @@ function Slider({
         />
       </div>
 
-      <div className="p-4 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
-        <div className="grid grid-cols-3 gap-3 text-sm">
+      <div className="p-5 bg-gradient-to-br from-brand-50/70 to-white rounded-xl border border-brand/30 shadow-md">
+        <div className="grid grid-cols-3 gap-4 text-sm">
           <div>
             <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Front Axle</div>
             <div className="font-semibold text-text">{frontAxleLoad} lbs</div>

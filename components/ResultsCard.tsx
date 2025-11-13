@@ -81,9 +81,9 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
         {warnings.exceedsSidewallMax && ' Warning: exceeds sidewall maximum - risk of tire failure.'}
       </div>
       {/* Results header with gradient */}
-      <div className="card space-y-8 bg-white/80 backdrop-blur-sm">
+      <div className="card space-y-8 bg-white/90 backdrop-blur-md">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-heading font-bold text-text bg-gradient-to-r from-brand-700 to-brand text-transparent bg-clip-text">Your PSI</h2>
+          <h2 className="text-3xl font-heading font-bold text-text bg-gradient-to-r from-brand-600 via-brand-700 to-brand bg-clip-text text-transparent">Your PSI</h2>
         </div>
 
         {/* Context line */}

@@ -176,11 +176,11 @@ function CalculatorContent() {
 
   return (
     <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
-      <div className="mb-6">
-        <h1 className="text-3xl font-heading font-bold text-text mb-2 tracking-tight">
+      <div className="mb-8">
+        <h1 className="text-4xl md:text-5xl font-heading font-bold text-text mb-3 tracking-tight bg-gradient-to-r from-text via-brand-600 to-text bg-clip-text text-transparent">
           Calculate PSI
         </h1>
-        <p className="text-muted text-sm">
+        <p className="text-muted text-base font-medium">
           Set your bike, load, and terrain for precise pressure ranges.
         </p>
       </div>

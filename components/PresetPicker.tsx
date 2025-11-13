@@ -183,8 +183,8 @@ export default function PresetPicker({ models, selected, onSelect, error }: Pres
       </Combobox>
 
       {selected && (
-        <div className="mt-4 p-5 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-sm">
+        <div className="mt-4 p-6 bg-gradient-to-br from-brand-50/70 to-white rounded-xl border border-brand/30 shadow-md">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3 text-sm">
             <div>
               <div className="text-xs text-muted uppercase tracking-wide mb-0.5">Tire Size</div>
               <div className="font-semibold text-text">{selected.stockTire.size}</div>
