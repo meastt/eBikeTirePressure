@@ -50,13 +50,8 @@ export function getBrands(): BrandInfo[] {
     });
   });
 
-  // Sort by model count desc, then alphabetically
-  return brands.sort((a, b) => {
-    if (b.modelCount !== a.modelCount) {
-      return b.modelCount - a.modelCount;
-    }
-    return a.name.localeCompare(b.name);
-  });
+  // Sort alphabetically
+  return brands.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /**

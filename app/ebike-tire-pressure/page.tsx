@@ -175,11 +175,11 @@ export default function ModelsPage() {
           <div className="text-xs text-muted uppercase tracking-wide mb-3 font-semibold">Popular Searches</div>
           <div className="flex flex-wrap gap-2">
             {[
-              { query: "rad power", label: "Rad Power" },
               { query: "aventon", label: "Aventon" },
-              { query: "fat tire", label: "Fat Tire" },
-              { query: "cargo", label: "Cargo Bikes" },
-              { query: "26x4", label: "26×4″ Tires" },
+              { query: "lectric", label: "Lectric" },
+              { query: "rad power", label: "Rad Power" },
+              { query: "ride1up", label: "Ride1Up" },
+              { query: "velotric", label: "Velotric" },
             ].map(({ query, label }) => (
               <button
                 key={query}
