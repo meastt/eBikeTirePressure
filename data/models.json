@@ -1624,5 +1624,485 @@
       "front": 0.43,
       "rear": 0.57
     }
+  },
+  {
+    "slug": "velotric-t1-st",
+    "brand": "Velotric",
+    "model": "T1 ST",
+    "bikeWeightLbs": 39,
+    "stockTire": {
+      "size": "700x40c",
+      "minPSI": 45,
+      "maxPSI": 75,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "velotric-discover-2",
+    "brand": "Velotric",
+    "model": "Discover 2",
+    "bikeWeightLbs": 63,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "velotric-fold-1-plus",
+    "brand": "Velotric",
+    "model": "Fold 1 Plus",
+    "bikeWeightLbs": 63,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "velotric-nomad-2x",
+    "brand": "Velotric",
+    "model": "Nomad 2X",
+    "bikeWeightLbs": 80,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "velotric-summit-1",
+    "brand": "Velotric",
+    "model": "Summit 1",
+    "bikeWeightLbs": 62,
+    "stockTire": {
+      "size": "27.5x2.6",
+      "minPSI": 25,
+      "maxPSI": 45,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "velotric-breeze",
+    "brand": "Velotric",
+    "model": "Breeze",
+    "bikeWeightLbs": 48,
+    "stockTire": {
+      "size": "27.5x2.2",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "velotric-trike-r",
+    "brand": "Velotric",
+    "model": "Trike-r",
+    "bikeWeightLbs": 83,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "lectric-xpeak-1",
+    "brand": "Lectric",
+    "model": "XPeak 1.0",
+    "bikeWeightLbs": 67,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "lectric-xp-lite",
+    "brand": "Lectric",
+    "model": "XP Lite",
+    "bikeWeightLbs": 49,
+    "stockTire": {
+      "size": "20x2.5",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "lectric-xp-trike",
+    "brand": "Lectric",
+    "model": "XP Trike",
+    "bikeWeightLbs": 70,
+    "stockTire": {
+      "size": "20x2.5",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "lectric-xpedition-1",
+    "brand": "Lectric",
+    "model": "XPedition 1.0",
+    "bikeWeightLbs": 75,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "reinforced"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "mokwheel-obsidian",
+    "brand": "Mokwheel",
+    "model": "Obsidian",
+    "bikeWeightLbs": 77,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.43,
+      "rear": 0.57
+    }
+  },
+  {
+    "slug": "mokwheel-basalt",
+    "brand": "Mokwheel",
+    "model": "Basalt",
+    "bikeWeightLbs": 79,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "mokwheel-basalt-2",
+    "brand": "Mokwheel",
+    "model": "Basalt 2",
+    "bikeWeightLbs": 82,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "mokwheel-tor-plus",
+    "brand": "Mokwheel",
+    "model": "Tor Plus",
+    "bikeWeightLbs": 74,
+    "stockTire": {
+      "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "mokwheel-granite-trike",
+    "brand": "Mokwheel",
+    "model": "Granite Trike",
+    "bikeWeightLbs": 100,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.40,
+      "rear": 0.60
+    }
+  },
+  {
+    "slug": "mokwheel-slate",
+    "brand": "Mokwheel",
+    "model": "Slate",
+    "bikeWeightLbs": 64,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "mokwheel-scoria",
+    "brand": "Mokwheel",
+    "model": "Scoria",
+    "bikeWeightLbs": 79,
+    "stockTire": {
+      "size": "20x4.0",
+      "minPSI": 15,
+      "maxPSI": 25,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.44,
+      "rear": 0.56
+    }
+  },
+  {
+    "slug": "mokwheel-asphalt",
+    "brand": "Mokwheel",
+    "model": "Asphalt",
+    "bikeWeightLbs": 60,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "ride1up-prodigy-v2",
+    "brand": "Ride1Up",
+    "model": "Prodigy v2",
+    "bikeWeightLbs": 58,
+    "stockTire": {
+      "size": "27.5x2.25",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "ride1up-roadster-v3",
+    "brand": "Ride1Up",
+    "model": "Roadster v3",
+    "bikeWeightLbs": 39,
+    "stockTire": {
+      "size": "700x45c",
+      "minPSI": 40,
+      "maxPSI": 70,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.49,
+      "rear": 0.51
+    }
+  },
+  {
+    "slug": "ride1up-vorsa",
+    "brand": "Ride1Up",
+    "model": "Vorsa",
+    "bikeWeightLbs": 70,
+    "stockTire": {
+      "size": "27.5x2.6",
+      "minPSI": 25,
+      "maxPSI": 45,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
+  },
+  {
+    "slug": "ride1up-turris",
+    "brand": "Ride1Up",
+    "model": "Turris",
+    "bikeWeightLbs": 56,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "urtopia-carbon-joy",
+    "brand": "Urtopia",
+    "model": "Carbon Joy",
+    "bikeWeightLbs": 50,
+    "stockTire": {
+      "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.45,
+      "rear": 0.55
+    }
+  },
+  {
+    "slug": "urtopia-carbon-classic",
+    "brand": "Urtopia",
+    "model": "Carbon Classic",
+    "bikeWeightLbs": 41,
+    "stockTire": {
+      "size": "700x40c",
+      "minPSI": 45,
+      "maxPSI": 75,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "urtopia-carbon-fusion-pro",
+    "brand": "Urtopia",
+    "model": "Carbon Fusion Pro",
+    "bikeWeightLbs": 50,
+    "stockTire": {
+      "size": "29x2.05",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.48,
+      "rear": 0.52
+    }
+  },
+  {
+    "slug": "urtopia-fusion-gt",
+    "brand": "Urtopia",
+    "model": "Fusion GT",
+    "bikeWeightLbs": 55,
+    "stockTire": {
+      "size": "29x2.05",
+      "minPSI": 35,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.50,
+      "rear": 0.50
+    }
+  },
+  {
+    "slug": "urtopia-carbon-fold",
+    "brand": "Urtopia",
+    "model": "Carbon Fold",
+    "bikeWeightLbs": 29,
+    "stockTire": {
+      "size": "18x2.0",
+      "minPSI": 50,
+      "maxPSI": 75,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "euphree-city-robin",
+    "brand": "Euphree",
+    "model": "City Robin",
+    "bikeWeightLbs": 64,
+    "stockTire": {
+      "size": "27.5x2.4",
+      "minPSI": 30,
+      "maxPSI": 50,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.47,
+      "rear": 0.53
+    }
+  },
+  {
+    "slug": "euphree-stellar-falcon",
+    "brand": "Euphree",
+    "model": "Stellar Falcon",
+    "bikeWeightLbs": 72,
+    "stockTire": {
+      "size": "27.5x2.8",
+      "minPSI": 20,
+      "maxPSI": 40,
+      "casing": "standard"
+    },
+    "axleBias": {
+      "front": 0.46,
+      "rear": 0.54
+    }
   }
 ]
