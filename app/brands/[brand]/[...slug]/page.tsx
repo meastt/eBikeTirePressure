@@ -482,7 +482,7 @@ export default async function ModelTirePressureGuidePage({
 
           {/* CTA to Calculator */}
           <section className="mb-16">
-            <div className="card bg-gradient-brand text-white p-10 text-center">
+            <div className="bg-gradient-brand text-white p-10 rounded-2xl text-center shadow-elevated">
               <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
                 Get Precise PSI for Your {model.brand} {model.model}
               </h2>
