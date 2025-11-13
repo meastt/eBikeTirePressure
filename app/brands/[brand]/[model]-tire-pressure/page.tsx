@@ -98,7 +98,7 @@ export default async function ModelTirePressureGuidePage({
     },
     {
       question: `What PSI for pavement vs off-road?`,
-      answer: `For pavement riding, use ${calculatePSI(180, 2)}-${maxPSI} PSI for efficiency. For trails or gravel, drop to ${minPSI}-${calculatePSI(180, -2)} PSI for better traction and comfort. ${isFatTire ? 'Fat tires excel at low pressure off-road.' : 'Don\\'t go below ' + minPSI + ' PSI to avoid pinch flats.'}`,
+      answer: `For pavement riding, use ${calculatePSI(180, 2)}-${maxPSI} PSI for efficiency. For trails or gravel, drop to ${minPSI}-${calculatePSI(180, -2)} PSI for better traction and comfort. ${isFatTire ? 'Fat tires excel at low pressure off-road.' : `Don't go below ${minPSI} PSI to avoid pinch flats.`}`,
     },
   ];
 
