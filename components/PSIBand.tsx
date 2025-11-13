@@ -38,7 +38,7 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
 
       {/* PSI Band with improved height and padding */}
       <div
-        className="relative h-12 md:h-14 bg-gradient-to-b from-slate-50 to-white rounded-xl border-2 border-slate-200/60 overflow-hidden shadow-inner px-4"
+        className="relative h-12 md:h-14 bg-gradient-to-b from-slate-50 to-white rounded-xl border-2 border-slate-200/60 overflow-visible shadow-inner px-4"
         tabIndex={0}
         aria-label={`${label.toLowerCase()} tire band: min ${min} PSI, target ${target} PSI, max ${max} PSI`}
         role="img"
@@ -75,7 +75,7 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
           className="absolute top-0 bottom-0 w-1 bg-slate-400"
           style={{ left: `${minPercent}%` }}
         >
-          <div className={`absolute ${shouldFlipMin ? 'top-1 -right-7' : 'top-1 -left-7'}`}>
+          <div className={`absolute ${shouldFlipMin ? 'top-2 -right-7' : 'top-2 -left-7'}`}>
             <div className="px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-medium rounded shadow-sm whitespace-nowrap">
               {min}
             </div>
@@ -84,12 +84,12 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-slate-400" />
         </div>
 
-        {/* Target marker (4px thick, blue brand) */}
+        {/* Target marker (4px thick, blue brand) - positioned higher to avoid overlap */}
         <div
           className="absolute top-0 bottom-0 w-1.5 bg-gradient-brand shadow-md transition-all duration-300"
           style={{ left: `${targetPercent}%` }}
         >
-          <div className={`absolute ${shouldFlipTarget ? '-top-8 -right-9' : '-top-8 -left-9'}`}>
+          <div className={`absolute ${shouldFlipTarget ? '-top-16 -right-9' : '-top-16 -left-9'}`}>
             <div className="px-3 py-2 bg-white border-2 border-brand text-brand text-lg font-bold rounded-xl shadow-lg whitespace-nowrap tracking-tight">
               {target}
               <div className="text-xs text-brand-600 mt-0.5 font-medium">PSI</div>
@@ -104,7 +104,7 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
           className="absolute top-0 bottom-0 w-1 bg-slate-400"
           style={{ left: `${maxPercent}%` }}
         >
-          <div className={`absolute ${shouldFlipMax ? 'top-1 -right-7' : 'top-1 -left-7'}`}>
+          <div className={`absolute ${shouldFlipMax ? 'top-2 -right-7' : 'top-2 -left-7'}`}>
             <div className="px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-medium rounded shadow-sm whitespace-nowrap">
               {max}
             </div>
