@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   const enriched = enrichModels(models);
   return enriched.map((model) => ({
     brand: model.brandSlug!,
-    model: model.modelSlug!,
+    slug: [`${model.modelSlug!}-tire-pressure`],
   }));
 }
 
@@ -22,9 +22,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ brand: string; model: string }>;
+  params: Promise<{ brand: string; slug: string[] }>;
 }): Promise<Metadata> {
-  const { brand: brandSlug, model: modelSlug } = await params;
+  const { brand: brandSlug, slug } = await params;
+  // Extract model slug from "model-tire-pressure" format
+  const fullSlug = slug.join('/');
+  const modelSlug = fullSlug.replace(/-tire-pressure$/, '');
   const model = findModelByBrandAndModelSlug(models, brandSlug, modelSlug);
 
   if (!model) {
@@ -52,9 +55,12 @@ export async function generateMetadata({
 export default async function ModelTirePressureGuidePage({
   params,
 }: {
-  params: Promise<{ brand: string; model: string }>;
+  params: Promise<{ brand: string; slug: string[] }>;
 }) {
-  const { brand: brandSlug, model: modelSlug } = await params;
+  const { brand: brandSlug, slug } = await params;
+  // Extract model slug from "model-tire-pressure" format
+  const fullSlug = slug.join('/');
+  const modelSlug = fullSlug.replace(/-tire-pressure$/, '');
   const model = findModelByBrandAndModelSlug(models, brandSlug, modelSlug);
 
   if (!model) {
