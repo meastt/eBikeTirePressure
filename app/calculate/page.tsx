@@ -127,7 +127,6 @@ function CalculatorContent() {
     setCargoRearLbs(0);
     setSurface("pavement");
     setConstruction("tubed");
-    setTrikeMode(false);
     setResults(null);
     setIsCalculating(false);
     setShowFloatingBar(false);
