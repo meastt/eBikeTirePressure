@@ -5,6 +5,7 @@ import type { ModelPreset } from "@/lib/types";
 import { generateProductSchema, generateFAQSchema, type FAQItem } from "@/lib/schema";
 import { generatePSITable } from "@/calc/psiTable";
 import modelsData from "@/data/models.json";
+import { enrichModel } from "@/lib/modelUtils";
 
 const models = modelsData as ModelPreset[];
 
@@ -22,13 +23,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const model = models.find((m) => m.slug === slug);
+  const modelData = models.find((m) => m.slug === slug);
 
-  if (!model) {
+  if (!modelData) {
     return {
       title: "Model Not Found",
     };
   }
+
+  // Enrich with canonical URL
+  const model = enrichModel(modelData);
 
   const title = `${model.brand} ${model.model} Tire Pressure Guide | E-Bike PSI`;
   const description = `Tire pressure calculator and PSI recommendations for ${model.brand} ${model.model} e-bike. Tire size: ${model.stockTire.size}. PSI range: ${model.stockTire.minPSI}-${model.stockTire.maxPSI}.`;
@@ -36,6 +40,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: model.canonicalUrl,
+    },
     openGraph: {
       title,
       description,
