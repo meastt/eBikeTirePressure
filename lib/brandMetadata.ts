@@ -130,6 +130,30 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     websiteUrl: 'https://www.ternbicycles.com',
     tireTypes: ['Cargo (20x2.4" reinforced)'],
   },
+  'mokwheel': {
+    slug: 'mokwheel',
+    displayName: 'Mokwheel',
+    shortDescription: 'Fat-tire e-bikes for adventure and cargo hauling',
+    description: 'Mokwheel offers robust fat-tire e-bikes designed for all-terrain riding and cargo capacity. Their lineup features primarily 26x4.0" and 20x4.0" fat tires optimized for trail riding, beach cruising, and heavy loads. Models include the Basalt series, Obsidian, Tor Plus, and Granite Trike.',
+    websiteUrl: 'https://www.mokwheel.com',
+    tireTypes: ['Fat Tire (26x4.0")', 'Fat Tire (20x4.0")', 'Fat Tire (20x3.0")', 'Commuter (27.5x2.4")'],
+  },
+  'urtopia': {
+    slug: 'urtopia',
+    displayName: 'Urtopia',
+    shortDescription: 'Smart carbon fiber e-bikes with integrated technology',
+    description: 'Urtopia creates lightweight carbon fiber e-bikes with integrated smart technology. Their models feature road-focused tire sizes (700x40c, 29x2.05", 18x2.0") designed for urban commuting and fitness riding. Known for ultra-light frames, fingerprint unlock, and connected app features.',
+    websiteUrl: 'https://www.urtopia.com',
+    tireTypes: ['Road (700x40c)', 'Trail (29x2.05")', 'Folding (18x2.0")', 'Compact (20x3.0")'],
+  },
+  'euphree': {
+    slug: 'euphree',
+    displayName: 'Euphree',
+    shortDescription: 'Versatile commuter and trail e-bikes',
+    description: 'Euphree offers practical e-bikes for commuting and recreational riding. Their lineup features 27.5" tire sizes ranging from 2.4" to 2.8" width, providing a balance between efficiency and comfort. Models like the City Robin and Stellar Falcon are designed for urban and light trail use.',
+    websiteUrl: 'https://www.euphreebike.com',
+    tireTypes: ['Trail (27.5x2.8")', 'Commuter (27.5x2.4")'],
+  },
 };
 
 /**
