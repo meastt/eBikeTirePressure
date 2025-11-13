@@ -88,7 +88,7 @@ export default function Home() {
                 href="#why-different"
                 className="text-white hover:text-accent-200 font-semibold text-lg transition-colors duration-200 flex items-center gap-2 group underline decoration-white/50 hover:decoration-accent-200"
               >
-                Why we're different
+                Why we&apos;re different
                 <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
               </Link>
             </div>
@@ -108,10 +108,10 @@ export default function Home() {
               THE PROBLEM WITH OTHER CALCULATORS
             </span>
             <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-white mb-6">
-              They're Guessing.<br />We're Not.
+              They&apos;re Guessing.<br />We&apos;re Not.
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Most calculators give you a single number based on tire size. That's like recommending shoes based only on foot length.
+              Most calculators give you a single number based on tire size. That&apos;s like recommending shoes based only on foot length.
             </p>
           </div>
 
@@ -129,7 +129,7 @@ export default function Home() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-danger-400 text-xl">→</span>
-                  <span>Don't factor in cargo loads</span>
+                  <span>Don&apos;t factor in cargo loads</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-danger-400 text-xl">→</span>
@@ -205,10 +205,10 @@ export default function Home() {
             </div>
           </div>
           <p className="text-text text-lg leading-relaxed mb-4">
-            We calculate pressure distribution across your tires based on <span className="font-bold text-brand-600">actual load</span>. Hauling 50 lbs of groceries? We've got you.
+            We calculate pressure distribution across your tires based on <span className="font-bold text-brand-600">actual load</span>. Hauling 50 lbs of groceries? We&apos;ve got you.
           </p>
           <p className="text-muted text-sm italic">
-            Because "just add 5 PSI" isn't a methodology.
+            Because &quot;just add 5 PSI&quot; isn&apos;t a methodology.
           </p>
         </div>
 
@@ -223,7 +223,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-text text-lg leading-relaxed mb-4">
-            Rad Power, Lectric, Aventon, Tern, and more. We've got <span className="font-bold text-purple-600">actual tire specs</span> from manufacturer data sheets.
+            Rad Power, Lectric, Aventon, Tern, and more. We&apos;ve got <span className="font-bold text-purple-600">actual tire specs</span> from manufacturer data sheets.
           </p>
           <p className="text-muted text-sm italic">
             No more squinting at sidewall markings in your garage.
@@ -241,7 +241,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-text text-lg leading-relaxed mb-4">
-            Running too low? We'll warn you about <span className="font-bold text-ok-600">pinch flats</span>. Too high? We'll flag <span className="font-bold text-ok-600">blowout risk</span>. It's like having a mechanic in your pocket.
+            Running too low? We&apos;ll warn you about <span className="font-bold text-ok-600">pinch flats</span>. Too high? We&apos;ll flag <span className="font-bold text-ok-600">blowout risk</span>. It&apos;s like having a mechanic in your pocket.
           </p>
           <p className="text-muted text-sm italic">
             Your sidewalls will thank you.
@@ -274,10 +274,10 @@ export default function Home() {
             QUICK START
           </span>
           <h2 className="text-4xl font-heading font-extrabold text-text mb-4">
-            Got One of These? You're 10 Seconds Away.
+            Got One of These? You&apos;re 10 Seconds Away.
           </h2>
           <p className="text-xl text-muted font-medium max-w-2xl mx-auto">
-            We've pre-loaded specs for the most popular e-bikes. Just click and go.
+            We&apos;ve pre-loaded specs for the most popular e-bikes. Just click and go.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
@@ -455,7 +455,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-heading font-bold text-text mb-3 mt-4">Pick Your Ride</h3>
               <p className="text-lg text-muted leading-relaxed">
-                Choose from 20+ presets or manually enter your tire size. Either way, we've got the specs.
+                Choose from 20+ presets or manually enter your tire size. Either way, we&apos;ve got the specs.
               </p>
             </div>
 
@@ -465,7 +465,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-heading font-bold text-text mb-3 mt-4">Tell Us the Load</h3>
               <p className="text-lg text-muted leading-relaxed">
-                Your weight, any passengers, cargo bags, groceries—everything that's riding along.
+                Your weight, any passengers, cargo bags, groceries—everything that&apos;s riding along.
               </p>
             </div>
 
@@ -475,7 +475,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-heading font-bold text-text mb-3 mt-4">Choose Your Terrain</h3>
               <p className="text-lg text-muted leading-relaxed">
-                Pavement? Gravel? Beach sand? Each surface needs different pressure. We'll dial it in.
+                Pavement? Gravel? Beach sand? Each surface needs different pressure. We&apos;ll dial it in.
               </p>
             </div>
 
@@ -495,7 +495,7 @@ export default function Home() {
               href="/calculate"
               className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-brand text-white font-bold rounded-2xl hover:shadow-glow-lg hover:-translate-y-1 transition-all duration-300 text-xl shadow-xl"
             >
-              Let's Do This
+              Let&apos;s Do This
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
