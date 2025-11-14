@@ -69,51 +69,51 @@ export default function Home() {
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
 
-      <section className="grid md:grid-cols-2 gap-6 mb-20">
-        <div className="group card card-hover p-8 bg-white/80 backdrop-blur-md">
-          <div className="flex items-start gap-5 mb-5">
-            <div className="w-14 h-14 flex items-center justify-center bg-gradient-brand rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
-              <Image src="/icons/precision.svg" alt="" width={28} height={28} className="brightness-0 invert" />
+      <section className="grid md:grid-cols-2 gap-4 md:gap-6 mb-20">
+        <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-brand rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <Image src="/icons/precision.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
-            <h2 className="text-xl font-heading font-bold text-text flex-1 leading-tight">Load-Aware Math</h2>
+            <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Load-Aware Math</h2>
           </div>
-          <p className="text-muted leading-relaxed text-base">
+          <p className="text-muted leading-relaxed text-sm sm:text-base">
             Accounts for rider, cargo, and terrain. No guesswork.
           </p>
         </div>
 
-        <div className="group card card-hover p-8 bg-white/80 backdrop-blur-md">
-          <div className="flex items-start gap-5 mb-5">
-            <div className="w-14 h-14 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
-              <Image src="/icons/presets.svg" alt="" width={28} height={28} className="brightness-0 invert" />
+        <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <Image src="/icons/presets.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
-            <h2 className="text-xl font-heading font-bold text-text flex-1 leading-tight">Model Database</h2>
+            <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Model Database</h2>
           </div>
-          <p className="text-muted leading-relaxed text-base">
+          <p className="text-muted leading-relaxed text-sm sm:text-base">
             20+ presets with verified specs and tire data.
           </p>
         </div>
 
-        <div className="group card card-hover p-8 bg-white/80 backdrop-blur-md">
-          <div className="flex items-start gap-5 mb-5">
-            <div className="w-14 h-14 flex items-center justify-center bg-gradient-to-br from-ok-500 to-ok-600 rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
-              <Image src="/icons/safety.svg" alt="" width={28} height={28} className="brightness-0 invert" />
+        <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-ok-500 to-ok-600 rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <Image src="/icons/safety.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
-            <h2 className="text-xl font-heading font-bold text-text flex-1 leading-tight">Safety Checks</h2>
+            <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Safety Checks</h2>
           </div>
-          <p className="text-muted leading-relaxed text-base">
+          <p className="text-muted leading-relaxed text-sm sm:text-base">
             Live alerts for pinch-flat, sidewall max, and terrain risks.
           </p>
         </div>
 
-        <div className="group card card-hover p-8 bg-white/80 backdrop-blur-md">
-          <div className="flex items-start gap-5 mb-5">
-            <div className="w-14 h-14 flex items-center justify-center bg-gradient-accent rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
-              <Image src="/icons/trike.svg" alt="" width={28} height={28} className="brightness-0 invert" />
+        <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-accent rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <Image src="/icons/trike.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
-            <h2 className="text-xl font-heading font-bold text-text flex-1 leading-tight">Trike Support</h2>
+            <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Trike Support</h2>
           </div>
-          <p className="text-muted leading-relaxed text-base">
+          <p className="text-muted leading-relaxed text-sm sm:text-base">
             Three-wheel load split with independent rear calculations.
           </p>
         </div>
