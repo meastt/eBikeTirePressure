@@ -74,9 +74,9 @@ export default function RootLayout({
         <OfflineMessage />
         <header className="sticky top-0 z-50 border-b border-slate-200/40 bg-white/90 backdrop-blur-2xl shadow-sm safe-area-inset-top">
           <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
-            <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
+            <nav className="flex items-center justify-between h-16 sm:h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group">
-                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105 w-64 sm:w-56 md:w-52 h-auto" />
+                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={240} height={53} priority className="transition-transform duration-300 group-hover:scale-105 w-64 sm:w-56 md:w-52 h-auto" />
               </Link>
               <div className="flex gap-2 sm:gap-3">
                 <Link
