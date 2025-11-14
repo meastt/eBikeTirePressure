@@ -258,26 +258,31 @@ describe("PSI Calculator Engine", () => {
     });
   });
 
-  describe("Trike mode", () => {
-    it("should reduce rear PSI in trike mode (load split between 2 wheels)", () => {
-      const bikeMode: CalculatorInputs = {
+  describe("Trike configuration", () => {
+    it("should reduce rear PSI for trikes (load split between 2 rear wheels)", () => {
+      // Create a trike version of radRunner
+      const radRunnerTrike: ModelPreset = {
+        ...radRunner,
+        isTrike: true,
+      };
+
+      const bikeInputs: CalculatorInputs = {
         bike: radRunner,
         riderLbs: 180,
         cargoRearLbs: 40,
         surface: "pavement",
         construction: "tubed",
-        trikeMode: false,
       };
 
-      const trikeMode: CalculatorInputs = {
-        ...bikeMode,
-        trikeMode: true,
+      const trikeInputs: CalculatorInputs = {
+        ...bikeInputs,
+        bike: radRunnerTrike,
       };
 
-      const bikeResult = calculatePSI(bikeMode);
-      const trikeResult = calculatePSI(trikeMode);
+      const bikeResult = calculatePSI(bikeInputs);
+      const trikeResult = calculatePSI(trikeInputs);
 
-      // Rear should be lower in trike mode (load split)
+      // Rear should be lower in trike (load split between 2 wheels)
       expect(trikeResult.rear.target).toBeLessThan(bikeResult.rear.target);
       // Front should be unchanged
       expect(trikeResult.front.target).toBe(bikeResult.front.target);
