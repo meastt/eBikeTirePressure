@@ -1,23 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Inter, Poppins } from "next/font/google";
 import OfflineMessage from "@/components/OfflineMessage";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  weight: ["600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "E-Bike PSI - Tire Pressure Calculator",
@@ -54,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en">
       <head>
         {/* Preconnect to analytics domains for performance */}
         <link rel="preconnect" href="https://plausible.io" />
@@ -90,7 +76,7 @@ export default function RootLayout({
           <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
             <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group">
-                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105" />
+                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105 w-32 sm:w-40 md:w-44 h-auto" />
               </Link>
               <div className="flex gap-2 sm:gap-3">
                 <Link
