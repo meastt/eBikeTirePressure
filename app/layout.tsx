@@ -1,23 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Inter, Poppins } from "next/font/google";
 import OfflineMessage from "@/components/OfflineMessage";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  weight: ["600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "E-Bike PSI - Tire Pressure Calculator",
@@ -54,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en">
       <head>
         {/* Preconnect to analytics domains for performance */}
         <link rel="preconnect" href="https://plausible.io" />
