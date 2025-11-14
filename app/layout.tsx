@@ -76,7 +76,7 @@ export default function RootLayout({
           <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
             <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group">
-                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105 w-32 sm:w-40 md:w-44 h-auto" />
+                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={180} height={40} priority className="transition-transform duration-300 group-hover:scale-105 w-44 sm:w-48 md:w-52 h-auto" />
               </Link>
               <div className="flex gap-2 sm:gap-3">
                 <Link
