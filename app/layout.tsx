@@ -74,32 +74,32 @@ export default function RootLayout({
         <OfflineMessage />
         <header className="sticky top-0 z-50 border-b border-slate-200/40 bg-white/90 backdrop-blur-2xl shadow-sm safe-area-inset-top">
           <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
-            <nav className="flex items-center justify-between h-16 sm:h-14" aria-label="Main navigation">
-              <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group">
-                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={240} height={53} priority className="transition-transform duration-300 group-hover:scale-105 w-64 sm:w-56 md:w-52 h-auto" />
+            <nav className="flex items-center justify-between h-20 sm:h-14" aria-label="Main navigation">
+              <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group flex-shrink-0">
+                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={300} height={67} priority className="transition-transform duration-300 group-hover:scale-105 w-[200px] sm:w-56 md:w-52 h-auto" />
               </Link>
-              <div className="flex gap-2 sm:gap-3">
+              <div className="flex gap-1.5 sm:gap-3 flex-shrink-0">
                 <Link
                   href="/calculate"
-                  className="px-5 sm:px-6 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-out text-sm sm:text-base shadow-md"
+                  className="px-3 sm:px-6 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-out text-sm sm:text-base shadow-md"
                 >
                   Calculate
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="hidden sm:block px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Models
                 </Link>
                 <Link
                   href="/blog"
-                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="hidden md:block px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/faq"
-                  className="px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="hidden md:block px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   FAQ
                 </Link>
