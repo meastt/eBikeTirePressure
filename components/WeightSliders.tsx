@@ -63,7 +63,7 @@ function Slider({
           {value} {unit}
         </span>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <input
           type="range"
           min={min}
@@ -71,7 +71,7 @@ function Slider({
           step={step}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value, 10))}
-          className="flex-1 h-2.5 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
+          className="flex-1 min-w-0 h-2.5 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
           style={{
             background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${((value - min) / (max - min)) * 100}%, #E2E8F0 ${((value - min) / (max - min)) * 100}%, #E2E8F0 100%)`,
           }}
@@ -84,7 +84,7 @@ function Slider({
           step={1}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value, 10) || min)}
-          className={`w-20 px-3 py-1.5 border-2 rounded-xl text-sm text-center font-semibold transition-all duration-200 ${
+          className={`w-14 sm:w-16 md:w-20 px-2 sm:px-3 py-1.5 border-2 rounded-xl text-xs sm:text-sm text-center font-semibold transition-all duration-200 flex-shrink-0 ${
             error ? 'border-danger focus:ring-danger' : 'border-slate-200 focus:border-brand focus:ring-2 focus:ring-brand/20'
           }`}
           aria-invalid={!!error}

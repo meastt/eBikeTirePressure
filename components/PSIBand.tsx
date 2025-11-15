@@ -12,51 +12,37 @@ interface PSIBandProps {
 export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSIBandProps) {
   const { min: recommendedMin, target, max: recommendedMax } = result;
 
-  // New scale logic: Center around recommended range
-  // The recommended range should occupy 60-70% of the visual bar
-  // Show extensions to tire limits as context
-
-  const recommendedRange = recommendedMax - recommendedMin;
-  const desiredRangePercentage = 0.65; // Recommended range should be ~65% of bar width
-
-  // Calculate scale range to make recommended range visually prominent
-  const calculatedScaleRange = recommendedRange / desiredRangePercentage;
-
-  // Determine scale bounds
-  // Start slightly below recommendedMin, end slightly above recommendedMax
-  const scaleStart = Math.max(
-    0,
-    recommendedMin - (calculatedScaleRange * 0.175) // ~17.5% to the left
-  );
-  const scaleEnd = Math.min(
-    sidewallMax + 2, // Allow showing slightly beyond sidewall max for context
-    recommendedMax + (calculatedScaleRange * 0.175) // ~17.5% to the right
-  );
-
-  const scaleRange = scaleEnd - scaleStart;
+  // Use the full sidewall range as the scale base
+  // This ensures the bar always fills 100% with proper danger zones
+  const totalRange = sidewallMax - sidewallMin;
 
   // Helper to convert PSI to percentage position on the bar
   const psiToPercent = (psi: number): number => {
-    return ((psi - scaleStart) / scaleRange) * 100;
+    return ((psi - sidewallMin) / totalRange) * 100;
   };
 
-  // Calculate positions
+  // Calculate segment boundaries
+  const safeStart = Math.max(recommendedMin, sidewallMin);
+  const safeEnd = Math.min(recommendedMax, sidewallMax);
+
+  // Calculate segment widths as percentages of the full sidewall range
+  const leftDangerRange = Math.max(0, safeStart - sidewallMin);
+  const safeRange = Math.max(0, safeEnd - safeStart);
+  const rightDangerRange = Math.max(0, sidewallMax - safeEnd);
+
+  const leftDangerPct = (leftDangerRange / totalRange) * 100;
+  const safePct = (safeRange / totalRange) * 100;
+  const rightDangerPct = (rightDangerRange / totalRange) * 100;
+
+  // Calculate marker positions (all within the sidewall range)
   const recommendedMinPercent = psiToPercent(recommendedMin);
   const targetPercent = psiToPercent(target);
   const recommendedMaxPercent = psiToPercent(recommendedMax);
-  const sidewallMinPercent = psiToPercent(sidewallMin);
-  const sidewallMaxPercent = psiToPercent(sidewallMax);
 
   // Badge positioning logic - flip if near edges
   const shouldFlipMin = recommendedMinPercent > 82;
   const shouldFlipTarget = targetPercent > 82;
   const shouldFlipMax = recommendedMaxPercent > 82;
-
-  // Clamp all percentages to 0-100 range for rendering
-  const clampedSidewallMinPercent = Math.max(0, Math.min(100, sidewallMinPercent));
-  const clampedRecommendedMinPercent = Math.max(0, Math.min(100, recommendedMinPercent));
-  const clampedRecommendedMaxPercent = Math.max(0, Math.min(100, recommendedMaxPercent));
-  const clampedSidewallMaxPercent = Math.max(0, Math.min(100, sidewallMaxPercent));
 
   return (
     <div className="space-y-6 mt-4 mb-8">
@@ -81,75 +67,48 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
 
       {/* PSI Band with recommended range focus */}
       <div
-        className="relative h-12 md:h-14 bg-gradient-to-b from-slate-50 to-white rounded-xl border-2 border-slate-200/60 overflow-visible shadow-inner px-4 mt-20"
+        className="relative h-12 md:h-14 bg-gradient-to-b from-slate-50 to-white rounded-xl border-2 border-slate-200/60 overflow-visible shadow-inner flex mt-20"
         tabIndex={0}
         aria-label={`${label.toLowerCase()} tire band: recommended range ${recommendedMin} to ${recommendedMax} PSI, target ${target} PSI`}
         role="img"
       >
-        {/* LEFT DANGER ZONE: Below tire minimum (only if visible in scale) */}
-        {scaleStart < sidewallMin && clampedSidewallMinPercent > 0 && (
+        {/* LEFT DANGER ZONE: Below recommended minimum */}
+        {leftDangerPct > 0 && (
           <div
-            className="absolute top-0 bottom-0 bg-danger opacity-20"
+            className="relative h-full bg-danger opacity-20"
             style={{
-              left: 0,
-              width: `${clampedSidewallMinPercent}%`,
+              width: `${leftDangerPct}%`,
             }}
           />
         )}
 
-        {/* LEFT CAUTION ZONE: Between tire min and recommended min (neutral/gray) */}
-        {clampedRecommendedMinPercent > clampedSidewallMinPercent && (
-          <div
-            className="absolute top-0 bottom-0 bg-slate-200 opacity-30"
-            style={{
-              left: `${clampedSidewallMinPercent}%`,
-              width: `${clampedRecommendedMinPercent - clampedSidewallMinPercent}%`,
-            }}
-          />
-        )}
-
-        {/* RECOMMENDED RANGE: The main green safe zone */}
+        {/* SAFE RANGE: Recommended range (green) */}
         <div
-          className="absolute top-0 bottom-0 bg-ok opacity-30 transition-all duration-300"
+          className="relative h-full bg-ok opacity-30 transition-all duration-300"
           style={{
-            left: `${clampedRecommendedMinPercent}%`,
-            width: `${clampedRecommendedMaxPercent - clampedRecommendedMinPercent}%`,
+            width: `${safePct}%`,
           }}
         />
 
-        {/* RIGHT CAUTION ZONE: Between recommended max and tire max (neutral/gray) */}
-        {clampedSidewallMaxPercent > clampedRecommendedMaxPercent && (
+        {/* RIGHT DANGER ZONE: Above recommended maximum */}
+        {rightDangerPct > 0 && (
           <div
-            className="absolute top-0 bottom-0 bg-slate-200 opacity-30"
+            className="relative h-full bg-danger opacity-20"
             style={{
-              left: `${clampedRecommendedMaxPercent}%`,
-              width: `${clampedSidewallMaxPercent - clampedRecommendedMaxPercent}%`,
+              width: `${rightDangerPct}%`,
             }}
           />
         )}
 
-        {/* RIGHT DANGER ZONE: Above tire maximum (only if visible in scale) */}
-        {scaleEnd > sidewallMax && clampedSidewallMaxPercent < 100 && (
-          <div
-            className="absolute top-0 bottom-0 bg-danger opacity-20"
-            style={{
-              left: `${clampedSidewallMaxPercent}%`,
-              width: `${100 - clampedSidewallMaxPercent}%`,
-            }}
-          />
-        )}
-
-        {/* Tire minimum marker (subtle, reference only) */}
-        {sidewallMinPercent >= 0 && sidewallMinPercent <= 100 && sidewallMin !== recommendedMin && (
-          <div
-            className="absolute top-0 bottom-0 w-0.5 bg-slate-300 opacity-60"
-            style={{ left: `${sidewallMinPercent}%` }}
-          >
-            <div className="absolute -top-6 -left-8 px-2 py-0.5 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm whitespace-nowrap">
-              {sidewallMin} min
-            </div>
+        {/* Tire minimum marker (on left edge) */}
+        <div
+          className="absolute top-0 bottom-0 w-0.5 bg-slate-400 opacity-60"
+          style={{ left: '0%' }}
+        >
+          <div className="absolute -top-6 -left-8 px-2 py-0.5 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm whitespace-nowrap">
+            {sidewallMin} min
           </div>
-        )}
+        </div>
 
         {/* Recommended Min marker */}
         <div
@@ -191,17 +150,15 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-ok" />
         </div>
 
-        {/* Sidewall max marker (subtle, reference only) */}
-        {sidewallMaxPercent >= 0 && sidewallMaxPercent <= 100 && sidewallMax !== recommendedMax && (
-          <div
-            className="absolute top-0 bottom-0 w-0.5 bg-slate-300 opacity-60 border-l-2 border-dashed border-slate-400/40"
-            style={{ left: `${sidewallMaxPercent}%` }}
-          >
-            <div className="absolute bottom-1.5 -right-10 px-2 py-0.5 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm whitespace-nowrap">
-              {sidewallMax} max
-            </div>
+        {/* Tire maximum marker (on right edge) */}
+        <div
+          className="absolute top-0 bottom-0 w-0.5 bg-slate-400 opacity-60"
+          style={{ left: '100%' }}
+        >
+          <div className="absolute bottom-1.5 -right-10 px-2 py-0.5 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm whitespace-nowrap">
+            {sidewallMax} max
           </div>
-        )}
+        </div>
       </div>
 
       {/* Tire range reference (below bar) */}
