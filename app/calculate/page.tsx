@@ -6,6 +6,7 @@ import type { ModelPreset, Surface, Construction, CalculatorOutput } from "@/lib
 import { calculatePSI } from "@/calc/engine";
 import { trackCalculatorRun, trackDeepLink } from "@/lib/analytics";
 import { useDebounce } from "@/lib/useDebounce";
+import { getEffectivePSI } from "@/lib/tirePSIDefaults";
 import PresetPicker from "@/components/PresetPicker";
 import WeightSliders from "@/components/WeightSliders";
 import SurfaceSelector from "@/components/SurfaceSelector";
@@ -240,17 +241,31 @@ function CalculatorContent() {
           {isCalculating ? (
             <ResultsCardSkeleton />
           ) : (
-            <ResultsCard
-              results={results}
-              sidewallMax={selectedModel?.stockTire.maxPSI || 50}
-              modelSlug={selectedModel?.slug}
-              context={{
-                riderLbs,
-                cargoLbs: cargoFrontLbs + cargoRearLbs,
-                tireSize: selectedModel?.stockTire.size || "",
-                surface,
-              }}
-            />
+            (() => {
+              // Get effective tire PSI limits (use manufacturer values or defaults based on tire size)
+              const tirePSI = selectedModel
+                ? getEffectivePSI(
+                    selectedModel.stockTire.size,
+                    selectedModel.stockTire.minPSI,
+                    selectedModel.stockTire.maxPSI
+                  )
+                : { min: 10, max: 50 };
+
+              return (
+                <ResultsCard
+                  results={results}
+                  sidewallMin={tirePSI.min}
+                  sidewallMax={tirePSI.max}
+                  modelSlug={selectedModel?.slug}
+                  context={{
+                    riderLbs,
+                    cargoLbs: cargoFrontLbs + cargoRearLbs,
+                    tireSize: selectedModel?.stockTire.size || "",
+                    surface,
+                  }}
+                />
+              );
+            })()
           )}
         </div>
 
