@@ -52,9 +52,11 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
   const shouldFlipTarget = targetPercent > 82;
   const shouldFlipMax = recommendedMaxPercent > 82;
 
-  // Determine if we should show danger zones
-  const showLeftDanger = scaleStart < sidewallMin;
-  const showRightDanger = scaleEnd > sidewallMax;
+  // Clamp all percentages to 0-100 range for rendering
+  const clampedSidewallMinPercent = Math.max(0, Math.min(100, sidewallMinPercent));
+  const clampedRecommendedMinPercent = Math.max(0, Math.min(100, recommendedMinPercent));
+  const clampedRecommendedMaxPercent = Math.max(0, Math.min(100, recommendedMaxPercent));
+  const clampedSidewallMaxPercent = Math.max(0, Math.min(100, sidewallMaxPercent));
 
   return (
     <div className="space-y-6 mt-4 mb-8">
@@ -84,24 +86,24 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
         aria-label={`${label.toLowerCase()} tire band: recommended range ${recommendedMin} to ${recommendedMax} PSI, target ${target} PSI`}
         role="img"
       >
-        {/* LEFT DANGER ZONE: Below tire minimum (if visible in scale) */}
-        {showLeftDanger && (
+        {/* LEFT DANGER ZONE: Below tire minimum (only if visible in scale) */}
+        {scaleStart < sidewallMin && clampedSidewallMinPercent > 0 && (
           <div
             className="absolute top-0 bottom-0 bg-danger opacity-20"
             style={{
               left: 0,
-              width: `${Math.max(0, sidewallMinPercent)}%`,
+              width: `${clampedSidewallMinPercent}%`,
             }}
           />
         )}
 
         {/* LEFT CAUTION ZONE: Between tire min and recommended min (neutral/gray) */}
-        {sidewallMin < recommendedMin && (
+        {clampedRecommendedMinPercent > clampedSidewallMinPercent && (
           <div
             className="absolute top-0 bottom-0 bg-slate-200 opacity-30"
             style={{
-              left: `${Math.max(0, sidewallMinPercent)}%`,
-              width: `${Math.max(0, recommendedMinPercent - Math.max(0, sidewallMinPercent))}%`,
+              left: `${clampedSidewallMinPercent}%`,
+              width: `${clampedRecommendedMinPercent - clampedSidewallMinPercent}%`,
             }}
           />
         )}
@@ -110,29 +112,29 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
         <div
           className="absolute top-0 bottom-0 bg-ok opacity-30 transition-all duration-300"
           style={{
-            left: `${recommendedMinPercent}%`,
-            width: `${recommendedMaxPercent - recommendedMinPercent}%`,
+            left: `${clampedRecommendedMinPercent}%`,
+            width: `${clampedRecommendedMaxPercent - clampedRecommendedMinPercent}%`,
           }}
         />
 
         {/* RIGHT CAUTION ZONE: Between recommended max and tire max (neutral/gray) */}
-        {recommendedMax < sidewallMax && (
+        {clampedSidewallMaxPercent > clampedRecommendedMaxPercent && (
           <div
             className="absolute top-0 bottom-0 bg-slate-200 opacity-30"
             style={{
-              left: `${recommendedMaxPercent}%`,
-              width: `${Math.min(100, sidewallMaxPercent) - recommendedMaxPercent}%`,
+              left: `${clampedRecommendedMaxPercent}%`,
+              width: `${clampedSidewallMaxPercent - clampedRecommendedMaxPercent}%`,
             }}
           />
         )}
 
-        {/* RIGHT DANGER ZONE: Above tire maximum (if visible in scale) */}
-        {showRightDanger && (
+        {/* RIGHT DANGER ZONE: Above tire maximum (only if visible in scale) */}
+        {scaleEnd > sidewallMax && clampedSidewallMaxPercent < 100 && (
           <div
             className="absolute top-0 bottom-0 bg-danger opacity-20"
             style={{
-              left: `${Math.min(100, sidewallMaxPercent)}%`,
-              width: `${100 - Math.min(100, sidewallMaxPercent)}%`,
+              left: `${clampedSidewallMaxPercent}%`,
+              width: `${100 - clampedSidewallMaxPercent}%`,
             }}
           />
         )}
