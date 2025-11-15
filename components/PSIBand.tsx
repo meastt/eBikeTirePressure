@@ -21,23 +21,20 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
     return ((psi - sidewallMin) / totalRange) * 100;
   };
 
-  // Calculate segment boundaries
-  const safeStart = Math.max(recommendedMin, sidewallMin);
-  const safeEnd = Math.min(recommendedMax, sidewallMax);
+  // Calculate segment widths based on sidewall range
+  // Left caution zone: from sidewallMin to recommendedMin
+  const leftCautionPct = Math.max(0, Math.min(100, ((recommendedMin - sidewallMin) / totalRange) * 100));
 
-  // Calculate segment widths as percentages of the full sidewall range
-  const leftDangerRange = Math.max(0, safeStart - sidewallMin);
-  const safeRange = Math.max(0, safeEnd - safeStart);
-  const rightDangerRange = Math.max(0, sidewallMax - safeEnd);
+  // Safe zone: the recommended range (green)
+  const safePct = Math.max(0, Math.min(100 - leftCautionPct, ((recommendedMax - recommendedMin) / totalRange) * 100));
 
-  const leftDangerPct = (leftDangerRange / totalRange) * 100;
-  const safePct = (safeRange / totalRange) * 100;
-  const rightDangerPct = (rightDangerRange / totalRange) * 100;
+  // Right caution zone: from recommendedMax to sidewallMax
+  const rightCautionPct = Math.max(0, 100 - leftCautionPct - safePct);
 
-  // Calculate marker positions (all within the sidewall range)
-  const recommendedMinPercent = psiToPercent(recommendedMin);
-  const targetPercent = psiToPercent(target);
-  const recommendedMaxPercent = psiToPercent(recommendedMax);
+  // Calculate marker positions (clamp to 0-100%)
+  const recommendedMinPercent = Math.max(0, Math.min(100, psiToPercent(recommendedMin)));
+  const targetPercent = Math.max(0, Math.min(100, psiToPercent(target)));
+  const recommendedMaxPercent = Math.max(0, Math.min(100, psiToPercent(recommendedMax)));
 
   // Badge positioning logic - flip if near edges
   const shouldFlipMin = recommendedMinPercent > 82;
@@ -72,12 +69,12 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
         aria-label={`${label.toLowerCase()} tire band: recommended range ${recommendedMin} to ${recommendedMax} PSI, target ${target} PSI`}
         role="img"
       >
-        {/* LEFT DANGER ZONE: Below recommended minimum */}
-        {leftDangerPct > 0 && (
+        {/* LEFT CAUTION ZONE: Below recommended minimum but within tire limits */}
+        {leftCautionPct > 0 && (
           <div
-            className="relative h-full bg-danger opacity-20"
+            className="relative h-full bg-slate-200 opacity-40"
             style={{
-              width: `${leftDangerPct}%`,
+              width: `${leftCautionPct}%`,
             }}
           />
         )}
@@ -90,12 +87,12 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
           }}
         />
 
-        {/* RIGHT DANGER ZONE: Above recommended maximum */}
-        {rightDangerPct > 0 && (
+        {/* RIGHT CAUTION ZONE: Above recommended maximum but within tire limits */}
+        {rightCautionPct > 0 && (
           <div
-            className="relative h-full bg-danger opacity-20"
+            className="relative h-full bg-slate-200 opacity-40"
             style={{
-              width: `${rightDangerPct}%`,
+              width: `${rightCautionPct}%`,
             }}
           />
         )}
