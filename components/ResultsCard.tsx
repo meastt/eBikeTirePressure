@@ -16,12 +16,13 @@ interface ResultsCardContext {
 
 interface ResultsCardProps {
   results: CalculatorOutput | null;
+  sidewallMin: number;
   sidewallMax: number;
   modelSlug?: string;
   context?: ResultsCardContext;
 }
 
-export default function ResultsCard({ results, sidewallMax, modelSlug, context }: ResultsCardProps) {
+export default function ResultsCard({ results, sidewallMin, sidewallMax, modelSlug, context }: ResultsCardProps) {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const handleShare = async () => {
@@ -77,7 +78,7 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
         Front tire: {front.target} PSI target, safe range {front.min} to {front.max} PSI.
         Rear tire: {rear.target} PSI target, safe range {rear.min} to {rear.max} PSI.
         {warnings.lowPinchRisk && ' Warning: pinch-flat risk - pressure below tire minimum.'}
-        {warnings.squirmRisk && ' Warning: squirm risk - tires may feel unstable.'}
+        {warnings.squirmRisk && ' Warning: very low pressure - tires may feel unstable even on soft terrain.'}
         {warnings.exceedsSidewallMax && ' Warning: exceeds sidewall maximum - risk of tire failure.'}
       </div>
       {/* Results header with gradient */}
@@ -94,10 +95,10 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
         )}
 
         {/* Front tire */}
-        <PSIBand result={front} sidewallMax={sidewallMax} label="Front" />
+        <PSIBand result={front} sidewallMin={sidewallMin} sidewallMax={sidewallMax} label="Front" />
 
         {/* Rear tire */}
-        <PSIBand result={rear} sidewallMax={sidewallMax} label="Rear" />
+        <PSIBand result={rear} sidewallMin={sidewallMin} sidewallMax={sidewallMax} label="Rear" />
       </div>
 
       {/* Sticky Share button - Mobile only */}
@@ -131,8 +132,8 @@ export default function ResultsCard({ results, sidewallMax, modelSlug, context }
             <div className="flex items-start gap-3 p-4 bg-warn-light border-l-4 border-warn rounded-xl shadow-sm">
               <ExclamationCircleIcon className="w-6 h-6 text-warn flex-shrink-0" />
               <div className="flex-1">
-                <div className="text-sm font-bold text-warn">Possible squirm on pavement</div>
-                <div className="text-xs text-muted mt-1">&lt;15 PSI may feel unstable. OK for sand/snow only.</div>
+                <div className="text-sm font-bold text-warn">Very low pressure warning</div>
+                <div className="text-xs text-muted mt-1">Pressure below 10 PSI may feel unstable even on soft terrain. Ride carefully and check for tire deformation.</div>
               </div>
             </div>
           )}
