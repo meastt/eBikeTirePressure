@@ -31,7 +31,58 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/blog/lectric-xp-3-psi-guide',
-        destination: '/brands/lectric/xp-3-0-tire-pressure',
+        destination: '/brands/lectric/xp-3-tire-pressure',
+        permanent: true,
+      },
+      // Redirects from old .0 decimal URLs to new simplified URLs
+      {
+        source: '/brands/lectric/xp-3-0-tire-pressure',
+        destination: '/brands/lectric/xp-3-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/specialized/turbo-como-4-0-tire-pressure',
+        destination: '/brands/specialized/turbo-como-4-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/lectric/xpedition-2-0-tire-pressure',
+        destination: '/brands/lectric/xpedition-2-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/lectric/xpeak-2-0-tire-pressure',
+        destination: '/brands/lectric/xpeak-2-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/specialized/turbo-vado-5-0-tire-pressure',
+        destination: '/brands/specialized/turbo-vado-5-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/specialized/turbo-vado-sl-5-0-tire-pressure',
+        destination: '/brands/specialized/turbo-vado-sl-5-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/specialized/turbo-tero-x-4-0-tire-pressure',
+        destination: '/brands/specialized/turbo-tero-x-4-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/heybike/mars-2-0-tire-pressure',
+        destination: '/brands/heybike/mars-2-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/lectric/xpeak-1-0-tire-pressure',
+        destination: '/brands/lectric/xpeak-1-tire-pressure',
+        permanent: true,
+      },
+      {
+        source: '/brands/lectric/xpedition-1-0-tire-pressure',
+        destination: '/brands/lectric/xpedition-1-tire-pressure',
         permanent: true,
       },
     ];

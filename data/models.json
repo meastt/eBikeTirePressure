@@ -34,7 +34,7 @@
   {
     "slug": "lectric-xp-3",
     "brand": "Lectric",
-    "model": "XP 3.0",
+    "model": "XP 3",
     "bikeWeightLbs": 64,
     "stockTire": {
       "size": "20x3.0",
@@ -98,7 +98,7 @@
   {
     "slug": "specialized-turbo-como-4",
     "brand": "Specialized",
-    "model": "Turbo Como 4.0",
+    "model": "Turbo Como 4",
     "bikeWeightLbs": 51,
     "stockTire": {
       "size": "27.5x2.4",
@@ -350,7 +350,7 @@
   {
     "slug": "lectric-xpedition-2",
     "brand": "Lectric",
-    "model": "XPedition 2.0",
+    "model": "XPedition 2",
     "bikeWeightLbs": 73,
     "stockTire": {
       "size": "20x3.0",
@@ -364,7 +364,7 @@
   {
     "slug": "lectric-xpeak-2",
     "brand": "Lectric",
-    "model": "XPeak 2.0",
+    "model": "XPeak 2",
     "bikeWeightLbs": 75,
     "stockTire": {
       "size": "26x4.0",
@@ -588,7 +588,7 @@
   {
     "slug": "specialized-turbo-vado-5",
     "brand": "Specialized",
-    "model": "Turbo Vado 5.0",
+    "model": "Turbo Vado 5",
     "bikeWeightLbs": 52,
     "stockTire": {
       "size": "27.5x2.2",
@@ -602,7 +602,7 @@
   {
     "slug": "specialized-turbo-vado-sl",
     "brand": "Specialized",
-    "model": "Turbo Vado SL 5.0",
+    "model": "Turbo Vado SL 5",
     "bikeWeightLbs": 37,
     "stockTire": {
       "size": "27.5x1.95",
@@ -646,7 +646,7 @@
   {
     "slug": "specialized-turbo-tero-x",
     "brand": "Specialized",
-    "model": "Turbo Tero X 4.0",
+    "model": "Turbo Tero X 4",
     "bikeWeightLbs": 58,
     "stockTire": {
       "size": "27.5x2.6",
@@ -806,7 +806,7 @@
   {
     "slug": "heybike-mars-2",
     "brand": "HeyBike",
-    "model": "Mars 2.0",
+    "model": "Mars 2",
     "bikeWeightLbs": 77,
     "stockTire": {
       "size": "20x4.0",
@@ -1741,7 +1741,7 @@
   {
     "slug": "lectric-xpeak-1",
     "brand": "Lectric",
-    "model": "XPeak 1.0",
+    "model": "XPeak 1",
     "bikeWeightLbs": 67,
     "stockTire": {
       "size": "26x4.0",
@@ -1790,7 +1790,7 @@
   {
     "slug": "lectric-xpedition-1",
     "brand": "Lectric",
-    "model": "XPedition 1.0",
+    "model": "XPedition 1",
     "bikeWeightLbs": 75,
     "stockTire": {
       "size": "20x3.0",
