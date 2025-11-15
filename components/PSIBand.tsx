@@ -11,10 +11,16 @@ interface PSIBandProps {
 export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
   const { min, target, max } = result;
 
-  // Calculate positions as percentages of the sidewall max
-  const minPercent = (min / sidewallMax) * 100;
-  const targetPercent = (target / sidewallMax) * 100;
-  const maxPercent = (max / sidewallMax) * 100;
+  // Calculate a more appropriate scale range to better utilize chart space
+  // Use max PSI + 30% padding, but ensure we show at least to sidewall max if needed
+  const scalePadding = Math.max(max * 0.3, 10); // At least 10 PSI padding
+  const scaleMax = Math.min(max + scalePadding, sidewallMax);
+
+  // Calculate positions as percentages of the adjusted scale
+  const minPercent = (min / scaleMax) * 100;
+  const targetPercent = (target / scaleMax) * 100;
+  const maxPercent = (max / scaleMax) * 100;
+  const sidewallMaxPercent = (sidewallMax / scaleMax) * 100;
 
   // Determine if badges should flip to inside when near right edge
   const shouldFlipMin = minPercent > 82; // Within 18% of right edge
@@ -61,12 +67,12 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
           }}
         />
 
-        {/* High zone (above max to sidewall) - Warning */}
+        {/* High zone (above max) - Warning */}
         <div
           className="absolute top-0 bottom-0 bg-warn opacity-20"
           style={{
             left: `${maxPercent}%`,
-            right: 0,
+            width: sidewallMaxPercent <= 100 ? `${sidewallMaxPercent - maxPercent}%` : `${100 - maxPercent}%`,
           }}
         />
 
@@ -113,10 +119,24 @@ export default function PSIBand({ result, sidewallMax, label }: PSIBandProps) {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-slate-400" />
         </div>
 
-        {/* Sidewall max label - right-aligned soft badge */}
-        <div className="absolute bottom-1.5 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 text-xs font-semibold rounded-lg shadow-sm">
-          {sidewallMax} max
-        </div>
+        {/* Sidewall max marker - only show if within visible range */}
+        {sidewallMaxPercent <= 100 && sidewallMax !== scaleMax && (
+          <div
+            className="absolute top-0 bottom-0 w-0.5 bg-slate-300 opacity-60"
+            style={{ left: `${sidewallMaxPercent}%` }}
+          >
+            <div className="absolute bottom-1.5 -right-8 px-2 py-0.5 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm whitespace-nowrap">
+              {sidewallMax} max
+            </div>
+          </div>
+        )}
+
+        {/* Scale max reference label if different from sidewall max */}
+        {scaleMax < sidewallMax && (
+          <div className="absolute bottom-1.5 right-3 px-2 py-0.5 bg-white/80 backdrop-blur-sm border border-slate-200 text-slate-500 text-xs font-medium rounded shadow-sm">
+            max {sidewallMax}
+          </div>
+        )}
       </div>
     </div>
   );
