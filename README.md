@@ -16,45 +16,48 @@ This tool helps e-bike riders determine optimal tire pressure by accounting for 
 
 The calculator provides min/target/max PSI values with visual safety bands and warnings for pinch-flat risk, sidewall limits, and terrain-specific concerns.
 
-## Scope - MVP Features
+## Current Features
 
-Phase 0 (Current):
-- Next.js App Router with TypeScript and Tailwind CSS
-- Route structure: home, calculator, model pages, hub index
-- ESLint, Prettier, Husky pre-commit hooks
-- GitHub Actions CI (build, lint, typecheck)
-- next-sitemap and next-seo scaffolding
-- Plausible analytics placeholder
-- **PWA (Progressive Web App) support**
-  - Installable on iOS and Android
-  - Offline-aware with service worker caching
-  - Web app manifest with theme colors
-  - Install prompt component
-  - Offline message banner
+All MVP phases (0-5) are complete and deployed:
 
-Phase 1 (Next):
-- Calculator engine with deterministic PSI algorithm
-- Model presets database (20+ popular e-bikes)
-- Unit tests for edge cases
-- Tire volume coefficients and axle bias calculations
+**Core Functionality:**
+- ✅ Deterministic PSI calculator engine with 100+ bike models
+- ✅ Interactive UI with real-time calculations
+- ✅ Weight sliders with debouncing and numeric inputs
+- ✅ Surface selector (pavement, mixed, dirt, sand/snow)
+- ✅ Tire construction selector (tubed, tubeless, reinforced)
+- ✅ Trike mode with proper load distribution
+- ✅ Results visualization with safety bands and warnings
+- ✅ Deep-link support for pre-filled values
 
-Phase 2:
-- Interactive calculator UI with real-time updates
-- Weight sliders, surface selector, construction selector
-- Results visualization with safety bands
-- Deep-link support for pre-filled values
+**Content & SEO:**
+- ✅ 100+ static model pages with JSON-LD structured data
+- ✅ Model directory with search, filtering, and pagination
+- ✅ Brand directory pages for popular manufacturers
+- ✅ Blog with MDX support (5+ articles and growing)
+- ✅ FAQ page with comprehensive Q&As
+- ✅ Privacy policy and Terms of Service pages
+- ✅ RSS feed for blog content
+- ✅ Automated sitemap generation (30+ URLs)
 
-Phase 3:
-- Static site generation for model pages
-- SEO optimization with JSON-LD structured data
-- Hub index page with model directory
-- Pre-calculated PSI tables for common scenarios
+**Technical & Infrastructure:**
+- ✅ Next.js 15 App Router with TypeScript
+- ✅ Tailwind CSS with custom design system
+- ✅ PWA support (installable, offline-aware)
+- ✅ Production deployment on Vercel
+- ✅ Plausible analytics integration
+- ✅ GitHub Actions CI/CD
+- ✅ ESLint, Prettier, Husky pre-commit hooks
+- ✅ Core Web Vitals optimization (90+ Lighthouse score)
 
-Phase 4:
-- Production deployment to Vercel
-- Plausible analytics integration
-- Performance optimization (Core Web Vitals)
-- Google Search Console integration
+**Recent UX Improvements:**
+- ✅ Searchable bike model combobox with fuzzy matching
+- ✅ Floating mobile results preview
+- ✅ Contextual help tooltips
+- ✅ Enhanced typography and color system
+- ✅ Loading states and error handling
+- ✅ Screen reader accessibility improvements
+- ✅ iOS safe area support
 
 ## Non-Goals (Post-MVP)
 
@@ -107,46 +110,68 @@ pnpm start
 
 ```
 /app
-  /(site)/page.tsx              # Home page
-  /calculate/page.tsx           # Calculator (Phase 2)
-  /models/[slug]/page.tsx       # Model-specific pages (Phase 3)
-  /ebike-tire-pressure/page.tsx # Hub index (Phase 3)
-  /layout.tsx                   # Root layout with header/footer
-  /globals.css                  # Global styles
+  /(site)/page.tsx                    # Home page
+  /calculate/page.tsx                 # Interactive calculator
+  /models/[slug]/page.tsx             # Model-specific pages (100+)
+  /ebike-tire-pressure/page.tsx       # Model directory with search
+  /brands/page.tsx                    # Brand directory
+  /brands/[brand]/page.tsx            # Brand-specific pages
+  /blog/page.tsx                      # Blog index with pagination
+  /blog/[slug]/page.tsx               # Blog article pages (MDX)
+  /blog/rss.xml/route.ts              # RSS feed
+  /faq/page.tsx                       # FAQ page
+  /privacy/page.tsx                   # Privacy policy
+  /terms/page.tsx                     # Terms of service
+  /layout.tsx                         # Root layout with header/footer
+  /globals.css                        # Global styles
 
 /lib
-  /types.ts                     # TypeScript interfaces
-  /seo.ts                       # SEO utilities
-  /schema.ts                    # JSON-LD helpers
-  /links.ts                     # Site navigation
+  /types.ts                           # TypeScript interfaces
+  /seo.ts                             # SEO utilities
+  /schema.ts                          # JSON-LD helpers
+  /links.ts                           # Site navigation
+  /blog.ts                            # Blog/MDX utilities
+  /readingTime.ts                     # Reading time calculation
+  /rss.ts                             # RSS feed generation
+  /useDebounce.ts                     # Debounce hook
 
-/calc (Phase 1)
-  /engine.ts                    # PSI calculation algorithm
-  /volume.ts                    # Tire volume coefficients
-  /engine.test.ts               # Unit tests
+/calc
+  /engine.ts                          # PSI calculation algorithm
+  /volume.ts                          # Tire volume coefficients
+  /engine.test.ts                     # Unit tests
 
-/data (Phase 1)
-  /models.json                  # E-bike model presets
+/data
+  /models.json                        # E-bike model presets (100+)
+  /brands.json                        # Brand metadata
 
-/components (Phase 2)
-  /PresetPicker.tsx
-  /WeightSliders.tsx
-  /SurfaceSelector.tsx
-  /ConstructionSelector.tsx
-  /TrikeToggle.tsx
-  /ResultsCard.tsx
-  /SafetyBand.tsx
+/content/blog
+  /*.mdx                              # Blog articles (MDX format)
+
+/components
+  /PresetPicker.tsx                   # Searchable bike model selector
+  /WeightSliders.tsx                  # Weight input sliders
+  /SurfaceSelector.tsx                # Terrain type selector
+  /ConstructionSelector.tsx           # Tire construction selector
+  /TrikeToggle.tsx                    # Three-wheel mode toggle
+  /ResultsCard.tsx                    # PSI results display
+  /SafetyBand.tsx                     # Visual PSI safety indicator
+  /Footer.tsx                         # Global footer
+  /BlogCard.tsx                       # Blog post preview card
+  /TagPill.tsx                        # Tag display component
+  /Prose.tsx                          # MDX typography wrapper
 ```
 
 ## How to Contribute
 
-This project follows a phased development approach:
+This project is actively maintained and welcomes contributions:
 
-1. Create feature branches per phase: `phase-0/skeleton`, `phase-1/engine-and-data`, etc.
-2. PR titles must start with `phase-X:` to indicate the phase
-3. All PRs must pass CI checks (build, lint, typecheck)
-4. Pre-commit hooks automatically run lint and typecheck
-5. Follow the existing code style (Prettier enforced)
+1. Create feature branches from `main`: `feature/your-feature-name`
+2. All PRs must pass CI checks (build, lint, typecheck, tests)
+3. Pre-commit hooks automatically run lint and typecheck
+4. Follow the existing code style (Prettier enforced)
+5. Add tests for new calculator features
+6. Update documentation for significant changes
+7. See [ROADMAP.md](./ROADMAP.md) for planned features and improvements
 
 ## Technology Stack
 
@@ -243,7 +268,14 @@ This software is proprietary and confidential. See LICENSE file for details.
 
 ## Development Status
 
-**Current Phase**: Phase 0 - Repository Skeleton ✅
-**Next Phase**: Phase 1 - Data Model & Calculator Engine
+**Current Status**: ✅ All MVP phases complete (0-5) and deployed to production
 
-See the main project plan document for detailed phase breakdown and acceptance criteria.
+**Completed Phases:**
+- ✅ Phase 0: Repository skeleton and infrastructure
+- ✅ Phase 1: Calculator engine and model database
+- ✅ Phase 2: Interactive calculator UI
+- ✅ Phase 3: Static model pages and SEO optimization
+- ✅ Phase 4: Production deployment and analytics
+- ✅ Phase 5: Blog, FAQ, and content layer
+
+**Next Steps**: See [ROADMAP.md](./ROADMAP.md) for upcoming features and improvements.
