@@ -22,39 +22,42 @@ export function generateFAQSchema(faqs: FAQItem[]) {
   };
 }
 
-export function generateProductSchema(model: ModelPreset) {
+export function generateArticleSchema(model: ModelPreset) {
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: `${model.brand} ${model.model}`,
-    description: `Tire pressure specifications for ${model.brand} ${model.model} e-bike`,
-    brand: {
-      "@type": "Brand",
-      name: model.brand,
+    "@type": "TechArticle",
+    headline: `${model.brand} ${model.model} Tire Pressure Guide`,
+    description: `Complete tire pressure specifications and recommendations for ${model.brand} ${model.model} e-bike`,
+    about: {
+      "@type": "Thing",
+      name: `${model.brand} ${model.model}`,
+      description: `E-bike model with ${model.stockTire.size} tires`,
     },
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Tire Size",
-        value: model.stockTire.size,
+    author: {
+      "@type": "Organization",
+      name: "E-Bike PSI",
+      url: "https://ebikepsi.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "E-Bike PSI",
+      url: "https://ebikepsi.com",
+    },
+    mainEntity: {
+      "@type": "Vehicle",
+      name: `${model.brand} ${model.model}`,
+      brand: {
+        "@type": "Brand",
+        name: model.brand,
       },
-      {
-        "@type": "PropertyValue",
-        name: "Min PSI",
-        value: model.stockTire.minPSI,
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Max PSI",
-        value: model.stockTire.maxPSI,
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Bike Weight",
-        value: `${model.bikeWeightLbs} lbs`,
-      },
-    ],
+      vehicleConfiguration: `${model.stockTire.size} tires, ${model.bikeWeightLbs} lbs`,
+    },
   };
+}
+
+// Keep this for backward compatibility - redirects to Article schema
+export function generateProductSchema(model: ModelPreset) {
+  return generateArticleSchema(model);
 }
 
 export function generateWebsiteSchema() {
