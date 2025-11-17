@@ -69,8 +69,7 @@ function CalculatorContent() {
         const riderInput = document.getElementById('rider-weight-input') as HTMLInputElement;
         if (riderInput) {
           riderInput.focus();
-          // Position cursor at the end of the input
-          riderInput.setSelectionRange(riderInput.value.length, riderInput.value.length);
+          // Note: setSelectionRange doesn't work on number inputs, just focus is enough
         }
       }, 100);
       return () => clearTimeout(timer);

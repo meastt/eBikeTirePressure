@@ -107,39 +107,72 @@ function applyAdjustments(
 
 /**
  * Calculate min/target/max range for a given target PSI
+ * ALWAYS clamps to sidewall limits for safety (never recommends outside manufacturer specs)
  * Min: 85% of target (pinch-flat risk below this)
  * Max: 115% of target (harsh ride above this)
- * Guardrails: min >= max(0.7×minPSI, 8), max <= sidewallMax - 2
+ * Safety buffer: stays 2 PSI away from sidewall limits
  */
 function calculateRange(
-  targetPSI: number, 
-  sidewallMin: number, 
+  targetPSI: number,
+  sidewallMin: number,
   sidewallMax: number
-): AxleResult {
-  // Calculate initial range
-  let min = Math.round(targetPSI * 0.85);
-  const target = Math.round(targetPSI);
-  let max = Math.round(targetPSI * 1.15);
+): { result: AxleResult; wasClamped: 'low' | 'high' | null } {
+  // Define safe operating range (with 2 PSI safety buffer)
+  const safeMin = sidewallMin + 2;
+  const safeMax = sidewallMax - 2;
 
-  // Apply guardrails
-  const absoluteMin = Math.max(sidewallMin * 0.7, 8);
-  const absoluteMax = sidewallMax - 2;
+  // Clamp target to safe range FIRST (never exceed sidewall limits)
+  const clampedTarget = Math.max(safeMin, Math.min(targetPSI, safeMax));
 
-  min = Math.max(min, absoluteMin);
-  max = Math.min(max, absoluteMax);
+  // Track if we had to clamp
+  let wasClamped: 'low' | 'high' | null = null;
+  if (targetPSI < safeMin) {
+    wasClamped = 'low';
+  } else if (targetPSI > safeMax) {
+    wasClamped = 'high';
+  }
 
-  // Ensure target is within range
-  const clampedTarget = Math.max(min, Math.min(target, max));
+  // Calculate range around the CLAMPED target (±15%)
+  let min = clampedTarget * 0.85;
+  let max = clampedTarget * 1.15;
 
-  return { 
-    min: Math.round(min), 
-    target: Math.round(clampedTarget), 
-    max: Math.round(max) 
+  // Ensure range stays within safe limits
+  min = Math.max(min, safeMin);
+  max = Math.min(max, safeMax);
+
+  // Round values
+  const roundedMin = Math.round(min);
+  const roundedTarget = Math.round(clampedTarget);
+  const roundedMax = Math.round(max);
+
+  // Ensure target isn't exactly on the edge (creates visual clutter)
+  // Always give at least 1 PSI separation between target and range edge
+  let finalMin = roundedMin;
+  let finalMax = roundedMax;
+
+  // If target is at the minimum edge, expand max to create separation
+  if (roundedTarget === roundedMin && roundedMax < safeMax) {
+    finalMax = Math.min(roundedMax + 2, safeMax); // Add 2 PSI for better visual separation
+  }
+  // If target is at the maximum edge, expand min to create separation
+  else if (roundedTarget === roundedMax && roundedMin > safeMin) {
+    finalMin = Math.max(roundedMin - 2, safeMin); // Subtract 2 PSI for better visual separation
+  }
+
+  return {
+    result: {
+      min: finalMin,
+      target: roundedTarget,
+      max: finalMax
+    },
+    wasClamped
   };
 }
 
 /**
  * Detect warnings based on calculated PSI and tire limits
+ * NOTE: Since we now clamp to sidewall limits, we won't trigger sidewall warnings
+ * But we still check for edge cases like very low pressure on soft surfaces
  */
 function detectWarnings(
   front: AxleResult,
@@ -149,20 +182,14 @@ function detectWarnings(
 ): CalculatorWarnings {
   const warnings: CalculatorWarnings = {};
 
-  // Pinch-flat risk: target PSI below tire's min
-  if (front.target < psiLimits.min || rear.target < psiLimits.min) {
-    warnings.lowPinchRisk = true;
-  }
-
-  // Squirm risk: very low pressure on soft surfaces
+  // Squirm risk: very low pressure on soft surfaces (even if within sidewall limits)
+  // This can happen on fat tires with low sidewall minimums
   if (inputs.surface === "sand_snow" && (front.target < 10 || rear.target < 10)) {
     warnings.squirmRisk = true;
   }
 
-  // Exceeds sidewall max
-  if (front.max > psiLimits.max || rear.max > psiLimits.max) {
-    warnings.exceedsSidewallMax = true;
-  }
+  // Note: We no longer check for pinch-flat or exceeds-sidewall warnings
+  // because clamping ensures we stay within safe limits
 
   return warnings;
 }
@@ -170,8 +197,34 @@ function detectWarnings(
 /**
  * Generate helpful notes about the calculation
  */
-function generateNotes(inputs: CalculatorInputs, front: AxleResult, rear: AxleResult): string[] {
+function generateNotes(
+  inputs: CalculatorInputs,
+  front: AxleResult,
+  rear: AxleResult,
+  frontClamped: 'low' | 'high' | null,
+  rearClamped: 'low' | 'high' | null,
+  psiLimits: { min: number; max: number }
+): string[] {
   const notes: string[] = [];
+
+  // PRIORITY: Clamping notes (show first for visibility)
+  if (frontClamped === 'low' || rearClamped === 'low') {
+    const totalWeight = inputs.riderLbs + (inputs.passengerLbs || 0) +
+                       (inputs.cargoFrontLbs || 0) + (inputs.cargoRearLbs || 0);
+    notes.push(
+      `⚠️ Adjusted to tire's safe minimum (${psiLimits.min + 2} PSI) for your ${totalWeight} lb total weight and ${inputs.surface.replace('_', '/')} terrain. ` +
+      `Consider wider tires (3.0"+) for softer surfaces.`
+    );
+  }
+
+  if (frontClamped === 'high' || rearClamped === 'high') {
+    const totalWeight = inputs.riderLbs + (inputs.passengerLbs || 0) +
+                       (inputs.cargoFrontLbs || 0) + (inputs.cargoRearLbs || 0);
+    notes.push(
+      `⚠️ Adjusted to tire's safe maximum (${psiLimits.max - 2} PSI). Your load (${totalWeight} lbs) approaches tire capacity. ` +
+      `Consider reinforced tires or reducing cargo.`
+    );
+  }
 
   // Cargo notes
   const totalCargo = (inputs.cargoFrontLbs || 0) + (inputs.cargoRearLbs || 0);
@@ -230,22 +283,34 @@ export function calculatePSI(inputs: CalculatorInputs): CalculatorOutput {
   const rearTargetPSI = applyAdjustments(rearBasePSI, inputs.surface, inputs.construction);
 
   // Calculate min/target/max ranges using effective PSI limits
-  const front = calculateRange(
-    frontTargetPSI, 
-    psiLimits.min, 
+  // This will clamp to safe limits and track if clamping occurred
+  const frontCalc = calculateRange(
+    frontTargetPSI,
+    psiLimits.min,
     psiLimits.max
   );
-  const rear = calculateRange(
-    rearTargetPSI, 
-    psiLimits.min, 
+  const rearCalc = calculateRange(
+    rearTargetPSI,
+    psiLimits.min,
     psiLimits.max
   );
+
+  // Extract results
+  const front = frontCalc.result;
+  const rear = rearCalc.result;
 
   // Detect warnings (use effective PSI limits)
   const warnings = detectWarnings(front, rear, inputs, psiLimits);
 
-  // Generate notes
-  const notes = generateNotes(inputs, front, rear);
+  // Generate notes with clamping information
+  const notes = generateNotes(
+    inputs,
+    front,
+    rear,
+    frontCalc.wasClamped,
+    rearCalc.wasClamped,
+    psiLimits
+  );
 
   // Add note if using default PSI values
   if (psiLimits.isDefault) {
