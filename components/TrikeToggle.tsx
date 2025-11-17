@@ -23,12 +23,12 @@ export default function TrikeToggle({ enabled, onToggle }: TrikeToggleProps) {
             <div className="flex items-center gap-3 p-3 bg-gradient-to-br from-brand-50/50 to-white rounded-xl border border-brand/20 shadow-sm">
               <svg width="60" height="32" viewBox="0 0 60 32" className="flex-shrink-0">
                 {/* Front wheel */}
-                <circle cx="12" cy="24" r="6" fill="none" stroke="#3B82F6" strokeWidth="2"/>
+                <circle cx="12" cy="24" r="6" fill="none" stroke="#6366F1" strokeWidth="2"/>
                 <text x="12" y="10" fontSize="9" fill="#64748B" textAnchor="middle" fontWeight="600">35%</text>
 
                 {/* Rear wheels */}
-                <circle cx="42" cy="24" r="6" fill="none" stroke="#3B82F6" strokeWidth="2"/>
-                <circle cx="54" cy="24" r="6" fill="none" stroke="#3B82F6" strokeWidth="2"/>
+                <circle cx="42" cy="24" r="6" fill="none" stroke="#6366F1" strokeWidth="2"/>
+                <circle cx="54" cy="24" r="6" fill="none" stroke="#6366F1" strokeWidth="2"/>
                 <text x="48" y="10" fontSize="9" fill="#64748B" textAnchor="middle" fontWeight="600">65%</text>
 
                 {/* Frame line */}

@@ -73,7 +73,7 @@ function Slider({
           onChange={(e) => onChange(parseInt(e.target.value, 10))}
           className="flex-1 min-w-0 h-2.5 bg-surface rounded-lg appearance-none cursor-pointer accent-brand"
           style={{
-            background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${((value - min) / (max - min)) * 100}%, #E2E8F0 ${((value - min) / (max - min)) * 100}%, #E2E8F0 100%)`,
+            background: `linear-gradient(to right, #6366F1 0%, #6366F1 ${((value - min) / (max - min)) * 100}%, #E2E8F0 ${((value - min) / (max - min)) * 100}%, #E2E8F0 100%)`,
           }}
         />
         <input

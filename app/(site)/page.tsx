@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div>
-      {/* Hero Section with Premium Gradient */}
-      <section className="relative bg-gradient-to-br from-brand-50/80 via-white to-purple-50/60 py-24 sm:py-32 px-4 overflow-hidden">
-        {/* Decorative background elements */}
+      {/* Hero Section with Clean Gradient */}
+      <section className="relative bg-gradient-to-br from-white via-surface-light to-white py-24 sm:py-32 px-4 overflow-hidden">
+        {/* Decorative background elements - very subtle */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-200/60 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-200/60 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-accent-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-cyan-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-100/20 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         </div>
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <h1 className="mb-8 bg-gradient-to-r from-text via-brand-600 to-text bg-clip-text text-transparent">
@@ -84,7 +84,7 @@ export default function Home() {
 
         <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
           <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-purple rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
               <Image src="/icons/presets.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
             <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Model Database</h2>
@@ -96,7 +96,7 @@ export default function Home() {
 
         <div className="group card card-hover p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-md">
           <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-ok-500 to-ok-600 rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-cyan rounded-xl sm:rounded-2xl text-white shadow-lg group-hover:shadow-glow group-hover:scale-110 transition-all duration-300 flex-shrink-0">
               <Image src="/icons/safety.svg" alt="" width={28} height={28} className="brightness-0 invert w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </div>
             <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-text flex-1 leading-tight">Safety Checks</h2>

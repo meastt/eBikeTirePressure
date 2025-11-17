@@ -31,7 +31,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#2B59C3",
+  themeColor: "#6366F1",
 };
 
 export default function RootLayout({
@@ -72,7 +72,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-gradient-mesh flex flex-col min-h-screen">
         <OfflineMessage />
-        <header className="sticky top-0 z-50 border-b border-slate-200/40 bg-white/90 backdrop-blur-2xl shadow-sm safe-area-inset-top">
+        <header className="sticky top-0 z-50 border-b border-line/30 bg-white/80 backdrop-blur-2xl shadow-sm safe-area-inset-top">
           <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
             <nav className="flex items-center justify-between h-20 sm:h-14" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group flex-shrink-0">
