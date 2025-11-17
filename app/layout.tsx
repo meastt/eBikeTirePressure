@@ -87,21 +87,9 @@ export default function RootLayout({
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="hidden sm:block px-4 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="px-3 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Models
-                </Link>
-                <Link
-                  href="/blog"
-                  className="hidden md:block px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/faq"
-                  className="hidden md:block px-3 sm:px-4 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
-                >
-                  FAQ
                 </Link>
               </div>
             </nav>
