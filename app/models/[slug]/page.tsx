@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ModelPreset } from "@/lib/types";
-import { generateProductSchema, generateFAQSchema, type FAQItem } from "@/lib/schema";
+import { generateArticleSchema, generateFAQSchema, type FAQItem } from "@/lib/schema";
 import { generatePSITable } from "@/calc/psiTable";
 import modelsData from "@/data/models.json";
 import { enrichModel } from "@/lib/modelUtils";
@@ -87,7 +87,7 @@ export default async function ModelPage({
   ];
 
   // Generate JSON-LD structured data
-  const productSchema = generateProductSchema(model);
+  const articleSchema = generateArticleSchema(model);
   const faqSchema = generateFAQSchema(faqs);
 
   return (
@@ -95,7 +95,7 @@ export default async function ModelPage({
       {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
