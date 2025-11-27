@@ -5,6 +5,7 @@ import modelsData from '@/data/models.json';
 import type { ModelPreset } from '@/lib/types';
 import { getModelsByBrandSlug, getAllBrandSlugs } from '@/lib/modelUtils';
 import { getBrandMetadata } from '@/lib/brandMetadata';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 const models = modelsData as ModelPreset[];
 
@@ -70,14 +71,13 @@ export default async function BrandPage({
   return (
     <main className="min-h-screen bg-gradient-mesh">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Breadcrumb */}
-        <nav className="mb-8 text-sm">
-          <Link href="/brands" className="text-brand hover:underline">
-            Brands
-          </Link>
-          <span className="mx-2 text-muted">/</span>
-          <span className="text-muted">{brandMetadata.displayName}</span>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Brands', href: '/brands' },
+            { label: brandMetadata.displayName },
+          ]}
+        />
 
         {/* Header */}
         <div className="mb-12">

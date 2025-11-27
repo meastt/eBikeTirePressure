@@ -10,11 +10,26 @@ const models = modelsData as ModelPreset[];
 export const metadata: Metadata = {
   title: 'E-Bike Brands | Tire Pressure Guides by Manufacturer',
   description:
-    'Tire pressure guides for all major e-bike brands: Aventon, Rad Power, Lectric, Ride1Up, Velotric, Super73, and more. Find PSI recommendations for your bike model.',
+    'Tire pressure guides for all major e-bike brands: Aventon, Rad Power, Lectric, Ride1Up, Velotric, Super73, Specialized, Trek, and 40+ more manufacturers. Find PSI recommendations for your bike model.',
+  keywords: [
+    'ebike brands',
+    'Rad Power tire pressure',
+    'Lectric ebike PSI',
+    'Aventon tire pressure',
+    'Specialized ebike PSI',
+    'Trek electric bike pressure',
+    'Ride1Up tire pressure',
+    'Super73 PSI',
+    'ebike manufacturer guide',
+  ],
+  alternates: {
+    canonical: 'https://ebikepsi.com/brands',
+  },
   openGraph: {
-    title: 'E-Bike Brands - Tire Pressure Guides',
-    description: 'PSI guides for Aventon, Rad Power, Lectric, and all major e-bike brands.',
+    title: 'E-Bike Brands - Tire Pressure Guides | 40+ Manufacturers',
+    description: 'PSI guides for Aventon, Rad Power, Lectric, Specialized, Trek, and all major e-bike brands.',
     type: 'website',
+    url: 'https://ebikepsi.com/brands',
   },
 };
 

@@ -6,19 +6,78 @@ import modelsData from "@/data/models.json";
 const models = modelsData as ModelPreset[];
 
 export const metadata: Metadata = {
-  title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations",
+  title: "E-Bike Tire Pressure Calculator | PSI Calculator for Electric Bikes",
   description:
-    "Calculate optimal tire pressure for your e-bike based on rider weight, cargo, and terrain. Supports 20+ popular models with real-time PSI calculations and safety warnings.",
+    "Calculate optimal tire pressure for your e-bike based on rider weight, cargo, and terrain. Free PSI calculator for Rad Power, Lectric, Aventon, Specialized, Trek, and 150+ e-bike models. Get accurate tire pressure recommendations with safety warnings.",
+  keywords: [
+    'e-bike tire pressure',
+    'ebike PSI calculator',
+    'electric bike tire pressure',
+    'fat tire ebike PSI',
+    'cargo bike tire pressure',
+    'e-bike pressure calculator',
+    'Rad Power tire pressure',
+    'Lectric XP tire pressure',
+    'Aventon tire pressure',
+    'optimal ebike PSI',
+  ],
+  alternates: {
+    canonical: "https://ebikepsi.com",
+  },
   openGraph: {
-    title: "E-Bike Tire Pressure Calculator",
-    description: "Professional PSI recommendations for fat tire, cargo, and standard e-bikes.",
+    title: "E-Bike Tire Pressure Calculator | PSI for 150+ Models",
+    description: "Free tire pressure calculator for fat tire, cargo, and standard e-bikes. Supports Rad Power, Lectric, Aventon, Specialized, Trek, and more.",
     type: "website",
+    url: "https://ebikepsi.com",
+    siteName: "E-Bike PSI",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Bike Tire Pressure Calculator",
+    description: "Free PSI calculator for 150+ e-bike models. Get optimal tire pressure based on weight, cargo, and terrain.",
   },
 };
 
 export default function Home() {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'E-Bike PSI',
+    url: 'https://ebikepsi.com',
+    logo: 'https://ebikepsi.com/logo.svg',
+    description: 'Professional e-bike tire pressure calculator with load-aware algorithms and real-time safety checks for optimal PSI recommendations.',
+    foundingDate: '2024',
+    sameAs: [],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Support',
+      availableLanguage: 'English',
+    },
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'E-Bike PSI',
+    url: 'https://ebikepsi.com',
+    description: 'Professional tire pressure calculator for all e-bike models',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://ebikepsi.com/ebike-tire-pressure?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       {/* Hero Section - Gauge-Inspired Precision Lab Design */}
       <section className="relative bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 py-24 sm:py-32 lg:py-40 px-4 overflow-hidden">
         {/* Technical Grid Background */}

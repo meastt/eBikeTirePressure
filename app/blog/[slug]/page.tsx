@@ -6,6 +6,7 @@ import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { Prose } from '@/components/Prose';
 import { TagPill } from '@/components/TagPill';
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 interface BlogPostProps {
   params: Promise<{ slug: string }>;
@@ -101,27 +102,13 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
       <main className="min-h-screen bg-white">
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Breadcrumb */}
-          <nav className="mb-8 text-sm" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-muted">
-              <li>
-                <Link href="/" className="hover:text-brand transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-brand transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-text font-medium">{post.title}</li>
-            </ol>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: post.title },
+            ]}
+          />
 
           {/* Header */}
           <header className="mb-8">
