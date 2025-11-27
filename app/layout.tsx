@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import OfflineMessage from "@/components/OfflineMessage";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
@@ -31,7 +30,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#6366F1",
+  themeColor: "#0EA5E9",
 };
 
 export default function RootLayout({
@@ -72,24 +71,30 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-gradient-mesh flex flex-col min-h-screen">
         <OfflineMessage />
-        <header className="sticky top-0 z-50 border-b border-line/30 bg-white/80 backdrop-blur-2xl shadow-sm safe-area-inset-top">
-          <div className="container mx-auto px-4 sm:px-6 py-4 max-w-7xl">
-            <nav className="flex items-center justify-between h-20 sm:h-14" aria-label="Main navigation">
-              <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity group flex-shrink-0">
-                <Image src="/logo.svg" alt="E-Bike PSI Logo" width={300} height={67} priority className="transition-transform duration-300 group-hover:scale-105 w-[200px] sm:w-56 md:w-52 h-auto" />
+        <header className="sticky top-0 z-50 border-b border-brand/20 bg-slate-900/95 backdrop-blur-2xl shadow-xl safe-area-inset-top">
+          <div className="container mx-auto px-4 sm:px-6 py-3 max-w-7xl">
+            <nav className="flex items-center justify-between h-16 sm:h-14" aria-label="Main navigation">
+              <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity group flex-shrink-0">
+                <div className="w-10 h-10 bg-gradient-to-br from-brand to-cyan-600 rounded-lg flex items-center justify-center shadow-glow">
+                  <span className="font-display font-black text-white text-lg">PSI</span>
+                </div>
+                <div className="hidden sm:flex flex-col">
+                  <span className="font-display font-black text-white text-lg leading-none tracking-tight">E-BIKE PSI</span>
+                  <span className="font-mono text-brand-300 text-xs tracking-wider">PRECISION_CALC</span>
+                </div>
               </Link>
-              <div className="flex gap-1.5 sm:gap-3 flex-shrink-0">
+              <div className="flex gap-2 sm:gap-3 flex-shrink-0">
                 <Link
                   href="/calculate"
-                  className="px-3 sm:px-6 py-2.5 bg-gradient-brand text-white font-semibold rounded-xl hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-out text-sm sm:text-base shadow-md"
+                  className="px-4 sm:px-6 py-2.5 bg-gradient-to-r from-brand to-cyan-600 text-white font-heading font-bold rounded-lg hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-out text-sm sm:text-base shadow-lg"
                 >
-                  Calculate
+                  CALCULATE
                 </Link>
                 <Link
                   href="/ebike-tire-pressure"
-                  className="px-3 sm:px-5 py-2.5 text-text font-medium hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200 text-sm sm:text-base"
+                  className="px-4 sm:px-5 py-2.5 text-slate-300 font-heading font-semibold hover:bg-brand/10 hover:text-brand rounded-lg transition-all duration-200 text-sm sm:text-base border border-brand/20"
                 >
-                  Models
+                  MODELS
                 </Link>
               </div>
             </nav>
