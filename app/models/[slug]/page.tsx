@@ -6,6 +6,7 @@ import { generateArticleSchema, generateFAQSchema, type FAQItem } from "@/lib/sc
 import { generatePSITable } from "@/calc/psiTable";
 import modelsData from "@/data/models.json";
 import { enrichModel } from "@/lib/modelUtils";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const models = modelsData as ModelPreset[];
 
@@ -103,6 +104,14 @@ export default async function ModelPage({
       />
 
       <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Models', href: '/ebike-tire-pressure' },
+            { label: `${model.brand} ${model.model}` },
+          ]}
+        />
+
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-text mb-2 tracking-tight">

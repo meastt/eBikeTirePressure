@@ -8,13 +8,22 @@ export const metadata: Metadata = {
   title: "E-Bike PSI - Tire Pressure Calculator",
   description:
     "Professional e-bike tire pressure calculator. Get precise PSI recommendations based on your bike model, rider weight, cargo, and terrain.",
+  metadataBase: new URL('https://ebikepsi.com'),
+  authors: [{ name: 'E-Bike PSI' }],
+  creator: 'E-Bike PSI',
+  publisher: 'E-Bike PSI',
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/favicon.svg",
+    apple: [
+      { url: "/favicon.svg" },
+      { url: "/icons/icon-180x180.png", sizes: "180x180", type: "image/png" },
+      { url: "/icons/icon-152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/icons/icon-120x120.png", sizes: "120x120", type: "image/png" },
+    ],
   },
   appleWebApp: {
     capable: true,
