@@ -21,71 +21,59 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@/components', '@/lib'],
   },
-  // Redirects from old blog posts to new brand/model structure
+  // Redirects for SEO consolidation: /brands/[brand]/[model]-tire-pressure → /models/[model-slug]
   async redirects() {
-    return [
+    const modelsData = require('./data/models.json');
+    const redirects = [];
+
+    // Helper functions (inline to avoid TypeScript compilation issues at build time)
+    const getBrandSlug = (brandName: string): string => {
+      return brandName
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/bikes?$/i, '')
+        .replace(/-+$/g, '')
+        .trim();
+    };
+
+    const getModelSlug = (modelName: string): string => {
+      return modelName
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-.]/g, '')
+        .replace(/\./g, '-')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+    };
+
+    // Generate redirects from all tire pressure pages to model pages
+    modelsData.forEach((model: any) => {
+      const brandSlug = getBrandSlug(model.brand);
+      const modelSlug = getModelSlug(model.model);
+
+      redirects.push({
+        source: `/brands/${brandSlug}/${modelSlug}-tire-pressure`,
+        destination: `/models/${model.slug}`,
+        permanent: true,
+      });
+    });
+
+    // Legacy redirects from old blog posts to model pages
+    redirects.push(
       {
         source: '/blog/aventon-aventure-2-psi',
-        destination: '/brands/aventon/aventure-2-tire-pressure',
+        destination: '/models/aventon-aventure-2',
         permanent: true,
       },
       {
         source: '/blog/lectric-xp-3-psi-guide',
-        destination: '/brands/lectric/xp-3-tire-pressure',
+        destination: '/models/lectric-xp-3',
         permanent: true,
-      },
-      // Redirects from old .0 decimal URLs to new simplified URLs
-      {
-        source: '/brands/lectric/xp-3-0-tire-pressure',
-        destination: '/brands/lectric/xp-3-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/specialized/turbo-como-4-0-tire-pressure',
-        destination: '/brands/specialized/turbo-como-4-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/lectric/xpedition-2-0-tire-pressure',
-        destination: '/brands/lectric/xpedition-2-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/lectric/xpeak-2-0-tire-pressure',
-        destination: '/brands/lectric/xpeak-2-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/specialized/turbo-vado-5-0-tire-pressure',
-        destination: '/brands/specialized/turbo-vado-5-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/specialized/turbo-vado-sl-5-0-tire-pressure',
-        destination: '/brands/specialized/turbo-vado-sl-5-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/specialized/turbo-tero-x-4-0-tire-pressure',
-        destination: '/brands/specialized/turbo-tero-x-4-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/heybike/mars-2-0-tire-pressure',
-        destination: '/brands/heybike/mars-2-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/lectric/xpeak-1-0-tire-pressure',
-        destination: '/brands/lectric/xpeak-1-tire-pressure',
-        permanent: true,
-      },
-      {
-        source: '/brands/lectric/xpedition-1-0-tire-pressure',
-        destination: '/brands/lectric/xpedition-1-tire-pressure',
-        permanent: true,
-      },
-    ];
+      }
+    );
+
+    return redirects;
   },
   // OPTIONAL: uncomment if you want static export for Capacitor later
   // output: 'export',

@@ -35,8 +35,8 @@ export async function generateMetadata({
   // Enrich with canonical URL
   const model = enrichModel(modelData);
 
-  const title = `${model.brand} ${model.model} Tire Pressure Guide | E-Bike PSI`;
-  const description = `Tire pressure calculator and PSI recommendations for ${model.brand} ${model.model} e-bike. Tire size: ${model.stockTire.size}. PSI range: ${model.stockTire.minPSI}-${model.stockTire.maxPSI}.`;
+  const title = `${model.brand} ${model.model} Specs, Tire Pressure, & Size Guide`;
+  const description = `Complete ${model.brand} ${model.model} specifications including tire pressure recommendations, tire size ${model.stockTire.size}, PSI range ${model.stockTire.minPSI}-${model.stockTire.maxPSI}, weight ${model.bikeWeightLbs} lbs, and calculator for optimal inflation.`;
 
   return {
     title,
@@ -115,9 +115,19 @@ export default async function ModelPage({
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-text mb-2 tracking-tight">
-            {model.brand} {model.model}
+            {model.brand} {model.model} Specs, Tire Pressure, & Size Guide
           </h1>
-          <p className="text-xl text-muted">Tire Pressure Calculator & PSI Guide</p>
+          <p className="text-xl text-muted">Complete specifications, PSI calculator, and tire size information</p>
+        </div>
+
+        {/* Introduction */}
+        <div className="mb-8 p-6 bg-surface rounded-2xl">
+          <p className="text-base text-text leading-relaxed mb-4">
+            The <strong>{model.brand} {model.model}</strong> features <strong>{model.stockTire.size}</strong> tires with a recommended pressure range of <strong>{model.stockTire.minPSI}-{model.stockTire.maxPSI} PSI</strong>. Proper tire inflation is critical for this e-bike&apos;s performance, safety, and battery efficiency. At {model.bikeWeightLbs} lbs, the bike&apos;s weight combined with your body weight and any cargo determines the optimal PSI for your specific riding conditions.
+          </p>
+          <p className="text-base text-text leading-relaxed">
+            Running the correct tire pressure prevents pinch flats, improves handling, and maximizes your battery range. Too low and you risk damaging your rims on bumps; too high and you&apos;ll experience a harsh ride with reduced traction. Use our calculator and reference tables below to find your ideal pressure based on rider weight, terrain type, and cargo load.
+          </p>
         </div>
 
         {/* Quick Specs Card */}
