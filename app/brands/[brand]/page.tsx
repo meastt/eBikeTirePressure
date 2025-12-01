@@ -33,8 +33,20 @@ export async function generateMetadata({
   }
 
   const brandModels = getModelsByBrandSlug(models, brandSlug);
-  const title = `${brandMetadata.displayName} E-Bike Tire Pressure Guide | PSI for All Models`;
-  const description = `Tire pressure guides for all ${brandMetadata.displayName} e-bike models. ${brandModels.length} models with weight-based PSI recommendations, terrain settings, and cargo adjustments.`;
+
+  // SEO-optimized titles and descriptions for specific brands
+  let title: string;
+  let description: string;
+
+  if (brandSlug === 'propella') {
+    // Optimized for "propella tire pressure" keyword with calculator emphasis
+    title = `Propella E-Bike Tire Pressure Calculator & Charts (7S, 9S, Mini)`;
+    description = `Stop guessing your PSI. Enter your rider weight in our free calculator to get the exact tire pressure for Propella 7S, 9S, and Mini e-bikes.`;
+  } else {
+    // Default template for other brands
+    title = `${brandMetadata.displayName} E-Bike Tire Pressure Guide | PSI for All Models`;
+    description = `Tire pressure guides for all ${brandMetadata.displayName} e-bike models. ${brandModels.length} models with weight-based PSI recommendations, terrain settings, and cargo adjustments.`;
+  }
 
   return {
     title,

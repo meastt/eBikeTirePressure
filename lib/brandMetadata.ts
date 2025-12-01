@@ -154,6 +154,14 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     websiteUrl: 'https://www.euphreebike.com',
     tireTypes: ['Trail (27.5x2.8")', 'Commuter (27.5x2.4")'],
   },
+  'propella': {
+    slug: 'propella',
+    displayName: 'Propella',
+    shortDescription: 'Lightweight single-speed and 7-speed commuter e-bikes',
+    description: 'Propella creates ultra-lightweight e-bikes designed for efficient urban commuting. The 7S features 700x32c tires (50-85 PSI), the 9S Pro uses 700x35c tires (50-80 PSI), and the Mini folding model has 20x1.75" tires (40-65 PSI). Known for minimalist design, low weight, and road bike-style performance.',
+    websiteUrl: 'https://www.propellabike.com',
+    tireTypes: ['Road (700x35c)', 'Road (700x32c)', 'Folding (20x1.75")'],
+  },
 };
 
 /**
