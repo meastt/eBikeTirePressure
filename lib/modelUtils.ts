@@ -11,7 +11,8 @@ import { getBrandSlug, getModelSlug, getModelCanonicalUrl } from './brandMetadat
 export function enrichModel(model: ModelPreset): ModelPreset {
   const brandSlug = getBrandSlug(model.brand);
   const modelSlug = getModelSlug(model.model);
-  const canonicalUrl = getModelCanonicalUrl(brandSlug, modelSlug);
+  // Use the model's slug field (e.g., "rad-power-radrunner-plus") for canonical URL
+  const canonicalUrl = getModelCanonicalUrl(brandSlug, modelSlug, model.slug);
 
   return {
     ...model,

@@ -15,8 +15,15 @@ module.exports = {
       },
     ],
   },
-  // Exclude API routes, internal routes, legal pages
-  exclude: ['/_not-found', '/api/*', '/server-sitemap.xml', '/privacy', '/terms'],
+  // Exclude API routes, internal routes, legal pages, and tire pressure pages (now redirected to /models/)
+  exclude: [
+    '/_not-found',
+    '/api/*',
+    '/server-sitemap.xml',
+    '/privacy',
+    '/terms',
+    '/brands/*/*-tire-pressure', // Exclude all tire pressure pages (redirected to /models/)
+  ],
   // Add additional paths for dynamic routes
   additionalPaths: async (config) => {
     const paths = [];

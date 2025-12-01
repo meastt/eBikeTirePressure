@@ -41,9 +41,15 @@ export function getModelSlug(modelName: string): string {
 
 /**
  * Generate the canonical URL for a model's tire pressure guide
+ * Updated to point to /models/ pages as the primary destination
  */
-export function getModelCanonicalUrl(brandSlug: string, modelSlug: string): string {
-  return `/brands/${brandSlug}/${modelSlug}-tire-pressure`;
+export function getModelCanonicalUrl(brandSlug: string, modelSlug: string, fullModelSlug?: string): string {
+  // If fullModelSlug is provided, use it directly
+  if (fullModelSlug) {
+    return `/models/${fullModelSlug}`;
+  }
+  // Otherwise construct from brand and model slugs
+  return `/models/${brandSlug}-${modelSlug}`;
 }
 
 /**
