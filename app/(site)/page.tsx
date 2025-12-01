@@ -118,15 +118,15 @@ export default function Home() {
               </div>
 
               <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-none tracking-tight text-white drop-shadow-2xl">
-                ENGINEERED
+                EBIKE
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-sky-500">
-                  PRECISION
+                  PSI
                 </span>
               </h1>
 
               <p className="text-xl sm:text-2xl text-slate-300 font-heading font-medium leading-relaxed max-w-xl">
-                Laboratory-grade tire pressure calculations.
+                Get the right PSI for your weight and bike.
                 <br />
                 <span className="text-slate-400">Stop guessing. Start measuring.</span>
               </p>
