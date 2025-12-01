@@ -298,7 +298,7 @@ export default async function ModelTirePressureGuidePage({
                 <div className="card p-8 bg-brand-50/30">
                   <div className="space-y-4">
                     <p className="text-lg text-text leading-relaxed">
-                      The Aventon Level 3 features <span className="font-bold">Kenda Kwick Seven-5 tires</span> (27.5x2.2")
+                      The Aventon Level 3 features <span className="font-bold">Kenda Kwick Seven-5 tires</span> (27.5x2.2&quot;)
                       paired with a front suspension fork—a key upgrade from the rigid Level 2. This suspension changes how tire
                       pressure feels on the road.
                     </p>
@@ -362,7 +362,7 @@ export default async function ModelTirePressureGuidePage({
               {model.model === 'Pace 500.3' && (
                 <div className="card p-8 bg-brand-50/30">
                   <p className="text-lg text-text leading-relaxed mb-4">
-                    The Pace 500.3 is Aventon&apos;s lightweight commuter e-bike with 27.5x2.2" tires.
+                    The Pace 500.3 is Aventon&apos;s lightweight commuter e-bike with 27.5x2.2&quot; tires.
                     It&apos;s designed for efficient city riding and bike path cruising.
                   </p>
                   <div className="bg-white p-4 rounded-lg">
@@ -380,16 +380,16 @@ export default async function ModelTirePressureGuidePage({
                 <div className="card p-8 bg-blue-50 border-l-4 border-blue-500">
                   <div className="space-y-4">
                     <p className="text-lg text-text leading-relaxed">
-                      The RadWagon 4 uses a <span className="font-bold text-brand">unique 22-inch tire size (22x3.0")</span>—uncommon
+                      The RadWagon 4 uses a <span className="font-bold text-brand">unique 22-inch tire size (22x3.0&quot;)</span>—uncommon
                       in the e-bike world. This can make finding replacement tires challenging.
                     </p>
                     <div className="bg-white p-4 rounded-lg">
                       <h3 className="font-bold text-text mb-3">⚠️ Important Tire Replacement Notes:</h3>
                       <ul className="space-y-2 text-muted leading-relaxed">
-                        <li>• <span className="font-semibold text-text">Stock Tire:</span> 22x3.0" (not a standard bicycle size)</li>
+                        <li>• <span className="font-semibold text-text">Stock Tire:</span> 22x3.0&quot; (not a standard bicycle size)</li>
                         <li>• <span className="font-semibold text-text">Official PSI Range:</span> {minPSI}-{maxPSI} PSI</li>
                         <li>• <span className="font-semibold text-text">Finding Replacements:</span> Stick to Rad Power OEM tires or verified compatible brands</li>
-                        <li>• <span className="font-semibold text-text">Do NOT use:</span> 20" or 24" tires—they won&apos;t fit the rim</li>
+                        <li>• <span className="font-semibold text-text">Do NOT use:</span> 20&quot; or 24&quot; tires—they won&apos;t fit the rim</li>
                       </ul>
                     </div>
                     <div className="border-l-4 border-amber-500 pl-4 bg-amber-50 p-3 rounded">
@@ -408,14 +408,14 @@ export default async function ModelTirePressureGuidePage({
                   <div className="space-y-4">
                     <p className="text-lg text-text leading-relaxed">
                       The Lectric XPedition is a <span className="font-bold">heavy-duty cargo e-bike</span> designed for hauling
-                      significant loads. With 20x3.0" tires and a rear weight bias of 60%, tire pressure management is critical for safety.
+                      significant loads. With 20x3.0&quot; tires and a rear weight bias of 60%, tire pressure management is critical for safety.
                     </p>
                     <div className="bg-white p-4 rounded-lg">
                       <h3 className="font-bold text-text mb-3">Cargo Weight & PSI Guidelines:</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center border-b pb-2">
                           <span className="text-muted">Stock Tire Size:</span>
-                          <span className="font-bold text-text">20 x 3.0"</span>
+                          <span className="font-bold text-text">20 x 3.0&quot;</span>
                         </div>
                         <div className="flex justify-between items-center border-b pb-2">
                           <span className="text-muted">Max Load Capacity:</span>
@@ -450,13 +450,13 @@ export default async function ModelTirePressureGuidePage({
                 <div className="card p-8 bg-brand-50/30">
                   <div className="space-y-4">
                     <p className="text-lg text-text leading-relaxed">
-                      The Lectric XPress features <span className="font-bold">27.5 x 2.2" commuter tires</span>—a
+                      The Lectric XPress features <span className="font-bold">27.5 x 2.2&quot; commuter tires</span>—a
                       narrower, more efficient tire size compared to Lectric&apos;s fat-tire models.
                     </p>
                     <div className="bg-white p-4 rounded-lg">
                       <h3 className="font-bold text-text mb-3">Tire Size & PSI Specs:</h3>
                       <ul className="space-y-2 text-muted leading-relaxed">
-                        <li>• <span className="font-semibold text-text">Stock Tire Size:</span> 27.5 x 2.2" (road/hybrid style)</li>
+                        <li>• <span className="font-semibold text-text">Stock Tire Size:</span> 27.5 x 2.2&quot; (road/hybrid style)</li>
                         <li>• <span className="font-semibold text-text">PSI Range:</span> {minPSI}-{maxPSI} PSI</li>
                         <li>• <span className="font-semibold text-text">Best for:</span> Pavement, bike paths, light gravel</li>
                         <li>• <span className="font-semibold text-text">NOT ideal for:</span> Deep sand, snow, or rocky trails</li>
