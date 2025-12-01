@@ -32,7 +32,7 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
 
   // Calculate marker positions (clamp to 0-100%)
   const recommendedMinPercent = Math.max(0, Math.min(100, psiToPercent(recommendedMin)));
-  const targetPercent = Math.max(0, Math.min(100, psiToPercent(target)));
+  const _targetPercent = Math.max(0, Math.min(100, psiToPercent(target)));
   const recommendedMaxPercent = Math.max(0, Math.min(100, psiToPercent(recommendedMax)));
 
   // Generate tick marks - create ticks at nice intervals
@@ -125,7 +125,7 @@ export default function PSIBand({ result, sidewallMin, sidewallMax, label }: PSI
         </div>
 
         {/* Tick marks along the bottom */}
-        {ticks.map((tick, index) => {
+        {ticks.map((tick) => {
           const isMinOrMax = tick.psi === scaleMin || tick.psi === scaleMax;
           return (
             <div

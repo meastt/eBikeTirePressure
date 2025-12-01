@@ -326,6 +326,8 @@
     "bikeWeightLbs": 69,
     "stockTire": {
       "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
       "casing": "standard"
     },
     "axleBias": {
@@ -340,6 +342,8 @@
     "bikeWeightLbs": 71,
     "stockTire": {
       "size": "20x3.0",
+      "minPSI": 20,
+      "maxPSI": 30,
       "casing": "standard"
     },
     "axleBias": {
@@ -354,7 +358,9 @@
     "bikeWeightLbs": 73,
     "stockTire": {
       "size": "20x3.0",
-      "casing": "standard"
+      "minPSI": 20,
+      "maxPSI": 30,
+      "casing": "reinforced"
     },
     "axleBias": {
       "front": 0.40,
@@ -368,6 +374,8 @@
     "bikeWeightLbs": 75,
     "stockTire": {
       "size": "26x4.0",
+      "minPSI": 15,
+      "maxPSI": 30,
       "casing": "standard"
     },
     "axleBias": {
@@ -382,6 +390,8 @@
     "bikeWeightLbs": 53,
     "stockTire": {
       "size": "20x2.3",
+      "minPSI": 30,
+      "maxPSI": 50,
       "casing": "standard"
     },
     "axleBias": {
@@ -396,6 +406,8 @@
     "bikeWeightLbs": 52,
     "stockTire": {
       "size": "27.5x2.2",
+      "minPSI": 35,
+      "maxPSI": 65,
       "casing": "standard"
     },
     "axleBias": {
@@ -410,6 +422,8 @@
     "bikeWeightLbs": 54,
     "stockTire": {
       "size": "27.5x2.2",
+      "minPSI": 35,
+      "maxPSI": 65,
       "casing": "standard"
     },
     "axleBias": {

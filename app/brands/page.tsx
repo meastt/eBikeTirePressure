@@ -3,7 +3,7 @@ import Link from 'next/link';
 import modelsData from '@/data/models.json';
 import type { ModelPreset } from '@/lib/types';
 import { groupModelsByBrand, getAllBrandSlugs } from '@/lib/modelUtils';
-import { getBrandMetadata, getAllBrandMetadata } from '@/lib/brandMetadata';
+import { getAllBrandMetadata } from '@/lib/brandMetadata';
 
 const models = modelsData as ModelPreset[];
 

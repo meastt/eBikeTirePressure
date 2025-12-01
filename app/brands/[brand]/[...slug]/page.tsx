@@ -38,8 +38,13 @@ export async function generateMetadata({
 
   const minPSI = model.stockTire.minPSI || 15;
   const maxPSI = model.stockTire.maxPSI || 30;
-  const title = `${model.brand} ${model.model} Tire Pressure Guide | ${model.stockTire.size} PSI Chart`;
-  const description = `Complete tire pressure guide for ${model.brand} ${model.model}. Weight-based PSI chart for ${model.stockTire.size} tires (${minPSI}-${maxPSI} PSI). Includes cargo, terrain, and temperature adjustments.`;
+
+  // UK/EU brands should use "Tyre" spelling for better UK search ranking
+  const isUKBrand = ['Tern', 'GoCycle', 'Brompton', 'Riese & Müller'].includes(model.brand);
+  const tireWord = isUKBrand ? 'Tyre' : 'Tire';
+
+  const title = `${model.brand} ${model.model} ${tireWord} Pressure Guide | ${model.stockTire.size} PSI Chart`;
+  const description = `Complete ${tireWord.toLowerCase()} pressure guide for ${model.brand} ${model.model}. Weight-based PSI chart for ${model.stockTire.size} tires (${minPSI}-${maxPSI} PSI). Includes cargo, terrain, and temperature adjustments.`;
 
   return {
     title,
@@ -71,6 +76,13 @@ export default async function ModelTirePressureGuidePage({
   const minPSI = model.stockTire.minPSI || 15;
   const maxPSI = model.stockTire.maxPSI || 30;
   const tireSize = model.stockTire.size;
+
+  // UK/EU brands should use "Tyre" spelling and show Bar units
+  const isUKBrand = ['Tern', 'GoCycle', 'Brompton', 'Riese & Müller'].includes(model.brand);
+  const tireWord = isUKBrand ? 'Tyre' : 'Tire';
+
+  // Helper to convert PSI to Bar for UK/EU audiences
+  const psiToBar = (psi: number): string => (psi / 14.5038).toFixed(1);
 
   // Determine tire category for contextual info
   const tireWidth = parseFloat(tireSize.split('x')[1] || '0');
@@ -133,9 +145,9 @@ export default async function ModelTirePressureGuidePage({
             <span className="text-muted">{model.model}</span>
           </nav>
 
-          {/* H1 - Model Name + Tire Pressure */}
+          {/* H1 - Model Name + Tire/Tyre Pressure */}
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-text mb-6 leading-tight">
-            {model.brand} {model.model} Tire Pressure Guide
+            {model.brand} {model.model} {tireWord} Pressure Guide
           </h1>
 
           {/* Quick summary */}
@@ -146,8 +158,11 @@ export default async function ModelTirePressureGuidePage({
                 <div className="text-2xl font-bold text-text">{tireSize}</div>
               </div>
               <div>
-                <div className="text-sm text-muted mb-1">PSI Range</div>
-                <div className="text-2xl font-bold text-text">{minPSI}-{maxPSI}</div>
+                <div className="text-sm text-muted mb-1">PSI Range{isUKBrand ? ' (Bar)' : ''}</div>
+                <div className="text-2xl font-bold text-text">
+                  {minPSI}-{maxPSI}
+                  {isUKBrand && <span className="text-base ml-2 text-muted">({psiToBar(minPSI)}-{psiToBar(maxPSI)} Bar)</span>}
+                </div>
               </div>
               <div>
                 <div className="text-sm text-muted mb-1">Bike Weight</div>
@@ -159,7 +174,7 @@ export default async function ModelTirePressureGuidePage({
           {/* Weight-Based PSI Table */}
           <section className="mb-16">
             <h2 className="text-3xl font-heading font-bold text-text mb-6">
-              PSI by Rider Weight
+              {isUKBrand ? `Recommended ${model.brand} ${model.model} Tyre Pressure` : 'PSI by Rider Weight'}
             </h2>
             <p className="text-lg text-muted mb-6 leading-relaxed">
               Use this table as a starting point for your {model.brand} {model.model}. These values
@@ -221,7 +236,7 @@ export default async function ModelTirePressureGuidePage({
           {/* Factory Tire Specs */}
           <section className="mb-16">
             <h2 className="text-3xl font-heading font-bold text-text mb-6">
-              Factory Tire Specifications
+              Factory {tireWord} Specifications
             </h2>
             <div className="card p-8">
               <div className="grid md:grid-cols-2 gap-8">
@@ -266,6 +281,199 @@ export default async function ModelTirePressureGuidePage({
               </div>
             </div>
           </section>
+
+          {/* Model-Specific Expert Tips */}
+          {(model.model === 'Level 3' || model.model === 'Abound LR' || model.model === 'Abound SR' || model.model === 'Pace 500.3' || model.model === 'RadWagon 4' || model.model === 'XPedition 1' || model.model === 'XPedition 2' || model.model === 'XPress 750' || model.model === 'XPress 500') && (
+            <section className="mb-16">
+              <h2 className="text-3xl font-heading font-bold text-text mb-6">
+                {model.model === 'Level 3' && 'Aventon Level 3 Tire Pressure Specs'}
+                {(model.model === 'Abound LR' || model.model === 'Abound SR') && 'Cargo Bike Tire Pressure: Critical for Safety'}
+                {model.model === 'Pace 500.3' && 'Pace 500.3 Tire Pressure Tips'}
+                {model.model === 'RadWagon 4' && 'RadWagon 4: Unique Tire Size & Pressure Guide'}
+                {(model.model === 'XPedition 1' || model.model === 'XPedition 2') && 'Lectric XPedition: Cargo Weight & Tire Pressure'}
+                {(model.model === 'XPress 750' || model.model === 'XPress 500') && 'Lectric XPress Tire Size & PSI Specs'}
+              </h2>
+
+              {model.model === 'Level 3' && (
+                <div className="card p-8 bg-brand-50/30">
+                  <div className="space-y-4">
+                    <p className="text-lg text-text leading-relaxed">
+                      The Aventon Level 3 features <span className="font-bold">Kenda Kwick Seven-5 tires</span> (27.5x2.2&quot;)
+                      paired with a front suspension fork—a key upgrade from the rigid Level 2. This suspension changes how tire
+                      pressure feels on the road.
+                    </p>
+                    <div className="border-l-4 border-brand pl-4">
+                      <p className="text-muted leading-relaxed">
+                        <span className="font-bold text-text">Suspension Impact:</span> With the front fork absorbing bumps,
+                        you can run <span className="font-semibold">2-3 PSI higher</span> than you would on a rigid bike
+                        without sacrificing comfort. Higher pressure improves efficiency and reduces rolling resistance on pavement.
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg">
+                      <h3 className="font-bold text-text mb-2">Level 3 vs Level 2 Comparison:</h3>
+                      <ul className="space-y-2 text-muted">
+                        <li>• <span className="font-semibold">Level 3:</span> 40-45 PSI (suspension fork compensates for higher pressure)</li>
+                        <li>• <span className="font-semibold">Level 2:</span> 38-42 PSI (rigid fork needs slightly lower for comfort)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {(model.model === 'Abound LR' || model.model === 'Abound SR') && (
+                <div className="card p-8 bg-amber-50 border-l-4 border-amber-500">
+                  <div className="space-y-4">
+                    <p className="text-lg text-text leading-relaxed">
+                      The Aventon Abound is a <span className="font-bold">cargo e-bike</span> designed to haul kids, groceries,
+                      and gear. Tire pressure is critical for safety and handling when loaded.
+                    </p>
+                    <div className="bg-white p-4 rounded-lg">
+                      <h3 className="font-bold text-text mb-3">Cargo Load Guidelines:</h3>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">Solo rider (no cargo):</span>
+                          <span className="font-bold text-text">{minPSI + 5}-{minPSI + 10} PSI</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">With 1 child (40-60 lbs):</span>
+                          <span className="font-bold text-text">{minPSI + 10}-{minPSI + 15} PSI rear</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">With 2 kids or heavy cargo:</span>
+                          <span className="font-bold text-text">{maxPSI - 5}-{maxPSI} PSI rear</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-muted">Max cargo capacity:</span>
+                          <span className="font-bold text-brand">{model.model === 'Abound LR' ? '440 lbs' : '350 lbs'} total</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-l-4 border-red-500 pl-4 bg-red-50 p-3 rounded">
+                      <p className="text-red-900 text-sm">
+                        <span className="font-bold">⚠️ Safety Warning:</span> Cargo bikes with low tire pressure are dangerous.
+                        Under-inflated tires can cause wheel strikes, poor braking, and loss of control with heavy loads.
+                        Always check PSI before loading cargo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {model.model === 'Pace 500.3' && (
+                <div className="card p-8 bg-brand-50/30">
+                  <p className="text-lg text-text leading-relaxed mb-4">
+                    The Pace 500.3 is Aventon&apos;s lightweight commuter e-bike with 27.5x2.2&quot; tires.
+                    It&apos;s designed for efficient city riding and bike path cruising.
+                  </p>
+                  <div className="bg-white p-4 rounded-lg">
+                    <h3 className="font-bold text-text mb-2">Optimal Pressure for Commuting:</h3>
+                    <p className="text-muted leading-relaxed">
+                      For daily commutes on pavement, run <span className="font-bold text-text">42-48 PSI</span> to maximize
+                      battery range and speed. The bike weighs only 54 lbs, so you can use the higher end of the PSI range
+                      without a harsh ride.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {model.model === 'RadWagon 4' && (
+                <div className="card p-8 bg-blue-50 border-l-4 border-blue-500">
+                  <div className="space-y-4">
+                    <p className="text-lg text-text leading-relaxed">
+                      The RadWagon 4 uses a <span className="font-bold text-brand">unique 22-inch tire size (22x3.0&quot;)</span>—uncommon
+                      in the e-bike world. This can make finding replacement tires challenging.
+                    </p>
+                    <div className="bg-white p-4 rounded-lg">
+                      <h3 className="font-bold text-text mb-3">⚠️ Important Tire Replacement Notes:</h3>
+                      <ul className="space-y-2 text-muted leading-relaxed">
+                        <li>• <span className="font-semibold text-text">Stock Tire:</span> 22x3.0&quot; (not a standard bicycle size)</li>
+                        <li>• <span className="font-semibold text-text">Official PSI Range:</span> {minPSI}-{maxPSI} PSI</li>
+                        <li>• <span className="font-semibold text-text">Finding Replacements:</span> Stick to Rad Power OEM tires or verified compatible brands</li>
+                        <li>• <span className="font-semibold text-text">Do NOT use:</span> 20&quot; or 24&quot; tires—they won&apos;t fit the rim</li>
+                      </ul>
+                    </div>
+                    <div className="border-l-4 border-amber-500 pl-4 bg-amber-50 p-3 rounded">
+                      <p className="text-amber-900 text-sm">
+                        <span className="font-bold">💡 Pro Tip:</span> Because of the unusual tire size, it&apos;s smart to keep
+                        tire pressure within the recommended {minPSI}-{maxPSI} PSI range. Going too low risks pinch flats, and
+                        getting a replacement quickly can be difficult.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {(model.model === 'XPedition 1' || model.model === 'XPedition 2') && (
+                <div className="card p-8 bg-amber-50 border-l-4 border-amber-500">
+                  <div className="space-y-4">
+                    <p className="text-lg text-text leading-relaxed">
+                      The Lectric XPedition is a <span className="font-bold">heavy-duty cargo e-bike</span> designed for hauling
+                      significant loads. With 20x3.0&quot; tires and a rear weight bias of 60%, tire pressure management is critical for safety.
+                    </p>
+                    <div className="bg-white p-4 rounded-lg">
+                      <h3 className="font-bold text-text mb-3">Cargo Weight & PSI Guidelines:</h3>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">Stock Tire Size:</span>
+                          <span className="font-bold text-text">20 x 3.0&quot;</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">Max Load Capacity:</span>
+                          <span className="font-bold text-brand">450 lbs total</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">Solo rider (no cargo):</span>
+                          <span className="font-bold text-text">{minPSI + 2}-{minPSI + 5} PSI</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="text-muted">With 50-100 lbs cargo:</span>
+                          <span className="font-bold text-text">{minPSI + 5}-{minPSI + 8} PSI rear</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-muted">With 100-200 lbs cargo:</span>
+                          <span className="font-bold text-text">{maxPSI - 2}-{maxPSI} PSI rear</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-l-4 border-red-500 pl-4 bg-red-50 p-3 rounded">
+                      <p className="text-red-900 text-sm">
+                        <span className="font-bold">⚠️ Heavy Load Warning:</span> When hauling near max capacity (450 lbs total),
+                        always run the rear tire at {maxPSI} PSI. Under-inflation with heavy cargo can cause rim strikes, tire
+                        blowouts, and dangerous handling. Check PSI before every loaded trip.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {(model.model === 'XPress 750' || model.model === 'XPress 500') && (
+                <div className="card p-8 bg-brand-50/30">
+                  <div className="space-y-4">
+                    <p className="text-lg text-text leading-relaxed">
+                      The Lectric XPress features <span className="font-bold">27.5 x 2.2&quot; commuter tires</span>—a
+                      narrower, more efficient tire size compared to Lectric&apos;s fat-tire models.
+                    </p>
+                    <div className="bg-white p-4 rounded-lg">
+                      <h3 className="font-bold text-text mb-3">Tire Size & PSI Specs:</h3>
+                      <ul className="space-y-2 text-muted leading-relaxed">
+                        <li>• <span className="font-semibold text-text">Stock Tire Size:</span> 27.5 x 2.2&quot; (road/hybrid style)</li>
+                        <li>• <span className="font-semibold text-text">PSI Range:</span> {minPSI}-{maxPSI} PSI</li>
+                        <li>• <span className="font-semibold text-text">Best for:</span> Pavement, bike paths, light gravel</li>
+                        <li>• <span className="font-semibold text-text">NOT ideal for:</span> Deep sand, snow, or rocky trails</li>
+                      </ul>
+                    </div>
+                    <div className="border-l-4 border-brand pl-4 bg-white p-3 rounded">
+                      <p className="text-muted text-sm">
+                        <span className="font-bold text-text">💡 Commuter Tip:</span> Run 50-55 PSI for maximum speed and
+                        battery range on pavement. The narrower tire profile makes the XPress faster than fat-tire models
+                        like the XP 3.0 but less stable on loose surfaces.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* Terrain-Based PSI Adjustments */}
           <section className="mb-16">
