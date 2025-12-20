@@ -5,8 +5,9 @@ import remarkGfm from 'remark-gfm';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { Prose } from '@/components/Prose';
 import { TagPill } from '@/components/TagPill';
+import { generateBreadcrumbSchema, generateHowToSchema, generateImageObjectSchema, type HowToStep } from '@/lib/schema';
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { getBaseUrl } from '@/lib/seo';
 
 interface BlogPostProps {
   params: Promise<{ slug: string }>;
@@ -34,6 +35,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    keywords: post.tags.length > 0 ? post.tags.join(', ') : undefined,
     openGraph: {
       title: post.title,
       description: post.description,
@@ -62,16 +64,31 @@ export default async function BlogPost({ params }: BlogPostProps) {
     year: 'numeric',
   });
 
-  // Generate BlogPosting JSON-LD
-  const schema = {
+  const formattedModifiedDate = post.dateModified && post.dateModified !== post.date
+    ? new Date(post.dateModified).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    : null;
+
+  const baseUrl = getBaseUrl();
+  const postUrl = `${baseUrl}/blog/${post.slug}`;
+  const postImage = post.ogImage
+    ? `${baseUrl}${post.ogImage}`
+    : `${baseUrl}/logo.svg`;
+
+  // Generate BlogPosting JSON-LD (enhanced)
+  const blogPostingSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.dateModified || post.date,
+    inLanguage: 'en-US',
     author: {
-      '@type': 'Organization',
+      '@type': 'Person',
       name: post.author,
     },
     publisher: {
@@ -79,36 +96,177 @@ export default async function BlogPost({ params }: BlogPostProps) {
       name: 'E-Bike PSI',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://ebikepsi.com/logo.svg',
+        url: `${baseUrl}/logo.svg`,
       },
     },
-    image: post.ogImage
-      ? `https://ebikepsi.com${post.ogImage}`
-      : 'https://ebikepsi.com/logo.svg',
-    url: `https://ebikepsi.com/blog/${post.slug}`,
+    image: postImage,
+    url: postUrl,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://ebikepsi.com/blog/${post.slug}`,
+      '@id': postUrl,
     },
+    ...(post.tags.length > 0 && {
+      articleSection: post.tags[0], // Use first tag as primary section
+      keywords: post.tags.join(', '),
+    }),
   };
+
+  // Generate Article JSON-LD
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: postImage,
+    datePublished: post.date,
+    dateModified: post.dateModified || post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'E-Bike PSI',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/logo.svg`,
+      },
+    },
+    ...(post.tags.length > 0 && {
+      articleSection: post.tags[0],
+      keywords: post.tags.join(', '),
+    }),
+  };
+
+  // Generate BreadcrumbList JSON-LD
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'Blog', url: `${baseUrl}/blog` },
+    { name: post.title, url: postUrl },
+  ]);
+
+  // Generate HowTo schema for tutorial posts
+  const getHowToSchema = (slug: string) => {
+    const howToMap: Record<string, { name: string; description: string; steps: HowToStep[] }> = {
+      'ebike-tire-pressure-maintenance-schedule': {
+        name: 'How to Check E-Bike Tire Pressure: Weekly Maintenance Schedule',
+        description: 'Step-by-step guide to checking and maintaining e-bike tire pressure for optimal safety and performance.',
+        steps: [
+          {
+            name: 'Visual Inspection',
+            text: 'Look for tire deformation, cuts, embedded objects, or sidewall cracks. Check for sealant weeping (tubeless) or bulges.',
+          },
+          {
+            name: 'Squeeze Test',
+            text: 'Place both thumbs on tire sidewall and press down hard. Proper PSI resists hard, low PSI compresses easily.',
+          },
+          {
+            name: 'Digital Gauge Check',
+            text: 'Remove valve cap, press gauge firmly onto valve, read pressure. Check both front and rear tires. Record PSI for tracking.',
+          },
+          {
+            name: 'Valve Cap Check',
+            text: 'Replace valve cap to keep dirt out. Ensure cap is snug but not over-tight.',
+          },
+        ],
+      },
+      'preventing-tire-burping-tubeless-ebikes': {
+        name: 'How to Prevent Tire Burping on Tubeless E-Bikes',
+        description: 'Step-by-step guide to preventing tire burping through proper setup, PSI management, and maintenance.',
+        steps: [
+          {
+            name: 'Check Current PSI',
+            text: 'Ensure PSI is at or above minimum for your tire width. Fat tires (4.0"+) need 12+ PSI, standard tires need 25+ PSI.',
+          },
+          {
+            name: 'Inspect Bead Seating',
+            text: 'Check that bead line looks even around entire rim. Uneven seating can cause burping during cornering.',
+          },
+          {
+            name: 'Check Sealant',
+            text: 'Verify sealant is fresh and sufficient. Dried or insufficient sealant increases burping risk.',
+          },
+          {
+            name: 'Assess Riding Style',
+            text: 'Aggressive cornering or hard launches require higher PSI. Adjust based on your riding style.',
+          },
+          {
+            name: 'Consider Tire/Rim Compatibility',
+            text: 'Ensure tire and rim are compatible. Hookless rims require specific tires. Wider rims reduce burping risk.',
+          },
+        ],
+      },
+    };
+
+    const howToData = howToMap[slug];
+    if (!howToData) return null;
+
+    return generateHowToSchema(
+      howToData.name,
+      howToData.description,
+      howToData.steps,
+      postImage
+    );
+  };
+
+  const howToSchema = getHowToSchema(post.slug);
+
+  // Generate ImageObject schema for ogImage if present
+  const imageSchema = post.ogImage
+    ? generateImageObjectSchema(postImage, post.title)
+    : null;
 
   return (
     <>
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
+      {imageSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-white">
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <Breadcrumbs
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: post.title },
-            ]}
-          />
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-sm" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-muted">
+              <li>
+                <Link href="/" className="hover:text-brand transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>/</li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-brand transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>/</li>
+              <li className="text-text font-medium">{post.title}</li>
+            </ol>
+          </nav>
 
           {/* Header */}
           <header className="mb-8">
@@ -118,6 +276,14 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted mb-6">
               <time dateTime={post.date}>{formattedDate}</time>
+              {formattedModifiedDate && (
+                <>
+                  <span>•</span>
+                  <time dateTime={post.dateModified || post.date}>
+                    Updated {formattedModifiedDate}
+                  </time>
+                </>
+              )}
               <span>•</span>
               <span>{post.readingTime}</span>
               <span>•</span>

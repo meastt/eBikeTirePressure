@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'E-Bike Tire Pressure Blog | Guides & Tips',
   description:
-    'Expert guides on e-bike tire pressure for cargo bikes, fat tires, and all terrains. Learn optimal PSI for your riding style.',
+    'Expert guides on e-bike tire pressure for cargo bikes, fat tires, and all terrains. Learn optimal PSI, maintenance schedules, and safety tips for your riding style.',
   openGraph: {
     title: 'E-Bike Tire Pressure Blog',
     description:

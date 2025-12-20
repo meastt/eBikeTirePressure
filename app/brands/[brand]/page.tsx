@@ -5,7 +5,8 @@ import modelsData from '@/data/models.json';
 import type { ModelPreset } from '@/lib/types';
 import { getModelsByBrandSlug, getAllBrandSlugs } from '@/lib/modelUtils';
 import { getBrandMetadata } from '@/lib/brandMetadata';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { generateBreadcrumbSchema } from '@/lib/schema';
+import { getBaseUrl } from '@/lib/seo';
 
 const models = modelsData as ModelPreset[];
 
@@ -33,24 +34,8 @@ export async function generateMetadata({
   }
 
   const brandModels = getModelsByBrandSlug(models, brandSlug);
-
-  // SEO-optimized titles and descriptions for specific brands
-  let title: string;
-  let description: string;
-
-  if (brandSlug === 'propella') {
-    // Optimized for "propella tire pressure" keyword with calculator emphasis
-    title = `Propella E-Bike Tire Pressure Calculator & Charts (7S, 9S, Mini)`;
-    description = `Stop guessing your PSI. Enter your rider weight in our free calculator to get the exact tire pressure for Propella 7S, 9S, and Mini e-bikes.`;
-  } else if (brandSlug === 'lectric') {
-    // Optimized for "lectric tire pressure" and model-specific queries
-    title = `Lectric E-Bike Tire Pressure Guide | XP, XPress, XPedition PSI Charts`;
-    description = `Complete tire pressure guide for all Lectric e-bikes: XP 3.0, XPress 750, XPedition cargo, XPeak, and more. Tire size specs, weight capacity, and PSI recommendations for every model.`;
-  } else {
-    // Default template for other brands
-    title = `${brandMetadata.displayName} E-Bike Tire Pressure Guide | PSI for All Models`;
-    description = `Tire pressure guides for all ${brandMetadata.displayName} e-bike models. ${brandModels.length} models with weight-based PSI recommendations, terrain settings, and cargo adjustments.`;
-  }
+  const title = `${brandMetadata.displayName} E-Bike Tire Pressure Guide | PSI for All Models`;
+  const description = `Tire pressure guides for all ${brandMetadata.displayName} e-bike models. ${brandModels.length} models with weight-based PSI recommendations, terrain settings, and cargo adjustments.`;
 
   return {
     title,
@@ -84,16 +69,31 @@ export default async function BrandPage({
   // Sort models alphabetically
   const sortedModels = brandModels.sort((a, b) => a.model.localeCompare(b.model));
 
+  const baseUrl = getBaseUrl();
+  const brandUrl = `${baseUrl}/brands/${brandSlug}`;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'Brands', url: `${baseUrl}/brands` },
+    { name: brandMetadata.displayName, url: brandUrl },
+  ]);
+
   return (
+    <>
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     <main className="min-h-screen bg-gradient-mesh">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Brands', href: '/brands' },
-            { label: brandMetadata.displayName },
-          ]}
-        />
+        {/* Breadcrumb */}
+        <nav className="mb-8 text-sm">
+          <Link href="/brands" className="text-brand hover:underline">
+            Brands
+          </Link>
+          <span className="mx-2 text-muted">/</span>
+          <span className="text-muted">{brandMetadata.displayName}</span>
+        </nav>
 
         {/* Header */}
         <div className="mb-12">
@@ -149,83 +149,6 @@ export default async function BrandPage({
                   <div className="text-sm font-semibold text-text">{type}</div>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
-
-        {/* Lectric Hub & Spoke Navigation */}
-        {brandSlug === 'lectric' && (
-          <div className="card p-8 mb-12 bg-gradient-to-br from-brand-50 to-cyan-50 border-l-4 border-brand">
-            <h2 className="text-2xl font-heading font-bold text-text mb-4">
-              Quick Jump to Your Lectric Model
-            </h2>
-            <p className="text-muted mb-6 leading-relaxed">
-              Click your model below to jump directly to tire pressure specs, tire size, and weight capacity info.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-4">
-              {/* Fat Tire Models */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-bold text-brand-700 uppercase tracking-wide mb-3">Fat Tire Models</h3>
-                <a href="#xp-3" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XP 3.0</div>
-                  <div className="text-xs text-muted">20x3.0&quot; • 20-30 PSI</div>
-                </a>
-                <a href="#xp4-500" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XP4 500W</div>
-                  <div className="text-xs text-muted">20x3.0&quot; • 20-30 PSI</div>
-                </a>
-                <a href="#xp4-750" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XP4 750W</div>
-                  <div className="text-xs text-muted">20x3.0&quot; • 20-30 PSI</div>
-                </a>
-                <a href="#xpeak-1" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XPeak 1 & 2</div>
-                  <div className="text-xs text-muted">26x4.0&quot; • 15-30 PSI</div>
-                </a>
-              </div>
-
-              {/* Commuter Models */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-bold text-brand-700 uppercase tracking-wide mb-3">Commuter Models</h3>
-                <a href="#xpress-500" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XPress 500</div>
-                  <div className="text-xs text-muted">27.5x2.2&quot; • 35-65 PSI</div>
-                </a>
-                <a href="#xpress-750" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XPress 750</div>
-                  <div className="text-xs text-muted">27.5x2.2&quot; • 35-65 PSI</div>
-                </a>
-                <a href="#one" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">ONE</div>
-                  <div className="text-xs text-muted">20x2.3&quot; • 30-50 PSI</div>
-                </a>
-                <a href="#xp-lite" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XP Lite</div>
-                  <div className="text-xs text-muted">20x2.5&quot; • 30-50 PSI</div>
-                </a>
-              </div>
-
-              {/* Cargo & Specialty */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-bold text-brand-700 uppercase tracking-wide mb-3">Cargo & Specialty</h3>
-                <a href="#xpedition-1" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XPedition 1 & 2</div>
-                  <div className="text-xs text-muted">20x3.0&quot; • 450 lbs capacity</div>
-                </a>
-                <a href="#xp-trike" className="block px-4 py-3 bg-white rounded-lg hover:shadow-md hover:bg-brand-50 transition-all">
-                  <div className="font-semibold text-text">XP Trike</div>
-                  <div className="text-xs text-muted">20x2.5&quot; • 30-50 PSI</div>
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 rounded">
-              <p className="text-sm text-amber-900">
-                <span className="font-bold">💡 Tip:</span> Not sure about tire size vs. tire pressure?
-                Tire size (like 20x3.0&quot;) is the physical tire dimensions. PSI is the air pressure inside.
-                Both are critical for safe riding!
-              </p>
             </div>
           </div>
         )}
@@ -319,5 +242,6 @@ export default async function BrandPage({
         </div>
       </div>
     </main>
+    </>
   );
 }

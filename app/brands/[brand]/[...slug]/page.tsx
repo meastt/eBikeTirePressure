@@ -5,7 +5,8 @@ import modelsData from '@/data/models.json';
 import type { ModelPreset } from '@/lib/types';
 import { enrichModels, findModelByBrandAndModelSlug } from '@/lib/modelUtils';
 import { getBrandMetadata } from '@/lib/brandMetadata';
-import { generateFAQSchema, type FAQItem } from '@/lib/schema';
+import { generateFAQSchema, generateBreadcrumbSchema, type FAQItem } from '@/lib/schema';
+import { getBaseUrl } from '@/lib/seo';
 
 const models = modelsData as ModelPreset[];
 
@@ -121,6 +122,15 @@ export default async function ModelTirePressureGuidePage({
   ];
 
   const faqSchema = generateFAQSchema(faqItems);
+  
+  const baseUrl = getBaseUrl();
+  const modelUrl = `${baseUrl}/brands/${brandSlug}/${fullSlug}`;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'Brands', url: `${baseUrl}/brands` },
+    { name: brandMetadata?.displayName || model.brand, url: `${baseUrl}/brands/${brandSlug}` },
+    { name: `${model.brand} ${model.model}`, url: modelUrl },
+  ]);
 
   return (
     <>
@@ -128,6 +138,11 @@ export default async function ModelTirePressureGuidePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="min-h-screen bg-gradient-mesh">

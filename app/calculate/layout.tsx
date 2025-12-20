@@ -1,67 +1,48 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "PSI Calculator - E-Bike Tire Pressure Tool | E-Bike PSI",
-  description:
-    "Calculate the perfect tire pressure for your e-bike. Input your weight, cargo, terrain, and bike model for instant PSI recommendations with safety warnings.",
-  alternates: {
-    canonical: "https://ebikepsi.com/calculate",
-  },
-  openGraph: {
-    title: "E-Bike PSI Calculator",
-    description: "Calculate optimal tire pressure based on weight, cargo, and terrain",
-    type: "website",
-    url: "https://ebikepsi.com/calculate",
-  },
-};
+import { generateSoftwareApplicationSchema, generateHowToSchema } from "@/lib/schema";
 
 export default function CalculateLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const howToSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to Calculate E-Bike Tire Pressure',
-    description: 'Calculate optimal PSI for your e-bike based on weight, cargo, and terrain conditions',
-    step: [
+  const softwareSchema = generateSoftwareApplicationSchema();
+  
+  // HowTo schema for calculator usage
+  const howToSchema = generateHowToSchema(
+    "How to Calculate E-Bike Tire Pressure",
+    "Step-by-step guide to finding optimal tire pressure for your e-bike using our calculator based on bike model, rider weight, cargo, and terrain.",
+    [
       {
-        '@type': 'HowToStep',
-        name: 'Select Your E-Bike Model',
-        text: 'Choose your e-bike model from our database or enter custom tire dimensions',
-        position: 1,
+        name: "Select Your Bike Model",
+        text: "Choose your e-bike model from the database, or manually enter your tire size if your model isn't listed.",
       },
       {
-        '@type': 'HowToStep',
-        name: 'Enter Weight Information',
-        text: 'Input your rider weight, passenger weight (if applicable), and cargo weight for front and rear',
-        position: 2,
+        name: "Set Rider, Passenger, and Cargo Weights",
+        text: "Enter your weight, any passenger weight, and cargo weight (front and rear). The calculator accounts for total load distribution.",
       },
       {
-        '@type': 'HowToStep',
-        name: 'Choose Terrain Type',
-        text: 'Select your primary riding surface: pavement, gravel, sand, or snow',
-        position: 3,
+        name: "Select Surface Type",
+        text: "Choose your primary riding surface: pavement, mixed terrain, dirt trails, or sand/snow. This adjusts PSI for optimal traction.",
       },
       {
-        '@type': 'HowToStep',
-        name: 'Select Tire Construction',
-        text: 'Choose between tubed or tubeless tire setup',
-        position: 4,
+        name: "Choose Tire Construction",
+        text: "Select whether you have tubed or tubeless tires. Tubeless allows slightly lower PSI while maintaining safety.",
       },
       {
-        '@type': 'HowToStep',
-        name: 'Review PSI Recommendations',
-        text: 'Get minimum, target, and maximum PSI values with real-time safety warnings',
-        position: 5,
+        name: "Review Results",
+        text: "Get your personalized front and rear PSI recommendations with safety warnings for pinch flats, sidewall limits, and terrain risks.",
       },
-    ],
-    totalTime: 'PT2M',
-  };
+    ]
+  );
 
   return (
     <>
+      {/* SoftwareApplication Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+      {/* HowTo Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
@@ -70,3 +51,4 @@ export default function CalculateLayout({
     </>
   );
 }
+

@@ -8,6 +8,7 @@ export interface BlogPost {
   title: string;
   description: string;
   date: string;
+  dateModified?: string; // Optional, falls back to date if not provided
   author: string;
   tags: string[];
   ogImage?: string;
@@ -36,11 +37,16 @@ export function getAllPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
+      // Get file modification time as fallback for dateModified
+      const stats = fs.statSync(fullPath);
+      const fileModified = stats.mtime.toISOString().split('T')[0];
+
       return {
         slug,
         title: data.title,
         description: data.description,
         date: data.date,
+        dateModified: data.dateModified || data.date || fileModified,
         author: data.author || 'E-Bike PSI',
         tags: data.tags || [],
         ogImage: data.ogImage,
@@ -65,11 +71,16 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Get file modification time as fallback for dateModified
+    const stats = fs.statSync(fullPath);
+    const fileModified = stats.mtime.toISOString().split('T')[0];
+
     return {
       slug,
       title: data.title,
       description: data.description,
       date: data.date,
+      dateModified: data.dateModified || data.date || fileModified,
       author: data.author || 'E-Bike PSI',
       tags: data.tags || [],
       ogImage: data.ogImage,

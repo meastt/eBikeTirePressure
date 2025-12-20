@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
+import { generateBreadcrumbSchema } from '@/lib/schema';
+import { getBaseUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'FAQ | E-Bike Tire Pressure',
   description:
-    'Frequently asked questions about e-bike tire pressure, PSI recommendations, pinch flats, cargo loading, and tire safety.',
+    'Frequently asked questions about e-bike tire pressure, PSI recommendations, pinch flats, cargo loading, and tire safety. Expert answers for optimal performance.',
 };
 
 interface FAQItem {
@@ -90,6 +92,8 @@ const faqs: FAQItem[] = [
 ];
 
 export default function FAQPage() {
+  const baseUrl = getBaseUrl();
+  
   // Generate FAQPage JSON-LD schema
   const schema = {
     '@context': 'https://schema.org',
@@ -104,12 +108,22 @@ export default function FAQPage() {
     })),
   };
 
+  // Generate BreadcrumbList schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'FAQ', url: `${baseUrl}/faq` },
+  ]);
+
   return (
     <>
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="min-h-screen bg-gradient-to-b from-white to-surface-light">

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import OfflineMessage from "@/components/OfflineMessage";
 import { Footer } from "@/components/Footer";
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -47,9 +48,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
   return (
     <html lang="en">
       <head>
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        
         {/* Preconnect to analytics domains for performance */}
         <link rel="preconnect" href="https://plausible.io" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
