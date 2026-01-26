@@ -21,6 +21,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@/components', '@/lib'],
   },
+  // Turbopack config (Next.js 16+ uses Turbopack by default)
+  // Empty config acknowledges webpack usage from next-pwa
+  turbopack: {},
   // Redirects for SEO consolidation: /brands/[brand]/[model]-tire-pressure → /models/[model-slug]
   async redirects() {
     const modelsData = require('./data/models.json');
