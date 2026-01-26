@@ -76,15 +76,13 @@ module.exports = {
       lastmod: new Date().toISOString(),
     });
 
-    // Add programmatic tire size pages
-    const tireSizes = [
-      '20x3-0', '20x4-0', '26x4-0', '27-5x2-2', '27-5x2-4',
-      '700x35c', '700x40c', '20x2-4', '22x3-0', '16x1-5',
-      '24x2-4', '29x2-5', '27-5x2-6', '20x2-5', '19x2-5'
-    ];
-    tireSizes.forEach((size) => {
+    // Add programmatic tire size pages (dynamically from models.json)
+    const uniqueTireSizes = [...new Set(models.map(m => m.stockTire.size))];
+    uniqueTireSizes.forEach((size) => {
+      // Convert tire size to URL format (e.g., "20x4.0" -> "20x4-0")
+      const urlSize = size.replace(/\./g, '-');
       paths.push({
-        loc: `/tire-size/${size}`,
+        loc: `/tire-size/${urlSize}`,
         changefreq: 'monthly',
         priority: 0.8,
         lastmod: new Date().toISOString(),
