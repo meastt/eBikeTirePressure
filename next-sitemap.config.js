@@ -76,6 +76,54 @@ module.exports = {
       lastmod: new Date().toISOString(),
     });
 
+    // Add programmatic tire size pages
+    const tireSizes = [
+      '20x3-0', '20x4-0', '26x4-0', '27-5x2-2', '27-5x2-4',
+      '700x35c', '700x40c', '20x2-4', '22x3-0', '16x1-5',
+      '24x2-4', '29x2-5', '27-5x2-6', '20x2-5', '19x2-5'
+    ];
+    tireSizes.forEach((size) => {
+      paths.push({
+        loc: `/tire-size/${size}`,
+        changefreq: 'monthly',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      });
+    });
+
+    // Add category pages
+    const categoryPages = [
+      'cargo-ebike-tire-pressure',
+      'folding-ebike-tire-pressure',
+      'fat-tire-ebike-tire-pressure',
+      'commuter-ebike-tire-pressure',
+      'moto-style-ebike-tire-pressure',
+    ];
+    categoryPages.forEach((page) => {
+      paths.push({
+        loc: `/${page}`,
+        changefreq: 'monthly',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      });
+    });
+
+    // Add UK/GEO page
+    paths.push({
+      loc: '/ebike-tyre-pressure',
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    });
+
+    // Add weight category pages
+    paths.push({
+      loc: '/heavy-rider-ebike-tire-pressure',
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    });
+
     return paths;
   },
 };
