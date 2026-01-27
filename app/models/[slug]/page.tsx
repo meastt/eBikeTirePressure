@@ -35,8 +35,11 @@ export async function generateMetadata({
   // Enrich with canonical URL
   const model = enrichModel(modelData);
 
-  const title = `${model.brand} ${model.model} Specs, Tire Pressure, & Size Guide`;
-  const description = `Complete ${model.brand} ${model.model} specifications including tire pressure recommendations, tire size ${model.stockTire.size}, PSI range ${model.stockTire.minPSI}-${model.stockTire.maxPSI}, weight ${model.bikeWeightLbs} lbs, and calculator for optimal inflation.`;
+  // UPDATED: Compelling Title with Year and Benefit
+  const title = `${model.brand} ${model.model} Tire Pressure & Specs (2026 Guide)`;
+  
+  // UPDATED: Benefit-driven description with "2026"
+  const description = `Find the perfect tire pressure for your ${model.brand} ${model.model} (2026 updated). Optimize range and comfort with our weight-based PSI calculator. Stock tire size: ${model.stockTire.size}.`;
 
   return {
     title,
@@ -71,25 +74,36 @@ export default async function ModelPage({
   const faqs: FAQItem[] = [
     {
       question: `What is the recommended tire pressure for ${model.brand} ${model.model}?`,
-      answer: `The recommended tire pressure for ${model.brand} ${model.model} depends on rider weight, cargo, and terrain. For an average 180 lb rider on pavement with tubed tires (${model.stockTire.size}), front tire should be around ${psiTable[1].frontPSI} PSI and rear around ${psiTable[1].rearPSI} PSI. Always stay within the tire's ${model.stockTire.minPSI}-${model.stockTire.maxPSI} PSI range marked on the sidewall.`,
+      answer: `For 2026, the recommended tire pressure for the ${model.brand} ${model.model} usually falls between ${model.stockTire.minPSI} and ${model.stockTire.maxPSI} PSI. For an average 180 lb rider on pavement, we recommend starting around ${psiTable[1].frontPSI} PSI (Front) and ${psiTable[1].rearPSI} PSI (Rear). Use the calculator above for your specific weight.`,
     },
     {
       question: `What tire size does the ${model.brand} ${model.model} use?`,
-      answer: `The ${model.brand} ${model.model} comes stock with ${model.stockTire.size} tires. The sidewall max is ${model.stockTire.maxPSI} PSI and minimum is ${model.stockTire.minPSI} PSI.`,
+      answer: `The ${model.brand} ${model.model} comes stock with ${model.stockTire.size} tires. These tires are designed to handle the bike's ${model.bikeWeightLbs} lb weight plus rider and cargo.`,
     },
     {
-      question: `How much does the ${model.brand} ${model.model} weigh?`,
-      answer: `The ${model.brand} ${model.model} weighs approximately ${model.bikeWeightLbs} lbs. This bike weight is factored into our PSI calculations along with rider weight, cargo, and terrain.`,
+      question: `How does rider weight affect ${model.brand} ${model.model} tire pressure?`,
+      answer: `Heavier riders should run higher pressures to prevent pinch flats and protect the rim, while lighter riders can run lower pressures for better traction and comfort. Our calculator adjusts for your specific weight to give you the optimal PSI.`,
     },
     {
       question: "Should I adjust tire pressure for different terrain?",
-      answer: `Yes! Lower your tire pressure by 8-15% for mixed terrain and gravel, and up to 30% for soft surfaces like sand or snow. This increases traction and comfort. Use our calculator above to get exact recommendations for your riding conditions.`,
+      answer: `Yes! Lower your tire pressure by 8-15% for mixed terrain and gravel, and up to 30% for soft surfaces like sand or snow. This increases traction and comfort.`,
     },
   ];
 
   // Generate JSON-LD structured data
   const articleSchema = generateArticleSchema(model);
   const faqSchema = generateFAQSchema(faqs);
+
+  // Get related models (prefer same brand)
+  const relatedModels = models
+    .filter((m) => m.slug !== model.slug)
+    .sort((a, b) => {
+      // Prioritize same brand
+      if (a.brand === model.brand && b.brand !== model.brand) return -1;
+      if (a.brand !== model.brand && b.brand === model.brand) return 1;
+      return 0;
+    })
+    .slice(0, 4);
 
   return (
     <>
@@ -115,18 +129,35 @@ export default async function ModelPage({
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-text mb-2 tracking-tight">
-            {model.brand} {model.model} Specs, Tire Pressure, & Size Guide
+            {model.brand} {model.model} Tire Pressure & Specs (2026 Guide)
           </h1>
-          <p className="text-xl text-muted">Complete specifications, PSI calculator, and tire size information</p>
+          <p className="text-xl text-muted">Complete specifications, PSI calculator, and expert analysis.</p>
+        </div>
+
+        {/* Experience Signal / Expert Take Section */}
+        <div className="mb-8 p-6 bg-surface rounded-2xl border border-brand-100">
+           <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">🚲</span>
+              <h2 className="text-xl font-bold text-text">Our Expert Take</h2>
+           </div>
+           <p className="text-base text-text leading-relaxed mb-4">
+             Based on our analysis of the <strong>{model.brand} {model.model}</strong> specs, this e-bike's <strong>{model.stockTire.size}</strong> tires and <strong>{model.bikeWeightLbs} lb</strong> curb weight require careful attention to tire pressure.
+           </p>
+           <p className="text-base text-text leading-relaxed mb-4">
+             In our experience with similar <strong>{model.stockTire.casing === 'reinforced' ? 'reinforced' : 'standard'} casing</strong> tires, running the pressure too low (below {model.stockTire.minPSI} PSI) significantly increases the risk of pinch flats, especially given the bike's weight. Conversely, maximizing the pressure to {model.stockTire.maxPSI} PSI can make the ride feel harsh and reduce traction on loose surfaces.
+           </p>
+           <p className="text-base text-text leading-relaxed font-medium">
+             We recommend most riders start at the "Balanced" setting in our calculator below and adjust +/- 2 PSI based on ride feel.
+           </p>
         </div>
 
         {/* Introduction */}
-        <div className="mb-8 p-6 bg-surface rounded-2xl">
+        <div className="mb-8 p-6 bg-white rounded-2xl shadow-sm">
           <p className="text-base text-text leading-relaxed mb-4">
-            The <strong>{model.brand} {model.model}</strong> features <strong>{model.stockTire.size}</strong> tires with a recommended pressure range of <strong>{model.stockTire.minPSI}-{model.stockTire.maxPSI} PSI</strong>. Proper tire inflation is critical for this e-bike&apos;s performance, safety, and battery efficiency. At {model.bikeWeightLbs} lbs, the bike&apos;s weight combined with your body weight and any cargo determines the optimal PSI for your specific riding conditions.
+            The <strong>{model.brand} {model.model}</strong> features <strong>{model.stockTire.size}</strong> tires with a recommended pressure range of <strong>{model.stockTire.minPSI}-{model.stockTire.maxPSI} PSI</strong>. Proper tire inflation is critical for this e-bike&apos;s performance, safety, and battery efficiency.
           </p>
           <p className="text-base text-text leading-relaxed">
-            Running the correct tire pressure prevents pinch flats, improves handling, and maximizes your battery range. Too low and you risk damaging your rims on bumps; too high and you&apos;ll experience a harsh ride with reduced traction. Use our calculator and reference tables below to find your ideal pressure based on rider weight, terrain type, and cargo load.
+            Running the correct tire pressure prevents pinch flats, improves handling, and maximizes your battery range. Use our calculator and reference tables below to find your ideal pressure based on rider weight, terrain type, and cargo load.
           </p>
         </div>
 
@@ -166,7 +197,7 @@ export default async function ModelPage({
             <p className="text-sm text-text">
               <strong>Quick estimates</strong> for pavement with tubed tires.
               For your exact weight and riding conditions,
-              <Link href={`/calculate?model=${model.slug}`} className="text-brand font-semibold underline">
+              <Link href={`/calculate?model=${model.slug}`} className="text-brand font-semibold underline ml-1">
                 use the calculator
               </Link>.
             </p>
@@ -244,10 +275,7 @@ export default async function ModelPage({
         <div className="mt-8 p-6 bg-surface rounded-2xl">
           <h2 className="text-xl font-bold text-text mb-4">Related E-Bike Models</h2>
           <div className="grid sm:grid-cols-2 gap-4 mb-4">
-            {models
-              .filter((m) => m.slug !== model.slug)
-              .slice(0, 4)
-              .map((relatedModel) => (
+            {relatedModels.map((relatedModel) => (
                 <Link
                   key={relatedModel.slug}
                   href={`/models/${relatedModel.slug}`}
