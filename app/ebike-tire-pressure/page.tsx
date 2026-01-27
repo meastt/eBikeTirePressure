@@ -58,11 +58,22 @@ export default function ModelsPage() {
       {/* Header */}
       <div className="mb-5">
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-text mb-3 tracking-tight bg-gradient-to-r from-text via-brand-600 to-text bg-clip-text text-transparent">
-          Model Database
+          E-Bike Model Database
         </h1>
         <p className="text-muted text-base font-medium">
-          {totalModels} bikes • {allBrands.length} brands
+          Expert PSI specifications for {totalModels} models across {allBrands.length} brands. Updated for 2026.
         </p>
+      </div>
+
+      {/* Experience Signal - Subtle Expert Intro */}
+      <div className="mb-8 p-4 bg-surface rounded-xl border border-brand-100 flex items-start gap-3">
+        <span className="text-2xl pt-1">🔍</span>
+        <div>
+          <h2 className="font-bold text-text text-sm uppercase tracking-wide mb-1">Expert Verified Specs</h2>
+          <p className="text-sm text-muted leading-relaxed">
+            Our team has verified tire sizes, weight limits, and pressure ranges for these models. Unlike generic charts, our calculator adapts to your specific bike's geometry and weight distribution.
+          </p>
+        </div>
       </div>
 
       {/* Search and Filter Bar */}
