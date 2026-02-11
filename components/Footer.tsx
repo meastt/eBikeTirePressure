@@ -29,6 +29,70 @@ export function Footer() {
                   Models
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/brands"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Brands
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tire-size"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Tire Sizes
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-heading font-bold text-text mb-3">
+              By Category
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/fat-tire-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Fat Tire
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cargo-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Cargo
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/commuter-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Commuter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/folding-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Folding
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/moto-style-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Moto-Style
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -51,6 +115,38 @@ export function Footer() {
                   className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
                 >
                   FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/heavy-rider-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Heavy Rider Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/lightweight-rider-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Lightweight Rider
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/hot-weather-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Hot Weather PSI
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cold-weather-ebike-tire-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  Cold Weather PSI
                 </Link>
               </li>
             </ul>
@@ -77,14 +173,6 @@ export function Footer() {
                   Terms
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-heading font-bold text-text mb-3">
-              Contact
-            </h3>
-            <ul className="space-y-2">
               <li>
                 <a
                   href="mailto:support@ebikepsi.com"

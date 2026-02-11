@@ -108,7 +108,7 @@ export function generateWebsiteSchema() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://ebikepsi.com/brands?search={search_term_string}",
+        urlTemplate: "https://ebikepsi.com/ebike-tire-pressure?search={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },

@@ -7,13 +7,17 @@ import modelsData from "@/data/models.json";
 const models = modelsData as ModelPreset[];
 
 export const metadata: Metadata = {
-  title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations",
+  title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations (2026)",
   description:
-    "Calculate optimal tire pressure for your e-bike based on rider weight, cargo, and terrain. Supports 20+ popular models with real-time PSI calculations and safety warnings.",
+    "Free e-bike tire pressure calculator with precise PSI recommendations for 150+ models. Covers fat tire, cargo, folding, and commuter e-bikes. Weight-based calculations with terrain adjustments.",
+  alternates: {
+    canonical: "https://ebikepsi.com",
+  },
   openGraph: {
-    title: "E-Bike Tire Pressure Calculator",
-    description: "Professional PSI recommendations for fat tire, cargo, and standard e-bikes.",
+    title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations (2026)",
+    description: "Free e-bike tire pressure calculator with precise PSI recommendations for 150+ models. Weight-based calculations with terrain adjustments.",
     type: "website",
+    url: "https://ebikepsi.com",
   },
 };
 
@@ -125,7 +129,7 @@ export default function Home() {
 
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg">
-                    <span className="font-mono font-bold text-white text-lg">20+</span>
+                    <span className="font-mono font-bold text-white text-sm">150+</span>
                   </div>
                   <div>
                     <div className="font-heading font-bold text-white text-sm">Verified E-Bike Database</div>
@@ -282,11 +286,11 @@ export default function Home() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-heading font-bold text-text mb-1">Verified Model Database</h3>
-                <span className="font-mono text-xs text-purple-600 tracking-wider">20+_PRESETS</span>
+                <span className="font-mono text-xs text-purple-600 tracking-wider">150+_PRESETS</span>
               </div>
             </div>
             <p className="text-muted leading-relaxed">
-              Pre-configured tire specifications and tested pressure calculations for popular e-bike models. Instant accuracy.
+              Pre-configured tire specifications and tested pressure calculations for 150+ popular e-bike models. Instant accuracy.
             </p>
           </div>
         </div>
@@ -519,7 +523,7 @@ export default function Home() {
                 <div className="flex-1">
                   <h3 className="font-heading font-bold text-white text-xl mb-2">SELECT MODEL</h3>
                   <p className="text-slate-400 leading-relaxed">
-                    Choose from 20+ verified e-bike presets or input custom tire dimensions
+                    Choose from 150+ verified e-bike presets or input custom tire dimensions
                   </p>
                   <div className="mt-3 font-mono text-xs text-brand-400">bike_model → tire_specs</div>
                 </div>
