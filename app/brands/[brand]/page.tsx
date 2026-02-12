@@ -44,10 +44,14 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `https://ebikepsi.com/brands/${brandSlug}`,
+    },
     openGraph: {
       title,
       description,
       type: 'website',
+      url: `https://ebikepsi.com/brands/${brandSlug}`,
     },
   };
 }

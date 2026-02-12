@@ -3,9 +3,17 @@ import { generateBreadcrumbSchema } from '@/lib/schema';
 import { getBaseUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'FAQ | E-Bike Tire Pressure',
+  title: 'E-Bike Tire Pressure FAQ | Expert Answers to Common PSI Questions (2026)',
   description:
     'Frequently asked questions about e-bike tire pressure, PSI recommendations, pinch flats, cargo loading, and tire safety. Expert answers for optimal performance.',
+  alternates: {
+    canonical: 'https://ebikepsi.com/faq',
+  },
+  openGraph: {
+    title: 'E-Bike Tire Pressure FAQ | Expert Answers to Common PSI Questions (2026)',
+    description: 'Frequently asked questions about e-bike tire pressure, PSI recommendations, pinch flats, cargo loading, and tire safety.',
+    type: 'website',
+  },
 };
 
 interface FAQItem {

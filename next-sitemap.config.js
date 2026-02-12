@@ -115,10 +115,69 @@ module.exports = {
     });
 
     // Add weight category pages
+    paths.push(
+      {
+        loc: '/heavy-rider-ebike-tire-pressure',
+        changefreq: 'monthly',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/lightweight-rider-tire-pressure',
+        changefreq: 'monthly',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      }
+    );
+
+    // Add climate/weather pages
+    paths.push(
+      {
+        loc: '/hot-weather-ebike-tire-pressure',
+        changefreq: 'monthly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/cold-weather-ebike-tire-pressure',
+        changefreq: 'monthly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      }
+    );
+
+    // Add tire size directory page
     paths.push({
-      loc: '/heavy-rider-ebike-tire-pressure',
-      changefreq: 'monthly',
+      loc: '/tire-size',
+      changefreq: 'weekly',
       priority: 0.8,
+      lastmod: new Date().toISOString(),
+    });
+
+    // Add brand pages
+    const brandSlugs = [...new Set(models.map(m => {
+      return m.brand
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/bikes?$/i, '')
+        .replace(/-+$/g, '')
+        .trim();
+    }))];
+    brandSlugs.forEach((slug) => {
+      paths.push({
+        loc: `/brands/${slug}`,
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      });
+    });
+
+    // Add brands directory
+    paths.push({
+      loc: '/brands',
+      changefreq: 'weekly',
+      priority: 0.7,
       lastmod: new Date().toISOString(),
     });
 

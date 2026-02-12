@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "E-Bike Models | Tire Pressure Guide | E-Bike PSI",
+  title: "E-Bike Tire Pressure Database | 150+ Models | PSI Guide (2026)",
   description:
-    "Browse 20+ popular e-bike models by brand. Search and filter by type (Fat Tire, Cargo, Folding). Get instant PSI recommendations for your bike.",
+    "Browse 150+ e-bike models from 40+ brands. Search and filter by type (Fat Tire, Cargo, Folding, Commuter, Moto-Style). Get weight-based PSI recommendations for your bike.",
+  alternates: {
+    canonical: "https://ebikepsi.com/ebike-tire-pressure",
+  },
   openGraph: {
-    title: "E-Bike Models | Tire Pressure Guide",
-    description: "Search and filter 20+ e-bike models. Instant pressure calculators for each bike.",
+    title: "E-Bike Tire Pressure Database | 150+ Models | PSI Guide (2026)",
+    description: "Browse 150+ e-bike models from 40+ brands. Search, filter, and get weight-based PSI recommendations.",
     type: "website",
+    url: "https://ebikepsi.com/ebike-tire-pressure",
   },
 };
 
