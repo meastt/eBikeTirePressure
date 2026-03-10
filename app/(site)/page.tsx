@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { ModelPreset } from "@/lib/types";
 import { generateFAQSchema } from "@/lib/schema";
 import modelsData from "@/data/models.json";
+import { getAllBrandMetadata } from "@/lib/brandMetadata";
+import { getAllTireSizes, getTireSizeInfo } from "@/lib/programmatic/tire-sizes";
 
 const models = modelsData as ModelPreset[];
 
@@ -43,6 +45,15 @@ export default function Home() {
   ];
 
   const faqSchema = generateFAQSchema(homepageFAQs);
+
+  const brandMetadata = getAllBrandMetadata();
+  const allTireSizes = getAllTireSizes();
+  const popularTireSizes = allTireSizes
+    .map((slug) => getTireSizeInfo(slug))
+    .filter((info) => !!info)
+    // Prioritize sizes Ahrefs flagged (1–3 models) and keep list compact
+    .filter((info) => info!.modelCount <= 3)
+    .slice(0, 24) as ReturnType<typeof getTireSizeInfo>[];
 
   return (
     <>

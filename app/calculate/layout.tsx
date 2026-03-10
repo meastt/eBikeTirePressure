@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { generateSoftwareApplicationSchema, generateHowToSchema } from "@/lib/schema";
+
+export const metadata: Metadata = {
+  title: "E-Bike Tire Pressure Calculator | Precise PSI by Model, Weight & Terrain",
+  description:
+    "Free e-bike tire pressure calculator with weight-based front and rear PSI recommendations. Select your model or tire size, add rider and cargo weight, and get precise, safe pressures.",
+  alternates: {
+    canonical: "https://ebikepsi.com/calculate",
+  },
+};
 
 export default function CalculateLayout({
   children,

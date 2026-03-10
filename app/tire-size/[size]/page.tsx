@@ -37,7 +37,8 @@ export async function generateMetadata({
   }
 
   const title = `${info.displaySize} E-Bike Tire Pressure Guide | ${info.modelCount} Models | PSI Chart`;
-  const description = `Complete tire pressure guide for ${info.displaySize} e-bike tires. PSI charts for ${info.modelCount} models from ${info.brands.length} brands. Recommended range: ${info.avgMinPSI}-${info.avgMaxPSI} PSI.`;
+  // Keep description short (~150 chars) for all tire-size pages
+  const description = `${info.displaySize} e-bike tire pressure guide with PSI range ${info.avgMinPSI}-${info.avgMaxPSI}. Covers ${info.modelCount} models from ${info.brands.length} brands.`;
 
   return {
     title,
