@@ -12,7 +12,6 @@ import { generateTempPSITable } from '@/lib/programmatic/geo';
 import { PSIQuickTable, FAQSection, CalculatorCTA, QuickStats, RelatedLinks } from '@/components/programmatic';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-const models = modelsData as ModelPreset[];
 
 export const metadata: Metadata = {
   title: 'Hot Weather E-Bike Tire Pressure Guide | Summer PSI Adjustments (2026)',

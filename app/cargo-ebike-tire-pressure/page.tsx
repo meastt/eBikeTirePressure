@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { CATEGORIES, getModelsForCategory } from '@/lib/programmatic/categories';
 import { getBaseUrl } from '@/lib/programmatic/url-utils';
 import {

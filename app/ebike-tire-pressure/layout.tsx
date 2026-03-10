@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "E-Bike Tire Pressure Database | 150+ Models | PSI Guide (2026)",
+    title: "E-Bike Tire Pressure Database | 150+ Models | PSI Calculator (2026)",
   description:
     "Browse 150+ e-bike models from 40+ brands. Search and filter by type (Fat Tire, Cargo, Folding, Commuter, Moto-Style). Get weight-based PSI recommendations for your bike.",
   alternates: {
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "E-Bike Tire Pressure Database | 150+ Models | PSI Guide (2026)",
-    description: "Browse 150+ e-bike models from 40+ brands. Search, filter, and get weight-based PSI recommendations.",
+    title: "E-Bike Tire Pressure Database | 150+ Models | PSI Calculator (2026)",
+    description: "Complete e-bike tire pressure database: 150+ models, 40+ brands. Expert PSI recommendations by weight, terrain & cargo. Search, compare, and optimize.",
     type: "website",
     url: "https://ebikepsi.com/ebike-tire-pressure",
   },
