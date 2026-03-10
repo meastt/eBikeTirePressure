@@ -31,6 +31,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/ebike-tyre-pressure"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  UK/EU (Bar)
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/brands"
                   className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
                 >

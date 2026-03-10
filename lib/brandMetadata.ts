@@ -419,10 +419,31 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
 };
 
 /**
+ * Slug aliases: getBrandSlug() output → BRAND_METADATA key
+ * Fixes 404s when sitemap/modelUtils use different slug format than metadata keys
+ */
+const SLUG_ALIASES: Record<string, string> = {
+  juiced: 'juiced-bikes',      // "Juiced Bikes" → juiced (bikes stripped)
+  hey: 'heybike',              // "HeyBike" → hey (bike stripped)
+  'riese-mller': 'riese-muller', // "Riese & Müller" → riese-mller (ü stripped)
+};
+
+/**
  * Get brand metadata by slug
  */
 export function getBrandMetadata(brandSlug: string): BrandMetadata | undefined {
-  return BRAND_METADATA[brandSlug];
+  const key = SLUG_ALIASES[brandSlug] ?? brandSlug;
+  return BRAND_METADATA[key];
+}
+
+/**
+ * Get all slugs that resolve to a brand (canonical + aliases)
+ */
+export function getSlugsForBrand(metadataSlug: string): string[] {
+  const aliases = Object.entries(SLUG_ALIASES)
+    .filter(([, key]) => key === metadataSlug)
+    .map(([alias]) => alias);
+  return [metadataSlug, ...aliases];
 }
 
 /**

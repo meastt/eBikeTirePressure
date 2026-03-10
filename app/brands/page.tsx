@@ -3,7 +3,7 @@ import Link from 'next/link';
 import modelsData from '@/data/models.json';
 import type { ModelPreset } from '@/lib/types';
 import { groupModelsByBrand, getAllBrandSlugs } from '@/lib/modelUtils';
-import { getAllBrandMetadata } from '@/lib/brandMetadata';
+import { getAllBrandMetadata, getSlugsForBrand } from '@/lib/brandMetadata';
 
 const models = modelsData as ModelPreset[];
 
@@ -38,9 +38,11 @@ export default function BrandsIndexPage() {
   const brandSlugs = getAllBrandSlugs(models);
   const allBrandMetadata = getAllBrandMetadata();
 
-  // Filter to only brands we have models for
+  // Filter to only brands we have models for (include brands with slug aliases)
   const availableBrands = allBrandMetadata
-    .filter((brand) => brandSlugs.includes(brand.slug))
+    .filter((brand) =>
+      getSlugsForBrand(brand.slug).some((slug) => brandSlugs.includes(slug))
+    )
     .sort((a, b) => a.displayName.localeCompare(b.displayName));
 
   return (
@@ -82,11 +84,15 @@ export default function BrandsIndexPage() {
         {/* Brands grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {availableBrands.map((brand) => {
-            const brandModels = groupedModels[brand.slug] || [];
+            // Use URL slug from models (may differ from metadata key for aliased brands)
+            const urlSlug =
+              getSlugsForBrand(brand.slug).find((s) => brandSlugs.includes(s)) ??
+              brand.slug;
+            const brandModels = groupedModels[urlSlug] || [];
             return (
               <Link
                 key={brand.slug}
-                href={`/brands/${brand.slug}`}
+                href={`/brands/${urlSlug}`}
                 className="group card card-hover p-6 bg-white"
               >
                 <div className="flex items-start justify-between mb-4">

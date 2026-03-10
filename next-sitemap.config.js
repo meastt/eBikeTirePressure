@@ -14,6 +14,7 @@ module.exports = {
         allow: '/',
       },
     ],
+    host: 'ebikepsi.com', // Domain only (no protocol) per robots.txt spec
   },
   // Exclude API routes, internal routes, legal pages, and tire pressure pages (now redirected to /models/)
   exclude: [
