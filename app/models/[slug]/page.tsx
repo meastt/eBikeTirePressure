@@ -37,9 +37,9 @@ export async function generateMetadata({
 
   // UPDATED: Compelling Title with Year and Benefit
   const title = `${model.brand} ${model.model} Tire Pressure & Specs (2026 Guide)`;
-  
-  // UPDATED: Benefit-driven description with "2026"
-  const description = `Find the perfect tire pressure for your ${model.brand} ${model.model} (2026 updated). Optimize range and comfort with our weight-based PSI calculator. Stock tire size: ${model.stockTire.size}.`;
+
+  // Short, benefit-driven description (~150 chars) for all model pages
+  const description = `${model.brand} ${model.model} 2026 tire pressure guide. Stock ${model.stockTire.size} tires with recommended PSI range and weight-based calculator for range, comfort and safety.`;
 
   return {
     title,

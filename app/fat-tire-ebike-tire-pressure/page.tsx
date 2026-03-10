@@ -271,7 +271,7 @@ export default function FatTireEbikeTirePressurePage() {
             links={[
               {
                 title: 'Beach Riding Guide',
-                href: '/beach-ebike-tire-pressure',
+                href: '/fat-tire-ebike-tire-pressure',
                 description: 'Sand & coastal riding tips',
                 icon: '🏖️',
               },

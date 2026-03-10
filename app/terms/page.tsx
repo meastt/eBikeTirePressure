@@ -4,8 +4,8 @@ export const metadata: Metadata = {
   title: 'Terms of Service | E-Bike PSI',
   description: 'Terms of service for E-Bike PSI tire pressure calculator.',
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 

@@ -76,6 +76,13 @@ const nextConfig: NextConfig = {
       }
     );
 
+    // Redirect beach page to fat tire page
+    redirects.push({
+      source: '/beach-ebike-tire-pressure',
+      destination: '/fat-tire-ebike-tire-pressure',
+      permanent: true,
+    });
+
     return redirects;
   },
   // OPTIONAL: uncomment if you want static export for Capacitor later
