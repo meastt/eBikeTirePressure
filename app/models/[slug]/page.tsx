@@ -94,16 +94,30 @@ export default async function ModelPage({
   const articleSchema = generateArticleSchema(model);
   const faqSchema = generateFAQSchema(faqs);
 
-  // Get related models (prefer same brand)
-  const relatedModels = models
-    .filter((m) => m.slug !== model.slug)
+  // Get related models (2 from same brand, 2 from other brands)
+  const sameBrandModels = models
+    .filter((m) => m.brand === model.brand && m.slug !== model.slug)
+    .slice(0, 2);
+    
+  // If we can't find enough same brand models, pad with more cross-brand
+  const neededOtherBrands = 4 - sameBrandModels.length;
+  
+  const otherBrandModels = models
+    .filter((m) => m.brand !== model.brand)
+    // Try to find bikes with similar weight (+/- 15 lbs) or same tire size to be truly "related"
     .sort((a, b) => {
-      // Prioritize same brand
-      if (a.brand === model.brand && b.brand !== model.brand) return -1;
-      if (a.brand !== model.brand && b.brand === model.brand) return 1;
-      return 0;
+      const aWeightDiff = Math.abs(a.bikeWeightLbs - model.bikeWeightLbs);
+      const bWeightDiff = Math.abs(b.bikeWeightLbs - model.bikeWeightLbs);
+      
+      // Bonus if they share the same exact tire size
+      const aSizeMatch = a.stockTire.size === model.stockTire.size ? -10 : 0;
+      const bSizeMatch = b.stockTire.size === model.stockTire.size ? -10 : 0;
+      
+      return (aWeightDiff + aSizeMatch) - (bWeightDiff + bSizeMatch);
     })
-    .slice(0, 4);
+    .slice(0, neededOtherBrands);
+
+  const relatedModels = [...sameBrandModels, ...otherBrandModels];
 
   return (
     <>
@@ -185,12 +199,31 @@ export default async function ModelPage({
                 {model.stockTire.casing === "reinforced" ? "Reinforced" : "Standard"}
               </div>
             </div>
+            {model.payloadCapacityLbs && (
+              <div className="sm:col-span-2 mt-2">
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3">
+                  <span className="text-xl">⚠️</span>
+                  <div>
+                    <div className="text-sm font-bold text-amber-900">High Payload Capacity ({model.payloadCapacityLbs} lbs)</div>
+                    <div className="text-sm text-amber-800 mt-1">
+                      This e-bike is designed for heavy loads. When carrying passengers or maximum cargo, you MUST inflate toward the maximum recommended pressure ({model.stockTire.maxPSI} PSI) to prevent rim damage and pinch flats.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* PSI Table */}
         <div className="p-6 bg-white rounded-2xl shadow-card mb-6">
-          <h2 className="text-xl font-bold text-text mb-4">Quick Reference PSI Table</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+            <h2 className="text-xl font-bold text-text">Quick Reference PSI Table</h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 border border-brand-200 rounded-full text-brand-700 font-semibold text-sm">
+              <span className="text-lg leading-none">⚙️</span>
+              Stock Tire Size: {model.stockTire.size}
+            </div>
+          </div>
 
           {/* Context note */}
           <div className="p-3 bg-brand-50 border border-brand-200 rounded-lg mb-4">

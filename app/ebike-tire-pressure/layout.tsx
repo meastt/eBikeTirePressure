@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 
+import { getBaseUrl } from "@/lib/seo";
+
 export const metadata: Metadata = {
   title: "E-Bike Tire Pressure Database | 150+ Models | PSI Calculator (2026)",
   description:
     "Browse 150+ e-bike models from 40+ brands. Search and filter by type (Fat Tire, Cargo, Folding, Commuter, Moto-Style). Get weight-based PSI recommendations for your bike.",
   alternates: {
-    canonical: "https://ebikepsi.com/ebike-tire-pressure",
+    canonical: `${getBaseUrl()}/ebike-tire-pressure`,
     languages: {
-      "en-US": "https://ebikepsi.com/ebike-tire-pressure",
-      "en-GB": "https://ebikepsi.com/ebike-tyre-pressure",
-      "x-default": "https://ebikepsi.com/ebike-tire-pressure",
+      "en-US": `${getBaseUrl()}/ebike-tire-pressure`,
+      "en-GB": `${getBaseUrl()}/ebike-tyre-pressure`,
+      "x-default": `${getBaseUrl()}/ebike-tire-pressure`,
     },
   },
   openGraph: {

@@ -16,6 +16,7 @@ export interface ModelPreset {
     rear: number;
   };
   isTrike?: boolean; // Whether this model is a tricycle
+  payloadCapacityLbs?: number; // Maximum combined weight (rider + cargo + bike or rider + cargo depending on manufacturer)
   expertTake?: string; // Expert opinion/review snippet for SEO
   // SEO-friendly URL fields (computed)
   brandSlug?: string;

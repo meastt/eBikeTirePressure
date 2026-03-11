@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import { getBaseUrl } from "@/lib/seo";
 export interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -17,7 +17,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      ...(item.href && { item: `https://ebikepsi.com${item.href}` }),
+      ...(item.href && { item: `${getBaseUrl()}${item.href}` }),
     })),
   };
 
