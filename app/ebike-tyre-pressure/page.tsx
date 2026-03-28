@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     languages: {
       'en-GB': `${getBaseUrl()}/${UK_PAGE.slug}`,
       'en-US': `${getBaseUrl()}/ebike-tire-pressure`,
+      'de-DE': `${getBaseUrl()}/e-bike-reifendruck`,
       'x-default': `${getBaseUrl()}/ebike-tire-pressure`,
     },
   },
