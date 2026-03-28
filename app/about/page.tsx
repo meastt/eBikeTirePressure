@@ -236,7 +236,8 @@ export default function AboutPage() {
             </h2>
             <p className="text-muted mb-6 max-w-xl mx-auto">
               Select your e-bike model, enter your weight and cargo, pick your terrain. Get front
-              and rear PSI in seconds.
+              and rear PSI in seconds. Or browse all <a href="/ebike-tire-pressure" className="text-brand hover:underline font-medium">152 e-bike models</a> and check
+              our <a href="/faq" className="text-brand hover:underline font-medium">FAQ</a> for common questions.
             </p>
             <a
               href="/calculate"

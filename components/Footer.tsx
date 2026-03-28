@@ -119,6 +119,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/about"
+                  className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/faq"
                   className="text-muted hover:text-brand font-medium transition-colors duration-200 inline-block"
                 >

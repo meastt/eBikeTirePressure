@@ -169,7 +169,13 @@ export default function FAQPage() {
             </h2>
             <p className="text-muted mb-6 max-w-xl mx-auto">
               Our calculator accounts for your specific bike, weight, cargo, and
-              terrain to give you precise front and rear PSI targets.
+              terrain to give you precise front and rear PSI targets. Learn more about{' '}
+              <a
+                href="/about"
+                className="text-brand hover:underline font-medium"
+              >
+                how our algorithm works
+              </a>.
             </p>
             <a
               href="/calculate"
