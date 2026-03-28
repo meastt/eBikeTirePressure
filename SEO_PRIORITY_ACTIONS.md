@@ -1,334 +1,161 @@
-# SEO Priority Action List
-**Quick Reference Guide for Implementation**
-
-## ✅ Progress Summary
-
-**Week 1 Status:** ✅ **8 of 8 items completed (100%)**  
-**Week 2 Status:** ✅ **2 of 3 items completed (67%)**  
-**Week 3 Status:** ✅ **3 of 3 items completed (100%)**
-
-**Week 1 Completed:**
-- ✅ BreadcrumbList Schema (all pages: blog, models, brands, FAQ)
-- ✅ Organization Schema (root layout)
-- ✅ SoftwareApplication Schema (calculator)
-- ✅ HowTo Schema (calculator + 2 tutorial blog posts)
-- ✅ Enhanced BlogPosting Schema (dateModified, articleSection, inLanguage)
-- ✅ Author Schema fix (Person instead of Organization)
-- ✅ Article Schema (added alongside BlogPosting)
-- ✅ Homepage FAQ Schema
-
-**Week 2 Completed:**
-- ✅ Meta Description Audit (all pages optimized)
-- ✅ Image Alt Text Audit (all images have proper alt text + ImageObject schema)
-- ⚠️ Table of Contents Schema (deferred - requires MDX parsing)
-
-**Week 3 Completed:**
-- ✅ Product Schema Enhancements (added offers)
-- ✅ Heading Hierarchy Audit (verified proper structure)
-- ✅ Category/Tag Schema (keywords meta tag added)
-
-**Ongoing Items Completed:**
-- ✅ Last Updated Dates (dateModified support added)
-- ✅ WebSite Schema with SearchAction (added to layout)
+# SEO/GEO Priority Action Plan (Updated)
+**Site:** ebikepsi.com  
+**Updated:** March 28, 2026  
+**Scope:** Traditional SEO + AI-driven search (AI Overviews, LLM answer engines) + international/geo SEO
 
 ---
 
-## 🚀 Week 1: Critical AI-Search Optimizations (12-18 hours)
+## 1) What was reviewed
 
-### 1. ✅ BreadcrumbList Schema (2-3 hours) **COMPLETED**
-**Files to modify:**
-- `app/blog/[slug]/page.tsx`
-- `app/models/[slug]/page.tsx`
-- `app/brands/[brand]/page.tsx`
-- `app/brands/[brand]/[...slug]/page.tsx`
-- `app/faq/page.tsx`
+### Root SEO/GEO planning docs found
+- `SEO_AUDIT_REPORT.md` (January 2025 baseline audit)
+- `SEO_PRIORITY_ACTIONS.md` (this execution plan)
+- `SEO_IMPLEMENTATION_SUMMARY.md` (implementation summary)
+- `TECHNICAL_SEO_GEO_AUDIT_2026.md` (March 9, 2026 technical audit)
+- `SEO-CONTENT-PLAN.md` (content planning)
 
-**What to add:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://ebikepsi.com"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://ebikepsi.com/blog"
-    }
-  ]
-}
-```
+### Current implementation spot checks (March 28, 2026)
+- Technical SEO fundamentals in place: `metadataBase`, structured data scripts (Organization/WebSite), robots/sitemap wiring, and production redirect policy.
+- GEO foundation in place: UK variant page with language alternates + dynamic location pages route.
+- Mixed canonical implementation patterns remain (some dynamic, some hardcoded absolute URLs).
 
 ---
 
-### 2. ✅ Organization Schema on Homepage (1-2 hours) **COMPLETED**
-**File:** `app/layout.tsx` or `app/(site)/page.tsx`
+## 2) Current state summary (as of March 28, 2026)
 
-**What to add:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "E-Bike PSI",
-  "url": "https://ebikepsi.com",
-  "logo": "https://ebikepsi.com/logo.svg",
-  "description": "Professional e-bike tire pressure calculator and guides",
-  "sameAs": [] // Add social profiles if you have them
-}
-```
+## ✅ Strong / already implemented
+1. **Core schema coverage is strong**: Organization + WebSite schema in root layout, FAQ schema on homepage, and broad use of structured data across key templates.
+2. **Geo-intent coverage exists**: US (`/ebike-tire-pressure`) + UK (`/ebike-tyre-pressure`) setup and location-based dynamic route (`/[location]-ebike-tire-pressure`).
+3. **Crawl control is healthy**: robots.txt includes host + sitemap, next-sitemap configured with dynamic paths and strategic exclusions.
+4. **Domain canonicalization protection exists**: www → apex redirect configured at edge level.
 
----
+## ⚠️ Gaps that still need completion
+1. **Canonical URL consistency is incomplete**
+   - Multiple templates still hardcode production URL strings while others use helper-based URLs.
+   - Risk: drift between preview/staging/prod signals and inconsistent maintenance.
 
-### 3. ✅ SoftwareApplication Schema for Calculator (2-3 hours) **COMPLETED**
-**File:** `app/calculate/page.tsx`
+2. **Hreflang architecture is only partially expanded**
+   - US/UK pair is implemented for the model index pages, but equivalent language alternates are not systematically deployed where region variants are semantically paired.
 
-**What to add:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "E-Bike Tire Pressure Calculator",
-  "description": "Calculate optimal tire pressure for your e-bike based on weight, cargo, and terrain",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "url": "https://ebikepsi.com/calculate"
-}
-```
+3. **Sitemap freshness strategy is partly synthetic**
+   - Many entries still use build-time `new Date().toISOString()` for `lastmod` instead of true content update timestamps.
+   - This can weaken freshness trust in crawlers and AI retrievers over time.
+
+4. **AI-search readiness instrumentation is missing from plan execution**
+   - Existing docs focus mostly on classic on-page/schema technical SEO.
+   - No explicit monitoring loop for AI citation visibility, entity consistency, or answer extraction quality.
+
+5. **High-intent trust pages are excluded from sitemap**
+   - Privacy and Terms are currently excluded; this is acceptable technically, but including them can support trust and transparency signals.
 
 ---
 
-### 4. ✅ HowTo Schema for Tutorial Content (4-6 hours) **COMPLETED**
-**Files:** Create helper in `lib/schema.ts`, add to relevant blog posts
+## 3) Updated priority plan (what to do next)
 
-**What to add:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Calculate E-Bike Tire Pressure",
-  "description": "Step-by-step guide to finding optimal PSI",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "Select Your Bike Model",
-      "text": "Choose your e-bike model from the database"
-    }
-  ]
-}
-```
+## Phase 1 (Week 1): Canonical + hreflang stabilization
+**Goal:** Eliminate conflicting URL signals.
 
----
+1. **Unify canonical generation strategy**
+   - Standardize metadata generation to one source of truth (production canonical domain for indexed pages).
+   - Remove template-by-template hardcoded canonical literals where not necessary.
 
-### 5. ✅ Enhanced BlogPosting Schema (1-2 hours) **COMPLETED**
-**File:** `app/blog/[slug]/page.tsx`
+2. **Create hreflang parity matrix**
+   - Inventory all US/UK counterpart pages.
+   - Ensure bidirectional `alternates.languages` for each counterpart pair.
+   - Add `x-default` where a neutral default is needed.
 
-**What to fix:**
-- Add `dateModified` field
-- Add `articleSection` from tags
-- Add `inLanguage: "en-US"`
-- Consider adding `Article` schema alongside `BlogPosting`
+3. **Validate in production**
+   - Run URL-level checks for canonical + hreflang reciprocity.
+   - Re-submit sitemap after rollout.
+
+**Definition of done:**
+- No mixed canonical strategy across indexable templates.
+- 100% reciprocal hreflang for all mapped US/UK pairs.
 
 ---
 
-### 6. ✅ Fix Author Schema (Person vs Organization) (1-2 hours) **COMPLETED**
-**File:** `app/blog/[slug]/page.tsx`
+## Phase 2 (Weeks 2–3): Sitemap and indexing quality improvements
+**Goal:** Improve crawler trust and recrawl quality.
 
-**Change from:**
-```json
-"author": {
-  "@type": "Organization",
-  "name": "E-Bike PSI"
-}
-```
+1. **Replace synthetic `lastmod` where possible**
+   - Use source-of-truth timestamps (content frontmatter, model data update timestamp, or persisted content revision date).
 
-**To:**
-```json
-"author": {
-  "@type": "Person",
-  "name": "E-Bike PSI Team"
-},
-"publisher": {
-  "@type": "Organization",
-  "name": "E-Bike PSI"
-}
-```
+2. **Review exclusions for trust/support pages**
+   - Decide whether to include `/privacy` and `/terms` in sitemap.
+   - Keep only truly non-indexable/system endpoints excluded.
+
+3. **Run indexing QA**
+   - Verify top templates return expected canonical, robots directives, and schema without conflicts.
+
+**Definition of done:**
+- `lastmod` reflects real update cadence for key templates.
+- Sitemap policy intentionally documented and consistent.
 
 ---
 
-### 7. ✅ Add Article Schema to Blog Posts (2-3 hours) **COMPLETED**
-**File:** `app/blog/[slug]/page.tsx`
+## Phase 3 (Weeks 3–6): GEO expansion + AI-search optimization
+**Goal:** Win more long-tail discovery from both SERPs and AI answers.
 
-**Add alongside BlogPosting:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "...",
-  "description": "...",
-  "image": "...",
-  "datePublished": "...",
-  "dateModified": "...",
-  "author": {...},
-  "publisher": {...}
-}
-```
+1. **Scale location-page quality controls**
+   - Maintain minimum unique-local-content standards (climate, terrain, commuting context, FAQs).
+   - Prevent thin/copy-variant city pages by enforcing unique local variables + useful comparative guidance.
 
----
+2. **Strengthen entity consistency for AI retrievers**
+   - Keep organization/profile metadata consistent across schema, on-page mentions, and about/trust sections.
+   - Add/expand “methodology” and “how recommendations are derived” sections on key pages.
 
-### 8. ✅ Homepage FAQ Schema (1 hour) **COMPLETED**
-**File:** `app/(site)/page.tsx`
+3. **Improve answer extraction for LLM systems**
+   - Add concise Q/A blocks and summary tables on high-intent pages.
+   - Keep heading hierarchy and direct-answer formatting strict and consistent.
 
-**Add 3-5 key FAQs:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What PSI should I run on my e-bike?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "..."
-      }
-    }
-  ]
-}
-```
+4. **Add AI-search performance tracking loop**
+   - Track: impressions/clicks for question-led queries, branded vs non-branded growth, and referral patterns from AI surfaces where detectable.
+   - Establish monthly audit: “Which pages are being cited? Which answers are missing?”
+
+**Definition of done:**
+- GEO templates have quality guardrails and no obvious thin-page patterns.
+- Monthly AI-search/answer-visibility review process is active.
 
 ---
 
-## 📋 Week 2: Content & Semantic SEO (8-12 hours)
+## 4) KPI framework (to measure success)
 
-### 9. ✅ Meta Description Audit (4-6 hours) **COMPLETED**
-- ✅ Reviewed all key pages
-- ✅ Optimized FAQ and Blog descriptions (now 150-160 chars)
-- ✅ Model/brand pages use dynamic descriptions (optimal length, include keywords)
-- ✅ All descriptions include primary keywords naturally
-- ✅ Descriptions are unique per page
-- ✅ All within 150-160 character optimal range
+### Technical KPIs
+- % indexable templates with standardized canonical implementation
+- % mapped regional page pairs with reciprocal hreflang
+- % sitemap URLs with authoritative (non-synthetic) lastmod values
 
-### 10. ✅ Image Alt Text Audit (3-4 hours) **COMPLETED**
-- ✅ Fixed empty alt text on homepage feature icons
-- ✅ Logo has proper alt text ("E-Bike PSI Logo")
-- ✅ Blog post ogImages have ImageObject schema
-- ✅ All decorative icons have descriptive alt text
-- ✅ Note: MDX blog content images handled by Prose component (should have alt in MDX)
+### Organic search KPIs
+- Non-branded clicks/impressions (GSC)
+- CTR change on key landing pages
+- Ranking coverage for “[model] tire pressure”, “[city] ebike tire pressure”, and “how to” query families
 
-### 11. Table of Contents Schema (3-4 hours) ⚠️ **DEFERRED**
-- ⚠️ Identify long articles (2000+ words) - Most blog posts are comprehensive
-- ⚠️ Add visual TOC component
-- ⚠️ Add structured data (Article with hasPart or TableOfContents)
-- **Note:** This requires MDX parsing to extract headings. Can be added later as enhancement.
+### AI-discovery KPIs
+- Frequency of citation/mention in AI answers for target query sets
+- Share of pages with explicit extractable answer blocks
+- Growth in question-intent landing page sessions
 
 ---
 
-## 🔧 Week 3: Technical Enhancements (6-8 hours)
+## 5) Immediate execution checklist
 
-### 12. ✅ Product Schema Enhancements (2-3 hours) **COMPLETED**
-- ✅ Added offers schema (free tool/service)
-- ⚠️ aggregateRating - Not applicable (no user reviews yet)
-- ⚠️ review schema - Not applicable (no reviews yet)
-- ✅ Enhanced with offers (price: 0, availability: InStock)
+## This sprint (next 7 days)
+- [ ] Canonical normalization spec written and approved
+- [ ] US/UK hreflang map documented and implemented for mapped pairs
+- [ ] Template QA pass for canonical/hreflang/schema conflicts
 
-### 13. ✅ Heading Hierarchy Audit (2-3 hours) **COMPLETED**
-- ✅ Checked all pages - proper H1-H6 hierarchy
-- ✅ One H1 per page (verified: homepage, blog posts, model pages, brand pages)
-- ✅ Logical heading order maintained
-- ✅ Headings used semantically (not just styling)
+## Next sprint (days 8–21)
+- [ ] Sitemap `lastmod` refactor to real update dates for core templates
+- [ ] Decision and implementation on Privacy/Terms sitemap inclusion
+- [ ] AI-answer formatting improvements on top 10 organic landing pages
 
-### 14. ✅ Category/Tag Schema (2-3 hours) **COMPLETED**
-- ✅ Added keywords meta tag to blog posts (from tags array)
-- ✅ articleSection already in Article schema (uses first tag)
-- ⚠️ Tag pages - Can be added later if needed for content organization
+## Ongoing (monthly)
+- [ ] Technical SEO regression audit
+- [ ] AI answer-surface/citation audit
+- [ ] GEO page quality review (thinness + duplication checks)
 
 ---
 
-## 🎯 Ongoing: Advanced Optimizations
-
-### 15. Topic Clusters (8-12 hours)
-- Map content into clusters
-- Create pillar pages
-- Improve internal linking
-
-### 16. Author Bios (4-6 hours)
-- Create author pages
-- Add Person schema
-- Link from blog posts
-
-### 17. ✅ Last Updated Dates (2-3 hours) **COMPLETED**
-- ✅ Added dateModified to BlogPost interface
-- ✅ Extracts dateModified from frontmatter or uses file modification time
-- ✅ Displays "Updated" date on blog posts when different from published date
-- ✅ Uses dateModified in BlogPosting and Article schemas
-- ✅ Falls back to published date if not specified
-
----
-
-## ✅ Validation Checklist
-
-After implementing each item, validate with:
-- [ ] Google Rich Results Test: https://search.google.com/test/rich-results
-- [ ] Schema.org Validator: https://validator.schema.org/
-- [ ] Google Search Console (monitor rich results)
-- [ ] Test in Google SGE, Perplexity, ChatGPT
-
----
-
-## 📊 Expected Impact
-
-**Priority 1 (Week 1):**
-- Rich snippets in search results
-- AI search visibility
-- Better click-through rates
-- Knowledge Graph eligibility
-
-**Priority 2 (Week 2):**
-- Improved content understanding
-- Better image search visibility
-- Enhanced user experience
-
-**Priority 3 (Week 3):**
-- Technical SEO improvements
-- Better content organization
-- Enhanced semantic structure
-
----
-
-## 🚨 Critical Missing Elements (Fix First)
-
-1. ✅ **BreadcrumbList Schema** - ✅ COMPLETED - Added to blog, models, brands, FAQ pages
-2. ✅ **Organization Schema** - ✅ COMPLETED - Added to root layout
-3. ✅ **HowTo Schema** - ✅ COMPLETED - Added to calculator and tutorial blog posts
-4. ✅ **SoftwareApplication Schema** - ✅ COMPLETED - Added to calculate page layout
-5. ✅ **Article Schema** - ✅ COMPLETED - Added alongside BlogPosting on blog posts
-6. ✅ **Author Person Schema** - ✅ COMPLETED - Changed from Organization to Person
-
----
-
-## 💡 Quick Implementation Tips
-
-1. **Start with schema helpers:** Create reusable functions in `lib/schema.ts`
-2. **Test incrementally:** Validate each schema addition
-3. **Monitor Search Console:** Watch for rich result errors
-4. **Keep it simple:** Don't over-engineer, focus on accuracy
-5. **Document changes:** Note what you added and why
-
----
-
-**Last Updated:** January 2025  
-**Status:** ✅ **14 of 15 Priority Items Completed (93%)**  
-**See SEO_IMPLEMENTATION_SUMMARY.md for complete details**
-
+## 6) Notes for maintainers
+- This plan supersedes older completion percentages that reflected an earlier implementation snapshot.
+- Keep this file as the single source of truth for “current state vs remaining work.”
