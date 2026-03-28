@@ -1,0 +1,53 @@
+# E-Bike PSI
+
+> Professional e-bike tire pressure calculator with precise PSI recommendations for 150+ models from 45 brands. Weight-based calculations with terrain adjustments for fat tire, cargo, folding, commuter, and moto-style e-bikes.
+
+## About
+
+E-Bike PSI is a free, professional-grade tire pressure calculator designed specifically for electric bikes. Unlike generic tire pressure guides, our calculator accounts for e-bike-specific factors: heavier bike weights, motor placement, cargo capacity, and the unique tire configurations found on modern e-bikes.
+
+The tool covers 152 verified e-bike models across 45 brands, providing personalized front and rear tire pressure recommendations based on rider weight, cargo load, and terrain type.
+
+## Calculator
+
+- URL: https://ebikepsi.com/calculate
+- Description: Interactive PSI calculator with model presets or custom tire dimensions
+- Input: Bike model or tire size, rider weight, cargo weight, terrain type, tire construction
+- Output: Front and rear PSI recommendations (min/target/max) with safety warnings
+
+## Models Database
+
+- URL: https://ebikepsi.com/ebike-tire-pressure
+- Description: Browse all 152 e-bike models with specifications and PSI charts
+- Brands: https://ebikepsi.com/brands
+- Tire Sizes: https://ebikepsi.com/tire-size
+
+## Key Pages
+
+- FAQ: https://ebikepsi.com/faq — Common questions about e-bike tire pressure
+- UK/EU Guide: https://ebikepsi.com/ebike-tyre-pressure — Bar and PSI charts for UK riders
+- Fat Tire Guide: https://ebikepsi.com/fat-tire-ebike-tire-pressure-guide
+- Heavy Rider Guide: https://ebikepsi.com/heavy-rider-ebike-tire-pressure
+- Cargo Bike Guide: https://ebikepsi.com/cargo-ebike-tire-pressure
+
+## Blog
+
+- URL: https://ebikepsi.com/blog
+- Topics: Tire pressure guides, maintenance, safety, terrain-specific advice
+- RSS: https://ebikepsi.com/blog/rss.xml
+
+## Key Facts
+
+- 152 verified e-bike models from 45 brands
+- Weight-based PSI calculations (front and rear independently)
+- Terrain adjustments: pavement, mixed, dirt, sand/snow
+- Tire construction support: tubed, tubeless, reinforced
+- Trike (3-wheel) mode with independent rear calculations
+- Safety alerts: pinch flat risk, blowout warnings, rim protection
+- UK/EU edition with Bar + PSI units
+- Free to use, no signup required
+- PWA support (installable, works offline)
+
+## Contact
+
+- Site: https://ebikepsi.com
