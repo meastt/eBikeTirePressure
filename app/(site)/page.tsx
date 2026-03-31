@@ -9,15 +9,16 @@ import { getAllTireSizes, getTireSizeInfo } from "@/lib/programmatic/tire-sizes"
 const models = modelsData as ModelPreset[];
 
 export const metadata: Metadata = {
-  title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations (2026)",
+  title: "E-Bike PSI — Tire Pressure Guide & Calculator for 150+ Models (2026)",
   description:
-    "Free e-bike tire pressure calculator with precise PSI recommendations for 150+ models. Covers fat tire, cargo, folding, and commuter e-bikes. Weight-based calculations with terrain adjustments.",
+    "The most complete e-bike tire pressure resource. Search your exact model, see recommended PSI for your weight, and calculate front/rear pressure for pavement, trails, or sand. Covers Rad Power, Aventon, Specialized, Lectric, and 150+ more.",
   alternates: {
     canonical: "https://ebikepsi.com",
   },
   openGraph: {
-    title: "E-Bike Tire Pressure Calculator | Professional PSI Recommendations (2026)",
-    description: "Free e-bike tire pressure calculator with precise PSI recommendations for 150+ models. Weight-based calculations with terrain adjustments.",
+    title: "E-Bike PSI — Tire Pressure Guide & Calculator for 150+ Models (2026)",
+    description:
+      "The most complete e-bike tire pressure resource. Search your exact model, see recommended PSI for your weight, and calculate front/rear pressure for pavement, trails, or sand.",
     type: "website",
     url: "https://ebikepsi.com",
   },

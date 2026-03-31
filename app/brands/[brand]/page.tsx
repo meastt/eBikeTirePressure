@@ -37,9 +37,13 @@ export async function generateMetadata({
   
   // UPDATED: Title with Year and Benefit
   const title = `${brandMetadata.displayName} E-Bike Tire Pressure Guide (2026) | Expert PSI Charts`;
-  
-  // UPDATED: Description
-  const description = `Optimize your ${brandMetadata.displayName} e-bike with our 2026 tire pressure guide. Expert-tested PSI recommendations for ${brandModels.length} models including weight limits and terrain adjustments.`;
+
+  // Use the brand-specific description from metadata, with PSI focus added
+  const baseDesc = brandMetadata.description;
+  const tireNote = brandMetadata.tireTypes.length > 0
+    ? ` Tires range from ${brandMetadata.tireTypes[0]}${brandMetadata.tireTypes.length > 1 ? ` to ${brandMetadata.tireTypes[brandMetadata.tireTypes.length - 1]}` : ''}.`
+    : '';
+  const description = `${baseDesc} Find your specific model's tire pressure, weight-based PSI recommendations, and terrain adjustments. Updated for 2026.${tireNote}`;
 
   return {
     title,
