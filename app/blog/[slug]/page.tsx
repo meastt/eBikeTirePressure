@@ -145,6 +145,48 @@ export default async function BlogPost({ params }: BlogPostProps) {
     { name: post.title, url: postUrl },
   ]);
 
+  // Generate FAQ schema for high-traffic informational posts
+  const getFAQSchema = (slug: string) => {
+    const faqMap: Record<string, { questions: { q: string; a: string }[] }> = {
+      'ebike-tire-pressure-heavy-riders-guide': {
+        questions: [
+          {
+            q: 'What PSI should a 250 lb rider run on an e-bike?',
+            a: 'Most e-bike tires support 250-300 lbs per tire when inflated to sidewall max. A 250 lb rider should typically run 25-35 PSI on standard tires, or 12-18 PSI on fat tires (4.0"+). The rear wheel carries more weight, so many riders run 2-5 PSI higher in back.'
+          },
+          {
+            q: 'How much extra PSI do I need for heavy loads on an e-bike?',
+            a: 'Add 5-10% PSI per 50 lbs of cargo. For a 300 lb total load, increase rear tire pressure by 5-8 PSI over your solo rider pressure. Always stay below the tire\'s maximum sidewall PSI.'
+          },
+          {
+            q: 'Can I exceed the tire\'s max PSI for heavy riders?',
+            a: 'Never exceed the tire\'s maximum PSI listed on the sidewall. If your weight exceeds the tire\'s load rating, the solution is wider tires, not higher pressure. A 4.0" fat tire at 15 PSI supports far more weight safely than a 2.0" tire at 40 PSI.'
+          },
+          {
+            q: 'Do mid-drive motors need different PSI for heavy riders?',
+            a: 'Yes. Mid-drive motors put more weight over the rear wheel, increasing pinch flat risk. Heavy riders on mid-drive e-bikes should increase rear tire pressure by 2-5 PSI compared to hub motor setups, and consider reinforced or tires with higher load ratings.'
+          },
+        ]
+      },
+    };
+    const faqData = faqMap[slug];
+    if (!faqData) return null;
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': faqData.questions.map(item => ({
+        '@type': 'Question',
+        'name': item.q,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.a
+        }
+      }))
+    };
+  };
+
+  const faqSchema = getFAQSchema(post.slug);
+
   // Generate HowTo schema for tutorial posts
   const getHowToSchema = (slug: string) => {
     const howToMap: Record<string, { name: string; description: string; steps: HowToStep[] }> = {
@@ -231,6 +273,12 @@ export default async function BlogPost({ params }: BlogPostProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {howToSchema && (
         <script
           type="application/ld+json"
