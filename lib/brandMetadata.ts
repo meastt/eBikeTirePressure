@@ -63,6 +63,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Rad Power Bikes is one of the largest direct-to-consumer e-bike brands in North America, known for their affordable cargo bikes, utility models, and fat-tire designs. Their bikes typically feature 20-26" fat tires (3.0-4.0" wide) optimized for versatility across pavement, gravel, and light trails.',
     websiteUrl: 'https://www.radpowerbikes.com',
     tireTypes: ['Fat Tire (20x3.3")', 'Fat Tire (22x3.0")', 'Fat Tire (26x4.0")', 'Standard (27.5x2.4")'],
+    metaDescription: "Rad Power e-bike tire pressure guide: PSI for RadRover, RadRunner, RadCity, RadExpand, and all Rad Power models. Expert recommendations for 2026.",
   },
   'aventon': {
     slug: 'aventon',
@@ -79,6 +80,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Lectric eBikes offers budget-friendly folding e-bikes and cargo models. Known for the XP series with 20x3.0" fat tires, XPedition cargo bikes, and the XPeak off-road model with 26x4.0" tires. Their bikes balance affordability with solid performance.',
     websiteUrl: 'https://lectricebikes.com',
     tireTypes: ['Fat Tire (20x3.0")', 'Fat Tire (26x4.0")', 'Compact (20x2.3")', 'Commuter (27.5x2.2")'],
+    metaDescription: "Lectric e-bike tire pressure guide: PSI for XP 3.0, XP Lite, XPedition, XPeak, and all Lectric models. Fat tire and folding bike recommendations for 2026.",
   },
   'super73': {
     slug: 'super73',
@@ -87,6 +89,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Super73 creates moto-style e-bikes with bold aesthetics and fat tire capability. Their models feature 20x4.0" tires designed for urban riding, beach cruising, and light trails. Known for aggressive styling and solid build quality.',
     websiteUrl: 'https://super73.com',
     tireTypes: ['Fat Tire (20x4.0")'],
+    metaDescription: "Super73 e-bike tire pressure guide: PSI for S2, R, Z, and all Super73 models. Retro-styled and off-road e-bike tire pressure recommendations for 2026.",
   },
   'ride1up': {
     slug: 'ride1up',
@@ -103,6 +106,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Velotric offers sleek urban e-bikes and fat-tire models. The Discover series features 27.5x1.95" tires for city riding, while the Nomad 1 packs 20x4.0" fat tires for all-terrain capability. Known for integrated batteries and clean designs.',
     websiteUrl: 'https://www.velotricbike.com',
     tireTypes: ['Fat Tire (20x4.0")', 'Commuter (27.5x1.95")', 'Folding (20x3.0")'],
+    metaDescription: "Velotric e-bike tire pressure guide: PSI for Nomad, Breeze, Discover, Fold, and all Velotric models. Fat tire and commuter bike recommendations for 2026.",
   },
   'heybike': {
     slug: 'heybike',
@@ -127,6 +131,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Specialized offers premium e-bikes across all categories. From lightweight road (27.5x1.95") to cargo (20x3.0") to trail (27.5x2.6"), they leverage cycling industry expertise to deliver top-tier e-bikes.',
     websiteUrl: 'https://www.specialized.com',
     tireTypes: ['Commuter (27.5x2.2")', 'Road (27.5x1.95")', 'Cargo (20x3.0")', 'Trail (27.5x2.6")'],
+    metaDescription: "Specialized e-bike tire pressure guide: Turbo Vado, Turbo Como, Turbo Tero, Globe, and all Specialized e-bike models. 2026 PSI recommendations.",
   },
   'tern': {
     slug: 'tern',
@@ -135,6 +140,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Tern specializes in compact cargo e-bikes with 20x2.4" reinforced tires. The GSD, HSD, and Quick Haul models are designed for hauling kids, groceries, and gear with high PSI ratings (35-50 PSI) for load capacity.',
     websiteUrl: 'https://www.ternbicycles.com',
     tireTypes: ['Cargo (20x2.4" reinforced)'],
+    metaDescription: "Tern e-bike tire pressure guide: PSI for GSD, HSD, Vektron, Quick-Haul, and all Tern cargo and commuter bikes. Compact e-bike recommendations for 2026.",
   },
   'mokwheel': {
     slug: 'mokwheel',
@@ -151,6 +157,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Urtopia creates lightweight carbon fiber e-bikes with integrated smart technology. Their models feature road-focused tire sizes (700x40c, 29x2.05", 18x2.0") designed for urban commuting and fitness riding. Known for ultra-light frames, fingerprint unlock, and connected app features.',
     websiteUrl: 'https://www.urtopia.com',
     tireTypes: ['Road (700x40c)', 'Trail (29x2.05")', 'Folding (18x2.0")', 'Compact (20x3.0")'],
+    metaDescription: "Urtopia e-bike tire pressure guide: PSI for Carbon 1, Carbon X, Fusion, and all Urtopia models. Lightweight e-bike tire pressure recommendations for 2026.",
   },
   'euphree': {
     slug: 'euphree',
@@ -335,6 +342,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Pedego is known for comfortable beach cruiser style e-bikes. Models feature 26" tires designed for relaxed, upright riding.',
     websiteUrl: 'https://www.pedegoelectricbikes.com',
     tireTypes: ['Cruiser (26x2.3")', 'Fat Tire (26x4.0")'],
+    metaDescription: "Pedego e-bike tire pressure guide: find your model PSI for the Interceptor, Element, Ridge, and all Pedego bikes. Fat tire and cruiser recommendations for 2026.",
   },
   'priority': {
     slug: 'priority',
@@ -415,6 +423,7 @@ export const BRAND_METADATA: Record<string, BrandMetadata> = {
     description: 'Yuba specializes in longtail cargo bikes designed for hauling kids and gear. Models like the Spicy Curry feature 20x3.0" tires with high load capacity.',
     websiteUrl: 'https://yubabikes.com',
     tireTypes: ['Cargo (20x3.0")', 'Cargo (24x2.4")'],
+    metaDescription: "Yuba e-bike tire pressure guide: PSI for Spicy Curry, Load, and all Yuba cargo e-bikes. Heavy-load and passenger-carrying recommendations for 2026.",
   },
 };
 
