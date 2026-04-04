@@ -6,9 +6,9 @@ import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/schema"
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "E-Bike PSI - Tire Pressure Calculator",
+  title: "E-Bike PSI — Tire Pressure Guide & Calculator for 150+ Models (2026)",
   description:
-    "Professional e-bike tire pressure calculator. Get precise PSI recommendations based on your bike model, rider weight, cargo, and terrain.",
+    "The most complete e-bike tire pressure resource. Search your exact model, see recommended PSI for your weight, and calculate front/rear pressure for pavement, trails, or sand. Covers Rad Power, Aventon, Specialized, Lectric, and 150+ more.",
   metadataBase: new URL('https://ebikepsi.com'),
   authors: [{ name: 'E-Bike PSI' }],
   creator: 'E-Bike PSI',
