@@ -9,6 +9,7 @@ export interface BrandMetadata {
   shortDescription: string;
   websiteUrl?: string;
   tireTypes: string[];
+  metaDescription?: string;
 }
 
 /**
