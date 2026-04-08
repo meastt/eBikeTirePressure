@@ -230,6 +230,71 @@ export default async function BrandPage({
           </div>
         </div>
 
+        {/* PSI Guide Section */}
+        <div className="mb-12 p-8 bg-white rounded-2xl shadow-sm border border-brand-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-3xl">🛞</span>
+            <h2 className="text-2xl font-bold text-text">Typical Riding Conditions for {brandMetadata.displayName}</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h3 className="font-semibold text-text mb-2">🏖️ Beach &amp; Pavement Riding</h3>
+              <p className="text-muted text-sm leading-relaxed">
+                Most {brandMetadata.displayName} e-bikes come equipped with {brandMetadata.tireTypes[0] || 'wide tires'} optimized for comfort on paved paths and light sand. For this use case, we recommend staying in the upper portion of the tire's PSI range — {brandModels.length > 0 && brandModels[0].stockTire ? `${(brandModels[0].stockTire?.minPSI ?? 15) + 5}-${(brandModels[0].stockTire?.maxPSI ?? 30) - 5} PSI` : '20-28 PSI'} for most riders under 200 lbs.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-text mb-2">🚴 Commuting &amp; Errands</h3>
+              <p className="text-muted text-sm leading-relaxed">
+                If you're using your {brandMetadata.displayName} for daily commutes, bump PSI up by 5-8% from the pavement baseline. Higher pressure reduces rolling resistance and maximizes your range per charge — critical when you're riding every day.
+              </p>
+            </div>
+          </div>
+          <div className="bg-surface-light p-4 rounded-xl">
+            <p className="text-sm text-muted">
+              <strong className="text-text">💡 Not sure where to start?</strong> Select your {brandMetadata.displayName} model below and enter your details — we'll give you a personalized front and rear PSI recommendation in seconds.
+            </p>
+          </div>
+        </div>
+
+        {/* Model quick PSI reference table */}
+        {sortedModels.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-xl font-heading font-bold text-text mb-4">Quick PSI Reference: Top {brandMetadata.displayName} Models</h2>
+            <div className="overflow-x-auto bg-white rounded-xl shadow-sm">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-brand-100">
+                    <th className="text-left py-2 px-3 font-semibold text-text">Model</th>
+                    <th className="text-left py-2 px-3 font-semibold text-text">Tire Size</th>
+                    <th className="text-left py-2 px-3 font-semibold text-text">Recommended PSI</th>
+                    <th className="text-right py-2 px-3 font-semibold text-text">Calculate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedModels.slice(0, 3).map((model) => {
+                    const minPSI = model.stockTire.minPSI || 15;
+                    const maxPSI = model.stockTire.maxPSI || 30;
+                    const recommendedPSI = Math.round((minPSI + maxPSI) / 2 + 2);
+                    return (
+                      <tr key={model.slug} className="border-b border-surface-light last:border-0 hover:bg-surface-light/30 transition-colors">
+                        <td className="py-2 px-3 text-text font-medium">{model.model}</td>
+                        <td className="py-2 px-3 text-muted">{model.stockTire.size}</td>
+                        <td className="py-2 px-3 text-brand font-semibold">{recommendedPSI - 2}-{recommendedPSI + 3} PSI</td>
+                        <td className="py-2 px-3 text-right">
+                          <Link href={`/calculate?model=${model.slug}`} className="text-brand hover:underline text-xs font-medium">
+                            Calculate →
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
         {/* CTA to calculator */}
         <div className="bg-gradient-brand text-white p-8 rounded-2xl text-center shadow-elevated mb-12">
           <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-4">
