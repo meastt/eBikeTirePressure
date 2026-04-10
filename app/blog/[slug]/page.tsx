@@ -392,6 +392,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           { q: 'How do I read ETRTO tire size numbers?', a: 'ETRTO format (e.g., 62-559) shows the tire width in mm (62mm) and the bead seat diameter in mm (559mm). This is the most accurate sizing system — use it when matching tires to rims, not the inch-based sizing.' },
         ]
       },
+
       'ebike-tire-wear-patterns-psi': {
         questions: [
           { q: 'What does center-only tire wear mean on an e-bike?', a: 'Center-only wear means you\'re running too high PSI, concentrating all contact on the tread center. Reduce PSI by 3-5 PSI to distribute wear across the full tread width and extend tire life.' },
