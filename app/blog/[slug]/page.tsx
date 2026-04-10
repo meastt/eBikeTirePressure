@@ -168,6 +168,118 @@ export default async function BlogPost({ params }: BlogPostProps) {
           },
         ]
       },
+      'fat-tire-ebike-tire-pressure-guide': {
+        questions: [
+          {
+            q: 'What PSI should fat tire e-bikes run on pavement?',
+            a: 'For 4.0-inch fat tires on pavement, run 20-25 PSI. This balances rolling efficiency with comfort. Going above 28 PSI makes the ride harsh and reduces the fat tire advantage.'
+          },
+          {
+            q: 'Should I run lower PSI on fat tire e-bikes for sand or snow?',
+            a: 'Yes. For sand or snow, drop to 8-12 PSI on 4.0-inch tires. The larger contact patch provides flotation over soft surfaces. Start at 12 PSI and air down if the tire digs in.'
+          },
+          {
+            q: 'At what PSI do fat tire e-bikes get pinch flats?',
+            a: 'Fat tires are very resistant to pinch flats below 15 PSI due to their volume, but you can still pinch flat on sharp rocks or curbs. For 4.0-inch tires, stay above 10 PSI for safety on mixed terrain.'
+          },
+          {
+            q: 'Can I run fat tires tubeless on an e-bike?',
+            a: 'Many fat tire e-bikes support tubeless setups. Tubeless lets you run 3-5 PSI lower than tubed tires without pinch flat risk, improving traction and ride quality on trails.'
+          },
+        ]
+      },
+      'ebike-tire-pressure-range-guide': {
+        questions: [
+          {
+            q: 'Does higher tire pressure increase e-bike range?',
+            a: 'Yes, on smooth pavement. Higher PSI reduces rolling resistance, which directly improves battery range. You can expect 5-12% more range running at the upper end of your tire\'s PSI range versus the lower end.'
+          },
+          {
+            q: 'What PSI gives the best e-bike range on mixed terrain?',
+            a: 'For mixed terrain, find the lowest PSI that doesn\'t cause pinch flats on the roughest section of your route. On gravel or dirt, lower PSI can actually reduce rolling resistance compared to pavement.'
+          },
+          {
+            q: 'How much PSI should I add for cargo weight on an e-bike?',
+            a: 'Add approximately 2 PSI front and rear for every 30 lbs of cargo. A 220 lb rider carrying 25 lbs should run 2-4 PSI higher than their solo rider pressure for optimal range.'
+          },
+          {
+            q: 'Do tubeless tires improve e-bike range?',
+            a: 'Tubeless tires show 3-5% better range than tubed equivalents at the same PSI. This comes from eliminating tube friction, running lower PSI safely, and reducing overall system weight.'
+          },
+        ]
+      },
+      'emtb-tire-pressure-guide': {
+        questions: [
+          {
+            q: 'What PSI should I run on an electric mountain bike?',
+            a: 'For e-MTBs, start at 22-25 PSI in the rear and 24-28 PSI in the front for 2.4-2.6-inch tires. The extra weight of an e-bike (25-30 lbs more than regular MTB) means you need slightly higher pressure than non-electric MTBs.'
+          },
+          {
+            q: 'Should front and rear PSI be different on an e-MTB?',
+            a: 'Yes. Run 2-4 PSI higher in the front than the rear. The front tire carries more weight during braking and cornering, while the rear benefits from slightly lower pressure for traction on climbs.'
+          },
+          {
+            q: 'Does the extra weight of an e-bike affect tire pressure?',
+            a: 'E-bikes weigh 25-30 lbs more than regular mountain bikes due to the motor and battery. This means you need 2-5 PSI more than you would on a non-electric bike of the same tire size.'
+          },
+          {
+            q: 'What tubeless PSI is safe for e-MTB trail riding?',
+            a: 'For tubeless e-MTB setups, 18-22 PSI in the rear and 20-24 PSI in the front is a good starting point for 2.4-2.6-inch tires. Always ensure you have adequate sealant and check PSI before every ride.'
+          },
+        ]
+      },
+      'winter-cold-weather-ebike-tire-pressure': {
+        questions: [
+          {
+            q: 'How much does cold weather drop e-bike tire pressure?',
+            a: 'Tire pressure drops approximately 2 PSI for every 20°F (11°C) temperature drop. A tire inflated to 40 PSI at 70°F will read around 32 PSI at 30°F. Check pressure frequently during cold weather.'
+          },
+          {
+            q: 'Should I inflate e-bike tires higher in winter?',
+            a: 'Yes, but not to compensate for cold contraction. Inflate to your normal operating PSI when the tire is at outdoor temperature. Then add 2-3 PSI above your summer baseline on wet or icy surfaces for reduced rolling resistance.'
+          },
+          {
+            q: 'Do e-bike tires lose air faster in cold weather?',
+            a: 'The air inside the tire contracts (not leaks), which shows as lower pressure on a gauge. However, cold also stiffens the rubber and can slow minor seal leaks. Check tire pressure every 3-7 days in winter instead of weekly.'
+          },
+          {
+            q: 'Can cold weather cause e-bike tire damage?',
+            a: 'Cold rubber is less flexible and more prone to cracking and sidewall damage, especially when striking potholes or curbs. Check tires for cracks before every winter ride and consider slightly higher PSI on rough roads.'
+          },
+        ]
+      },
+      'hot-weather-ebike-tire-pressure': {
+        questions: [
+          {
+            q: 'Should I lower tire pressure on my e-bike in hot weather?',
+            a: 'Tire pressure increases approximately 2 PSI per 20°F of temperature rise. If you inflate at 70°F and ride at 100°F, your PSI will be about 3 PSI higher. On very hot pavement, consider starting 2-3 PSI below max to avoid exceeding tire limits.'
+          },
+          {
+            q: 'Can over-inflated e-bike tires blow out in hot weather?',
+            a: 'If you inflate to maximum sidewall PSI in a cool garage and then ride in 100°F+ heat, pressure can exceed the tire\'s maximum rating. Always account for temperature rise, especially on black asphalt which can be 20-30°F hotter than air temperature.'
+          },
+          {
+            q: 'What is the ideal e-bike tire pressure for summer commuting?',
+            a: 'For summer commuting, run your normal PSI but check it when the tire is warm (after riding). If it reads 5+ PSI above your target, reduce cold pressure by 2-3 PSI. Aim for 75-85% of your tire\'s maximum sidewall PSI for the best balance of range and comfort.'
+          },
+        ]
+      },
+      'fat-tire-sand-snow-psi': {
+        questions: [
+          {
+            q: 'What PSI should fat tires run in sand?',
+            a: 'For sand, run 5-8 PSI on 4.0-inch fat tires and 8-12 PSI on 3.0-inch tires. The low pressure creates a large contact patch that "floats" over soft sand instead of digging in.'
+          },
+          {
+            q: 'Can you ride fat tires in snow on an e-bike?',
+            a: 'Yes, fat tire e-bikes excel in snow. For packed snow, run 10-15 PSI. For deep powder, drop to 5-8 PSI on 4.0+ inch tires. The motor torque helps push through resistance that would stop a regular bike.'
+          },
+          {
+            q: 'Do I need studded tires for snow riding on an e-bike?',
+            a: 'On packed snow and ice, studded tires provide significantly better grip. On fresh powder, fat tires with aggressive tread work well without studs. Consider studs if you regularly ride on icy surfaces.'
+          },
+        ]
+      },
     };
     const faqData = faqMap[slug];
     if (!faqData) return null;
