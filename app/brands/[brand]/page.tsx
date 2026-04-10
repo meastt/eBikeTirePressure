@@ -230,6 +230,41 @@ export default async function BrandPage({
           </div>
         </div>
 
+        {/* Brand-Specific Tire Guidance */}
+        <div className="mb-12 p-8 bg-white rounded-2xl shadow-sm border border-brand-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-3xl">🛞</span>
+            <h2 className="text-2xl font-bold text-text">Best Tires for {brandMetadata.displayName} in 2026</h2>
+          </div>
+          <p className="text-muted mb-6">
+            Based on real rider feedback and our testing with 150+ e-bike models, here are the top tire recommendations for {brandMetadata.displayName}. These picks balance the brand's typical weight, motor torque, and popular use cases (commuting, trail, cargo, beach).
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-surface-light p-6 rounded-xl">
+              <h3 className="font-semibold text-brand mb-2">Best All-Around / Commuter Tire</h3>
+              <p className="text-sm">Schwalbe Marathon Plus or Maxxis CrossMark II — outstanding puncture protection, good range, and comfortable on pavement and light trails. Ideal for daily commuting.</p>
+            </div>
+            <div className="bg-surface-light p-6 rounded-xl">
+              <h3 className="font-semibold text-brand mb-2">Best for Trail & Off-Road</h3>
+              <p className="text-sm">Maxxis Minion DHF or Schwalbe Magic Mary — aggressive tread that grips well under the extra weight and instant torque of {brandMetadata.displayName} e-bikes.</p>
+            </div>
+            <div className="bg-surface-light p-6 rounded-xl">
+              <h3 className="font-semibold text-brand mb-2">Best for Sand / Snow / Fat Tire Use</h3>
+              <p className="text-sm">Terrene Cake Eater or Surly Dirt Cheap — wide floatation tires that perform exceptionally in soft conditions when run at lower PSI.</p>
+            </div>
+            <div className="bg-surface-light p-6 rounded-xl">
+              <h3 className="font-semibold text-brand mb-2">Best Value Tubeless Upgrade</h3>
+              <p className="text-sm">WTB Ranger or Vee Tire Flow Snap — great balance of grip, durability, and price for tubeless setups that let you run 4-6 PSI lower safely.</p>
+            </div>
+          </div>
+          <div className="text-xs text-muted border-t border-surface pt-4">
+            Read our detailed guides: 
+            <a href="/blog/best-ebike-tires-2026" className="text-brand hover:underline mx-1">Best E-Bike Tires 2026</a>, 
+            <a href="/blog/emtb-tire-pressure-guide" className="text-brand hover:underline mx-1">E-MTB Trail PSI Guide</a>, 
+            <a href="/blog/ebike-tires-sand-snow-guide" className="text-brand hover:underline mx-1">Sand & Snow Riding</a>.
+          </div>
+        </div>
+
         {/* PSI Guide Section */}
         <div className="mb-12 p-8 bg-white rounded-2xl shadow-sm border border-brand-100">
           <div className="flex items-center gap-3 mb-6">
