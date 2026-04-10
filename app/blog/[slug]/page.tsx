@@ -280,6 +280,110 @@ export default async function BlogPost({ params }: BlogPostProps) {
           },
         ]
       },
+      'best-ebike-tires-2026': {
+        questions: [
+          {
+            q: 'What makes a tire "e-bike rated"?',
+            a: 'E-bike rated tires (marked E-25 or E-50) are tested to handle the extra weight (50+ lbs) and motor torque of electric bikes. They have reinforced casings, puncture protection belts, and compounds that resist the faster wear caused by e-bike speeds and weight.'
+          },
+          {
+            q: 'Can I use regular bike tires on an e-bike?',
+            a: 'You can, but they\'ll wear out 2-3x faster than e-bike rated tires and won\'t handle the load and torque as well. Regular tires also have higher flat risk on e-bikes due to the extra weight passing over debris.'
+          },
+          {
+            q: 'How often should e-bike tires be replaced?',
+            a: 'E-bike tires typically last 1,500-3,000 miles depending on riding style, terrain, and tire quality. Commuters on pavement get the most mileage; cargo and off-road riders may need replacement every 1,000-1,500 miles. Check wear indicators monthly.'
+          },
+          {
+            q: 'Are Schwalbe Marathon tires good for e-bikes?',
+            a: 'The Schwalbe Marathon Plus is one of the most popular e-bike tires for commuting thanks to its SmartGuard puncture protection. It\'s heavy but extremely durable. For lighter performance, the Schwalbe Energizer Plus is a good e-bike-specific option.'
+          },
+        ]
+      },
+      'ebike-tire-pressure-maintenance-schedule': {
+        questions: [
+          {
+            q: 'How often should I check my e-bike tire pressure?',
+            a: 'Check e-bike tire pressure at least once a week, or before every ride if you commute daily. E-bikes lose 1-3 PSI per week under normal conditions, and the extra weight makes correct PSI more critical than on regular bikes.'
+          },
+          {
+            q: 'Do e-bike tires lose air faster than regular bike tires?',
+            a: 'E-bike tires experience more stress due to higher weight and motor vibration, which can slightly accelerate air loss through the rubber. Higher-PSI road e-bike tires lose more volume per week than low-PSI fat tires, but both need regular checking.'
+          },
+          {
+            q: 'How do I create a tire pressure maintenance schedule?',
+            a: 'Set a weekly reminder (same day each week). Use a digital gauge, not a thumb check. Record the PSI for front and rear to track trends. Any drop of 5+ PSI in a week suggests a slow leak that needs investigation.'
+          },
+          {
+            q: 'Is there an easy way to check e-bike tire pressure without a gauge?',
+            a: 'The squeeze test works for rough checks — press both thumbs into the sidewall. For e-bikes, this isn\'t accurate enough because the wrong PSI affects range, handling, and flat risk. Invest in a reliable digital gauge ($10-15).' 
+          },
+        ]
+      },
+      'how-much-air-in-ebike-tires': {
+        questions: [
+          {
+            q: 'Where do I find the correct tire pressure for my e-bike?',
+            a: 'The sidewall of your tire shows the recommended PSI range (e.g., "30-50 PSI"). Start at the midpoint and adjust based on your rider weight, cargo, terrain, and comfort. Heavier riders should be toward the higher end.'
+          },
+          {
+            q: 'How much PSI does a 200 lb rider need on an e-bike?',
+            a: 'For standard 2.0-2.4 inch tires, a 200 lb rider typically needs 35-45 PSI. For 2.8-3.0 inch tires, 22-30 PSI. For 4.0 inch fat tires, 12-18 PSI. The exact number depends on terrain and whether you carry cargo.'
+          },
+          {
+            q: 'Can over-inflated e-bike tires cause problems?',
+            a: 'Yes. Over-inflation reduces traction, makes the ride harsh, increases the risk of blowouts on hot pavement, and can actually decrease range on rough surfaces because the tire bounces instead of rolling smoothly.'
+          },
+        ]
+      },
+      'ebike-tire-pressure-chart': {
+        questions: [
+          {
+            q: 'What PSI should my e-bike tires be?',
+            a: 'It depends on tire width and rider weight. As a starting guide: 2.0" tires at 35-45 PSI, 2.4" at 30-40 PSI, 2.8" at 22-30 PSI, 3.0" at 18-25 PSI, 4.0" fat tires at 12-20 PSI. Adjust up for heavier riders and down for rough terrain.'
+          },
+          {
+            q: 'Should front and rear e-bike tire pressure be the same?',
+            a: 'No. The rear tire typically carries 60% of total weight (rider + cargo), so run 2-5 PSI higher in the rear on commuter e-bikes. On trail e-bikes where front-end grip matters, you might run them equal or even slightly higher in front.'
+          },
+          {
+            q: 'Does e-bike motor type affect tire pressure?',
+            a: 'Mid-drive motors concentrate more weight over the rear wheel, requiring 2-4 PSI more in the rear compared to hub motor setups. Hub motors distribute weight more evenly, so front/rear can be closer.'
+          },
+        ]
+      },
+      'tubed-vs-tubeless-ebike-psi': {
+        questions: [
+          {
+            q: 'Should I run tubeless tires on my e-bike?',
+            a: 'Tubeless e-bike tires let you run 3-8 PSI lower than tubed setups without pinch flat risk, giving better traction and comfort. They also self-seal small punctures. The main downside is more complex setup and sealant maintenance.'
+          },
+          {
+            q: 'How much lower can you run tubeless vs tubed on an e-bike?',
+            a: 'You can typically run tubeless tires 3-8 PSI lower than tubed equivalents, depending on riding style. Commuters might run 3-5 PSI lower; trail riders can go 5-8 PSI lower for maximum grip on loose terrain.'
+          },
+          {
+            q: 'Does the extra weight of an e-bike make tubeless harder to set up?',
+            a: 'Not really. The setup process (bead seating, initial inflation) is the same regardless of bike type. However, the e-bike\'s weight puts more stress on the bead during riding, so ensure your rims and tires are properly matched and seated.'
+          },
+        ]
+      },
+      'mid-drive-vs-hub-motor-tire-pressure': {
+        questions: [
+          {
+            q: 'Do mid-drive e-bikes need different tire pressure than hub motors?',
+            a: 'Yes. Mid-drive motors put more weight over the rear wheel because the motor is at the crank. Run 2-4 PSI higher in the rear on mid-drive e-bikes. Hub motors add weight at the axle, distributing load more evenly.'
+          },
+          {
+            q: 'Does a hub motor affect front tire pressure?',
+            a: 'A rear hub motor doesn\'t directly affect the front tire, but the overall weight balance changes. You may want to run the front 1-2 PSI lower for better steering grip since the rear is weighted down by the motor.'
+          },
+          {
+            q: 'What PSI is best for a mid-drive e-bike on trails?',
+            a: 'For mid-drive trail e-bikes with 2.4-2.6" tires, start at 20-22 PSI rear and 22-25 PSI front. The mid-drive\'s weight bias means the rear needs slightly more pressure to avoid burping during aggressive cornering.'
+          },
+        ]
+      },
     };
     const faqData = faqMap[slug];
     if (!faqData) return null;
